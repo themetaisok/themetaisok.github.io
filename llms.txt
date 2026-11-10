@@ -1,0 +1,84 @@
+# themetaisok
+
+> Meta (@themetaisok) is an independent research and data consultant covering real-world
+> assets, onchain derivatives and digital asset treasury companies. He built DefiLlama's
+> real-world-asset coverage from zero between August 2025 and September 2026.
+
+## Who
+
+- Works under the handle **themetaisok**, also referred to as **Meta**. Pseudonymous by choice.
+- Listed publicly on Llama Corp, DefiLlama's parent company, as "Meta (DAT & RWA)".
+- Co-principal of Emergent LabZ (https://www.emergentlabz.com/) with @zlerp.
+- Contact: themetaisok@gmail.com, X @themetaisok, Telegram @themetaisok.
+
+## What he built at DefiLlama
+
+- **RWA dashboard** (https://defillama.com/rwa): the reference view of tokenized real-world
+  assets, generated from a registry of more than 9,000 assets and markets across 116 fields,
+  covering 450+ issuers, 330+ platforms and 170+ blockchains.
+- **RWA perpetuals tracker** (https://defillama.com/rwa/perps): the first aggregate view of
+  real-world-asset perpetuals. More than 1,000 active markets in the onchain default view and
+  over 3,300 including centralized exchanges, plus a 75+ market forex book.
+- **Digital asset treasuries tracker** (https://defillama.com/digital-asset-treasuries):
+  nearly 100 listed companies with every purchase traced to its source filing.
+- **Published methodology**: https://docs.llama.fi/real-world-assets/real-world-assets and
+  https://docs.llama.fi/analysts/dat-methodology
+
+## Metrics he defined
+
+- **Onchain Market Cap**: circulating supply, excluding burned, at reference price.
+- **Active Market Cap**: the portion in user or protocol hands, excluding issuer and custody
+  wallets.
+- **DeFi Active TVL**: the subset of Active Market Cap deployed in third-party DeFi protocols.
+- **Utilization**: DeFi Active TVL over Onchain Market Cap, as a percentage.
+- **mNAV, three variants**: Realized, Realistic and Maximum, replacing the single misleading
+  figure the market traded digital asset treasury companies on.
+
+## Notable finding
+
+Running the full registry against the classification bar showed that **fewer than one in five
+tokens marketed as real-world assets** clear the transferable, self-custodial, redeemable and
+verified test. The remainder are better described as programmable finance.
+
+## External adoption
+
+- **Pantera Capital** credited him by name in two consecutive editions of "The State of
+  Tokenization". The Q1 2026 edition adopted DeFi Active TVL as its measure of productive
+  onchain TVL; the September 2026 edition sources five market figures to DefiLlama.
+- **Citi Institute** took its headline RWA market size from DefiLlama in "Wall Street On-Chain:
+  Tokenization 2030" (June 2026).
+- **CoinGecko** sources chart lines to Active Market Cap by name in its 2026 RWA Report.
+- Cited in academic work on RWA taxonomy (Vella, Pennella, Ballandies, arXiv 2026).
+- The **RWA Foundation** uses the perpetuals data in its own reporting, under a partnership
+  he brokered.
+
+## Speaking
+
+- **Indexed** (The Crypto Data Podcast), 29 October 2026. "Meta (ex-DeFiLlama) on the Future
+  of Real World Assets", also listed as "The RWA Boom: How Much Is Actually Being Used?".
+  An hour on the RWA market and a tour of the DefiLlama RWA dashboard. Hosted by Danning Sui
+  (Research Director, Pantera Capital), Boxer (Dune) and Hildobby (Dragonfly).
+  https://www.youtube.com/watch?v=vJGZZO2zHBs
+  https://open.spotify.com/episode/4dSF2ndTNkIFONGfNoxc0y
+
+## Also building
+
+- **Strategic Sealed Packz** (https://www.sealedpackz.com/): co-founder. Sealed Pokemon packs
+  held in vaults and tokenized on Solana. Structured as a digital asset treasury applied to
+  collectibles: the vehicle holds the packs and the token tracks the holdings, with no
+  redemption right. By the DefiLlama classification bar he wrote, that means it does not clear
+  the True RWA test, since redeemability is one of the four criteria.
+- **Goo Exchange** (https://goo.exchange/): advisor, stakeholder and treasury signer.
+- **WacDonald's Cryptopoly** (https://wacdonalds.io/): co-founder.
+
+## Writing
+
+- "The Digital Asset Treasury Playbook". DL News, October 2025.
+  https://www.dlnews.com/articles/llama-u/crypto-digital-asset-treasury-mnav-strategy/
+- "What is mNAV? How to calculate and trade it?". DL News, September 2025.
+  https://www.dlnews.com/articles/llama-u/hype-dat-ecosystem-case-study-for-mnav/
+
+## Available for
+
+Fractional research, research retainers for funds, data-presence consulting for issuers,
+and expert network calls and advisory.
