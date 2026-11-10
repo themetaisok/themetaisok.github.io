@@ -11,7 +11,7 @@
 <meta property="og:description" content="RWA and digital asset treasury data. Built DefiLlama's real-world-asset coverage from zero.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://themetaisok.com/">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@themetaisok">
 <meta name="twitter:creator" content="@themetaisok">
 <meta property="og:image" content="https://themetaisok.com/og.png">
@@ -20,7 +20,6 @@
 <meta property="og:site_name" content="themetaisok">
   <style>
 @font-face{font-family:"Newsreader";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/newsreader-latin-400-normal.woff2") format("woff2")}
-@font-face{font-family:"Newsreader";font-style:italic;font-weight:400;font-display:swap;src:url("fonts/newsreader-latin-400-italic.woff2") format("woff2")}
 @font-face{font-family:"Newsreader";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/newsreader-latin-500-normal.woff2") format("woff2")}
 @font-face{font-family:"Newsreader";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/newsreader-latin-600-normal.woff2") format("woff2")}
 @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2")}
@@ -38,10 +37,10 @@
   --surface:    #FFFFFF;
   --ink:        #15181F;
   --ink-2:      #4A5160;
-  --ink-3:      #7C8496;
+  --ink-3:      #5F6677;
   --rule:       #DCDEE4;
   --rule-firm:  #B9BDC8;
-  --accent:     #8A6B23;
+  --accent:     #7F611C;
   --link:       #1F4A8C;
   color-scheme: light;
 }
@@ -51,7 +50,7 @@
     --surface:    #161A22;
     --ink:        #E7E9EE;
     --ink-2:      #A3AAB9;
-    --ink-3:      #727A8A;
+    --ink-3:      #818999;
     --rule:       #252A34;
     --rule-firm:  #39404D;
     --accent:     #C8A657;
@@ -64,7 +63,7 @@
   --surface:    #161A22;
   --ink:        #E7E9EE;
   --ink-2:      #A3AAB9;
-  --ink-3:      #727A8A;
+  --ink-3:      #818999;
   --rule:       #252A34;
   --rule-firm:  #39404D;
   --accent:     #C8A657;
@@ -171,7 +170,7 @@ h2 {
   padding-block: 17px;
   border-top: 1px solid var(--rule);
 }
-.row:first-of-type { border-top: 1px solid var(--rule-firm); }
+.sec-head + .row, .figs + .row { border-top: 1px solid var(--rule-firm); }
 .key {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 12px;
@@ -198,7 +197,7 @@ h2 {
 }
 .src {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 11.5px;
+  font-size: 12.5px;
   color: var(--ink-3);
   margin: 7px 0 0;
 }
@@ -225,19 +224,42 @@ blockquote p { margin: 0; }
 .intro p:last-child { margin-bottom: 0; }
 .intro strong { color: var(--ink); font-weight: 600; }
 
+.skip {
+  position: absolute; left: 16px; top: -48px; z-index: 30;
+  background: var(--ink); color: var(--paper); padding: 10px 14px;
+  font: 500 13px "IBM Plex Mono", ui-monospace, monospace; text-decoration: none;
+}
+.skip:focus { top: 12px; }
+main:focus { outline: none; }
+
 /* metric list */
-.defs { margin: 0; padding: 0; list-style: none; }
-.defs li { padding-block: 11px; border-top: 1px solid var(--rule); max-width: 72ch; }
-.defs li:first-child { border-top: 1px solid var(--rule-firm); }
-.defs .term {
-  display: block;
+.defs { margin: 0; padding: 0; }
+.defs > div {
+  padding-block: 11px; border-top: 1px solid var(--rule);
+  max-width: 72ch; scroll-margin-top: 64px;
+}
+.defs > div:first-child { border-top: 1px solid var(--rule-firm); }
+.defs > div:target { background: var(--surface); box-shadow: -12px 0 0 var(--surface), 12px 0 0 var(--surface); }
+.defs dt {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 13.5px;
   font-weight: 500;
   color: var(--ink);
   margin-bottom: 2px;
 }
-.defs .gloss { color: var(--ink-2); font-size: 15px; }
+.defs dd { margin: 0; color: var(--ink-2); font-size: 15px; }
+
+/* proof rows: the institution is the heading, the claim is the line under it */
+.key.inst {
+  font-family: Newsreader, Georgia, serif;
+  font-size: 20px; font-weight: 600; line-height: 1.2;
+  letter-spacing: 0; text-transform: none; color: var(--ink);
+  margin: 0; padding-top: 1px;
+}
+.val > .claim {
+  font-size: 17px; font-weight: 500; line-height: 1.45;
+  color: var(--ink); margin: 0 0 10px; max-width: 62ch;
+}
 
 /* figures strip */
 .figs {
@@ -297,7 +319,7 @@ footer {
   border-top: 1px solid var(--rule);
   padding-block: 22px 40px;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 11.5px;
+  font-size: 12.5px;
   color: var(--ink-3);
   display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between;
 }
@@ -329,7 +351,7 @@ footer {
     ],
     "url": "https://themetaisok.com/",
     "jobTitle": "Independent research and data consultant",
-    "description": "Built DefiLlama's real-world-asset coverage from zero: the RWA dashboard, the RWA perpetuals tracker and the digital asset treasuries tracker, the registry of more than 9,000 assets behind them, and the published methodology defining what counts as a real-world asset. Metrics he defined are used as reference by Pantera Capital, Citi Institute and CoinGecko.",
+    "description": "Built DefiLlama's real-world-asset coverage from zero: the RWA dashboard, the RWA perpetuals tracker and the digital asset treasuries tracker, the registry of more than 9,000 assets behind them, and the published methodology defining what counts as a real-world asset. Pantera Capital, Citi Institute and CoinGecko cite DefiLlama RWA data in published reports.",
     "knowsAbout": [
       "Real-world asset tokenization",
       "RWA data and taxonomy",
@@ -347,21 +369,30 @@ footer {
       "https://www.emergentlabz.com/",
       "https://llama-corp.com/"
     ],
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Emergent LabZ",
-      "url": "https://www.emergentlabz.com/"
-    },
-    "alumniOf": {
-      "@type": "Organization",
-      "name": "DefiLlama",
-      "url": "https://defillama.com/"
-    }
+    "worksFor": [
+      {
+        "@type": "Organization",
+        "name": "Emergent LabZ",
+        "url": "https://www.emergentlabz.com/"
+      },
+      {
+        "@type": "OrganizationRole",
+        "startDate": "2025-08",
+        "endDate": "2026-09",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "DefiLlama",
+          "url": "https://defillama.com/"
+        }
+      }
+    ]
   }
 }
 </script>
 </head>
 <body>
+
+<a class="skip" href="#main">Skip to content</a>
 
 <div class="wrap">
 
@@ -386,63 +417,65 @@ footer {
   </nav>
 
   <section class="intro">
-    <p>For twelve months at <strong>DefiLlama</strong>, the most widely used data platform in DeFi, I built its real-world-asset coverage from nothing into the reference dataset the category now runs on. Three production dashboards, a registry of more than 9,000 assets behind them, and the published methodology that defines what counts.</p>
-    <p>There was no dataset to inherit, no accepted taxonomy and no published methodology, so I wrote them. The field definitions, asset classes, classification bar and revenue framework are original work, published openly so anyone can contest them. I owned the data and the definitions. Engineering built to my specifications.</p>
-    <p>I left in September 2026 and now work independently. Ten years trading these markets is where my judgment about which metrics matter comes from.</p>
+    <p>For twelve months at <strong>DefiLlama</strong>, the DeFi data platform, I built its real-world-asset coverage from nothing into a dataset now cited by Pantera Capital, an academic taxonomy paper and the financial press. Three production dashboards, a registry of more than 9,000 assets behind them, and the published methodology that defines what counts.</p>
+    <p>There was no dataset to inherit, no accepted taxonomy and no published methodology, so I wrote them. The field definitions, asset classes, classification bar and revenue framework are original work, published openly so anyone can contest them. I wrote the field definitions, asset classes, classification bar and revenue framework, and I authored the public methodology. DefiLlama&#8217;s engineers built the dashboards to those specifications. The platform and its data are DefiLlama&#8217;s, and I do not speak for it.</p>
+    <p>I left in September 2026 and now work independently. Ten years in these markets is where my judgment about which metrics matter comes from.</p>
   </section>
+
+  <main id="main" tabindex="-1">
 
   <section id="proof">
     <div class="sec-head">
       <h2>Cited by</h2>
-      <p class="sec-note">Institutions that took the measurements and used them as their own.</p>
+      <p class="sec-note">Where the measurements have been used by others.</p>
     </div>
 
     <div class="row">
-      <div class="key">Pantera Capital</div>
+      <h3 class="key inst">Pantera Capital</h3>
       <div class="val">
-        <h3 class="title-line">Credited by name in two consecutive editions of “The State of Tokenization”</h3>
+        <p class="claim">Credited by name in two consecutive editions of “The State of Tokenization”</p>
         <blockquote><p>“…Bhaji Illuminati from Centrifuge, <strong>Meta from DefiLlama</strong>, Fayçal Drissi from University of Oxford, Fahad Saleh from University of Florida, for their valuable reviews and comments.”</p></blockquote>
-        <p>The Q1 2026 edition adopted DeFi Active TVL, a metric I defined, as its measure of productive onchain TVL. The September 2026 edition sources five market figures to DefiLlama, including a full page on DeFi utilization by asset class, and runs it as a standing input to Pantera's public tokenization portal.</p>
+        <p>The Q1 2026 edition adopted <a href="#m-defi-active-tvl">DeFi Active TVL</a>, a metric I defined, as its measure of productive onchain TVL. The September 2026 edition sources five market figures to DefiLlama, including a full page on DeFi utilization by asset class, and cites DefiLlama as the source.</p>
         <p class="src">Acknowledgements, Q1 2026 and September 2026 editions. <a href="https://panteracapital.com/wp-content/uploads/2026/05/State-of-Tokenization-Q1-2026-Pantera-Capital.pdf" target="_blank" rel="noopener">Q1 2026 report (PDF)</a></p>
       </div>
     </div>
 
     <div class="row">
-      <div class="key">Citi Institute</div>
+      <h3 class="key inst">Citi Institute</h3>
       <div class="val">
-        <h3 class="title-line">Took its headline RWA market size from DefiLlama rather than the incumbent source</h3>
+        <p class="claim">Took its headline RWA market size from DefiLlama</p>
         <blockquote><p>“The global tokenization market for financial assets is estimated at $17 billion, according to DefiLlama in April 2026, up about 3x from just a year ago.”</p></blockquote>
         <p class="src">“Wall Street On-Chain: Tokenization 2030”, June 2026, p.19. <a href="https://www.citigroup.com/rcs/citigpa/storage/public/Citi_Institute_GPS_Report_Tokenization_2030.pdf" target="_blank" rel="noopener">Report (PDF)</a></p>
       </div>
     </div>
 
     <div class="row">
-      <div class="key">CoinGecko</div>
+      <h3 class="key inst">CoinGecko</h3>
       <div class="val">
-        <h3 class="title-line">Sources its chart lines to Active Market Cap by name</h3>
+        <p class="claim">Sources its chart lines to <a href="#m-active-market-cap">Active Market Cap</a> by name</p>
         <p>The 2026 RWA Report attributes its RWA chain and private credit series to DefiLlama, using the metric definitions I wrote.</p>
       </div>
     </div>
 
     <div class="row">
-      <div class="key">Academic</div>
+      <h3 class="key inst">Academic</h3>
       <div class="val">
-        <h3 class="title-line">Used as an external selection criterion in peer research</h3>
+        <p class="claim">Used as an external selection criterion in peer research</p>
         <blockquote><p>“The taxonomy was applied to the twenty largest tokenized real-world asset protocols listed on DeFiLlama's RWA dashboard… The use of DeFiLlama provides an external selection criterion and reduces arbitrariness in the construction of the sample.”</p></blockquote>
         <p class="src">Vella, Pennella, Ballandies, “A Taxonomy of Real-World Asset Tokenization”, arXiv, 2026.</p>
       </div>
     </div>
 
     <div class="row">
-      <div class="key">RWA Foundation</div>
+      <h3 class="key inst">RWA Foundation</h3>
       <div class="val">
-        <h3 class="title-line">Uses the perpetuals data in its own reporting</h3>
+        <p class="claim">Uses the perpetuals data in its own reporting</p>
         <p>I brokered the data partnership that put DefiLlama's RWA perpetuals figures into the RWA Foundation's published work on the category.</p>
       </div>
     </div>
 
     <div class="row">
-      <div class="key">In press</div>
+      <h3 class="key inst">In press</h3>
       <div class="val">
         <p>CoinDesk links the perpetuals dashboard for its headline open-interest figure. The treasury flow series became a recurring beat at Cointelegraph, Decrypt, BeInCrypto and The Defiant, syndicated on to Yahoo Finance. CryptoSlate runs Active Market Cap and Utilization as standing vocabulary. The measures crossed into Spanish, Japanese, Korean, Chinese and Turkish coverage.</p>
       </div>
@@ -462,7 +495,7 @@ footer {
       </div>
       <div>
         <h3>Research retainers for funds</h3>
-        <p>Recurring coverage of real-world assets, tokenized equities and digital asset treasuries, with the sourcing trail attached. Two consecutive Pantera reports already run on measurements I defined.</p>
+        <p>Recurring coverage of real-world assets, tokenized equities and digital asset treasuries, with the sourcing trail attached. Two consecutive editions of Pantera&#8217;s State of Tokenization credit my review, and one adopted a metric I defined.</p>
       </div>
       <div>
         <h3>Standards readiness for issuers</h3>
@@ -485,14 +518,14 @@ footer {
       <div class="fig"><div class="n">9,000+</div><div class="l">assets and markets in the registry</div></div>
       <div class="fig"><div class="n">116</div><div class="l">fields defined per asset</div></div>
       <div class="fig"><div class="n">450+</div><div class="l">issuers covered</div></div>
-      <div class="fig"><div class="n">1 in 5</div><div class="l">marketed RWAs that clear the bar</div></div>
+      <div class="fig"><div class="n">Under 20%</div><div class="l">marketed RWAs that clear the bar</div></div>
     </div>
 
     <div class="row">
       <div class="key">RWA dashboard</div>
       <div class="val">
-        <p>The category's reference view of tokenized real-world assets, generated from a registry I built and maintained. More than 9,000 tracked assets and markets across 116 fields, spanning 450+ issuers, 330+ platforms and 170+ blockchains.</p>
-        <p>Running the whole registry against the classification bar produced the finding the category least wanted: <strong>fewer than one in five tokens marketed as real-world assets clear the transferable, self-custodial, redeemable and verified test.</strong> The rest are better described as programmable finance.</p>
+        <p>DefiLlama's view of tokenized real-world assets, generated from a registry I built and maintained. More than 9,000 tracked assets and markets across 116 fields, spanning 450+ issuers, 330+ platforms and 170+ blockchains.</p>
+        <p>Running the whole registry against the classification bar produced a finding worth stating plainly: <strong>fewer than one in five tokens marketed as real-world assets clear the transferable, self-custodial, redeemable and verified test.</strong> The rest are better described as programmable finance.</p>
         <p class="src"><a href="https://defillama.com/rwa" target="_blank" rel="noopener">defillama.com/rwa</a></p>
       </div>
     </div>
@@ -500,7 +533,7 @@ footer {
     <div class="row">
       <div class="key">RWA perpetuals</div>
       <div class="val">
-        <p>The first aggregate view of real-world-asset perpetuals. Before it the data lived only inside each venue's own front end with no way to compare across them. More than 1,000 active markets in the onchain default view and over 3,300 with centralized exchanges included, covering equities, indices, ETFs, commodities, bonds and forex, normalized to common reference assets through a 17-field market schema and a canonical market ID convention so the same underlying stays comparable across venues that name contracts differently, broken out by venue, asset group and a 75+ market forex book.</p>
+        <p>An aggregate view of real-world-asset perpetuals. Before it the data lived only inside each venue's own front end with no way to compare across them. More than 1,000 active markets in the onchain default view and over 3,300 with centralized exchanges included, covering equities, indices, ETFs, commodities, bonds and forex, normalized to common reference assets through a 17-field market schema and a canonical market ID convention so the same underlying stays comparable across venues that name contracts differently, broken out by venue, asset group and a 75+ market forex book.</p>
         <p class="src"><a href="https://defillama.com/rwa/perps" target="_blank" rel="noopener">defillama.com/rwa/perps</a></p>
       </div>
     </div>
@@ -508,7 +541,7 @@ footer {
     <div class="row">
       <div class="key">Digital asset treasuries</div>
       <div class="val">
-        <p>Nearly 100 listed companies, with every purchase traced to the filing it came from. The market was valuing these companies on a single mNAV figure that hid future share issuance. I replaced it with three defensible variants and showed a company quoted at 0.33x in fact sits at 2.42x once contractual dilution is counted.</p>
+        <p>Nearly 100 listed companies, with every purchase traced to the filing it came from. The market was valuing these companies on a single mNAV figure that hid future share issuance. I replaced it with three defensible variants and showed that a company quoted at 0.33x can sit at 2.42x once contractual dilution is counted.</p>
         <p class="src"><a href="https://defillama.com/digital-asset-treasuries" target="_blank" rel="noopener">defillama.com/digital-asset-treasuries</a></p>
       </div>
     </div>
@@ -517,7 +550,7 @@ footer {
       <div class="key">Methodology</div>
       <div class="val">
         <p>Sole author of the public documentation: eligibility and exclusion criteria, metrics, definitions and taxonomy, the perpetuals spec and a standalone treasury methodology, plus a 29-column public data dictionary. Five inclusion criteria, six exclusion criteria, seven evidence flags and five access models, with expulsion rules and a review status short of removal.</p>
-        <p>Also the fee and revenue methodology that made issuer economics comparable for the first time: an identity equation splitting holder fees between asset manager and tokenization platform, a blank-versus-zero rule separating unresearched from verified-no-fee, and every estimate carrying a confidence grade and a dated primary-source audit trail. Primary sources always win over aggregators.</p>
+        <p>Also the fee and revenue methodology that made issuer economics comparable across assets: an identity equation splitting holder fees between asset manager and tokenization platform, a blank-versus-zero rule separating unresearched from verified-no-fee, and every estimate carrying a confidence grade and a dated primary-source audit trail. Primary sources always win over aggregators.</p>
         <p class="src"><a href="https://docs.llama.fi/real-world-assets/real-world-assets" target="_blank" rel="noopener">docs.llama.fi/real-world-assets</a> · <a href="https://docs.llama.fi/analysts/dat-methodology" target="_blank" rel="noopener">docs.llama.fi/analysts/dat-methodology</a></p>
       </div>
     </div>
@@ -525,7 +558,7 @@ footer {
     <div class="row">
       <div class="key">Arbitration</div>
       <div class="val">
-        <p>I wrote the exclusion criteria, then ran the assessment on the category's most contested listing after DefiLlama rejected a claimed $10B+ for lack of onchain verifiability. What qualified went on. What did not stays off, under the same written criteria. Issuers came to me directly for listing while I ran the dashboards, supplying data against my schema.</p>
+        <p>I wrote the exclusion criteria, then ran the assessment on a high-profile listing after DefiLlama rejected a claimed $10B+ for lack of onchain verifiability. What qualified went on. What did not stays off, under the same written criteria.</p>
       </div>
     </div>
 
@@ -543,14 +576,14 @@ footer {
       <h2>Metrics I defined</h2>
       <p class="sec-note">Now in use beyond the platform they were built for.</p>
     </div>
-    <ul class="defs">
-      <li><span class="term">Onchain Market Cap</span> <span class="gloss">Circulating supply, excluding burned, at reference price.</span></li>
-      <li><span class="term">Active Market Cap</span> <span class="gloss">The portion in user or protocol hands, excluding issuer and custody wallets. The operational test: would compromising this wallet let someone extract meaningful value?</span></li>
-      <li><span class="term">DeFi Active TVL</span> <span class="gloss">The subset of Active Market Cap deployed in third-party DeFi protocols, excluding issuer-managed contracts.</span></li>
-      <li><span class="term">Utilization</span> <span class="gloss">DeFi Active TVL over Onchain Market Cap, as a percentage.</span></li>
-      <li><span class="term">Net Flows, Flow vs Price, Capital Rotation</span> <span class="gloss">Separating minting and redemption from repricing, which for assets like tokenized gold is the only way to read the chart correctly.</span></li>
-      <li><span class="term">mNAV: Realized, Realistic, Maximum</span> <span class="gloss">Three treasury-company valuations in place of the single misleading figure the market was trading on.</span></li>
-    </ul>
+    <dl class="defs">
+      <div id="m-onchain-market-cap"><dt>Onchain Market Cap</dt><dd>Circulating supply, excluding burned, at reference price.</dd></div>
+      <div id="m-active-market-cap"><dt>Active Market Cap</dt><dd>The portion in user or protocol hands, excluding issuer and custody wallets. The operational test: would compromising this wallet let someone extract meaningful value?</dd></div>
+      <div id="m-defi-active-tvl"><dt>DeFi Active TVL</dt><dd>The subset of Active Market Cap deployed in third-party DeFi protocols, excluding issuer-managed contracts.</dd></div>
+      <div id="m-utilization"><dt>Utilization</dt><dd>DeFi Active TVL over Onchain Market Cap, as a percentage.</dd></div>
+      <div id="m-flows"><dt>Net Flows, Flow vs Price, Capital Rotation</dt><dd>Separating minting and redemption from repricing, which for assets like tokenized gold is the only way to read the chart correctly.</dd></div>
+      <div id="m-mnav"><dt>mNAV: Realized, Realistic, Maximum</dt><dd>Three treasury-company valuations in place of the single figure the market was trading on, which hid future share issuance.</dd></div>
+    </dl>
   </section>
 
   <section id="writing">
@@ -626,13 +659,13 @@ footer {
       <div class="key">WacDonald's</div>
       <div class="val">
         <h3 class="title-line">Co-founder</h3>
-        <p>Cryptopoly, an onchain interactive art experience. An ERC-721 collection of 8,889 across 37 entries in 17 categories, each tile its own NFT carrying its own supply and payout, mapping one to one onto a 40-square board.</p>
+        <p>Cryptopoly, an onchain interactive art experience. An ERC-721 collection of 8,889 tiles across 37 entries in 17 categories, laid out on a 40-square board. Still pre-mainnet.</p>
         <p class="src"><a href="https://wacdonalds.io/" target="_blank" rel="noopener">wacdonalds.io</a></p>
       </div>
     </div>
   </section>
 
-  <section>
+  <section id="earlier">
     <div class="sec-head">
       <h2>Earlier</h2>
       <p class="sec-note">Ten years of building in this market.</p>
@@ -642,7 +675,7 @@ footer {
       <div class="key">2025</div>
       <div class="val">
         <h3 class="title-line">Crypto Stock Tracker, co-creator</h3>
-        <p>The first digital-asset-treasury dashboard to cover the full spread of corporate crypto holdings rather than only BTC, ETH and SOL. Concept to live product in about a month. DefiLlama acqui-hired me on the strength of it.</p>
+        <p>A digital-asset-treasury dashboard covering corporate crypto holdings beyond BTC, ETH and SOL. Concept to live product in about a month. DefiLlama acqui-hired me on the strength of it.</p>
       </div>
     </div>
 
@@ -667,7 +700,7 @@ footer {
       <div class="key">2017–2019</div>
       <div class="val">
         <h3 class="title-line">Crypto Corp and Built by Coins, co-founder</h3>
-        <p>An ICO pool management tool used through 2018, and 24hourcrypto, crypto's first news aggregator with sentiment analytics, whose sentiment engine I helped design. Built by Coins was a crypto education site offering one-to-one tutoring, started December 2017 and wound down in 2019.</p>
+        <p>An ICO pool management tool used through 2018, and 24hourcrypto, a crypto news aggregator with sentiment analytics, whose sentiment engine I helped design. Built by Coins was a crypto education site offering one-to-one tutoring, started December 2017 and wound down in 2019.</p>
       </div>
     </div>
   </section>
@@ -683,6 +716,8 @@ footer {
       <div><span class="k">Emergent LabZ</span><span class="v"><a href="https://www.emergentlabz.com/" target="_blank" rel="noopener">emergentlabz.com</a></span></div>
     </div>
   </section>
+
+  </main>
 
   <footer>
     <span>@themetaisok</span>
