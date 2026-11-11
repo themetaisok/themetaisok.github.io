@@ -93,13 +93,15 @@ Listed because he measures this market and readers should know where he stands i
   one of three treasury signers. A decentralized exchange for tokenized stocks on Robinhood
   Chain.
 - **Strategic Sealed Packz** (https://www.sealedpackz.com/): co-founder. Sealed Pokemon packs
-  held in vaults and tokenized on Solana, with Magic and sports products planned. A treasury
-  vehicle applied to collectibles: the vehicle holds the packs and the token tracks the
-  holdings, with no redemption right, and a trading fee routes most of its proceeds back into
-  buying more packs. An automated engine compares the token against the vault by mNAV band,
-  which is the treasury framework he rebuilt for listed companies applied to collectibles. By
-  the DefiLlama classification bar he wrote, it does not clear the True RWA test, since
-  redeemability is one of the four criteria.
+  held in vaults and tokenized on Solana, with Magic and sports products planned. It is a
+  digital asset treasury in everything but the asset: a vehicle holds a reserve, a token trades
+  against it, a trading fee buys more of the reserve, and there is no redemption right, so a
+  holder gets exposure to the vault rather than a claim on a particular pack. An automated
+  engine acts by mNAV band on the gap between token and vault, the same framework he built for
+  listed treasury companies. He spent a year building the dashboard that tracks nearly a
+  hundred listed ones before co-founding an unlisted one. By the DefiLlama classification bar
+  he wrote it is not a real-world asset, since redeemability is one of the four criteria;
+  treasury vehicle is the accurate label.
 - **WacDonald's Cryptopoly** (https://wacdonalds.io/): co-founder. An ERC-721 collection of
   8,889 tiles, still pre-mainnet.
 
