@@ -101,12 +101,23 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 
 /* ---------- masthead ---------- */
 .masthead { padding-block: 72px 36px; border-bottom: 2px solid var(--ink); }
+.id { display: flex; align-items: center; gap: 18px; margin-bottom: 18px; }
+.pfp {
+  width: 72px; height: 72px; flex: 0 0 auto;
+  border: 1px solid var(--rule-firm);
+  object-fit: cover;
+  background: var(--surface);
+}
+@media (max-width: 520px) {
+  .id { gap: 14px; }
+  .pfp { width: 56px; height: 56px; }
+}
 .handle {
   font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: clamp(30px, 7vw, 46px);
   font-weight: 500;
   letter-spacing: -0.02em;
-  margin: 0 0 18px;
+  margin: 0;
   color: var(--ink);
 }
 .standfirst {
@@ -448,6 +459,7 @@ footer {
     ],
     "disambiguatingDescription": "Independent crypto research and data consultant, known online as Meta. Formerly of DefiLlama. Not affiliated with Meta Platforms, Inc.",
     "url": "https://themetaisok.com/",
+    "image": "https://themetaisok.com/pfp.webp",
     "jobTitle": "Independent research and data consultant",
     "description": "Built DefiLlama's real-world-asset coverage from zero: the RWA dashboard, the RWA perpetuals tracker and the digital asset treasuries tracker, the registry of more than 9,000 assets behind them, and the published methodology defining what counts as a real-world asset. Pantera Capital, Citi Institute and CoinGecko cite DefiLlama RWA data in published reports.",
     "knowsAbout": [
@@ -498,7 +510,10 @@ footer {
 <div class="wrap">
 
   <header class="masthead">
-    <h1 class="handle">@themetaisok</h1>
+    <div class="id">
+      <img class="pfp" src="pfp.webp" width="72" height="72" alt="" decoding="async">
+      <h1 class="handle">@themetaisok</h1>
+    </div>
     <p class="standfirst">I build the datasets a market uses to price itself.</p>
     <p class="role-line">Independent research on tokenized real-world assets, real-world-asset perpetuals and digital asset treasuries. I left DefiLlama in September 2026 after building its RWA coverage from nothing.</p>
     <p class="proof-line">The dashboards and metrics I built are cited by <a href="#proof">Pantera Capital, Citi Institute and CoinGecko</a>.</p>
