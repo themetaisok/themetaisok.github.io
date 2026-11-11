@@ -49,7 +49,7 @@ specifications. The platform and its data are DefiLlama's.
 
 ## Notable finding
 
-Running the full registry against the classification bar showed that **fewer than one in five
+Running the full registry against the classification bar showed that **under 20% of the
 tokens marketed as real-world assets** clear the transferable, self-custodial, redeemable and
 verified test. The remainder are better described as programmable finance.
 

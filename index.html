@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Meta (@themetaisok) | Independent RWA and Treasury Research</title>
 <link rel="canonical" href="https://themetaisok.com/">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/ibm-plex-mono-latin-500-normal.woff2">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/newsreader-latin-400-normal.woff2">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2315181F'/%3E%3Ctext x='32' y='44' font-family='monospace' font-size='40' font-weight='500' fill='%23C8A657' text-anchor='middle'%3E%40%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/adventor-web-700.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/caladea-web-400.woff2">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23282C6D'/%3E%3Crect width='37' height='64' fill='%23F4EEEE'/%3E%3C/svg%3E">
 <meta name="description" content="Independent research on tokenized real-world assets, RWA perpetuals and digital asset treasuries. Meta (@themetaisok) wrote the methodology behind DefiLlama's RWA, perpetuals and treasury dashboards.">
+<meta name="color-scheme" content="light dark">
 <meta property="og:title" content="Meta (@themetaisok): independent RWA and digital asset treasury research">
 <meta property="og:description" content="RWA and digital asset treasury data. Built DefiLlama's real-world-asset coverage from zero.">
 <meta property="og:type" content="website">
@@ -21,434 +22,211 @@
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="themetaisok">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
-  <style>
-@font-face{font-family:"Newsreader";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/newsreader-latin-400-normal.woff2") format("woff2")}
-@font-face{font-family:"Newsreader";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/newsreader-latin-600-normal.woff2") format("woff2")}
-@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2")}
-@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2")}
-  </style>
 <style>
-/* Layout: a methodology document. Mono field labels in a left column, values and prose
-   in a wider right column, separated by rules rather than cards. Collapses to one
-   column at phone width. */
-:root {
-  --paper:      #F2F3F5;
-  --surface:    #FFFFFF;
-  --ink:        #15181F;
-  --ink-2:      #4A5160;
-  --ink-3:      #5F6677;
-  --rule:       #DCDEE4;
-  --rule-firm:  #B9BDC8;
-  --accent:     #7F611C;
-  --link:       #1F4A8C;
+/* Two typefaces, both self-hosted Latin subsets. See fonts/LICENSES.txt. */
+@font-face{font-family:"Adventor Web";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/adventor-web-400.woff2") format("woff2")}
+@font-face{font-family:"Adventor Web";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/adventor-web-700.woff2") format("woff2")}
+@font-face{font-family:"Caladea Web";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/caladea-web-400.woff2") format("woff2")}
 
-  /* Two families, one job each. Serif is everything you read.
-     Mono is everything you scan: labels, nav, data, metadata. */
-  --serif: Newsreader, Georgia, "Times New Roman", serif;
-  --mono:  "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-
-  color-scheme: light;
+/* Colors sampled from the profile picture.
+   Light: porcelain #F4EEEE (the face), cap black #18181A, indigo #282C6D (the ground).
+   Dark: #131115 (the cap in shadow), plum #4E2544, and the same plum lifted to #B665A2 for the accent.
+   Three colors a theme. Lighter tints are derived from the field, not sampled. */
+:root{
+  --split:58%;
+  --in-bg:#F4EEEE; --in-ink:#18181A; --in-quiet:#5E4F52; --in-rule:#D9CDCE; --dot-in:#18181A;
+  --out-bg:#282C6D; --out-ink:#F4EEEE; --out-quiet:#AEB1D9; --out-rule:#50548D; --dot-out:#8284B5;
+  --accent:#282C6D;
+  --head:"Adventor Web","Century Gothic","Avant Garde",Futura,sans-serif;
+  --text:"Caladea Web",Cambria,Georgia,serif;
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper:      #0F1218;
-    --surface:    #161A22;
-    --ink:        #E7E9EE;
-    --ink-2:      #A3AAB9;
-    --ink-3:      #818999;
-    --rule:       #252A34;
-    --rule-firm:  #39404D;
-    --accent:     #C8A657;
-    --link:       #8FB3E8;
-    color-scheme: dark;
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --in-bg:#131115; --in-ink:#F4EEEE; --in-quiet:#B9AAAC; --in-rule:#302B32; --dot-in:#F4EEEE;
+    --out-bg:#4E2544; --out-ink:#F4EEEE; --out-quiet:#CBABC3; --out-rule:#754F6C; --dot-out:#9F7C97;
+    --accent:#B665A2;
+    color-scheme:dark;
   }
 }
-:root[data-theme="dark"] {
-  --paper:      #0F1218;
-  --surface:    #161A22;
-  --ink:        #E7E9EE;
-  --ink-2:      #A3AAB9;
-  --ink-3:      #818999;
-  --rule:       #252A34;
-  --rule-firm:  #39404D;
-  --accent:     #C8A657;
-  --link:       #8FB3E8;
-  color-scheme: dark;
+:root[data-theme="dark"]{
+  --in-bg:#131115; --in-ink:#F4EEEE; --in-quiet:#B9AAAC; --in-rule:#302B32; --dot-in:#F4EEEE;
+  --out-bg:#4E2544; --out-ink:#F4EEEE; --out-quiet:#CBABC3; --out-rule:#754F6C; --dot-out:#9F7C97;
+  --accent:#B665A2;
+  color-scheme:dark;
 }
 
-* { box-sizing: border-box; }
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; color:var(--in-ink);
+  background:linear-gradient(90deg,var(--in-bg) 0 var(--split),var(--out-bg) var(--split) 100%);
+  font-family:var(--text); font-size:19px; line-height:1.45;
+  font-synthesis:none;
+  -webkit-font-smoothing:antialiased;
+}
+p,dl,dd,blockquote,figure{margin:0}
+a{color:inherit; text-decoration-thickness:1px; text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible, button:focus-visible{outline:2px solid currentColor; outline-offset:3px}
+main:focus{outline:0}
+b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
+.vh{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+.skip{position:absolute; left:8px; top:-60px; z-index:5; background:var(--in-ink); color:var(--in-bg); font-family:var(--head); font-size:14px; padding:8px 12px}
+.skip:focus{top:8px}
 
-html { -webkit-text-size-adjust: 100%; }
+/* One line down the page. Left of it counts, right of it does not. */
+.pair{display:grid; grid-template-columns:var(--split) minmax(0,1fr)}
+.in{background:var(--in-bg); color:var(--in-ink); padding:26px 44px 28px max(28px, calc(58vw - 690px)); min-width:0}
+.out{background:var(--out-bg); color:var(--out-ink); padding:26px max(28px, calc(42vw - 500px)) 28px 44px; min-width:0}
+.pair + .pair > .in{border-top:1px solid var(--in-rule)}
+.pair + .pair > .out{border-top:1px solid var(--out-rule)}
+.in .q{color:var(--in-quiet)} .out .q{color:var(--out-quiet)}
 
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--serif);
-  font-size: 17px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+.ident > .in, .ident > .out{padding-top:18px; padding-bottom:16px; font-family:var(--head); font-size:14px; line-height:1.3}
+.ident .in{display:flex; align-items:center; gap:12px}
+.ident img{width:36px; height:36px; display:block; flex:none}
+.ident h1{font:inherit; font-weight:700; margin:0}
+.ident .out{display:flex; justify-content:flex-end; align-items:center}
+.tbtn{font:inherit; font-size:13px; color:var(--out-ink); background:none; border:1px solid var(--out-quiet); padding:5px 11px 6px; cursor:pointer}
+.tbtn:hover{background:var(--out-ink); color:var(--out-bg)}
+.tbtn[hidden]{display:none}
 
-.wrap {
-  max-width: 980px;
-  margin: 0 auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
+.hero > .in, .hero > .out{padding-top:54px; padding-bottom:46px; border-top:0 !important}
+.pair .word{font-family:var(--head); font-weight:700; font-size:92px; line-height:.92; letter-spacing:-.035em; margin:0 0 30px; max-width:none}
+.hero p{font-size:23px; line-height:1.38; max-width:25em}
+.hero p + p{margin-top:.7em}
+.hero .word + p{margin-top:0}
 
-a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.nav > .in, .nav > .out{padding-top:13px; padding-bottom:14px}
+.nav > .in{padding-right:12px}
+.nav .in{font-family:var(--head); font-size:14px; line-height:1.9; display:flex; flex-wrap:wrap; column-gap:18px}
+.nav a{text-decoration:none; white-space:nowrap}
+.nav a:hover{text-decoration:underline}
 
-/* ---------- masthead ---------- */
-.masthead { padding-block: 72px 36px; border-bottom: 2px solid var(--ink); }
-.id { display: flex; align-items: center; gap: 18px; margin-bottom: 18px; }
-.pfp {
-  width: 72px; height: 72px; flex: 0 0 auto;
-  border: 1px solid var(--rule-firm);
-  object-fit: cover;
-  background: var(--surface);
-}
-@media (max-width: 520px) {
-  .id { gap: 14px; }
-  .pfp { width: 56px; height: 56px; }
-}
-.handle {
-  font-family: var(--mono);
-  font-size: clamp(30px, 7vw, 46px);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  margin: 0;
-  color: var(--ink);
-}
-.standfirst {
-  font-family: var(--serif);
-  font-size: clamp(20px, 3.4vw, 27px);
-  line-height: 1.38;
-  font-weight: 400;
-  color: var(--ink);
-  max-width: 34ch;
-  text-wrap: balance;
-  margin: 0 0 26px;
-}
-.masthead-meta {
-  display: flex; flex-wrap: wrap; gap: 8px 22px;
-  font-family: var(--mono);
-  font-size: 12.5px;
-  color: var(--ink-3);
-}
-.masthead-meta a { color: var(--ink-2); }
+.group > .in, .group > .out{padding-top:40px; padding-bottom:6px}
+.group > .in{border-top:3px solid var(--in-ink) !important}
+.group > .out{border-top:3px solid var(--out-ink) !important}
+.group h2, .group .h2{font-family:var(--head); font-weight:700; font-size:34px; line-height:1.05; letter-spacing:-.02em; margin:0; max-width:none}
+.group .q{font-size:16px; margin-top:8px}
+.group + .pair > .in, .group + .pair > .out{border-top:0}
 
-.theme-btn {
-  display: inline-flex; align-items: center; gap: 7px;
-  font-family: var(--mono);
-  font-size: 12.5px;
-  line-height: 1.5;
-  color: var(--ink-2);
-  background: none;
-  border: 1px solid var(--rule-firm);
-  border-radius: 2px;
-  padding: 1px 9px 2px;
-  cursor: pointer;
-}
-.theme-btn:hover { color: var(--ink); border-color: var(--ink); }
-.theme-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.theme-mark {
-  width: 9px; height: 9px; border-radius: 50%;
-  border: 1px solid currentColor;
-  background: linear-gradient(90deg, currentColor 0 50%, transparent 50% 100%);
-}
+h3{font-family:var(--head); font-weight:700; font-size:16px; line-height:1.25; margin:0 0 7px}
+h3 a{text-decoration-thickness:1px}
+.when{font-weight:400; font-size:13px; color:var(--in-quiet); margin-left:.5em; white-space:nowrap}
+.role{font-family:var(--head); font-size:14px; line-height:1.3; color:var(--in-quiet); margin:-3px 0 8px !important}
+.in p, .out p{max-width:31em}
+.out p{max-width:22em}
+.in p + p, .out p + p, blockquote + p, p + blockquote, p + .figs, .figs + p{margin-top:.55em}
+.lead-out .out p{font-size:23px; line-height:1.3}
+.test{font-size:17px}
+.src{display:block; font-size:15.5px; line-height:1.4; color:var(--in-quiet); margin-top:.5em}
+.out .src{color:var(--out-quiet)}
+blockquote{border-left:3px solid var(--accent); padding-left:14px; max-width:31em}
+blockquote p{font-size:17.5px; line-height:1.42}
 
-/* ---------- sticky section nav ---------- */
-.secnav {
-  position: sticky; top: 0; z-index: 20;
-  display: flex; gap: 22px; overflow-x: auto;
-  background: var(--paper);
-  border-bottom: 1px solid var(--rule);
-  padding-block: 13px;
-  font-family: var(--mono);
-  font-size: 12px; letter-spacing: 0.04em;
-  scrollbar-width: none;
-}
-.secnav::-webkit-scrollbar { display: none; }
-.secnav a {
-  color: var(--ink-3); text-decoration: none; white-space: nowrap;
-  border-bottom: 1px solid transparent; padding-bottom: 2px;
-}
-.secnav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
-.secnav .nav-cta { color: var(--accent); margin-left: auto; padding-left: 22px; }
-.secnav .nav-cta:hover { border-bottom-color: var(--accent); }
+/* ---------- the bar, and the field it cuts ---------- */
+.crit{font-family:var(--head); font-weight:700; font-size:34px; line-height:1.14; letter-spacing:-.02em; color:var(--accent); max-width:none !important; margin:0 0 12px}
+.crit span{white-space:nowrap}
+.crit i{font-style:normal; font-weight:400; font-size:.5em; letter-spacing:0; color:var(--in-quiet); padding:0 .15em}
 
-/* ---------- sections ---------- */
-section { padding-block: 44px; border-bottom: 1px solid var(--rule); scroll-margin-top: 64px; }
-section:last-of-type { border-bottom: none; }
+/* Here the line moves. For one band it stands where the finding puts it. */
+.jog{display:grid; grid-template-columns:20% 80%; border-top:3px solid var(--in-ink)}
+.jin{background:var(--in-bg); color:var(--in-ink); min-width:0; padding-bottom:16px}
+.jout{background:var(--out-bg); color:var(--out-ink); min-width:0; padding-bottom:16px}
+.jlab{padding:18px 24px 16px max(20px, calc(58vw - 690px))}
+.jout .jlab{padding:18px 44px 16px 28px}
+.jfig{font-family:var(--head); font-weight:700; font-size:min(44px,2.95vw); line-height:1; letter-spacing:-.03em; white-space:nowrap}
+.jin .jfig{color:var(--accent)}
+.jsub{font-size:17px; line-height:1.3; margin-top:6px}
+.jout .jsub{color:var(--out-quiet)}
+.dots{display:block; width:100%; height:auto}
+.jin .dots circle{fill:var(--dot-in)}
+.jout .dots circle{fill:var(--dot-out)}
+.dots.n{display:none}
+.jog + .pair > .in, .jog + .pair > .out{border-top:0}
+.cap p{font-size:16px; line-height:1.42}
 
-.sec-head {
-  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
-  margin-bottom: 26px;
-}
-h2 {
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin: 0;
-}
-.sec-note { font-size: 14.5px; color: var(--ink-3); margin: 0; }
+/* ---------- figures ---------- */
+.figs{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px 22px; margin-top:4px}
+p + .figs{margin-top:16px}
+.figs + p{margin-top:16px}
+.figs + .src{margin-top:12px}
+.figs.five{grid-template-columns:repeat(5,minmax(0,1fr))}
+.figs dt{font-family:var(--head); font-weight:700; font-size:31px; line-height:1; letter-spacing:-.03em}
+.figs dd{font-size:15px; line-height:1.25; color:var(--in-quiet); margin-top:4px}
 
-/* section numbering, the way a methodology document is organized */
-main { counter-reset: sec; }
-main > section { counter-increment: sec; }
-main > section > .sec-head h2::before {
-  content: counter(sec, decimal-leading-zero) "  ";
-  color: var(--ink-3);
-}
+/* One quoted figure against the figure that counts. */
+.versus > .in, .versus > .out{border-top:0 !important; padding-top:0}
+.bigfig{font-family:var(--head); font-weight:700; font-size:64px; line-height:1; letter-spacing:-.035em; margin-bottom:6px !important}
+.in .bigfig{color:var(--accent)}
+.versus p + p{margin-top:0}
 
-/* secondary tiers carry less weight than the proof and the metrics */
-#writing .title-line, #now .title-line, #earlier .title-line { font-size: 17px; }
-#earlier .row { padding-block: 13px; }
-#earlier .val > p:not(.src) { font-size: 15.5px; color: var(--ink-2); }
+/* ---------- the chain ---------- */
+.nest{border:1.5px solid var(--in-ink); padding:9px 12px 12px; max-width:560px}
+.nest .nest{margin-top:8px}
+.nest .nest .nest{background:var(--out-bg); border-color:var(--out-bg); color:var(--out-ink)}
+.nl{font-family:var(--head); font-weight:700; font-size:15px; line-height:1.3; display:block}
+.nl small{font-family:var(--text); font-weight:400; font-size:14.5px; color:var(--in-quiet)}
+.nest .nest .nest .nl small{color:var(--out-quiet)}
+.ratio{font-size:16px; margin-top:12px !important}
 
-/* field rows: the data-dictionary motif */
-.row {
-  display: grid;
-  grid-template-columns: 170px minmax(0, 1fr);
-  gap: 6px 28px;
-  padding-block: 17px;
-  border-top: 1px solid var(--rule);
-}
-.sec-head + .row, .figs + .row { border-top: 1px solid var(--rule-firm); }
-.key {
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  padding-top: 4px;
-}
-.val { min-width: 0; }
-.val > p { margin: 0 0 9px; max-width: 68ch; }
-.val > p:last-child { margin-bottom: 0; }
-.val strong { font-weight: 600; }
-.lede { color: var(--ink-2); }
+.contact a{display:block; width:fit-content; font-family:var(--head); font-weight:700; font-size:22px; line-height:1.5; text-decoration:none}
+.contact a:hover{text-decoration:underline}
+.contact p + a{margin-top:14px}
+.end > .in, .end > .out{padding-bottom:64px}
+.end .out p, .end .fine{font-size:15.5px}
 
-.title-line a { color: inherit; text-decoration-color: var(--rule-firm); text-underline-offset: 3px; }
-.title-line a:hover { text-decoration-color: var(--accent); }
-.title-line {
-  font-family: var(--serif);
-  font-size: 20px;
-  line-height: 1.3;
-  font-weight: 400;
-  margin: 0 0 5px;
-  text-wrap: balance;
-}
-.src {
-  font-family: var(--mono);
-  font-size: 12.5px;
-  color: var(--ink-3);
-  margin: 7px 0 0;
-}
-.src a { color: var(--ink-3); }
-
-blockquote {
-  margin: 0 0 10px;
-  padding: 2px 0 2px 16px;
-  border-left: 2px solid var(--accent);
-  font-family: var(--serif);
-  font-size: 17.5px;
-  line-height: 1.5;
-  max-width: 62ch;
-}
-blockquote p { margin: 0; }
-
-/* intro prose */
-.intro p {
-  font-size: 17.5px;
-  max-width: 64ch;
-  margin: 0 0 15px;
-  color: var(--ink-2);
-}
-.intro p:last-child { margin-bottom: 0; }
-.intro strong { color: var(--ink); font-weight: 600; }
-
-.skip {
-  position: absolute; left: 16px; top: -48px; z-index: 30;
-  background: var(--ink); color: var(--paper); padding: 10px 14px;
-  font: 500 13px var(--mono); text-decoration: none;
-}
-.skip:focus { top: 12px; }
-main:focus { outline: none; }
-
-.role-line {
-  font-size: 17.5px;
-  line-height: 1.5;
-  color: var(--ink-2);
-  max-width: 54ch;
-  margin: 14px 0 0;
-}
-.proof-line {
-  font-family: var(--mono);
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--ink-3);
-  margin: 10px 0 0;
-}
-.proof-line a { color: var(--ink-2); text-decoration-color: var(--rule-firm); }
-.proof-line a:hover { color: var(--link); }
-
-@media print {
-  .secnav, .skip, .theme-btn { display: none; }
-  body { background: #fff; color: #000; font-size: 11pt; }
-  .wrap { max-width: none; }
-  .row, .defs > div, blockquote, .spec > div { break-inside: avoid; }
-  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #555; }
-  h2, h3 { break-after: avoid; }
+@media (max-width:1040px){
+  .pair .word{font-size:68px}
+  .crit{font-size:28px}
+  .figs, .figs.five{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .figs dt{font-size:27px}
+  .bigfig{font-size:52px}
 }
 
-@media (max-width: 760px) {
-  .secnav { mask-image: linear-gradient(90deg, #000 90%, transparent); }
+/* Phone: the line turns. Excluded blocks are set in from the left,
+   so the light strip down the edge is the same boundary, rotated. */
+@media (max-width:760px){
+  body{background:var(--in-bg); font-size:18px}
+  .pair{display:block}
+  .in{padding:22px 20px}
+  .out{margin-left:42px; padding:20px 20px 22px; border-top:0 !important}
+  .out:empty{display:none}
+  .pair + .pair > .in{border-top:1px solid var(--in-rule)}
+  .ident{display:flex; align-items:center; justify-content:space-between}
+  .ident > .in{padding-top:14px; padding-bottom:12px}
+  .ident > .out{margin-left:0; background:var(--in-bg); color:var(--in-ink); padding:0 20px 0 0}
+  .tbtn{color:var(--in-ink); border-color:var(--in-quiet)}
+  .tbtn:hover{background:var(--in-ink); color:var(--in-bg)}
+  .hero > .in{padding-top:30px; padding-bottom:26px}
+  .hero > .out{padding-top:26px; padding-bottom:28px}
+  .pair .word{font-size:52px; margin-bottom:18px}
+  .hero p{font-size:20px}
+  .nav > .in{padding-top:10px; padding-bottom:12px}
+  .nav .in{column-gap:18px; line-height:2.2}
+  .group > .in{padding-top:30px; padding-bottom:4px}
+  .group > .out{padding-top:14px; padding-bottom:14px; border-top:0 !important}
+  .group h2, .group .h2{font-size:27px}
+  .group + .pair > .in{border-top:0}
+  .lead-out .out p{font-size:20px}
+  .out p{max-width:none}
+  .crit{font-size:27px}
+  /* the field turns with the line: four rows count, sixteen do not */
+  .jog{display:block}
+  .jlab, .jout .jlab{padding:16px 20px 12px}
+  .jfig{font-size:40px}
+  .jin{padding-bottom:6px}
+  .dots.w{display:none} .dots.n{display:block}
+  .figs, .figs.five{grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px 18px}
+  .versus > .in{padding-top:0; border-top:0 !important}
+  .versus > .out{padding-top:20px}
+  .contact a{font-size:19px; line-height:1.9}
 }
 
-/* metric list */
-.defs { margin: 0; padding: 0; }
-.defs > div {
-  padding-block: 11px; border-top: 1px solid var(--rule);
-  max-width: 72ch; scroll-margin-top: 64px;
-}
-.defs > div:first-child { border-top: 1px solid var(--rule-firm); }
-.defs > div:target { background: var(--surface); box-shadow: -12px 0 0 var(--surface), 12px 0 0 var(--surface); }
-.defs dt {
-  font-family: var(--mono);
-  font-size: 13.5px;
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: 2px;
-}
-.defs dd { margin: 0; color: var(--ink-2); font-size: 16px; }
-.defs .cited {
-  display: block; margin-top: 5px;
-  font-family: var(--mono);
-  font-size: 12.5px; color: var(--ink-3);
-}
-
-/* proof rows: the institution is the heading, the claim is the line under it */
-.rel {
-  font-family: var(--mono);
-  font-size: 11.5px; letter-spacing: .04em;
-  color: var(--flag, #8C3A1F); margin: 6px 0 0;
-}
-:root { --flag: #8C3A1F; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --flag: #D98A6A; } }
-:root[data-theme="dark"] { --flag: #D98A6A; }
-.locator {
-  font-family: var(--mono);
-  font-size: 12px; line-height: 1.5; color: var(--ink-3);
-  margin: 8px 0 0; letter-spacing: .02em;
-}
-.spec { margin: 12px 0 0; }
-.spec > div {
-  display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 6px 18px;
-  padding-block: 7px; border-top: 1px solid var(--rule);
-}
-.spec dt { font-size: 14.5px; color: var(--ink-3); }
-.spec dd {
-  margin: 0; font-family: var(--mono);
-  font-size: 13.5px; font-weight: 500; color: var(--ink);
-  font-variant-numeric: tabular-nums; text-align: right;
-}
-.brief {
-  font-size: 16px; color: var(--ink-2); max-width: 56ch;
-  margin: 10px 0 0;
-}
-.ev {
-  font-family: var(--mono);
-  font-size: 12.5px; color: var(--ink-3); margin: 9px 0 0;
-}
-.aside {
-  margin-top: 26px; padding: 16px 18px;
-  background: var(--surface); border: 1px solid var(--rule);
-  border-left: 2px solid var(--accent);
-}
-.aside p { margin: 0; color: var(--ink-2); font-size: 16.5px; }
-.aside strong { color: var(--ink); }
-.key.inst {
-  font-family: var(--serif);
-  font-size: 20px; font-weight: 600; line-height: 1.2;
-  letter-spacing: 0; text-transform: none; color: var(--ink);
-  margin: 0; padding-top: 1px;
-}
-.val > .claim {
-  font-size: 18px; font-weight: 400; line-height: 1.45;
-  color: var(--ink); margin: 0 0 10px; max-width: 62ch;
-}
-
-/* figures strip */
-.figs {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
-  margin-top: 22px;
-}
-.fig { background: var(--paper); padding: 15px 16px; }
-.fig .n {
-  font-family: var(--mono);
-  font-size: 19px; font-weight: 500;
-  font-variant-numeric: tabular-nums;
-  color: var(--ink); line-height: 1.2;
-}
-.fig .l { font-size: 13.5px; color: var(--ink-3); margin-top: 4px; line-height: 1.35; }
-
-/* services */
-.svc { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-.svc > div { background: var(--surface); padding: 20px 22px; }
-.svc h3 {
-  font-family: var(--serif);
-  font-size: 19px; font-weight: 600; margin: 0 0 7px;
-}
-.svc p { margin: 0; color: var(--ink-2); font-size: 16px; max-width: 64ch; }
-
-/* contact */
-.cta { padding-block: 52px 76px; }
-.cta h2 { margin-bottom: 18px; }
-.avail { color: var(--ink-2); font-size: 16px; max-width: 58ch; margin: 0 0 26px; }
-.contacts { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); max-width: 560px; }
-.contacts > div {
-  background: var(--surface);
-  display: grid; grid-template-columns: 110px minmax(0,1fr);
-  gap: 14px; padding: 14px 18px; align-items: baseline;
-}
-.contacts .k {
-  font-family: var(--mono);
-  font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3);
-}
-.contacts .v {
-  font-family: var(--mono);
-  font-size: 14px; word-break: break-word;
-}
-
-footer {
-  border-top: 1px solid var(--rule);
-  padding-block: 22px 40px;
-  font-family: var(--mono);
-  font-size: 12.5px;
-  color: var(--ink-3);
-  display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between;
-}
-
-@media (max-width: 680px) {
-  /* the one nav item that converts shouldn't start off-screen */
-  .secnav .nav-cta { order: -1; margin-left: 0; padding-left: 0; padding-right: 4px; }
-  .row { grid-template-columns: 1fr; gap: 4px; }
-  .key { padding-top: 0; }
-  .masthead { padding-block: 48px 30px; }
-  .contacts > div { grid-template-columns: 1fr; gap: 3px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
+@media print{
+  body{background:#fff}
+  .tbtn, .nav, .skip{display:none}
 }
 </style>
 <script type="application/ld+json">
@@ -525,376 +303,530 @@ footer {
 
 <a class="skip" href="#main">Skip to content</a>
 
-<div class="wrap">
+<header class="pair ident">
+  <div class="in"><img src="pfp.webp" width="36" height="36" alt="" decoding="async"><h1>@themetaisok</h1><span>also called Meta</span></div>
+  <div class="out"><button class="tbtn" id="theme-toggle" type="button" hidden>Dark</button></div>
+</header>
 
-  <header class="masthead">
-    <div class="id">
-      <img class="pfp" src="pfp.webp" width="72" height="72" alt="" decoding="async">
-      <h1 class="handle">@themetaisok</h1>
-    </div>
-    <p class="standfirst">I build the datasets a&nbsp;market uses to price itself.</p>
-    <p class="role-line">Ten years in these markets. I write the definitions that decide what a number counts, and publish them so they can be contested. Independent research on tokenized real-world assets, real-world-asset perpetuals and digital asset treasuries.</p>
-    <p class="proof-line">The dashboards and metrics I built are cited by <a href="#proof">Pantera Capital, Citi Institute and CoinGecko</a>. Built at <a href="#work">DefiLlama</a>, 2025 to 2026.</p>
-    <div class="masthead-meta">
-      <span>Real-world assets · Onchain derivatives · Digital asset treasuries</span>
-      <a href="https://x.com/themetaisok" target="_blank" rel="noopener">x.com/themetaisok</a>
-      <a href="#contact">Available for work</a>
-      <button type="button" id="theme-toggle" class="theme-btn" hidden>
-        <span class="theme-mark" aria-hidden="true"></span><span class="theme-text">Dark</span>
-      </button>
-    </div>
-  </header>
+<main id="main" tabindex="-1">
 
-  <nav class="secnav" aria-label="Sections">
+<section class="pair hero">
+  <div class="in">
+    <p class="word">Counts.</p>
+    <p>I build the datasets a&nbsp;market uses to price itself. I write the definitions that decide what a number counts, and publish them so they can be contested.</p>
+    <p class="q">Independent research on tokenized real-world assets, real-world-asset perpetuals and digital asset treasuries. The dashboards and metrics I built are cited by <a href="#proof">Pantera Capital, Citi Institute and CoinGecko</a>.</p>
+  </div>
+  <div class="out">
+    <p class="word" aria-hidden="true">Does not count.</p>
+    <p><span class="vh">Does not count. </span>Most things sold as a real-world asset do not meet the definition.</p>
+    <p class="q">This page prints each exclusion beside its claim, at the same size.</p>
+  </div>
+</section>
+
+<nav class="pair nav" aria-label="Sections">
+  <div class="in">
+    <a href="#bar">The bar</a>
+    <a href="#metrics">Measures</a>
     <a href="#proof">Cited by</a>
-    <a href="#metrics">Metrics</a>
-    <a href="#services">What I do</a>
-    <a href="#work">Built at DefiLlama</a>
+    <a href="#work">DefiLlama</a>
     <a href="#writing">Writing</a>
+    <a href="#services">On offer</a>
     <a href="#now">Interests</a>
     <a href="#earlier">Earlier</a>
-    <a href="#contact" class="nav-cta">Contact</a>
-  </nav>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="out"></div>
+</nav>
 
-  <main id="main" tabindex="-1">
-
-  <section class="intro">
-    <p>For twelve months at <strong>DefiLlama</strong>, the DeFi data platform, I built its real-world-asset coverage from nothing into a dataset now cited by Pantera Capital, an academic taxonomy paper and the financial press. Three production dashboards, a registry of more than 9,000 assets behind them, and the published methodology that defines what counts.</p>
-    <p>There was no dataset to inherit, no accepted taxonomy and no published methodology, so I wrote them. The field definitions, asset classes, classification bar and revenue framework are original work, published openly so anyone can contest them. I authored the public methodology. DefiLlama's engineers built the dashboards to those specifications. The platform and its data are DefiLlama's, and I do not speak for it.</p>
-    <p>I go by Meta, and my handle is @themetaisok. The judgment about which metrics matter comes from ten years in these markets. DefiLlama is where that work got built and tested at scale.</p>
-    <div class="figs">
-      <div class="fig"><div class="n">9,000+</div><div class="l">assets and markets in the registry</div></div>
-      <div class="fig"><div class="n">116</div><div class="l">fields defined per asset</div></div>
-      <div class="fig"><div class="n">450+</div><div class="l">issuers covered</div></div>
-      <div class="fig"><div class="n">Under 20%</div><div class="l">marketed RWAs that clear the bar</div></div>
+<!-- ============ the bar and the field ============ -->
+<section id="bar" aria-labelledby="h-bar">
+  <div class="pair group">
+    <div class="in"><h2 id="h-bar">The bar</h2></div>
+    <div class="out"><p class="h2" aria-hidden="true">What it was run against</p></div>
+  </div>
+  <div class="pair">
+    <div class="in">
+      <p class="crit">transferable <i>and</i> <span>self-custodial</span> <i>and</i> redeemable <i>and</i> verified</p>
+      <p>One test, all four at once. A token clears the bar only if it clears all four.</p>
     </div>
-  </section>
+    <div class="out"><p>The full registry: more than 9,000 assets and markets. Below, 360 marks, one for every 25 entries.</p></div>
+  </div>
 
-  <section id="proof">
-    <div class="sec-head">
-      <h2>Cited by</h2>
-      <p class="sec-note">Where the measurements have been used by others. Rows marked <em>contributed</em> are work I took part in, as distinct from independent use.</p>
+  <figure class="jog" role="img" aria-label="The registry drawn as 360 marks. Under 20 percent of them, at most 72 marks, sit on the side that counts. The remainder sit on the side that does not.">
+    <div class="jin">
+      <div class="jlab"><p class="jfig">Under 20%</p><p class="jsub">clear all four</p></div>
+      <svg class="dots w" viewBox="0 0 99 88" preserveAspectRatio="none" aria-hidden="true" focusable="false"><circle cx="5.8" cy="4.6" r="2.68"/><circle cx="5.5" cy="17.1" r="2.90"/><circle cx="5.5" cy="27.6" r="2.81"/><circle cx="4.9" cy="38.5" r="2.85"/><circle cx="4.6" cy="50.4" r="2.12"/><circle cx="6.4" cy="60.4" r="2.31"/><circle cx="6.2" cy="71.0" r="2.31"/><circle cx="5.0" cy="81.9" r="2.82"/><circle cx="16.2" cy="6.4" r="2.69"/><circle cx="16.4" cy="16.6" r="2.44"/><circle cx="17.3" cy="27.3" r="2.76"/><circle cx="16.3" cy="38.9" r="2.78"/><circle cx="15.7" cy="49.2" r="2.54"/><circle cx="15.9" cy="61.1" r="2.29"/><circle cx="17.0" cy="71.5" r="2.14"/><circle cx="17.0" cy="82.7" r="2.36"/><circle cx="27.5" cy="5.0" r="2.64"/><circle cx="26.9" cy="16.5" r="2.32"/><circle cx="27.1" cy="26.8" r="2.85"/><circle cx="28.0" cy="37.6" r="2.64"/><circle cx="27.8" cy="49.4" r="2.68"/><circle cx="28.2" cy="59.7" r="2.54"/><circle cx="27.2" cy="71.3" r="2.38"/><circle cx="28.4" cy="82.1" r="2.37"/><circle cx="38.0" cy="5.3" r="2.86"/><circle cx="39.0" cy="17.2" r="2.38"/><circle cx="39.3" cy="28.2" r="2.26"/><circle cx="38.3" cy="38.0" r="2.43"/><circle cx="38.5" cy="50.4" r="2.13"/><circle cx="39.3" cy="60.3" r="2.85"/><circle cx="38.5" cy="71.0" r="2.87"/><circle cx="38.7" cy="82.2" r="2.82"/><circle cx="50.2" cy="5.5" r="2.24"/><circle cx="49.3" cy="16.8" r="2.31"/><circle cx="49.6" cy="28.4" r="2.79"/><circle cx="48.7" cy="38.7" r="2.21"/><circle cx="49.5" cy="49.4" r="2.31"/><circle cx="50.4" cy="60.4" r="2.35"/><circle cx="50.2" cy="71.6" r="2.82"/><circle cx="49.9" cy="82.2" r="2.78"/><circle cx="60.2" cy="4.8" r="2.49"/><circle cx="61.0" cy="16.8" r="2.81"/><circle cx="60.4" cy="27.0" r="2.42"/><circle cx="60.7" cy="38.5" r="2.27"/><circle cx="60.7" cy="48.6" r="2.90"/><circle cx="61.0" cy="60.2" r="2.36"/><circle cx="60.9" cy="70.6" r="2.24"/><circle cx="61.2" cy="82.0" r="2.20"/><circle cx="71.4" cy="5.5" r="2.40"/><circle cx="71.0" cy="17.1" r="2.72"/><circle cx="71.3" cy="27.4" r="2.62"/><circle cx="71.0" cy="37.7" r="2.44"/><circle cx="72.2" cy="48.8" r="2.64"/><circle cx="70.9" cy="61.0" r="2.45"/><circle cx="70.6" cy="70.9" r="2.74"/><circle cx="72.3" cy="83.1" r="2.72"/><circle cx="81.8" cy="5.9" r="2.73"/><circle cx="81.8" cy="17.0" r="2.18"/><circle cx="83.0" cy="27.5" r="2.59"/><circle cx="83.0" cy="39.4" r="2.69"/><circle cx="81.6" cy="48.6" r="2.45"/><circle cx="82.7" cy="60.8" r="2.56"/><circle cx="82.0" cy="71.3" r="2.61"/><circle cx="82.3" cy="81.8" r="2.11"/><circle cx="94.3" cy="5.9" r="2.46"/><circle cx="94.3" cy="15.8" r="2.88"/><circle cx="92.9" cy="26.9" r="2.44"/><circle cx="93.7" cy="38.3" r="2.68"/><circle cx="93.6" cy="48.9" r="2.77"/><circle cx="93.4" cy="60.2" r="2.82"/><circle cx="94.4" cy="72.4" r="2.33"/><circle cx="93.9" cy="82.3" r="2.34"/></svg><svg class="dots n" viewBox="0 0 198 44" preserveAspectRatio="none" aria-hidden="true" focusable="false"><circle cx="5.8" cy="4.6" r="2.68"/><circle cx="5.5" cy="17.1" r="2.90"/><circle cx="5.5" cy="27.6" r="2.81"/><circle cx="4.9" cy="38.5" r="2.85"/><circle cx="15.6" cy="6.4" r="2.12"/><circle cx="17.4" cy="16.4" r="2.31"/><circle cx="17.2" cy="27.0" r="2.31"/><circle cx="16.0" cy="37.9" r="2.82"/><circle cx="27.2" cy="6.4" r="2.69"/><circle cx="27.4" cy="16.6" r="2.44"/><circle cx="28.3" cy="27.3" r="2.76"/><circle cx="27.3" cy="38.9" r="2.78"/><circle cx="37.7" cy="5.2" r="2.54"/><circle cx="37.9" cy="17.1" r="2.29"/><circle cx="39.0" cy="27.5" r="2.14"/><circle cx="39.0" cy="38.7" r="2.36"/><circle cx="49.5" cy="5.0" r="2.64"/><circle cx="48.9" cy="16.5" r="2.32"/><circle cx="49.1" cy="26.8" r="2.85"/><circle cx="50.0" cy="37.6" r="2.64"/><circle cx="60.8" cy="5.4" r="2.68"/><circle cx="61.2" cy="15.7" r="2.54"/><circle cx="60.2" cy="27.3" r="2.38"/><circle cx="61.4" cy="38.1" r="2.37"/><circle cx="71.0" cy="5.3" r="2.86"/><circle cx="72.0" cy="17.2" r="2.38"/><circle cx="72.3" cy="28.2" r="2.26"/><circle cx="71.3" cy="38.0" r="2.43"/><circle cx="82.5" cy="6.4" r="2.13"/><circle cx="83.3" cy="16.3" r="2.85"/><circle cx="82.5" cy="27.0" r="2.87"/><circle cx="82.7" cy="38.2" r="2.82"/><circle cx="94.2" cy="5.5" r="2.24"/><circle cx="93.3" cy="16.8" r="2.31"/><circle cx="93.6" cy="28.4" r="2.79"/><circle cx="92.7" cy="38.7" r="2.21"/><circle cx="104.5" cy="5.4" r="2.31"/><circle cx="105.4" cy="16.4" r="2.35"/><circle cx="105.2" cy="27.6" r="2.82"/><circle cx="104.9" cy="38.2" r="2.78"/><circle cx="115.2" cy="4.8" r="2.49"/><circle cx="116.0" cy="16.8" r="2.81"/><circle cx="115.4" cy="27.0" r="2.42"/><circle cx="115.7" cy="38.5" r="2.27"/><circle cx="126.7" cy="4.6" r="2.90"/><circle cx="127.0" cy="16.2" r="2.36"/><circle cx="126.9" cy="26.6" r="2.24"/><circle cx="127.2" cy="38.0" r="2.20"/><circle cx="137.4" cy="5.5" r="2.40"/><circle cx="137.0" cy="17.1" r="2.72"/><circle cx="137.3" cy="27.4" r="2.62"/><circle cx="137.0" cy="37.7" r="2.44"/><circle cx="149.2" cy="4.8" r="2.64"/><circle cx="147.9" cy="17.0" r="2.45"/><circle cx="147.6" cy="26.9" r="2.74"/><circle cx="149.3" cy="39.1" r="2.72"/><circle cx="158.8" cy="5.9" r="2.73"/><circle cx="158.8" cy="17.0" r="2.18"/><circle cx="160.0" cy="27.5" r="2.59"/><circle cx="160.0" cy="39.4" r="2.69"/><circle cx="169.6" cy="4.6" r="2.45"/><circle cx="170.7" cy="16.8" r="2.56"/><circle cx="170.0" cy="27.3" r="2.61"/><circle cx="170.3" cy="37.8" r="2.11"/><circle cx="182.3" cy="5.9" r="2.46"/><circle cx="182.3" cy="15.8" r="2.88"/><circle cx="180.9" cy="26.9" r="2.44"/><circle cx="181.7" cy="38.3" r="2.68"/><circle cx="192.6" cy="4.9" r="2.77"/><circle cx="192.4" cy="16.2" r="2.82"/><circle cx="193.4" cy="28.4" r="2.33"/><circle cx="192.9" cy="38.3" r="2.34"/></svg>
     </div>
+    <div class="jout">
+      <div class="jlab"><p class="jfig">The remainder</p><p class="jsub">better described as programmable finance</p></div>
+      <svg class="dots w" viewBox="0 0 396 88" preserveAspectRatio="none" aria-hidden="true" focusable="false"><circle cx="6.3" cy="5.7" r="2.88"/><circle cx="4.8" cy="16.6" r="2.85"/><circle cx="4.9" cy="26.7" r="2.65"/><circle cx="6.1" cy="38.6" r="2.54"/><circle cx="5.2" cy="50.3" r="2.39"/><circle cx="6.1" cy="60.7" r="2.43"/><circle cx="6.1" cy="71.2" r="2.84"/><circle cx="6.1" cy="81.8" r="2.74"/><circle cx="17.3" cy="5.1" r="2.48"/><circle cx="17.3" cy="16.8" r="2.67"/><circle cx="16.6" cy="26.9" r="2.30"/><circle cx="17.0" cy="38.2" r="2.82"/><circle cx="15.8" cy="49.0" r="2.21"/><circle cx="16.4" cy="60.2" r="2.67"/><circle cx="17.2" cy="72.3" r="2.54"/><circle cx="16.1" cy="82.4" r="2.74"/><circle cx="28.2" cy="5.3" r="2.29"/><circle cx="28.3" cy="16.7" r="2.38"/><circle cx="27.9" cy="26.6" r="2.45"/><circle cx="28.4" cy="38.8" r="2.30"/><circle cx="28.1" cy="49.1" r="2.72"/><circle cx="27.0" cy="59.9" r="2.78"/><circle cx="26.9" cy="70.7" r="2.11"/><circle cx="27.5" cy="82.9" r="2.47"/><circle cx="38.0" cy="5.6" r="2.75"/><circle cx="38.4" cy="17.3" r="2.65"/><circle cx="38.7" cy="27.7" r="2.76"/><circle cx="39.0" cy="38.1" r="2.43"/><circle cx="38.2" cy="49.9" r="2.31"/><circle cx="39.1" cy="59.8" r="2.55"/><circle cx="39.1" cy="71.2" r="2.70"/><circle cx="39.1" cy="83.0" r="2.65"/><circle cx="49.4" cy="6.0" r="2.66"/><circle cx="50.0" cy="17.2" r="2.89"/><circle cx="49.8" cy="27.8" r="2.90"/><circle cx="48.7" cy="38.1" r="2.71"/><circle cx="49.0" cy="48.7" r="2.74"/><circle cx="48.6" cy="61.3" r="2.62"/><circle cx="49.4" cy="71.0" r="2.75"/><circle cx="49.4" cy="83.0" r="2.54"/><circle cx="60.2" cy="5.1" r="2.16"/><circle cx="61.3" cy="17.2" r="2.37"/><circle cx="60.9" cy="26.6" r="2.84"/><circle cx="60.6" cy="39.2" r="2.50"/><circle cx="60.5" cy="50.4" r="2.24"/><circle cx="60.2" cy="60.2" r="2.58"/><circle cx="61.3" cy="71.6" r="2.14"/><circle cx="61.0" cy="81.6" r="2.41"/><circle cx="71.2" cy="5.0" r="2.71"/><circle cx="71.6" cy="16.4" r="2.23"/><circle cx="71.2" cy="28.0" r="2.56"/><circle cx="72.1" cy="39.0" r="2.33"/><circle cx="72.1" cy="50.2" r="2.43"/><circle cx="70.9" cy="60.8" r="2.11"/><circle cx="71.7" cy="71.6" r="2.86"/><circle cx="72.0" cy="83.1" r="2.87"/><circle cx="82.1" cy="5.9" r="2.24"/><circle cx="82.9" cy="16.6" r="2.28"/><circle cx="82.2" cy="27.7" r="2.48"/><circle cx="82.1" cy="39.0" r="2.60"/><circle cx="82.5" cy="50.0" r="2.46"/><circle cx="83.1" cy="59.7" r="2.80"/><circle cx="83.0" cy="71.5" r="2.39"/><circle cx="82.0" cy="82.2" r="2.28"/><circle cx="94.3" cy="6.3" r="2.45"/><circle cx="93.7" cy="16.9" r="2.70"/><circle cx="93.3" cy="27.9" r="2.76"/><circle cx="92.9" cy="39.2" r="2.36"/><circle cx="94.1" cy="49.4" r="2.67"/><circle cx="93.9" cy="60.6" r="2.65"/><circle cx="94.0" cy="71.1" r="2.58"/><circle cx="93.7" cy="82.0" r="2.38"/><circle cx="104.7" cy="5.3" r="2.43"/><circle cx="104.9" cy="16.3" r="2.76"/><circle cx="104.8" cy="28.1" r="2.72"/><circle cx="104.6" cy="38.1" r="2.15"/><circle cx="105.0" cy="49.7" r="2.53"/><circle cx="104.1" cy="61.1" r="2.35"/><circle cx="103.8" cy="70.7" r="2.60"/><circle cx="104.5" cy="82.6" r="2.49"/><circle cx="115.2" cy="6.4" r="2.32"/><circle cx="116.2" cy="17.0" r="2.28"/><circle cx="115.4" cy="26.9" r="2.15"/><circle cx="114.6" cy="37.7" r="2.58"/><circle cx="115.6" cy="49.0" r="2.41"/><circle cx="114.6" cy="60.5" r="2.65"/><circle cx="115.6" cy="71.4" r="2.64"/><circle cx="116.1" cy="82.8" r="2.18"/><circle cx="125.7" cy="5.0" r="2.26"/><circle cx="125.8" cy="15.9" r="2.25"/><circle cx="125.6" cy="26.8" r="2.21"/><circle cx="126.1" cy="38.0" r="2.68"/><circle cx="125.8" cy="49.4" r="2.20"/><circle cx="125.7" cy="60.0" r="2.86"/><circle cx="127.1" cy="70.6" r="2.32"/><circle cx="125.7" cy="82.4" r="2.39"/><circle cx="136.6" cy="4.9" r="2.87"/><circle cx="137.2" cy="17.0" r="2.51"/><circle cx="138.3" cy="28.1" r="2.45"/><circle cx="137.3" cy="38.8" r="2.10"/><circle cx="137.5" cy="49.0" r="2.43"/><circle cx="138.3" cy="60.4" r="2.66"/><circle cx="136.9" cy="70.6" r="2.85"/><circle cx="137.2" cy="83.2" r="2.47"/><circle cx="147.7" cy="5.0" r="2.21"/><circle cx="147.7" cy="16.7" r="2.19"/><circle cx="149.1" cy="27.2" r="2.82"/><circle cx="148.5" cy="37.8" r="2.80"/><circle cx="149.3" cy="50.3" r="2.72"/><circle cx="147.8" cy="59.7" r="2.20"/><circle cx="147.8" cy="71.9" r="2.88"/><circle cx="148.3" cy="82.9" r="2.38"/><circle cx="159.3" cy="5.5" r="2.15"/><circle cx="159.1" cy="15.7" r="2.15"/><circle cx="159.8" cy="27.3" r="2.32"/><circle cx="158.8" cy="38.8" r="2.28"/><circle cx="158.6" cy="50.2" r="2.62"/><circle cx="159.6" cy="59.6" r="2.72"/><circle cx="159.9" cy="71.2" r="2.73"/><circle cx="159.4" cy="82.3" r="2.56"/><circle cx="169.8" cy="5.2" r="2.89"/><circle cx="170.0" cy="16.9" r="2.46"/><circle cx="170.0" cy="28.3" r="2.86"/><circle cx="169.6" cy="37.9" r="2.77"/><circle cx="171.3" cy="49.1" r="2.70"/><circle cx="171.3" cy="60.4" r="2.21"/><circle cx="170.9" cy="71.9" r="2.11"/><circle cx="170.9" cy="82.4" r="2.86"/><circle cx="180.9" cy="5.1" r="2.15"/><circle cx="180.7" cy="16.0" r="2.18"/><circle cx="181.7" cy="28.1" r="2.87"/><circle cx="181.5" cy="38.6" r="2.18"/><circle cx="180.8" cy="49.5" r="2.25"/><circle cx="181.8" cy="60.6" r="2.21"/><circle cx="181.0" cy="71.7" r="2.83"/><circle cx="181.5" cy="81.8" r="2.48"/><circle cx="192.1" cy="4.8" r="2.33"/><circle cx="193.4" cy="17.2" r="2.88"/><circle cx="192.2" cy="27.4" r="2.90"/><circle cx="193.2" cy="38.4" r="2.90"/><circle cx="192.4" cy="49.6" r="2.27"/><circle cx="193.3" cy="59.7" r="2.16"/><circle cx="193.3" cy="71.9" r="2.27"/><circle cx="191.9" cy="82.6" r="2.30"/><circle cx="203.5" cy="6.0" r="2.26"/><circle cx="204.1" cy="16.6" r="2.85"/><circle cx="204.4" cy="28.2" r="2.45"/><circle cx="202.6" cy="37.9" r="2.33"/><circle cx="202.7" cy="50.3" r="2.43"/><circle cx="204.2" cy="60.6" r="2.17"/><circle cx="204.4" cy="71.5" r="2.45"/><circle cx="202.7" cy="81.6" r="2.58"/><circle cx="214.6" cy="5.6" r="2.81"/><circle cx="214.7" cy="17.1" r="2.57"/><circle cx="215.3" cy="27.6" r="2.63"/><circle cx="215.3" cy="37.7" r="2.35"/><circle cx="214.2" cy="48.8" r="2.16"/><circle cx="213.8" cy="60.1" r="2.32"/><circle cx="214.9" cy="71.8" r="2.89"/><circle cx="214.1" cy="81.8" r="2.43"/><circle cx="224.9" cy="4.8" r="2.62"/><circle cx="225.3" cy="17.4" r="2.73"/><circle cx="225.0" cy="27.9" r="2.58"/><circle cx="226.1" cy="38.6" r="2.69"/><circle cx="226.3" cy="49.1" r="2.84"/><circle cx="225.4" cy="59.9" r="2.77"/><circle cx="224.8" cy="71.5" r="2.65"/><circle cx="225.6" cy="81.8" r="2.72"/><circle cx="235.7" cy="4.9" r="2.67"/><circle cx="237.2" cy="15.7" r="2.75"/><circle cx="236.8" cy="27.5" r="2.62"/><circle cx="236.1" cy="38.3" r="2.81"/><circle cx="236.2" cy="50.1" r="2.40"/><circle cx="236.9" cy="59.6" r="2.73"/><circle cx="236.7" cy="72.2" r="2.52"/><circle cx="236.0" cy="83.0" r="2.14"/><circle cx="247.4" cy="5.6" r="2.68"/><circle cx="246.6" cy="16.5" r="2.16"/><circle cx="247.1" cy="27.2" r="2.64"/><circle cx="247.5" cy="38.1" r="2.77"/><circle cx="247.8" cy="50.3" r="2.21"/><circle cx="246.8" cy="60.4" r="2.25"/><circle cx="247.5" cy="70.7" r="2.48"/><circle cx="248.1" cy="83.2" r="2.38"/><circle cx="259.0" cy="6.2" r="2.84"/><circle cx="258.6" cy="17.4" r="2.26"/><circle cx="258.8" cy="28.1" r="2.25"/><circle cx="257.9" cy="38.5" r="2.55"/><circle cx="259.0" cy="49.4" r="2.78"/><circle cx="257.9" cy="59.6" r="2.11"/><circle cx="258.7" cy="70.6" r="2.16"/><circle cx="257.7" cy="82.7" r="2.45"/><circle cx="270.1" cy="4.6" r="2.56"/><circle cx="269.9" cy="16.1" r="2.63"/><circle cx="270.2" cy="28.0" r="2.74"/><circle cx="269.3" cy="37.6" r="2.42"/><circle cx="269.5" cy="48.6" r="2.60"/><circle cx="269.8" cy="60.3" r="2.87"/><circle cx="269.2" cy="72.4" r="2.74"/><circle cx="270.2" cy="82.2" r="2.17"/><circle cx="281.3" cy="6.3" r="2.31"/><circle cx="279.9" cy="16.6" r="2.52"/><circle cx="279.8" cy="27.3" r="2.23"/><circle cx="279.6" cy="39.0" r="2.89"/><circle cx="281.4" cy="50.0" r="2.34"/><circle cx="280.5" cy="61.1" r="2.65"/><circle cx="281.0" cy="71.1" r="2.13"/><circle cx="281.4" cy="81.8" r="2.80"/><circle cx="292.0" cy="5.2" r="2.62"/><circle cx="291.8" cy="17.4" r="2.46"/><circle cx="290.7" cy="27.1" r="2.35"/><circle cx="291.9" cy="37.8" r="2.61"/><circle cx="291.2" cy="49.4" r="2.12"/><circle cx="290.6" cy="60.0" r="2.47"/><circle cx="291.6" cy="72.2" r="2.52"/><circle cx="290.6" cy="82.7" r="2.73"/><circle cx="303.4" cy="5.1" r="2.30"/><circle cx="303.1" cy="15.8" r="2.19"/><circle cx="303.1" cy="26.6" r="2.26"/><circle cx="301.8" cy="39.0" r="2.68"/><circle cx="303.1" cy="50.4" r="2.40"/><circle cx="301.9" cy="60.8" r="2.33"/><circle cx="302.1" cy="70.8" r="2.84"/><circle cx="302.1" cy="81.7" r="2.84"/><circle cx="312.6" cy="6.4" r="2.49"/><circle cx="314.2" cy="16.3" r="2.75"/><circle cx="314.4" cy="27.7" r="2.69"/><circle cx="313.4" cy="37.7" r="2.74"/><circle cx="314.0" cy="48.9" r="2.44"/><circle cx="312.9" cy="60.3" r="2.73"/><circle cx="313.9" cy="70.6" r="2.49"/><circle cx="312.7" cy="82.5" r="2.75"/><circle cx="323.9" cy="5.3" r="2.55"/><circle cx="323.9" cy="16.7" r="2.49"/><circle cx="324.2" cy="27.2" r="2.84"/><circle cx="323.8" cy="38.4" r="2.27"/><circle cx="324.4" cy="50.0" r="2.47"/><circle cx="324.0" cy="61.2" r="2.54"/><circle cx="324.0" cy="71.5" r="2.72"/><circle cx="324.6" cy="81.8" r="2.80"/><circle cx="334.6" cy="6.2" r="2.75"/><circle cx="335.9" cy="16.3" r="2.18"/><circle cx="335.0" cy="28.0" r="2.53"/><circle cx="335.2" cy="38.9" r="2.11"/><circle cx="335.7" cy="49.9" r="2.84"/><circle cx="334.8" cy="60.4" r="2.46"/><circle cx="336.1" cy="71.6" r="2.22"/><circle cx="334.8" cy="82.4" r="2.39"/><circle cx="345.7" cy="4.9" r="2.22"/><circle cx="345.7" cy="16.4" r="2.78"/><circle cx="346.0" cy="27.6" r="2.20"/><circle cx="346.8" cy="39.0" r="2.83"/><circle cx="346.8" cy="49.6" r="2.29"/><circle cx="346.5" cy="59.9" r="2.59"/><circle cx="346.7" cy="71.1" r="2.82"/><circle cx="346.5" cy="82.3" r="2.26"/><circle cx="356.8" cy="5.1" r="2.37"/><circle cx="357.2" cy="15.9" r="2.38"/><circle cx="358.1" cy="28.2" r="2.56"/><circle cx="357.9" cy="38.5" r="2.54"/><circle cx="357.8" cy="49.5" r="2.66"/><circle cx="357.4" cy="60.3" r="2.66"/><circle cx="357.5" cy="72.2" r="2.73"/><circle cx="356.9" cy="83.2" r="2.45"/><circle cx="368.7" cy="5.0" r="2.34"/><circle cx="367.6" cy="16.8" r="2.83"/><circle cx="368.0" cy="27.9" r="2.36"/><circle cx="368.4" cy="39.2" r="2.72"/><circle cx="367.6" cy="49.1" r="2.32"/><circle cx="369.1" cy="61.2" r="2.62"/><circle cx="368.8" cy="72.3" r="2.79"/><circle cx="367.9" cy="82.7" r="2.46"/><circle cx="380.2" cy="5.8" r="2.47"/><circle cx="379.4" cy="16.6" r="2.71"/><circle cx="380.0" cy="26.9" r="2.18"/><circle cx="379.1" cy="38.3" r="2.60"/><circle cx="378.8" cy="49.0" r="2.80"/><circle cx="379.3" cy="60.3" r="2.70"/><circle cx="379.2" cy="71.4" r="2.78"/><circle cx="380.2" cy="82.7" r="2.33"/><circle cx="390.6" cy="5.8" r="2.69"/><circle cx="390.3" cy="16.8" r="2.22"/><circle cx="391.2" cy="26.6" r="2.83"/><circle cx="390.8" cy="37.6" r="2.72"/><circle cx="391.4" cy="50.2" r="2.12"/><circle cx="391.2" cy="60.7" r="2.66"/><circle cx="390.7" cy="71.4" r="2.39"/><circle cx="390.3" cy="82.6" r="2.16"/></svg><svg class="dots n" viewBox="0 0 198 176" preserveAspectRatio="none" aria-hidden="true" focusable="false"><circle cx="6.3" cy="5.7" r="2.88"/><circle cx="4.8" cy="16.6" r="2.85"/><circle cx="4.9" cy="26.7" r="2.65"/><circle cx="6.1" cy="38.6" r="2.54"/><circle cx="5.2" cy="50.3" r="2.39"/><circle cx="6.1" cy="60.7" r="2.43"/><circle cx="6.1" cy="71.2" r="2.84"/><circle cx="6.1" cy="81.8" r="2.74"/><circle cx="6.3" cy="93.1" r="2.48"/><circle cx="6.3" cy="104.8" r="2.67"/><circle cx="5.6" cy="114.9" r="2.30"/><circle cx="6.0" cy="126.2" r="2.82"/><circle cx="4.8" cy="137.0" r="2.21"/><circle cx="5.4" cy="148.2" r="2.67"/><circle cx="6.2" cy="160.3" r="2.54"/><circle cx="5.1" cy="170.4" r="2.74"/><circle cx="17.2" cy="5.3" r="2.29"/><circle cx="17.3" cy="16.7" r="2.38"/><circle cx="16.9" cy="26.6" r="2.45"/><circle cx="17.4" cy="38.8" r="2.30"/><circle cx="17.1" cy="49.1" r="2.72"/><circle cx="16.0" cy="59.9" r="2.78"/><circle cx="15.9" cy="70.7" r="2.11"/><circle cx="16.5" cy="82.9" r="2.47"/><circle cx="16.0" cy="93.6" r="2.75"/><circle cx="16.4" cy="105.3" r="2.65"/><circle cx="16.7" cy="115.7" r="2.76"/><circle cx="17.0" cy="126.1" r="2.43"/><circle cx="16.2" cy="137.9" r="2.31"/><circle cx="17.1" cy="147.8" r="2.55"/><circle cx="17.1" cy="159.2" r="2.70"/><circle cx="17.1" cy="171.0" r="2.65"/><circle cx="27.4" cy="6.0" r="2.66"/><circle cx="28.0" cy="17.2" r="2.89"/><circle cx="27.8" cy="27.8" r="2.90"/><circle cx="26.7" cy="38.1" r="2.71"/><circle cx="27.0" cy="48.7" r="2.74"/><circle cx="26.6" cy="61.3" r="2.62"/><circle cx="27.4" cy="71.0" r="2.75"/><circle cx="27.4" cy="83.0" r="2.54"/><circle cx="27.2" cy="93.1" r="2.16"/><circle cx="28.3" cy="105.2" r="2.37"/><circle cx="27.9" cy="114.6" r="2.84"/><circle cx="27.6" cy="127.2" r="2.50"/><circle cx="27.5" cy="138.4" r="2.24"/><circle cx="27.2" cy="148.2" r="2.58"/><circle cx="28.3" cy="159.6" r="2.14"/><circle cx="28.0" cy="169.6" r="2.41"/><circle cx="38.2" cy="5.0" r="2.71"/><circle cx="38.6" cy="16.4" r="2.23"/><circle cx="38.2" cy="28.0" r="2.56"/><circle cx="39.1" cy="39.0" r="2.33"/><circle cx="39.1" cy="50.2" r="2.43"/><circle cx="37.9" cy="60.8" r="2.11"/><circle cx="38.7" cy="71.6" r="2.86"/><circle cx="39.0" cy="83.1" r="2.87"/><circle cx="38.1" cy="93.9" r="2.24"/><circle cx="38.9" cy="104.6" r="2.28"/><circle cx="38.2" cy="115.7" r="2.48"/><circle cx="38.1" cy="127.0" r="2.60"/><circle cx="38.5" cy="138.0" r="2.46"/><circle cx="39.1" cy="147.7" r="2.80"/><circle cx="39.0" cy="159.5" r="2.39"/><circle cx="38.0" cy="170.2" r="2.28"/><circle cx="50.3" cy="6.3" r="2.45"/><circle cx="49.7" cy="16.9" r="2.70"/><circle cx="49.3" cy="27.9" r="2.76"/><circle cx="48.9" cy="39.2" r="2.36"/><circle cx="50.1" cy="49.4" r="2.67"/><circle cx="49.9" cy="60.6" r="2.65"/><circle cx="50.0" cy="71.1" r="2.58"/><circle cx="49.7" cy="82.0" r="2.38"/><circle cx="49.7" cy="93.3" r="2.43"/><circle cx="49.9" cy="104.3" r="2.76"/><circle cx="49.8" cy="116.1" r="2.72"/><circle cx="49.6" cy="126.1" r="2.15"/><circle cx="50.0" cy="137.7" r="2.53"/><circle cx="49.1" cy="149.1" r="2.35"/><circle cx="48.8" cy="158.7" r="2.60"/><circle cx="49.5" cy="170.6" r="2.49"/><circle cx="60.2" cy="6.4" r="2.32"/><circle cx="61.2" cy="17.0" r="2.28"/><circle cx="60.4" cy="26.9" r="2.15"/><circle cx="59.6" cy="37.7" r="2.58"/><circle cx="60.6" cy="49.0" r="2.41"/><circle cx="59.6" cy="60.5" r="2.65"/><circle cx="60.6" cy="71.4" r="2.64"/><circle cx="61.1" cy="82.8" r="2.18"/><circle cx="59.7" cy="93.0" r="2.26"/><circle cx="59.8" cy="103.9" r="2.25"/><circle cx="59.6" cy="114.8" r="2.21"/><circle cx="60.1" cy="126.0" r="2.68"/><circle cx="59.8" cy="137.4" r="2.20"/><circle cx="59.7" cy="148.0" r="2.86"/><circle cx="61.1" cy="158.6" r="2.32"/><circle cx="59.7" cy="170.4" r="2.39"/><circle cx="70.6" cy="4.9" r="2.87"/><circle cx="71.2" cy="17.0" r="2.51"/><circle cx="72.3" cy="28.1" r="2.45"/><circle cx="71.3" cy="38.8" r="2.10"/><circle cx="71.5" cy="49.0" r="2.43"/><circle cx="72.3" cy="60.4" r="2.66"/><circle cx="70.9" cy="70.6" r="2.85"/><circle cx="71.2" cy="83.2" r="2.47"/><circle cx="70.7" cy="93.0" r="2.21"/><circle cx="70.7" cy="104.7" r="2.19"/><circle cx="72.1" cy="115.2" r="2.82"/><circle cx="71.5" cy="125.8" r="2.80"/><circle cx="72.3" cy="138.3" r="2.72"/><circle cx="70.8" cy="147.7" r="2.20"/><circle cx="70.8" cy="159.9" r="2.88"/><circle cx="71.3" cy="170.9" r="2.38"/><circle cx="82.3" cy="5.5" r="2.15"/><circle cx="82.1" cy="15.7" r="2.15"/><circle cx="82.8" cy="27.3" r="2.32"/><circle cx="81.8" cy="38.8" r="2.28"/><circle cx="81.6" cy="50.2" r="2.62"/><circle cx="82.6" cy="59.6" r="2.72"/><circle cx="82.9" cy="71.2" r="2.73"/><circle cx="82.4" cy="82.3" r="2.56"/><circle cx="81.8" cy="93.2" r="2.89"/><circle cx="82.0" cy="104.9" r="2.46"/><circle cx="82.0" cy="116.3" r="2.86"/><circle cx="81.6" cy="125.9" r="2.77"/><circle cx="83.3" cy="137.1" r="2.70"/><circle cx="83.3" cy="148.4" r="2.21"/><circle cx="82.9" cy="159.9" r="2.11"/><circle cx="82.9" cy="170.4" r="2.86"/><circle cx="92.9" cy="5.1" r="2.15"/><circle cx="92.7" cy="16.0" r="2.18"/><circle cx="93.7" cy="28.1" r="2.87"/><circle cx="93.5" cy="38.6" r="2.18"/><circle cx="92.8" cy="49.5" r="2.25"/><circle cx="93.8" cy="60.6" r="2.21"/><circle cx="93.0" cy="71.7" r="2.83"/><circle cx="93.5" cy="81.8" r="2.48"/><circle cx="93.1" cy="92.8" r="2.33"/><circle cx="94.4" cy="105.2" r="2.88"/><circle cx="93.2" cy="115.4" r="2.90"/><circle cx="94.2" cy="126.4" r="2.90"/><circle cx="93.4" cy="137.6" r="2.27"/><circle cx="94.3" cy="147.7" r="2.16"/><circle cx="94.3" cy="159.9" r="2.27"/><circle cx="92.9" cy="170.6" r="2.30"/><circle cx="104.5" cy="6.0" r="2.26"/><circle cx="105.1" cy="16.6" r="2.85"/><circle cx="105.4" cy="28.2" r="2.45"/><circle cx="103.6" cy="37.9" r="2.33"/><circle cx="103.7" cy="50.3" r="2.43"/><circle cx="105.2" cy="60.6" r="2.17"/><circle cx="105.4" cy="71.5" r="2.45"/><circle cx="103.7" cy="81.6" r="2.58"/><circle cx="104.6" cy="93.6" r="2.81"/><circle cx="104.7" cy="105.1" r="2.57"/><circle cx="105.3" cy="115.6" r="2.63"/><circle cx="105.3" cy="125.7" r="2.35"/><circle cx="104.2" cy="136.8" r="2.16"/><circle cx="103.8" cy="148.1" r="2.32"/><circle cx="104.9" cy="159.8" r="2.89"/><circle cx="104.1" cy="169.8" r="2.43"/><circle cx="114.9" cy="4.8" r="2.62"/><circle cx="115.3" cy="17.4" r="2.73"/><circle cx="115.0" cy="27.9" r="2.58"/><circle cx="116.1" cy="38.6" r="2.69"/><circle cx="116.3" cy="49.1" r="2.84"/><circle cx="115.4" cy="59.9" r="2.77"/><circle cx="114.8" cy="71.5" r="2.65"/><circle cx="115.6" cy="81.8" r="2.72"/><circle cx="114.7" cy="92.9" r="2.67"/><circle cx="116.2" cy="103.7" r="2.75"/><circle cx="115.8" cy="115.5" r="2.62"/><circle cx="115.1" cy="126.3" r="2.81"/><circle cx="115.2" cy="138.1" r="2.40"/><circle cx="115.9" cy="147.6" r="2.73"/><circle cx="115.7" cy="160.2" r="2.52"/><circle cx="115.0" cy="171.0" r="2.14"/><circle cx="126.4" cy="5.6" r="2.68"/><circle cx="125.6" cy="16.5" r="2.16"/><circle cx="126.1" cy="27.2" r="2.64"/><circle cx="126.5" cy="38.1" r="2.77"/><circle cx="126.8" cy="50.3" r="2.21"/><circle cx="125.8" cy="60.4" r="2.25"/><circle cx="126.5" cy="70.7" r="2.48"/><circle cx="127.1" cy="83.2" r="2.38"/><circle cx="127.0" cy="94.2" r="2.84"/><circle cx="126.6" cy="105.4" r="2.26"/><circle cx="126.8" cy="116.1" r="2.25"/><circle cx="125.9" cy="126.5" r="2.55"/><circle cx="127.0" cy="137.4" r="2.78"/><circle cx="125.9" cy="147.6" r="2.11"/><circle cx="126.7" cy="158.6" r="2.16"/><circle cx="125.7" cy="170.7" r="2.45"/><circle cx="138.1" cy="4.6" r="2.56"/><circle cx="137.9" cy="16.1" r="2.63"/><circle cx="138.2" cy="28.0" r="2.74"/><circle cx="137.3" cy="37.6" r="2.42"/><circle cx="137.5" cy="48.6" r="2.60"/><circle cx="137.8" cy="60.3" r="2.87"/><circle cx="137.2" cy="72.4" r="2.74"/><circle cx="138.2" cy="82.2" r="2.17"/><circle cx="138.3" cy="94.3" r="2.31"/><circle cx="136.9" cy="104.6" r="2.52"/><circle cx="136.8" cy="115.3" r="2.23"/><circle cx="136.6" cy="127.0" r="2.89"/><circle cx="138.4" cy="138.0" r="2.34"/><circle cx="137.5" cy="149.1" r="2.65"/><circle cx="138.0" cy="159.1" r="2.13"/><circle cx="138.4" cy="169.8" r="2.80"/><circle cx="149.0" cy="5.2" r="2.62"/><circle cx="148.8" cy="17.4" r="2.46"/><circle cx="147.7" cy="27.1" r="2.35"/><circle cx="148.9" cy="37.8" r="2.61"/><circle cx="148.2" cy="49.4" r="2.12"/><circle cx="147.6" cy="60.0" r="2.47"/><circle cx="148.6" cy="72.2" r="2.52"/><circle cx="147.6" cy="82.7" r="2.73"/><circle cx="149.4" cy="93.1" r="2.30"/><circle cx="149.1" cy="103.8" r="2.19"/><circle cx="149.1" cy="114.6" r="2.26"/><circle cx="147.8" cy="127.0" r="2.68"/><circle cx="149.1" cy="138.4" r="2.40"/><circle cx="147.9" cy="148.8" r="2.33"/><circle cx="148.1" cy="158.8" r="2.84"/><circle cx="148.1" cy="169.7" r="2.84"/><circle cx="158.6" cy="6.4" r="2.49"/><circle cx="160.2" cy="16.3" r="2.75"/><circle cx="160.4" cy="27.7" r="2.69"/><circle cx="159.4" cy="37.7" r="2.74"/><circle cx="160.0" cy="48.9" r="2.44"/><circle cx="158.9" cy="60.3" r="2.73"/><circle cx="159.9" cy="70.6" r="2.49"/><circle cx="158.7" cy="82.5" r="2.75"/><circle cx="158.9" cy="93.3" r="2.55"/><circle cx="158.9" cy="104.7" r="2.49"/><circle cx="159.2" cy="115.2" r="2.84"/><circle cx="158.8" cy="126.4" r="2.27"/><circle cx="159.4" cy="138.0" r="2.47"/><circle cx="159.0" cy="149.2" r="2.54"/><circle cx="159.0" cy="159.5" r="2.72"/><circle cx="159.6" cy="169.8" r="2.80"/><circle cx="169.6" cy="6.2" r="2.75"/><circle cx="170.9" cy="16.3" r="2.18"/><circle cx="170.0" cy="28.0" r="2.53"/><circle cx="170.2" cy="38.9" r="2.11"/><circle cx="170.7" cy="49.9" r="2.84"/><circle cx="169.8" cy="60.4" r="2.46"/><circle cx="171.1" cy="71.6" r="2.22"/><circle cx="169.8" cy="82.4" r="2.39"/><circle cx="169.7" cy="92.9" r="2.22"/><circle cx="169.7" cy="104.4" r="2.78"/><circle cx="170.0" cy="115.6" r="2.20"/><circle cx="170.8" cy="127.0" r="2.83"/><circle cx="170.8" cy="137.6" r="2.29"/><circle cx="170.5" cy="147.9" r="2.59"/><circle cx="170.7" cy="159.1" r="2.82"/><circle cx="170.5" cy="170.3" r="2.26"/><circle cx="180.8" cy="5.1" r="2.37"/><circle cx="181.2" cy="15.9" r="2.38"/><circle cx="182.1" cy="28.2" r="2.56"/><circle cx="181.9" cy="38.5" r="2.54"/><circle cx="181.8" cy="49.5" r="2.66"/><circle cx="181.4" cy="60.3" r="2.66"/><circle cx="181.5" cy="72.2" r="2.73"/><circle cx="180.9" cy="83.2" r="2.45"/><circle cx="181.7" cy="93.0" r="2.34"/><circle cx="180.6" cy="104.8" r="2.83"/><circle cx="181.0" cy="115.9" r="2.36"/><circle cx="181.4" cy="127.2" r="2.72"/><circle cx="180.6" cy="137.1" r="2.32"/><circle cx="182.1" cy="149.2" r="2.62"/><circle cx="181.8" cy="160.3" r="2.79"/><circle cx="180.9" cy="170.7" r="2.46"/><circle cx="193.2" cy="5.8" r="2.47"/><circle cx="192.4" cy="16.6" r="2.71"/><circle cx="193.0" cy="26.9" r="2.18"/><circle cx="192.1" cy="38.3" r="2.60"/><circle cx="191.8" cy="49.0" r="2.80"/><circle cx="192.3" cy="60.3" r="2.70"/><circle cx="192.2" cy="71.4" r="2.78"/><circle cx="193.2" cy="82.7" r="2.33"/><circle cx="192.6" cy="93.8" r="2.69"/><circle cx="192.3" cy="104.8" r="2.22"/><circle cx="193.2" cy="114.6" r="2.83"/><circle cx="192.8" cy="125.6" r="2.72"/><circle cx="193.4" cy="138.2" r="2.12"/><circle cx="193.2" cy="148.7" r="2.66"/><circle cx="192.7" cy="159.4" r="2.39"/><circle cx="192.3" cy="170.6" r="2.16"/></svg>
+    </div>
+  </figure>
 
-    <div class="row" id="proof-pantera">
-      <h3 class="key inst">Pantera Capital</h3>
-      <p class="rel">Contributed: named reviewer</p>
-      <p class="locator">Q1 2026<br>Sept 2026<br>PDF</p>
-      <div class="val">
-        <p class="claim">Credited by name in two consecutive editions of “The State of Tokenization”</p>
-        <blockquote><p>“…Bhaji Illuminati from Centrifuge, <strong>Meta from DefiLlama</strong>, Fayçal Drissi from University of Oxford, Fahad Saleh from University of Florida, for their valuable reviews and comments.”</p></blockquote>
-        <p>The Q1 2026 edition adopted <a href="#m-defi-active-tvl">DeFi Active TVL</a>, a metric I defined, as its measure of productive onchain TVL. The September 2026 edition names DefiLlama among the data sources on five market charts, and carries a section on DeFi utilization by class.</p>
-        <p class="src">Quoted from the acknowledgements of the September 2026 edition. Also credited in the Q1 2026 edition. <a href="https://panteracapital.com/wp-content/uploads/2026/05/State-of-Tokenization-Q1-2026-Pantera-Capital.pdf" target="_blank" rel="noopener">Q1 2026 report (PDF)</a></p>
+  <div class="pair cap">
+    <div class="in"><p class="q">For this one band the line stands where the finding puts it. The counted field is drawn at the 20% ceiling, so the true share is smaller than the one shown.</p></div>
+    <div class="out"></div>
+  </div>
+</section>
+
+<!-- ============ who ============ -->
+<section id="who" aria-labelledby="h-who">
+  <div class="pair group">
+    <div class="in"><h2 id="h-who">Who is speaking</h2></div>
+    <div class="out"><p class="h2" aria-hidden="true">Who is not</p></div>
+  </div>
+
+  <div class="pair lead-out">
+    <div class="in">
+      <h3>The name</h3>
+      <p>I go by Meta, and my handle is @themetaisok. The judgment about which metrics matter comes from ten years in these markets.</p>
+    </div>
+    <div class="out"><p><span class="vh">Does not count: </span>A legal name. Pseudonymous by choice. Not affiliated with Meta Platforms, Inc.</p></div>
+  </div>
+
+  <div class="pair">
+    <div class="in">
+      <h3>The work</h3>
+      <p>From August 2025 to September 2026 at DefiLlama, the DeFi data platform, I built its real-world-asset coverage from nothing. There was no dataset to inherit, no accepted taxonomy and no published methodology, so I wrote them. The field definitions, asset classes, classification bar and revenue framework are original work, published openly so anyone can contest them.</p>
+      <p>DefiLlama is where that work got built and tested at scale.</p>
+    </div>
+    <div class="out"><p><span class="vh">Does not count: </span>The platform and its data. They are DefiLlama's, and I do not speak for it.</p></div>
+  </div>
+
+  <div class="pair">
+    <div class="in">
+      <h3>The registry, in figures</h3>
+      <dl class="figs five">
+        <div><dt>9,000+</dt><dd>assets and markets</dd></div>
+        <div><dt>116</dt><dd>fields defined for each</dd></div>
+        <div><dt>450+</dt><dd>issuers</dd></div>
+        <div><dt>330+</dt><dd>platforms</dd></div>
+        <div><dt>170+</dt><dd>blockchains</dd></div>
+      </dl>
+    </div>
+    <div class="out"><p><span class="vh">Does not count: </span>Exact counts. Every figure on this page is a floor, current to November 2026.</p></div>
+  </div>
+</section>
+
+<!-- ============ measures ============ -->
+<section id="metrics" aria-labelledby="h-metrics">
+  <div class="pair group">
+    <div class="in"><h2 id="h-metrics">Six measures</h2><p class="q">Metrics I defined, and where each one is used by someone else.</p></div>
+    <div class="out"><p class="h2" aria-hidden="true">Six exclusions</p></div>
+  </div>
+
+  <div class="pair lead-out" id="m-onchain-market-cap">
+    <div class="in"><h3>Onchain Market Cap</h3><p>Circulating supply, at reference price.</p></div>
+    <div class="out"><p><span class="vh">Does not count: </span>Burned supply.</p></div>
+  </div>
+  <div class="pair lead-out" id="m-active-market-cap">
+    <div class="in"><h3>Active Market Cap</h3><p>The portion of Onchain Market Cap in user or protocol hands.</p>
+      <p class="q test">The operational test: would compromising this wallet let someone extract meaningful value?</p>
+      <span class="src">Cited in <a href="#proof-coingecko">CoinGecko</a></span></div>
+    <div class="out"><p><span class="vh">Does not count: </span>Issuer wallets. Custody wallets.</p></div>
+  </div>
+  <div class="pair lead-out" id="m-defi-active-tvl">
+    <div class="in"><h3>DeFi Active TVL</h3><p>The subset of Active Market Cap deployed in third-party DeFi protocols.</p>
+      <span class="src">Cited in <a href="#proof-pantera">Pantera Capital</a> and <a href="#proof-press">CryptoSlate</a></span></div>
+    <div class="out"><p><span class="vh">Does not count: </span>Issuer-managed contracts.</p></div>
+  </div>
+  <div class="pair lead-out" id="m-utilization">
+    <div class="in"><h3>Utilization</h3><p>DeFi Active TVL divided by Onchain Market Cap, as a percentage.</p></div>
+    <div class="out"><p><span class="vh">Does not count: </span>Lending-market utilization, which is borrowed over supplied.</p></div>
+  </div>
+  <div class="pair lead-out" id="m-flows">
+    <div class="in"><h3>Net Flows, Flow vs Price, Capital Rotation</h3><p>Minting and redemption, read apart from price. For an asset like tokenized gold, where supply is flat and the price moves, that separation is what tells a flow from a price change.</p></div>
+    <div class="out"><p><span class="vh">Does not count: </span>Repricing.</p></div>
+  </div>
+  <div class="pair lead-out" id="m-mnav">
+    <div class="in"><h3>mNAV</h3><p>Three variants: Realized, Realistic and Maximum.</p></div>
+    <div class="out"><p><span class="vh">Does not count: </span>The single figure the market was trading on, which hid future share issuance.</p></div>
+  </div>
+
+  <div class="pair">
+    <div class="in">
+      <h3>How the first four depend on each other</h3>
+      <div class="nest" role="img" aria-label="Onchain Market Cap contains Active Market Cap, which contains DeFi Active TVL.">
+        <span class="nl">Onchain Market Cap</span>
+        <div class="nest">
+          <span class="nl">Active Market Cap <small>a portion of it</small></span>
+          <div class="nest"><span class="nl">DeFi Active TVL <small>a subset of that</small></span></div>
+        </div>
       </div>
+      <p class="ratio"><b>Utilization</b> is the innermost box over the outermost. Containment only, not to scale.</p>
     </div>
+    <div class="out"><p><span class="vh">Does not count: </span>Net Flows and mNAV sit outside the chain. They do not nest.</p></div>
+  </div>
+</section>
 
-    <div class="row" id="proof-citi">
-      <h3 class="key inst">Citi Institute</h3>
-      <p class="locator">Jun 2026<br>p.19<br>PDF</p>
-      <div class="val">
-        <p class="claim">Sourced its market size figure to DefiLlama</p>
-        <blockquote><p>“The global tokenization market for financial assets is estimated at $17 billion, according to DefiLlama in April 2026, up about 3x from just a year ago.”</p></blockquote>
-        <p class="src">“Wall Street On-Chain: Tokenization 2030”, June 2026, p.19. <a href="https://www.citigroup.com/rcs/citigpa/storage/public/Citi_Institute_GPS_Report_Tokenization_2030.pdf" target="_blank" rel="noopener">Report (PDF)</a></p>
-      </div>
+<!-- ============ adoption ============ -->
+<section id="proof" aria-labelledby="h-proof">
+  <div class="pair group">
+    <div class="in"><h2 id="h-proof">Who uses them</h2><p class="q">Where the measurements have been used by others.</p></div>
+    <div class="out"><p class="h2" aria-hidden="true">What that is not</p></div>
+  </div>
+
+  <div class="pair" id="proof-pantera">
+    <div class="in">
+      <h3>Pantera Capital <span class="when">Q1 2026 and September 2026</span></h3>
+      <p>Credited by name in two consecutive editions of “The State of Tokenization”.</p>
+      <blockquote><p>“…Bhaji Illuminati from Centrifuge, <b>Meta from DefiLlama</b>, Fayçal Drissi from University of Oxford, Fahad Saleh from University of Florida, for their valuable reviews and comments.”</p></blockquote>
+      <p>The Q1 2026 edition adopted <a href="#m-defi-active-tvl">DeFi Active TVL</a>, a metric I defined, as its measure of productive onchain TVL. The September 2026 edition names DefiLlama among the data sources on five market charts, and carries a section on DeFi utilization by class.</p>
+      <span class="src">Quoted from the acknowledgements of the September 2026 edition. Also credited in the Q1 2026 edition. <a href="https://panteracapital.com/wp-content/uploads/2026/05/State-of-Tokenization-Q1-2026-Pantera-Capital.pdf" target="_blank" rel="noopener">Q1 2026 report (PDF)</a></span>
     </div>
-
-    <div class="row" id="proof-coingecko">
-      <h3 class="key inst">CoinGecko</h3>
-      <p class="locator">2026<br>pp.16, 17<br>PDF</p>
-      <div class="val">
-        <p class="claim">Measures its RWA chain chart in <a href="#m-active-market-cap">Active Market Cap</a>, sourced to DefiLlama</p>
-        <p>The 2026 RWA Report sources its RWA-chains and on-chain private-credit sections to DefiLlama, and its chain chart measures daily active market capitalization, the metric I defined.</p>
-        <p class="src">CoinGecko, 2026 RWA Report, pp. 16 and 17. <a href="https://assets.coingecko.com/reports/2026/CoinGecko-2026-RWA-Report.pdf" target="_blank" rel="noopener">Report (PDF)</a></p>
-      </div>
+    <div class="out">
+      <p><span class="vh">Does not count: </span>An endorsement. A citation is a use of the work, not a recommendation of me.</p>
+      <p class="q">Independent use, on this row. I was a named reviewer, so it is work I took part in.</p>
     </div>
+  </div>
 
-    <div class="row" id="proof-academic">
-      <h3 class="key inst">Academic</h3>
-      <div class="val">
-        <p class="claim">Used as an external selection criterion in peer research</p>
-        <blockquote><p>“The taxonomy was applied to the twenty largest tokenized real-world asset protocols listed on DeFiLlama's RWA dashboard… The use of DeFiLlama provides an external selection criterion and reduces arbitrariness in the construction of the sample.”</p></blockquote>
-        <p class="src">Vella, Pennella and Ballandies, “A Taxonomy of Real-World Asset Tokenization for Blockchain-Based Financial Infrastructure”, arXiv:2606.08534, June 2026. <a href="https://arxiv.org/abs/2606.08534" target="_blank" rel="noopener">Paper</a></p>
-      </div>
+  <div class="pair" id="proof-citi">
+    <div class="in">
+      <h3>Citi Institute <span class="when">June 2026, p.19</span></h3>
+      <p>Sourced its market size figure to DefiLlama.</p>
+      <blockquote><p>“The global tokenization market for financial assets is estimated at $17 billion, according to DefiLlama in April 2026, up about 3x from just a year ago.”</p></blockquote>
+      <span class="src">“Wall Street On-Chain: Tokenization 2030”, June 2026, p.19. <a href="https://www.citigroup.com/rcs/citigpa/storage/public/Citi_Institute_GPS_Report_Tokenization_2030.pdf" target="_blank" rel="noopener">Report (PDF)</a></span>
     </div>
+    <div class="out"><p><span class="vh">Does not count: </span>Personal credit, on this row and the two below it. All three name DefiLlama, where the data is published.</p></div>
+  </div>
 
-    <div class="row" id="proof-rwaf">
-      <h3 class="key inst">RWA Foundation</h3>
-      <p class="rel">Contributed: I arranged the partnership</p>
-      <div class="val">
-        <p class="claim">Uses the perpetuals data in its own reporting</p>
-        <p>I arranged the data partnership that put DefiLlama's RWA perpetuals figures into the RWA Foundation's published work on the category.</p>
-      </div>
+  <div class="pair" id="proof-coingecko">
+    <div class="in">
+      <h3>CoinGecko <span class="when">2026, pp. 16 and 17</span></h3>
+      <p>Measures its RWA chain chart in <a href="#m-active-market-cap">Active Market Cap</a>, sourced to DefiLlama.</p>
+      <p>The 2026 RWA Report sources its RWA-chains and on-chain private-credit sections to DefiLlama, and its chain chart measures daily active market capitalization, the metric I defined.</p>
+      <span class="src">CoinGecko, 2026 RWA Report, pp. 16 and 17. <a href="https://assets.coingecko.com/reports/2026/CoinGecko-2026-RWA-Report.pdf" target="_blank" rel="noopener">Report (PDF)</a></span>
     </div>
+    <div class="out"></div>
+  </div>
 
-    <div class="row" id="proof-press">
-      <h3 class="key inst">In press</h3>
-      <div class="val">
-        <p>CoinDesk links the perpetuals dashboard for its headline open-interest figure. The treasury flow series became a recurring beat at Cointelegraph, Decrypt, BeInCrypto and The Defiant, syndicated to Yahoo Finance. CryptoSlate runs DeFi Active TVL as a column heading in its own reporting, and the measures have crossed into Spanish-language coverage.</p>
-        <p class="src"><a href="https://cryptoslate.com/wall-street-put-7b-into-tokenized-funds-but-under-1-is-actually-being-used-in-defi/" target="_blank" rel="noopener">CryptoSlate, August 2026</a> · <a href="https://www.criptonoticias.com/tecnologia/informe-tokenizacion-uso-real-defi-dlresearch-defillama/" target="_blank" rel="noopener">CriptoNoticias, April 2026</a></p>
-      </div>
+  <div class="pair" id="proof-academic">
+    <div class="in">
+      <h3>Academic <span class="when">June 2026</span></h3>
+      <p>Used as an external selection criterion in peer research.</p>
+      <blockquote><p>“The taxonomy was applied to the twenty largest tokenized real-world asset protocols listed on DeFiLlama's RWA dashboard… The use of DeFiLlama provides an external selection criterion and reduces arbitrariness in the construction of the sample.”</p></blockquote>
+      <span class="src">Vella, Pennella and Ballandies, “A Taxonomy of Real-World Asset Tokenization for Blockchain-Based Financial Infrastructure”, arXiv:2606.08534, June 2026. <a href="https://arxiv.org/abs/2606.08534" target="_blank" rel="noopener">Paper</a></span>
     </div>
-  </section>
+    <div class="out"></div>
+  </div>
 
-  <section id="metrics">
-    <div class="sec-head">
-      <h2>Metrics I defined</h2>
-      <p class="sec-note">Definitions, and where each one is used by someone else.</p>
+  <div class="pair" id="proof-rwaf">
+    <div class="in">
+      <h3>RWA Foundation</h3>
+      <p>Uses the perpetuals data in its own reporting. DefiLlama's RWA perpetuals figures appear in the RWA Foundation's published work on the category.</p>
     </div>
-    <dl class="defs">
-      <div id="m-onchain-market-cap"><dt>Onchain Market Cap</dt><dd>Onchain Market Cap is circulating supply, excluding burned, at reference price.</dd></div>
-      <div id="m-active-market-cap"><dt>Active Market Cap</dt><dd>Active Market Cap is the portion of Onchain Market Cap in user or protocol hands, excluding issuer and custody wallets. The operational test: would compromising this wallet let someone extract meaningful value?<span class="cited">Cited in <a href="#proof-coingecko">CoinGecko</a></span></dd></div>
-      <div id="m-defi-active-tvl"><dt>DeFi Active TVL</dt><dd>DeFi Active TVL is the subset of Active Market Cap deployed in third-party DeFi protocols, excluding issuer-managed contracts.<span class="cited">Cited in <a href="#proof-pantera">Pantera Capital</a> and <a href="#proof-press">CryptoSlate</a></span></dd></div>
-      <div id="m-utilization"><dt>Utilization</dt><dd>Utilization is DeFi Active TVL divided by Onchain Market Cap, as a percentage. It is not lending-market utilization, which is borrowed over supplied.</dd></div>
-      <div id="m-flows"><dt>Net Flows, Flow vs Price, Capital Rotation</dt><dd>These separate minting and redemption from repricing. For an asset like tokenized gold, where supply is flat and the price moves, that separation is what tells a flow from a price change.</dd></div>
-      <div id="m-mnav"><dt>mNAV: Realized, Realistic, Maximum</dt><dd>mNAV is reported in three variants, Realized, Realistic and Maximum, in place of the single figure the market was trading on, which hid future share issuance.</dd></div>
-    </dl>
-  </section>
+    <div class="out"><p><span class="vh">Does not count: </span>An independent pickup. I arranged the data partnership.</p></div>
+  </div>
 
-  <section id="services">
-    <div class="sec-head">
-      <h2>What I do</h2>
-      <p class="sec-note">Four kinds of engagement, with the evidence for each linked rather than asserted.</p>
+  <div class="pair" id="proof-press">
+    <div class="in">
+      <h3>In press</h3>
+      <p>CoinDesk links the perpetuals dashboard for its headline open-interest figure. The treasury flow series became a recurring beat at Cointelegraph, Decrypt, BeInCrypto and The Defiant, syndicated to Yahoo Finance. CryptoSlate runs DeFi Active TVL as a column heading in its own reporting, and the measures have crossed into Spanish-language coverage.</p>
+      <span class="src"><a href="https://cryptoslate.com/wall-street-put-7b-into-tokenized-funds-but-under-1-is-actually-being-used-in-defi/" target="_blank" rel="noopener">CryptoSlate, August 2026</a> · <a href="https://www.criptonoticias.com/tecnologia/informe-tokenizacion-uso-real-defi-dlresearch-defillama/" target="_blank" rel="noopener">CriptoNoticias, April 2026</a></span>
     </div>
+    <div class="out"></div>
+  </div>
+</section>
 
-    <div class="svc">
-      <div>
-        <h3>Fractional research</h3>
-        <p>Market structure, methodology design and primary-source analysis for teams that need research depth without a full-time hire. I write the specification, build the dataset and defend the numbers.</p>
-        <p class="ev">Evidence: <a href="#work">the methodology and data dictionary</a></p>
-      </div>
-      <div>
-        <h3>Research retainers for funds</h3>
-        <p>Recurring coverage of real-world assets, tokenized equities and digital asset treasuries, with the sourcing trail attached. Two consecutive editions of Pantera&#8217;s State of Tokenization credit my review, and one adopted a metric I defined.</p>
-        <p class="ev">Evidence: <a href="#proof-pantera">Pantera Capital</a></p>
-      </div>
-      <div>
-        <h3>Standards readiness for issuers</h3>
-        <p>A product that is mismeasured or missing from the dashboards the market reads usually has a schema or evidence gap. I wrote the inclusion rules at DefiLlama, so I can identify which criterion a product fails and what closing it would take. Schema conformance and attestation standards. DefiLlama makes every inclusion and classification decision, I have no say in them, and no engagement with me changes that.</p>
-        <p class="ev">Evidence: <a href="#work">the published inclusion and exclusion criteria</a></p>
-      </div>
-      <div>
-        <h3>Expert networks and advisory</h3>
-        <p>Calls and written work on RWA taxonomy, treasury company valuation, perpetuals market structure and how the category's data actually gets assembled.</p>
-        <p class="ev">Evidence: <a href="#metrics">the metrics</a> and <a href="#writing">the Indexed episode</a></p>
-      </div>
+<!-- ============ built at DefiLlama ============ -->
+<section id="work" aria-labelledby="h-work">
+  <div class="pair group">
+    <div class="in"><h2 id="h-work">Built at DefiLlama</h2><p class="q">August 2025 to September 2026. Zero to one on all three.</p></div>
+    <div class="out"><p class="h2" aria-hidden="true">What was left out</p></div>
+  </div>
+
+  <div class="pair">
+    <div class="in">
+      <h3>RWA dashboard</h3>
+      <p>DefiLlama's view of tokenized real-world assets, generated from a registry I built and maintained. More than 9,000 tracked assets and markets across 116 fields, spanning 450+ issuers, 330+ platforms and 170+ blockchains.</p>
+      <p>Running the whole registry against the classification bar produced one clear finding: under 20% of the tokens marketed as real-world assets clear the transferable, self-custodial, redeemable and verified test.</p>
+      <span class="src"><a href="https://defillama.com/rwa" target="_blank" rel="noopener">defillama.com/rwa</a></span>
     </div>
+    <div class="out"><p><span class="vh">Does not count: </span>The build. I authored the public methodology. DefiLlama's engineers built the dashboards to those specifications.</p></div>
+  </div>
 
-    <div class="aside">
-      <p>The dashboards and the methodology are public and free to use. An engagement applies the same classification bar to the assets, issuers or companies you name, and documents where the published numbers are weak for your particular purpose.</p>
+  <div class="pair">
+    <div class="in">
+      <h3>RWA perpetuals</h3>
+      <p>An aggregate view of real-world-asset perpetuals. It covers equities, indices, ETFs, commodities, bonds and forex, broken out by venue and asset group. Markets are normalized to common reference assets through a 17-field market schema, and each one carries a canonical market ID, so the same underlying stays comparable across venues that name contracts differently.</p>
+      <dl class="figs">
+        <div><dt>1,000+</dt><dd>active markets, onchain default view</dd></div>
+        <div><dt>3,300+</dt><dd>with centralized exchanges</dd></div>
+        <div><dt>17</dt><dd>fields in the market schema</dd></div>
+        <div><dt>75+</dt><dd>markets in the forex book</dd></div>
+      </dl>
+      <span class="src"><a href="https://defillama.com/rwa/perps" target="_blank" rel="noopener">defillama.com/rwa/perps</a></span>
     </div>
-  </section>
+    <div class="out"><p><span class="vh">Does not count: </span>Each venue's own front end. Before this the data lived only there, with no way to compare across them.</p></div>
+  </div>
 
-  <section id="work">
-    <div class="sec-head">
-      <h2>Built at DefiLlama</h2>
-      <p class="sec-note">August 2025 to September 2026. Zero to one on all three.</p>
+  <div class="pair">
+    <div class="in">
+      <h3>Digital asset treasuries</h3>
+      <p>Nearly 100 listed companies, with every purchase traced to the filing it came from. These companies were widely quoted on a single mNAV figure that hid future share issuance. I replaced it with three defensible variants.</p>
     </div>
-
-
-    <div class="row">
-      <div class="key">RWA dashboard</div>
-      <div class="val">
-        <p>DefiLlama's view of tokenized real-world assets, generated from a registry I built and maintained. More than 9,000 tracked assets and markets across 116 fields, spanning 450+ issuers, 330+ platforms and 170+ blockchains.</p>
-        <p>Running the whole registry against the classification bar produced one clear finding: <strong>fewer than one in five tokens marketed as real-world assets clear the transferable, self-custodial, redeemable and verified test.</strong> The rest are better described as programmable finance.</p>
-        <p class="src"><a href="https://defillama.com/rwa" target="_blank" rel="noopener">defillama.com/rwa</a></p>
-      </div>
+    <div class="out"></div>
+  </div>
+  <div class="pair versus">
+    <div class="in">
+      <p class="bigfig">2.42x</p>
+      <p>where the same company can sit once contractual dilution is counted</p>
+      <span class="src"><a href="https://defillama.com/digital-asset-treasuries" target="_blank" rel="noopener">defillama.com/digital-asset-treasuries</a></span>
     </div>
-
-    <div class="row">
-      <div class="key">RWA perpetuals</div>
-      <div class="val">
-        <p>An aggregate view of real-world-asset perpetuals. Before it the data lived only inside each venue's own front end with no way to compare across them. It covers equities, indices, ETFs, commodities, bonds and forex, broken out by venue and asset group. Markets are normalized to common reference assets through a 17-field market schema, and each one carries a canonical market ID, so the same underlying stays comparable across venues that name contracts differently.</p>
-        <dl class="spec">
-          <div><dt>Active markets, onchain default view</dt><dd>1,000+</dd></div>
-          <div><dt>With centralized exchanges</dt><dd>3,300+</dd></div>
-          <div><dt>Market schema</dt><dd>17 fields</dd></div>
-          <div><dt>Forex book</dt><dd>75+ markets</dd></div>
-        </dl>
-        <p class="src"><a href="https://defillama.com/rwa/perps" target="_blank" rel="noopener">defillama.com/rwa/perps</a></p>
-      </div>
+    <div class="out">
+      <p class="bigfig"><span class="vh">Does not count: </span>0.33x</p>
+      <p>the single figure a company was quoted at</p>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="key">Digital asset treasuries</div>
-      <div class="val">
-        <p>Nearly 100 listed companies, with every purchase traced to the filing it came from. These companies were widely quoted on a single mNAV figure that hid future share issuance. I replaced it with three defensible variants and showed that a company quoted at 0.33x can sit at 2.42x once contractual dilution is counted.</p>
-        <p class="src"><a href="https://defillama.com/digital-asset-treasuries" target="_blank" rel="noopener">defillama.com/digital-asset-treasuries</a></p>
-      </div>
+  <div class="pair">
+    <div class="in">
+      <h3>Methodology</h3>
+      <p>Sole author of the public documentation: eligibility and exclusion criteria, metrics, definitions and taxonomy, the perpetuals spec and a standalone treasury methodology, plus a public data dictionary, with expulsion rules and a review status short of removal.</p>
+      <dl class="figs five">
+        <div><dt>5</dt><dd>inclusion criteria</dd></div>
+        <div><dt>6</dt><dd>exclusion criteria</dd></div>
+        <div><dt>7</dt><dd>evidence flags</dd></div>
+        <div><dt>5</dt><dd>access models</dd></div>
+        <div><dt>29</dt><dd>columns in the data dictionary</dd></div>
+      </dl>
+      <p>Also the fee and revenue methodology that made issuer economics comparable across assets: an identity equation splitting holder fees between asset manager and tokenization platform, with every estimate carrying a confidence grade and a dated primary-source audit trail.</p>
+      <span class="src"><a href="https://docs.llama.fi/real-world-assets/real-world-assets" target="_blank" rel="noopener">docs.llama.fi/real-world-assets/real-world-assets</a> · <a href="https://docs.llama.fi/analysts/dat-methodology" target="_blank" rel="noopener">docs.llama.fi/analysts/dat-methodology</a></span>
     </div>
-
-    <div class="row">
-      <div class="key">Methodology</div>
-      <div class="val">
-        <p>Sole author of the public documentation: eligibility and exclusion criteria, metrics, definitions and taxonomy, the perpetuals spec and a standalone treasury methodology, plus a 29-column public data dictionary. Five inclusion criteria, six exclusion criteria, seven evidence flags and five access models, with expulsion rules and a review status short of removal.</p>
-        <p>Also the fee and revenue methodology that made issuer economics comparable across assets: an identity equation splitting holder fees between asset manager and tokenization platform, a blank-versus-zero rule separating unresearched from verified-no-fee, and every estimate carrying a confidence grade and a dated primary-source audit trail. Primary sources always win over aggregators.</p>
-        <p class="src"><a href="https://docs.llama.fi/real-world-assets/real-world-assets" target="_blank" rel="noopener">docs.llama.fi/real-world-assets/real-world-assets</a> · <a href="https://docs.llama.fi/analysts/dat-methodology" target="_blank" rel="noopener">docs.llama.fi/analysts/dat-methodology</a></p>
-      </div>
+    <div class="out">
+      <p><span class="vh">Does not count: </span>An aggregator's figure. Primary sources always win over aggregators.</p>
+      <p class="q">A blank read as a zero. The blank-versus-zero rule separates unresearched from verified no fee.</p>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="key">Arbitration</div>
-      <div class="val">
-        <p>DefiLlama declined to list an asset with a claimed $10B+ because its backing could not be verified onchain. I ran the assessment, under exclusion criteria I had written. DefiLlama made the decision.</p>
-      </div>
+  <div class="pair">
+    <div class="in">
+      <h3>Arbitration</h3>
+      <p>DefiLlama declined to list an asset with a claimed $10B+ because its backing could not be verified onchain. I ran the assessment, under exclusion criteria I had written.</p>
     </div>
+    <div class="out"><p><span class="vh">Does not count: </span>The decision. DefiLlama made it.</p></div>
+  </div>
 
-    <div class="row">
-      <div class="key">Role</div>
-      <div class="val">
-        <p>Listed publicly on Llama Corp, DefiLlama's parent company, as <strong>Meta (DAT &amp; RWA)</strong>.</p>
-        <p class="src"><a href="https://llama-corp.com/" target="_blank" rel="noopener">llama-corp.com</a></p>
-      </div>
+  <div class="pair">
+    <div class="in">
+      <h3>Role</h3>
+      <p>Listed publicly on Llama Corp, DefiLlama's parent company, as <b>Meta (DAT &amp; RWA)</b>.</p>
+      <span class="src"><a href="https://llama-corp.com/" target="_blank" rel="noopener">llama-corp.com</a></span>
     </div>
-  </section>
+    <div class="out"><p><span class="vh">Does not count: </span>A current post. Not affiliated with DefiLlama since September 2026.</p></div>
+  </div>
+</section>
 
-    <section id="writing">
-    <div class="sec-head">
-      <h2>Writing and speaking</h2>
-      <p class="sec-note">Published work and appearances.</p>
+<!-- ============ writing ============ -->
+<section id="writing" aria-labelledby="h-writing">
+  <div class="pair group">
+    <div class="in"><h2 id="h-writing">Writing and speaking</h2></div>
+    <div class="out"><p class="h2" aria-hidden="true">Where it ran</p></div>
+  </div>
+
+  <div class="pair">
+    <div class="in">
+      <h3>Meta (ex-DeFiLlama) on the Future of Real World Assets <span class="when">October 2026</span></h3>
+      <p>Guest for an hour on the real-world-asset market and a full tour of the DefiLlama RWA dashboard. Also listed as “The RWA Boom: How Much Is Actually Being Used?”.</p>
     </div>
-
-    <div class="row">
-      <div class="key">Oct 2026</div>
-      <div class="val">
-        <h3 class="title-line">Meta (ex-DeFiLlama) on the Future of Real World Assets</h3>
-        <p>Guest on <strong>Indexed</strong>, the crypto data podcast, for an hour on the real-world-asset market and a full tour of the DefiLlama RWA dashboard. Hosted by Danning Sui, Research Director at Pantera Capital, with Boxer of Dune and Hildobby of Dragonfly.</p>
-        <p class="src">Also listed as “The RWA Boom: How Much Is Actually Being Used?”. <a href="https://www.youtube.com/watch?v=vJGZZO2zHBs" target="_blank" rel="noopener">YouTube</a> · <a href="https://open.spotify.com/episode/4dSF2ndTNkIFONGfNoxc0y" target="_blank" rel="noopener">Spotify</a> · <a href="https://www.indexedpod.com/" target="_blank" rel="noopener">indexedpod.com</a></p>
-      </div>
+    <div class="out">
+      <p><span class="vh">Where it ran: </span>Indexed, the crypto data podcast. Hosted by Danning Sui, Research Director at Pantera Capital, with Boxer of Dune and Hildobby of Dragonfly.</p>
+      <span class="src"><a href="https://www.youtube.com/watch?v=vJGZZO2zHBs" target="_blank" rel="noopener">YouTube</a> · <a href="https://open.spotify.com/episode/4dSF2ndTNkIFONGfNoxc0y" target="_blank" rel="noopener">Spotify</a> · <a href="https://www.indexedpod.com/" target="_blank" rel="noopener">indexedpod.com</a></span>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="key">Oct 2025</div>
-      <div class="val">
-        <h3 class="title-line"><a href="https://www.dlnews.com/articles/llama-u/crypto-digital-asset-treasury-mnav-strategy/" target="_blank" rel="noopener">The Digital Asset Treasury Playbook: How to Print, Buy and Compound to ‘Alchemise’ mNAV into a Market Engine</a></h3>
-        <p class="src">DL News. Syndicated to Yahoo Finance.</p>
-      </div>
+  <div class="pair">
+    <div class="in">
+      <h3><a href="https://www.dlnews.com/articles/llama-u/crypto-digital-asset-treasury-mnav-strategy/" target="_blank" rel="noopener">The Digital Asset Treasury Playbook: How to Print, Buy and Compound to ‘Alchemise’ mNAV into a Market Engine</a> <span class="when">October 2025</span></h3>
     </div>
+    <div class="out"><p><span class="vh">Where it ran: </span>DL News. Syndicated to Yahoo Finance.</p></div>
+  </div>
 
-    <div class="row">
-      <div class="key">Sep 2025</div>
-      <div class="val">
-        <h3 class="title-line"><a href="https://www.dlnews.com/articles/llama-u/hype-dat-ecosystem-case-study-for-mnav/" target="_blank" rel="noopener">What is mNAV? How to calculate and trade it? Your DefiLlama guide to the metric for digital asset treasuries</a></h3>
-        <p class="src">DL News. Syndicated to Yahoo Finance, BNC Times and Meme Insider.</p>
-      </div>
+  <div class="pair">
+    <div class="in">
+      <h3><a href="https://www.dlnews.com/articles/llama-u/hype-dat-ecosystem-case-study-for-mnav/" target="_blank" rel="noopener">What is mNAV? How to calculate and trade it? Your DefiLlama guide to the metric for digital asset treasuries</a> <span class="when">September 2025</span></h3>
     </div>
-  </section>
+    <div class="out"><p><span class="vh">Where it ran: </span>DL News. Syndicated to Yahoo Finance, BNC Times and Meme Insider.</p></div>
+  </div>
+</section>
 
-  <section id="now">
-    <div class="sec-head">
-      <h2>Interests I hold</h2>
-      <p class="sec-note">Current work alongside independent engagements. Listed because I measure this market and you should know where I stand in it.</p>
+<!-- ============ engagement ============ -->
+<section id="services" aria-labelledby="h-services">
+  <div class="pair group">
+    <div class="in"><h2 id="h-services">On offer</h2></div>
+    <div class="out"><p class="h2" aria-hidden="true">Not on offer</p></div>
+  </div>
+
+  <div class="pair">
+    <div class="in">
+      <p>An engagement applies the same classification bar to the assets, issuers or companies you name, and documents where the published numbers are weak for your particular purpose.</p>
     </div>
+    <div class="out"><p><span class="vh">Does not count: </span>The data itself. The dashboards and the methodology are public and free to use.</p></div>
+  </div>
 
-    <div class="row">
-      <div class="key">Emergent LabZ</div>
-      <div class="val">
-        <h3 class="title-line">Co-principal</h3>
-        <p>A crypto research, investment and incubation firm I run with <a href="https://x.com/zlerp" target="_blank" rel="noopener">@zlerp</a>.</p>
-        <p class="src"><a href="https://www.emergentlabz.com/" target="_blank" rel="noopener">emergentlabz.com</a></p>
-      </div>
+  <div class="pair">
+    <div class="in">
+      <h3>Fractional research</h3>
+      <p>Market structure, methodology design and primary-source analysis for teams that need research depth without a full-time hire. I write the specification, build the dataset and defend the numbers.</p>
+      <span class="src">Evidence: <a href="#work">the methodology and data dictionary</a></span>
     </div>
+    <div class="out"></div>
+  </div>
 
-    <div class="row">
-      <div class="key">Goo Exchange</div>
-      <div class="val">
-        <h3 class="title-line">Advisor, business development, stakeholder and treasury signer</h3>
-        <p>A decentralized exchange for tokenized stocks on Robinhood Chain. Involved since before launch and one of three signers on the project treasury.</p>
-        <p>I advise on product and growth, and I run business development. The launchpad exists because I proposed it. I brought in the specialists who handled search and AI-search optimization, and I mapped the aggregator landscape the exchange needed to be listed across, so the founder could take the integrations forward.</p>
-        <p>The chain whose real-world-asset activity I was measuring at DefiLlama is now the one I help build trading infrastructure on.</p>
-        <p class="src"><a href="https://goo.exchange/" target="_blank" rel="noopener">goo.exchange</a></p>
-      </div>
+  <div class="pair">
+    <div class="in">
+      <h3>Research retainers for funds</h3>
+      <p>Recurring coverage of real-world assets, tokenized equities and digital asset treasuries, with the sourcing trail attached. Two consecutive editions of Pantera’s State of Tokenization credit my review, and one adopted a metric I defined.</p>
+      <span class="src">Evidence: <a href="#proof-pantera">Pantera Capital</a></span>
     </div>
+    <div class="out"></div>
+  </div>
 
-    <div class="row">
-      <div class="key">Strategic Sealed Packz</div>
-      <div class="val">
-        <h3 class="title-line">Co-founder</h3>
-        <p>Sealed Pokemon packs held in vaults and tokenized on Solana, with Magic and sports products planned.</p>
-        <p>It is a digital asset treasury in everything but the asset. A vehicle holds a reserve, a token trades against it, and a trading fee routes most of its proceeds into buying more of the reserve. There is no redemption right, so a holder gets exposure to the vault rather than a claim on a particular pack.</p>
-        <p>That structure is the one I measure. An automated engine acts by <a href="#m-mnav">mNAV</a> band on the gap between the token and the vault, which is the framework I built for listed treasury companies pointed at a shelf of sealed cardboard instead of a balance sheet of crypto. I spent a year building the dashboard that tracks nearly a hundred listed ones before co-founding an unlisted one.</p>
-        <p>By the classification bar I wrote at DefiLlama it is not a real-world asset, since redeemability is one of the four criteria and there is none here. Treasury vehicle is the accurate label, and it is the one I use.</p>
-        <p class="src"><a href="https://www.sealedpackz.com/" target="_blank" rel="noopener">sealedpackz.com</a></p>
-      </div>
+  <div class="pair">
+    <div class="in">
+      <h3>Standards readiness for issuers</h3>
+      <p>A product that is mismeasured or missing from the dashboards the market reads usually has a schema or evidence gap. I wrote the inclusion rules at DefiLlama, so I can identify which criterion a product fails and what closing it would take. Schema conformance and attestation standards.</p>
+      <span class="src">Evidence: <a href="#work">the published inclusion and exclusion criteria</a></span>
     </div>
+    <div class="out"><p><span class="vh">Does not count: </span>A listing. DefiLlama makes every inclusion and classification decision. I have no say in them, and no engagement with me changes that.</p></div>
+  </div>
 
-    <div class="row">
-      <div class="key">WacDonald's</div>
-      <div class="val">
-        <h3 class="title-line">Co-founder</h3>
-        <p>Cryptopoly, an onchain interactive art experience. An ERC-721 collection of 8,889 tiles across 37 entries in 17 categories, laid out on a 40-square board. Still pre-mainnet.</p>
-        <p class="src"><a href="https://wacdonalds.io/" target="_blank" rel="noopener">wacdonalds.io</a></p>
-      </div>
+  <div class="pair">
+    <div class="in">
+      <h3>Expert networks and advisory</h3>
+      <p>Calls and written work on RWA taxonomy, treasury company valuation, perpetuals market structure and how the category's data actually gets assembled.</p>
+      <span class="src">Evidence: <a href="#metrics">the metrics</a> and <a href="#writing">the Indexed episode</a></span>
     </div>
-  </section>
+    <div class="out"><p><span class="vh">Does not count: </span>Investment advice. Nothing on this page is any.</p></div>
+  </div>
+</section>
 
-  <section id="earlier">
-    <div class="sec-head">
-      <h2>Earlier</h2>
-      <p class="sec-note">Ten years of building in this market.</p>
+<!-- ============ interests ============ -->
+<section id="now" aria-labelledby="h-now">
+  <div class="pair group">
+    <div class="in"><h2 id="h-now">Interests I hold</h2><p class="q">Current work alongside independent engagements. Listed because I measure this market and you should know where I stand in it.</p></div>
+    <div class="out"><p class="h2" aria-hidden="true">What each is not</p></div>
+  </div>
+
+  <div class="pair">
+    <div class="in">
+      <h3>Emergent LabZ</h3>
+      <p class="role">Co-principal</p>
+      <p>A crypto research, investment and incubation firm I run with <a href="https://x.com/zlerp" target="_blank" rel="noopener">@zlerp</a>.</p>
+      <span class="src"><a href="https://www.emergentlabz.com/" target="_blank" rel="noopener">emergentlabz.com</a></span>
     </div>
+    <div class="out"><p><span class="vh">Does not count: </span>A disinterested view. I hold an interest in each project listed here.</p></div>
+  </div>
 
-    <div class="row">
-      <div class="key">2025</div>
-      <div class="val">
-        <h3 class="title-line">Crypto Stock Tracker, co-creator</h3>
-        <p>A digital-asset-treasury dashboard covering corporate crypto holdings beyond BTC, ETH and SOL. Concept to live product in about a month. DefiLlama acqui-hired me on the strength of it.</p>
-      </div>
+  <div class="pair">
+    <div class="in">
+      <h3>Goo Exchange</h3>
+      <p class="role">Advisor, business development, stakeholder and treasury signer</p>
+      <p>A decentralized exchange for tokenized stocks on Robinhood Chain. Involved since before launch and one of three signers on the project treasury.</p>
+      <p>I advise on product and growth, and I run business development. The launchpad exists because I proposed it. I brought in the specialists who handled search and AI-search optimization, and I mapped the aggregator landscape the exchange needed to be listed across.</p>
+      <p>The chain whose real-world-asset activity I was measuring at DefiLlama is now the one I help build trading infrastructure on.</p>
+      <span class="src"><a href="https://goo.exchange/" target="_blank" rel="noopener">goo.exchange</a></span>
     </div>
+    <div class="out"><p><span class="vh">Does not count: </span>The integrations themselves. The founder took those forward.</p></div>
+  </div>
 
-    <div class="row">
-      <div class="key">2022</div>
-      <div class="val">
-        <h3 class="title-line">Story Block, co-creator and project lead</h3>
-        <p>An all-onchain collaborative narrative NFT on Ethereum. Each mint appends one sentence at the next token ID, with fully onchain SVG concatenated and re-rendered from contract state, editable after mint, with editing rights transferring on secondary sale. Launched August 2022 and still mintable.</p>
-        <p class="src"><a href="https://story-block.com/" target="_blank" rel="noopener">story-block.com</a> · <a href="https://opensea.io/collection/story-block" target="_blank" rel="noopener">OpenSea</a> · <a href="https://etherscan.io/address/0x0e85f0ebe129d184e6631c53348ae2746640d4b5" target="_blank" rel="noopener">Contract</a> · <a href="https://etherscan.io/token/0x0e85f0ebe129d184e6631c53348ae2746640d4b5#code" target="_blank" rel="noopener">Verified source</a></p>
-      </div>
+  <div class="pair">
+    <div class="in">
+      <h3>Strategic Sealed Packz</h3>
+      <p class="role">Co-founder</p>
+      <p>Sealed Pokemon packs held in vaults and tokenized on Solana, with Magic and sports products planned.</p>
+      <p>It is a digital asset treasury in everything but the asset. A vehicle holds a reserve, a token trades against it, and a trading fee routes most of its proceeds into buying more of the reserve.</p>
+      <p>That structure is the one I measure. An automated engine acts by <a href="#m-mnav">mNAV</a> band on the gap between the token and the vault, which is the framework I built for listed treasury companies pointed at a shelf of sealed cardboard instead of a balance sheet of crypto. I spent a year building the dashboard that tracks nearly a hundred listed ones before co-founding an unlisted one.</p>
+      <p>Treasury vehicle is the accurate label, and it is the one I use.</p>
+      <span class="src"><a href="https://www.sealedpackz.com/" target="_blank" rel="noopener">sealedpackz.com</a></span>
     </div>
-
-    <div class="row">
-      <div class="key">2022–2024</div>
-      <div class="val">
-        <h3 class="title-line">Radbro Webring, researcher and contributor</h3>
-        <p>Research, analysis and educational content across the ecosystem, including work on SCHIZOPOSTERS that influenced the Radbro Ordinals collection and Rune #925 RADBRO•WEBRING, among the first 1,000 runes etched on Bitcoin.</p>
-      </div>
+    <div class="out">
+      <p><span class="vh">Does not count: </span>A real-world asset. By the classification bar I wrote at DefiLlama it is not one, since redeemability is one of the four criteria and there is none here.</p>
+      <p class="q">A claim on a particular pack. There is no redemption right, so a holder gets exposure to the vault.</p>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="key">2017–2019</div>
-      <div class="val">
-        <h3 class="title-line">Crypto Corp and Built by Coins, co-founder</h3>
-        <p>An ICO pool management tool used through 2018, and 24hourcrypto, a crypto news aggregator with sentiment analytics, whose sentiment engine I helped design. Built by Coins was a crypto education site offering one-to-one tutoring, started December 2017 and wound down in 2019.</p>
-      </div>
+  <div class="pair">
+    <div class="in">
+      <h3>WacDonald's</h3>
+      <p class="role">Co-founder</p>
+      <p>Cryptopoly, an onchain interactive art experience. An ERC-721 collection of 8,889 tiles across 37 entries in 17 categories, laid out on a 40-square board.</p>
+      <span class="src"><a href="https://wacdonalds.io/" target="_blank" rel="noopener">wacdonalds.io</a></span>
     </div>
-  </section>
+    <div class="out"><p><span class="vh">Does not count: </span>A mainnet launch. Still pre-mainnet.</p></div>
+  </div>
+</section>
 
-  <section class="cta" id="contact">
-    <h2>Contact</h2>
-    <p class="avail">Taking fractional research contracts, fund retainers, issuer engagements and expert network calls.</p>
-    <p class="brief">Three lines help: the decision the work would inform, who will read it, and when you need it.</p>
-    <div class="contacts">
-      <div><span class="k">Email</span><span class="v"><a href="mailto:themetaisok@gmail.com">themetaisok@gmail.com</a></span></div>
-      <div><span class="k">X</span><span class="v"><a href="https://x.com/themetaisok" target="_blank" rel="noopener">@themetaisok</a></span></div>
-      <div><span class="k">Telegram</span><span class="v"><a href="https://t.me/themetaisok" target="_blank" rel="noopener">@themetaisok</a></span></div>
-      <div><span class="k">Emergent LabZ</span><span class="v"><a href="https://www.emergentlabz.com/" target="_blank" rel="noopener">emergentlabz.com</a></span></div>
+<!-- ============ earlier ============ -->
+<section id="earlier" aria-labelledby="h-earlier">
+  <div class="pair group">
+    <div class="in"><h2 id="h-earlier">Earlier</h2><p class="q">Ten years of building in this market.</p></div>
+    <div class="out"><p class="h2" aria-hidden="true">What came of it</p></div>
+  </div>
+
+  <div class="pair">
+    <div class="in">
+      <h3>Crypto Stock Tracker, co-creator <span class="when">2025</span></h3>
+      <p>A digital-asset-treasury dashboard covering corporate crypto holdings beyond BTC, ETH and SOL. Concept to live product in about a month.</p>
     </div>
-  </section>
+    <div class="out"><p><span class="vh">What came of it: </span>DefiLlama acqui-hired me on the strength of it.</p></div>
+  </div>
 
-  </main>
+  <div class="pair">
+    <div class="in">
+      <h3>Story Block, co-creator and project lead <span class="when">2022</span></h3>
+      <p>An all-onchain collaborative narrative NFT on Ethereum. Each mint appends one sentence at the next token ID, with fully onchain SVG concatenated and re-rendered from contract state, editable after mint, with editing rights transferring on secondary sale.</p>
+      <span class="src"><a href="https://story-block.com/" target="_blank" rel="noopener">story-block.com</a> · <a href="https://opensea.io/collection/story-block" target="_blank" rel="noopener">OpenSea</a> · <a href="https://etherscan.io/address/0x0e85f0ebe129d184e6631c53348ae2746640d4b5" target="_blank" rel="noopener">Contract</a> · <a href="https://etherscan.io/token/0x0e85f0ebe129d184e6631c53348ae2746640d4b5#code" target="_blank" rel="noopener">Verified source</a></span>
+    </div>
+    <div class="out"><p><span class="vh">What came of it: </span>Launched August 2022 and still mintable.</p></div>
+  </div>
 
-  <footer>
-    <span>@themetaisok</span>
-    <span>Figures stated as floors and current to November 2026</span>
-    <span>Not affiliated with DefiLlama or Meta Platforms. I hold an interest in the projects listed under Interests. Nothing here is investment advice.</span>
-  </footer>
+  <div class="pair">
+    <div class="in">
+      <h3>Radbro Webring, researcher and contributor <span class="when">2022 to 2024</span></h3>
+      <p>Research, analysis and educational content across the ecosystem, including work on SCHIZOPOSTERS.</p>
+    </div>
+    <div class="out"><p><span class="vh">What came of it: </span>That work influenced the Radbro Ordinals collection and Rune #925 RADBRO•WEBRING, among the first 1,000 runes etched on Bitcoin.</p></div>
+  </div>
 
-</div>
+  <div class="pair">
+    <div class="in">
+      <h3>Crypto Corp and Built by Coins, co-founder <span class="when">2017 to 2019</span></h3>
+      <p>An ICO pool management tool used through 2018, and 24hourcrypto, a crypto news aggregator with sentiment analytics, whose sentiment engine I helped design. Built by Coins was a crypto education site offering one-to-one tutoring, started December 2017.</p>
+    </div>
+    <div class="out"><p><span class="vh">What came of it: </span>Built by Coins wound down in 2019.</p></div>
+  </div>
+</section>
+
+<!-- ============ contact ============ -->
+<section id="contact" aria-labelledby="h-contact">
+  <div class="pair group">
+    <div class="in"><h2 id="h-contact">Contact</h2></div>
+    <div class="out"></div>
+  </div>
+  <div class="pair end">
+    <div class="in contact">
+      <p>Taking fractional research contracts, fund retainers, issuer engagements and expert network calls.</p>
+      <p class="q">Three lines help: the decision the work would inform, who will read it, and when you need it.</p>
+      <a href="mailto:themetaisok@gmail.com">themetaisok@gmail.com</a>
+      <a href="https://x.com/themetaisok" target="_blank" rel="me noopener">x.com/themetaisok</a>
+      <a href="https://t.me/themetaisok" target="_blank" rel="me noopener">t.me/themetaisok</a>
+      <a href="https://www.emergentlabz.com/" target="_blank" rel="noopener">emergentlabz.com</a>
+    </div>
+    <div class="out">
+      <p>Not affiliated with DefiLlama or Meta Platforms. I hold an interest in the projects listed under Interests. Nothing here is investment advice.</p>
+      <p class="q">Figures stated as floors and current to November 2026.</p>
+    </div>
+  </div>
+</section>
+
+</main>
 
 <script>
 (function () {
   var root = document.documentElement;
   var btn  = document.getElementById("theme-toggle");
   if (!btn) return;
-  var text = btn.querySelector(".theme-text");
   var mq   = window.matchMedia("(prefers-color-scheme: dark)");
 
   function active() {
@@ -904,7 +836,7 @@ footer {
   }
   function label() {
     var next = active() === "dark" ? "light" : "dark";
-    text.textContent = next === "dark" ? "Dark" : "Light";
+    btn.textContent = next === "dark" ? "Dark" : "Light";
     btn.setAttribute("aria-label", "Switch to " + next + " theme");
     btn.setAttribute("title", "Switch to " + next + " theme");
   }
