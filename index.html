@@ -7,9 +7,8 @@
 <link rel="canonical" href="https://themetaisok.com/">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/ibm-plex-mono-latin-500-normal.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/newsreader-latin-400-normal.woff2">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/ibm-plex-sans-latin-400-normal.woff2">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2315181F'/%3E%3Ctext x='32' y='44' font-family='monospace' font-size='40' font-weight='500' fill='%23C8A657' text-anchor='middle'%3E%40%3C/text%3E%3C/svg%3E">
-<meta name="description" content="Meta (@themetaisok) wrote the methodology behind DefiLlama's RWA, perpetuals and treasury dashboards. Independent research for funds and issuers.">
+<meta name="description" content="Independent research on tokenized real-world assets, RWA perpetuals and digital asset treasuries. Meta (@themetaisok) wrote the methodology behind DefiLlama's RWA, perpetuals and treasury dashboards.">
 <meta property="og:title" content="Meta (@themetaisok): independent RWA and digital asset treasury research">
 <meta property="og:description" content="RWA and digital asset treasury data. Built DefiLlama's real-world-asset coverage from zero.">
 <meta property="og:type" content="website">
@@ -24,11 +23,7 @@
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
   <style>
 @font-face{font-family:"Newsreader";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/newsreader-latin-400-normal.woff2") format("woff2")}
-@font-face{font-family:"Newsreader";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/newsreader-latin-500-normal.woff2") format("woff2")}
 @font-face{font-family:"Newsreader";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/newsreader-latin-600-normal.woff2") format("woff2")}
-@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2")}
-@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2")}
-@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/ibm-plex-sans-latin-600-normal.woff2") format("woff2")}
 @font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2")}
 @font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2")}
   </style>
@@ -46,6 +41,12 @@
   --rule-firm:  #B9BDC8;
   --accent:     #7F611C;
   --link:       #1F4A8C;
+
+  /* Two families, one job each. Serif is everything you read.
+     Mono is everything you scan: labels, nav, data, metadata. */
+  --serif: Newsreader, Georgia, "Times New Roman", serif;
+  --mono:  "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
@@ -83,9 +84,9 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.62;
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -113,7 +114,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
   .pfp { width: 56px; height: 56px; }
 }
 .handle {
-  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--mono);
   font-size: clamp(30px, 7vw, 46px);
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -121,7 +122,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
   color: var(--ink);
 }
 .standfirst {
-  font-family: Newsreader, Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(20px, 3.4vw, 27px);
   line-height: 1.38;
   font-weight: 400;
@@ -132,11 +133,31 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 }
 .masthead-meta {
   display: flex; flex-wrap: wrap; gap: 8px 22px;
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--mono);
   font-size: 12.5px;
   color: var(--ink-3);
 }
 .masthead-meta a { color: var(--ink-2); }
+
+.theme-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  background: none;
+  border: 1px solid var(--rule-firm);
+  border-radius: 2px;
+  padding: 1px 9px 2px;
+  cursor: pointer;
+}
+.theme-btn:hover { color: var(--ink); border-color: var(--ink); }
+.theme-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.theme-mark {
+  width: 9px; height: 9px; border-radius: 50%;
+  border: 1px solid currentColor;
+  background: linear-gradient(90deg, currentColor 0 50%, transparent 50% 100%);
+}
 
 /* ---------- sticky section nav ---------- */
 .secnav {
@@ -145,7 +166,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
   background: var(--paper);
   border-bottom: 1px solid var(--rule);
   padding-block: 13px;
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--mono);
   font-size: 12px; letter-spacing: 0.04em;
   scrollbar-width: none;
 }
@@ -167,7 +188,7 @@ section:last-of-type { border-bottom: none; }
   margin-bottom: 26px;
 }
 h2 {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--mono);
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.16em;
@@ -175,7 +196,7 @@ h2 {
   color: var(--accent);
   margin: 0;
 }
-.sec-note { font-size: 13.5px; color: var(--ink-3); margin: 0; }
+.sec-note { font-size: 14.5px; color: var(--ink-3); margin: 0; }
 
 /* section numbering, the way a methodology document is organized */
 main { counter-reset: sec; }
@@ -188,7 +209,7 @@ main > section > .sec-head h2::before {
 /* secondary tiers carry less weight than the proof and the metrics */
 #writing .title-line, #now .title-line, #earlier .title-line { font-size: 17px; }
 #earlier .row { padding-block: 13px; }
-#earlier .val > p:not(.src) { font-size: 14.5px; color: var(--ink-2); }
+#earlier .val > p:not(.src) { font-size: 15.5px; color: var(--ink-2); }
 
 /* field rows: the data-dictionary motif */
 .row {
@@ -200,7 +221,7 @@ main > section > .sec-head h2::before {
 }
 .sec-head + .row, .figs + .row { border-top: 1px solid var(--rule-firm); }
 .key {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--mono);
   font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -216,15 +237,15 @@ main > section > .sec-head h2::before {
 .title-line a { color: inherit; text-decoration-color: var(--rule-firm); text-underline-offset: 3px; }
 .title-line a:hover { text-decoration-color: var(--accent); }
 .title-line {
-  font-family: Newsreader, Georgia, serif;
+  font-family: var(--serif);
   font-size: 20px;
   line-height: 1.3;
-  font-weight: 500;
+  font-weight: 400;
   margin: 0 0 5px;
   text-wrap: balance;
 }
 .src {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--mono);
   font-size: 12.5px;
   color: var(--ink-3);
   margin: 7px 0 0;
@@ -235,7 +256,7 @@ blockquote {
   margin: 0 0 10px;
   padding: 2px 0 2px 16px;
   border-left: 2px solid var(--accent);
-  font-family: Newsreader, Georgia, serif;
+  font-family: var(--serif);
   font-size: 17.5px;
   line-height: 1.5;
   max-width: 62ch;
@@ -255,21 +276,22 @@ blockquote p { margin: 0; }
 .skip {
   position: absolute; left: 16px; top: -48px; z-index: 30;
   background: var(--ink); color: var(--paper); padding: 10px 14px;
-  font: 500 13px "IBM Plex Mono", ui-monospace, monospace; text-decoration: none;
+  font: 500 13px var(--mono); text-decoration: none;
 }
 .skip:focus { top: 12px; }
 main:focus { outline: none; }
 
 .role-line {
-  font-size: 17px;
+  font-size: 17.5px;
   line-height: 1.5;
   color: var(--ink-2);
   max-width: 54ch;
   margin: 14px 0 0;
 }
 .proof-line {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--mono);
   font-size: 13px;
+  line-height: 1.6;
   color: var(--ink-3);
   margin: 10px 0 0;
 }
@@ -277,7 +299,7 @@ main:focus { outline: none; }
 .proof-line a:hover { color: var(--link); }
 
 @media print {
-  .secnav, .skip, .inline-cta { display: none; }
+  .secnav, .skip, .theme-btn { display: none; }
   body { background: #fff; color: #000; font-size: 11pt; }
   .wrap { max-width: none; }
   .row, .defs > div, blockquote, .spec > div { break-inside: avoid; }
@@ -298,22 +320,22 @@ main:focus { outline: none; }
 .defs > div:first-child { border-top: 1px solid var(--rule-firm); }
 .defs > div:target { background: var(--surface); box-shadow: -12px 0 0 var(--surface), 12px 0 0 var(--surface); }
 .defs dt {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--mono);
   font-size: 13.5px;
   font-weight: 500;
   color: var(--ink);
   margin-bottom: 2px;
 }
-.defs dd { margin: 0; color: var(--ink-2); font-size: 15px; }
+.defs dd { margin: 0; color: var(--ink-2); font-size: 16px; }
 .defs .cited {
   display: block; margin-top: 5px;
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--mono);
   font-size: 12.5px; color: var(--ink-3);
 }
 
 /* proof rows: the institution is the heading, the claim is the line under it */
 .rel {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--mono);
   font-size: 11.5px; letter-spacing: .04em;
   color: var(--flag, #8C3A1F); margin: 6px 0 0;
 }
@@ -321,7 +343,7 @@ main:focus { outline: none; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --flag: #D98A6A; } }
 :root[data-theme="dark"] { --flag: #D98A6A; }
 .locator {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--mono);
   font-size: 12px; line-height: 1.5; color: var(--ink-3);
   margin: 8px 0 0; letter-spacing: .02em;
 }
@@ -330,18 +352,18 @@ main:focus { outline: none; }
   display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 6px 18px;
   padding-block: 7px; border-top: 1px solid var(--rule);
 }
-.spec dt { font-size: 13.5px; color: var(--ink-3); }
+.spec dt { font-size: 14.5px; color: var(--ink-3); }
 .spec dd {
-  margin: 0; font-family: "IBM Plex Mono", ui-monospace, monospace;
+  margin: 0; font-family: var(--mono);
   font-size: 13.5px; font-weight: 500; color: var(--ink);
   font-variant-numeric: tabular-nums; text-align: right;
 }
 .brief {
-  font-size: 15px; color: var(--ink-2); max-width: 56ch;
-  margin: 10px auto 0;
+  font-size: 16px; color: var(--ink-2); max-width: 56ch;
+  margin: 10px 0 0;
 }
 .ev {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--mono);
   font-size: 12.5px; color: var(--ink-3); margin: 9px 0 0;
 }
 .aside {
@@ -349,21 +371,16 @@ main:focus { outline: none; }
   background: var(--surface); border: 1px solid var(--rule);
   border-left: 2px solid var(--accent);
 }
-.aside p { margin: 0; color: var(--ink-2); font-size: 15.5px; }
+.aside p { margin: 0; color: var(--ink-2); font-size: 16.5px; }
 .aside strong { color: var(--ink); }
-.inline-cta {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 13.5px; margin: 20px 0 0; padding-top: 14px;
-  border-top: 1px solid var(--rule-firm);
-}
 .key.inst {
-  font-family: Newsreader, Georgia, serif;
+  font-family: var(--serif);
   font-size: 20px; font-weight: 600; line-height: 1.2;
   letter-spacing: 0; text-transform: none; color: var(--ink);
   margin: 0; padding-top: 1px;
 }
 .val > .claim {
-  font-size: 17px; font-weight: 500; line-height: 1.45;
+  font-size: 18px; font-weight: 400; line-height: 1.45;
   color: var(--ink); margin: 0 0 10px; max-width: 62ch;
 }
 
@@ -378,34 +395,26 @@ main:focus { outline: none; }
 }
 .fig { background: var(--paper); padding: 15px 16px; }
 .fig .n {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--mono);
   font-size: 19px; font-weight: 500;
   font-variant-numeric: tabular-nums;
   color: var(--ink); line-height: 1.2;
 }
-.fig .l { font-size: 12.5px; color: var(--ink-3); margin-top: 4px; line-height: 1.35; }
+.fig .l { font-size: 13.5px; color: var(--ink-3); margin-top: 4px; line-height: 1.35; }
 
 /* services */
 .svc { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
 .svc > div { background: var(--surface); padding: 20px 22px; }
 .svc h3 {
-  font-family: Newsreader, Georgia, serif;
-  font-size: 19px; font-weight: 500; margin: 0 0 7px;
+  font-family: var(--serif);
+  font-size: 19px; font-weight: 600; margin: 0 0 7px;
 }
-.svc p { margin: 0; color: var(--ink-2); font-size: 15px; max-width: 64ch; }
+.svc p { margin: 0; color: var(--ink-2); font-size: 16px; max-width: 64ch; }
 
 /* contact */
 .cta { padding-block: 52px 76px; }
 .cta h2 { margin-bottom: 18px; }
-.avail { color: var(--ink-2); font-size: 15px; max-width: 58ch; margin: 0 0 26px; }
-.cta .pitch {
-  font-family: Newsreader, Georgia, serif;
-  font-size: clamp(21px, 3.2vw, 27px);
-  line-height: 1.38;
-  max-width: 28ch;
-  text-wrap: balance;
-  margin: 0 0 14px;
-}
+.avail { color: var(--ink-2); font-size: 16px; max-width: 58ch; margin: 0 0 26px; }
 .contacts { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); max-width: 560px; }
 .contacts > div {
   background: var(--surface);
@@ -413,18 +422,18 @@ main:focus { outline: none; }
   gap: 14px; padding: 14px 18px; align-items: baseline;
 }
 .contacts .k {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--mono);
   font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3);
 }
 .contacts .v {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--mono);
   font-size: 14px; word-break: break-word;
 }
 
 footer {
   border-top: 1px solid var(--rule);
   padding-block: 22px 40px;
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--mono);
   font-size: 12.5px;
   color: var(--ink-3);
   display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between;
@@ -461,7 +470,7 @@ footer {
     "url": "https://themetaisok.com/",
     "image": "https://themetaisok.com/pfp.webp",
     "jobTitle": "Independent research and data consultant",
-    "description": "Built DefiLlama's real-world-asset coverage from zero: the RWA dashboard, the RWA perpetuals tracker and the digital asset treasuries tracker, the registry of more than 9,000 assets behind them, and the published methodology defining what counts as a real-world asset. Pantera Capital, Citi Institute and CoinGecko cite DefiLlama RWA data in published reports.",
+    "description": "Writes the definitions and classification standards used to measure tokenized real-world assets, real-world-asset perpetuals and digital asset treasury companies. Built DefiLlama's real-world-asset coverage from zero between August 2025 and September 2026: three dashboards, the registry of more than 9,000 assets behind them, and the published methodology defining what counts as a real-world asset. Pantera Capital, Citi Institute and CoinGecko cite DefiLlama RWA data in published reports.",
     "knowsAbout": [
       "Real-world asset tokenization",
       "RWA data and taxonomy",
@@ -502,6 +511,15 @@ footer {
   }
 }
 </script>
+<script>
+/* Runs before first paint: a stored choice wins, otherwise the system decides. */
+(function () {
+  try {
+    var t = localStorage.getItem("theme");
+    if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+})();
+</script>
 </head>
 <body>
 
@@ -514,13 +532,16 @@ footer {
       <img class="pfp" src="pfp.webp" width="72" height="72" alt="" decoding="async">
       <h1 class="handle">@themetaisok</h1>
     </div>
-    <p class="standfirst">I build the datasets a market uses to price itself.</p>
-    <p class="role-line">Independent research on tokenized real-world assets, real-world-asset perpetuals and digital asset treasuries. I left DefiLlama in September 2026 after building its RWA coverage from nothing.</p>
-    <p class="proof-line">The dashboards and metrics I built are cited by <a href="#proof">Pantera Capital, Citi Institute and CoinGecko</a>.</p>
+    <p class="standfirst">I build the datasets a&nbsp;market uses to price itself.</p>
+    <p class="role-line">Ten years in these markets. I write the definitions that decide what a number counts, and publish them so they can be contested. Independent research on tokenized real-world assets, real-world-asset perpetuals and digital asset treasuries.</p>
+    <p class="proof-line">The dashboards and metrics I built are cited by <a href="#proof">Pantera Capital, Citi Institute and CoinGecko</a>. Built at <a href="#work">DefiLlama</a>, 2025 to 2026.</p>
     <div class="masthead-meta">
       <span>Real-world assets · Onchain derivatives · Digital asset treasuries</span>
       <a href="https://x.com/themetaisok" target="_blank" rel="noopener">x.com/themetaisok</a>
       <a href="#contact">Available for work</a>
+      <button type="button" id="theme-toggle" class="theme-btn" hidden>
+        <span class="theme-mark" aria-hidden="true"></span><span class="theme-text">Dark</span>
+      </button>
     </div>
   </header>
 
@@ -532,7 +553,7 @@ footer {
     <a href="#writing">Writing</a>
     <a href="#now">Interests</a>
     <a href="#earlier">Earlier</a>
-    <a href="#contact" class="nav-cta">Work with me</a>
+    <a href="#contact" class="nav-cta">Contact</a>
   </nav>
 
   <main id="main" tabindex="-1">
@@ -540,7 +561,7 @@ footer {
   <section class="intro">
     <p>For twelve months at <strong>DefiLlama</strong>, the DeFi data platform, I built its real-world-asset coverage from nothing into a dataset now cited by Pantera Capital, an academic taxonomy paper and the financial press. Three production dashboards, a registry of more than 9,000 assets behind them, and the published methodology that defines what counts.</p>
     <p>There was no dataset to inherit, no accepted taxonomy and no published methodology, so I wrote them. The field definitions, asset classes, classification bar and revenue framework are original work, published openly so anyone can contest them. I authored the public methodology. DefiLlama's engineers built the dashboards to those specifications. The platform and its data are DefiLlama's, and I do not speak for it.</p>
-    <p>I go by Meta, and my handle is @themetaisok. Ten years in these markets is where my judgment about which metrics matter comes from.</p>
+    <p>I go by Meta, and my handle is @themetaisok. The judgment about which metrics matter comes from ten years in these markets. DefiLlama is where that work got built and tested at scale.</p>
     <div class="figs">
       <div class="fig"><div class="n">9,000+</div><div class="l">assets and markets in the registry</div></div>
       <div class="fig"><div class="n">116</div><div class="l">fields defined per asset</div></div>
@@ -632,7 +653,7 @@ footer {
   <section id="services">
     <div class="sec-head">
       <h2>What I do</h2>
-      <p class="sec-note">Most research tells you what a number is. I write down what it counts, publish the rule, and apply it the same way to everyone, including my own projects.</p>
+      <p class="sec-note">Four kinds of engagement, with the evidence for each linked rather than asserted.</p>
     </div>
 
     <div class="svc">
@@ -648,7 +669,7 @@ footer {
       </div>
       <div>
         <h3>Standards readiness for issuers</h3>
-        <p>If your product is mismeasured or missing from the dashboards the market reads, I can tell you why, because I wrote the inclusion rules while I was at DefiLlama. Schema conformance and attestation standards. DefiLlama makes every inclusion and classification decision, I have no say in them, and no engagement with me changes that.</p>
+        <p>A product that is mismeasured or missing from the dashboards the market reads usually has a schema or evidence gap. I wrote the inclusion rules at DefiLlama, so I can identify which criterion a product fails and what closing it would take. Schema conformance and attestation standards. DefiLlama makes every inclusion and classification decision, I have no say in them, and no engagement with me changes that.</p>
         <p class="ev">Evidence: <a href="#work">the published inclusion and exclusion criteria</a></p>
       </div>
       <div>
@@ -659,14 +680,8 @@ footer {
     </div>
 
     <div class="aside">
-      <p><strong>The dashboards and the methodology are public, and you are welcome to use them.</strong> They cannot answer your question. An engagement is where I apply the same classification bar to the assets, issuers or companies you care about, tell you where the published numbers are weak for your purpose, and stand behind the answer.</p>
+      <p>The dashboards and the methodology are public and free to use. An engagement applies the same classification bar to the assets, issuers or companies you name, and documents where the published numbers are weak for your particular purpose.</p>
     </div>
-
-    <p class="inline-cta">
-      <a href="mailto:themetaisok@gmail.com">themetaisok@gmail.com</a> ·
-      <a href="https://t.me/themetaisok" target="_blank" rel="noopener">Telegram</a> ·
-      <a href="#contact">more ways to reach me</a>
-    </p>
   </section>
 
   <section id="work">
@@ -680,7 +695,7 @@ footer {
       <div class="key">RWA dashboard</div>
       <div class="val">
         <p>DefiLlama's view of tokenized real-world assets, generated from a registry I built and maintained. More than 9,000 tracked assets and markets across 116 fields, spanning 450+ issuers, 330+ platforms and 170+ blockchains.</p>
-        <p>Running the whole registry against the classification bar produced a finding worth stating plainly: <strong>fewer than one in five tokens marketed as real-world assets clear the transferable, self-custodial, redeemable and verified test.</strong> The rest are better described as programmable finance.</p>
+        <p>Running the whole registry against the classification bar produced one clear finding: <strong>fewer than one in five tokens marketed as real-world assets clear the transferable, self-custodial, redeemable and verified test.</strong> The rest are better described as programmable finance.</p>
         <p class="src"><a href="https://defillama.com/rwa" target="_blank" rel="noopener">defillama.com/rwa</a></p>
       </div>
     </div>
@@ -782,9 +797,9 @@ footer {
     <div class="row">
       <div class="key">Goo Exchange</div>
       <div class="val">
-        <h3 class="title-line">Advisor, stakeholder and treasury signer</h3>
+        <h3 class="title-line">Advisor, business development, stakeholder and treasury signer</h3>
         <p>A decentralized exchange for tokenized stocks on Robinhood Chain. Involved since before launch and one of three signers on the project treasury.</p>
-        <p>I advise on product and growth. The launchpad exists because I proposed it. I brought in the specialists who handled search and AI-search optimization, and I mapped the aggregator landscape the exchange needed to be listed across, so the founder could take the integrations forward.</p>
+        <p>I advise on product and growth, and I run business development. The launchpad exists because I proposed it. I brought in the specialists who handled search and AI-search optimization, and I mapped the aggregator landscape the exchange needed to be listed across, so the founder could take the integrations forward.</p>
         <p>The chain whose real-world-asset activity I was measuring at DefiLlama is now the one I help build trading infrastructure on.</p>
         <p class="src"><a href="https://goo.exchange/" target="_blank" rel="noopener">goo.exchange</a></p>
       </div>
@@ -796,7 +811,7 @@ footer {
         <h3 class="title-line">Co-founder</h3>
         <p>Sealed Pokemon packs held in vaults and tokenized on Solana.</p>
         <p>The structure is a treasury vehicle applied to collectibles. The vehicle holds the packs, the token tracks the holdings, and there is no redemption right, so a holder gets exposure rather than a claim on a particular pack.</p>
-        <p>That puts it between the two things I spent a year measuring. By the classification bar I wrote at DefiLlama it would not clear the True RWA test, because redeemability is one of the four criteria. I would rather say that plainly than describe it as something it is not.</p>
+        <p>That puts it between the two things I spent a year measuring. By the classification bar I wrote at DefiLlama it would not clear the True RWA test, because redeemability is one of the four criteria.</p>
         <p class="src"><a href="https://www.sealedpackz.com/" target="_blank" rel="noopener">sealedpackz.com</a></p>
       </div>
     </div>
@@ -830,7 +845,7 @@ footer {
       <div class="val">
         <h3 class="title-line">Story Block, co-creator and project lead</h3>
         <p>An all-onchain collaborative narrative NFT on Ethereum. Each mint appends one sentence at the next token ID, with fully onchain SVG concatenated and re-rendered from contract state, editable after mint, with editing rights transferring on secondary sale. Launched August 2022 and still mintable.</p>
-        <p class="src"><a href="https://story-block.com/" target="_blank" rel="noopener">story-block.com</a></p>
+        <p class="src"><a href="https://story-block.com/" target="_blank" rel="noopener">story-block.com</a> · <a href="https://opensea.io/collection/story-block" target="_blank" rel="noopener">OpenSea</a> · <a href="https://etherscan.io/address/0x0e85f0ebe129d184e6631c53348ae2746640d4b5" target="_blank" rel="noopener">Contract</a> · <a href="https://etherscan.io/token/0x0e85f0ebe129d184e6631c53348ae2746640d4b5#code" target="_blank" rel="noopener">Verified source</a></p>
       </div>
     </div>
 
@@ -852,10 +867,9 @@ footer {
   </section>
 
   <section class="cta" id="contact">
-    <h2>Work with me</h2>
-    <p class="pitch">If the numbers your market trades on are wrong, I can tell you why.</p>
+    <h2>Contact</h2>
     <p class="avail">Taking fractional research contracts, fund retainers, issuer engagements and expert network calls.</p>
-    <p class="brief">To get a useful reply, send three lines: the decision the work would inform, who will read it, and when you need it.</p>
+    <p class="brief">Three lines help: the decision the work would inform, who will read it, and when you need it.</p>
     <div class="contacts">
       <div><span class="k">Email</span><span class="v"><a href="mailto:themetaisok@gmail.com">themetaisok@gmail.com</a></span></div>
       <div><span class="k">X</span><span class="v"><a href="https://x.com/themetaisok" target="_blank" rel="noopener">@themetaisok</a></span></div>
@@ -873,6 +887,43 @@ footer {
   </footer>
 
 </div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn  = document.getElementById("theme-toggle");
+  if (!btn) return;
+  var text = btn.querySelector(".theme-text");
+  var mq   = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function active() {
+    var set = root.getAttribute("data-theme");
+    if (set === "light" || set === "dark") return set;
+    return mq.matches ? "dark" : "light";
+  }
+  function label() {
+    var next = active() === "dark" ? "light" : "dark";
+    text.textContent = next === "dark" ? "Dark" : "Light";
+    btn.setAttribute("aria-label", "Switch to " + next + " theme");
+    btn.setAttribute("title", "Switch to " + next + " theme");
+  }
+
+  btn.addEventListener("click", function () {
+    var next = active() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    label();
+  });
+
+  /* follow the system while the visitor has not chosen for themselves */
+  var follow = function () { label(); };
+  if (mq.addEventListener) mq.addEventListener("change", follow);
+  else if (mq.addListener) mq.addListener(follow);
+
+  label();
+  btn.hidden = false;   /* no dead control if this script never runs */
+})();
+</script>
 
 </body>
 </html>

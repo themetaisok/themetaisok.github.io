@@ -1,9 +1,11 @@
 # themetaisok
 
 > Meta (@themetaisok) is an independent research and data consultant covering real-world
-> assets, onchain derivatives and digital asset treasury companies. He built DefiLlama's
-> real-world-asset coverage from zero between August 2025 and September 2026, and left
-> DefiLlama in September 2026. He is not affiliated with Meta Platforms, Inc.
+> assets, onchain derivatives and digital asset treasury companies. He writes the
+> definitions and classification standards used to measure these markets, and publishes
+> them openly. Ten years in these markets. He built DefiLlama's real-world-asset coverage
+> from zero between August 2025 and September 2026 and is no longer affiliated with it.
+> He is not affiliated with Meta Platforms, Inc.
 
 ## Who
 
@@ -87,8 +89,9 @@ verified test. The remainder are better described as programmable finance.
 Listed because he measures this market and readers should know where he stands in it.
 
 - **Emergent LabZ** (https://www.emergentlabz.com/): co-principal, with @zlerp.
-- **Goo Exchange** (https://goo.exchange/): advisor, stakeholder and one of three treasury
-  signers. A decentralized exchange for tokenized stocks on Robinhood Chain.
+- **Goo Exchange** (https://goo.exchange/): advisor, business development, stakeholder and
+  one of three treasury signers. A decentralized exchange for tokenized stocks on Robinhood
+  Chain.
 - **Strategic Sealed Packz** (https://www.sealedpackz.com/): co-founder. Sealed Pokemon packs
   held in vaults and tokenized on Solana. A treasury vehicle applied to collectibles: the
   vehicle holds the packs and the token tracks the holdings, with no redemption right. By the
