@@ -482,11 +482,11 @@ p + .figs{margin-top:16px}
     <div class="out"><p><span class="vh">Does not count: </span>Repricing.</p></div>
   </div>
   <div class="pair lead-out" id="m-mnav">
-    <div class="in"><h3>mNAV</h3><p>Market net asset value, in three variants. Each one counts a different set of shares.</p>
+    <div class="in"><h3>mNAV</h3><p>Market net asset value: what the market prices a treasury company at, over the crypto it actually holds. Three variants, each counting a different set of shares.</p>
       <dl class="terms">
         <div><dt>Realized mNAV</dt><dd>Only the common shares outstanding today. No dilution from unexercised warrants, options or convertibles.</dd></div>
-        <div><dt>Realistic mNAV</dt><dd>Adds expected dilution: in-the-money options and convertibles likely to be exercised.</dd></div>
-        <div><dt>Max mNAV</dt><dd>Fully diluted. Every warrant, option and convertible counted as exercised. The worst case.</dd></div>
+        <div><dt>Realistic mNAV</dt><dd>Adds the dilution that’s likely to happen: in-the-money options, prefunded warrants, triggered convertibles, mandatory conversions and earnouts, counted the way diluted EPS counts them. A company running at a loss stays on basic shares, as GAAP requires.</dd></div>
+        <div><dt>Max mNAV</dt><dd>Fully diluted. Every option, warrant, RSU and fixed convertible counted as exercised. The worst case for share count, though it still leaves out ATM programs, shelf registrations and equity lines, since those depend on price and aren’t guaranteed.</dd></div>
       </dl></div>
     <div class="out"><p><span class="vh">Does not count: </span>The single figure the market was trading on, which hid future share issuance.</p></div>
   </div>
