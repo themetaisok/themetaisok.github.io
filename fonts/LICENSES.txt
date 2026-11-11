@@ -1,7 +1,7 @@
 FONTS IN THIS FOLDER
 ====================
 
-These three files are modified versions of two freely licensed typefaces. They are
+These four files are modified versions of two freely licensed typefaces. They are
 Latin subsets converted to WOFF2 for use on themetaisok.com. Each carries a new
 internal name so that it cannot be mistaken for the original.
 
@@ -12,10 +12,11 @@ internal name so that it cannot be mistaken for the original.
       B. Jackowski, J.M. Nowacki, et al. (on behalf of TeX users groups).
       Licensed under the GUST Font License, reproduced below. Originals: https://www.gust.org.pl/projects/e-foundry/tex-gyre
 
-  caladea-web-400.woff2    "Caladea Web" Regular
-      Derived from Caladea Regular (Caladea-Regular.ttf), copyright 2012 The Caladea
-      Project Authors. Licensed under the SIL Open Font License 1.1, reproduced
-      below. Originals: https://github.com/huertatipografica/Caladea
+  caladea-web-400.woff2          "Caladea Web" Regular
+  caladea-web-400-italic.woff2   "Caladea Web" Italic
+      Derived from Caladea Regular and Italic (Caladea-Regular.ttf and
+      Caladea-Italic.ttf), copyright 2012 The Caladea Project Authors.
+      Licensed under the SIL Open Font License 1.1, reproduced below. Originals: https://github.com/huertatipografica/Caladea
 
 Changes made, November 2026: glyphs outside Basic Latin, Latin-1 and common
 punctuation removed; OpenType features reduced to kerning, ligatures and mark

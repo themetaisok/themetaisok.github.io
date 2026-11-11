@@ -9,7 +9,7 @@ two-person research and development shop run with Zlerp.
 | File | What it is |
 |---|---|
 | `index.html` | The whole site. CSS and JS are inline. It loads nothing from another host. |
-| `fonts/` | Two typefaces, three files: Adventor Web (regular and bold) for headings and figures, Caladea Web for text. Latin subsets, self-hosted. `fonts/LICENSES.txt` says where they come from and what was changed. |
+| `fonts/` | Two typefaces, four files: Adventor Web (regular and bold) for headings and figures, Caladea Web (regular and italic) for text. Latin subsets, self-hosted. `fonts/LICENSES.txt` says where they come from and what was changed. |
 | `pfp.webp` | The profile picture in the header. The page palette is sampled from it. |
 | `favicon.ico`, `favicon-32.png`, `icon-192.png`, `apple-touch-icon.png` | The browser tab and home-screen icons, all cut from the profile picture. |
 | `og.png` | Social card image, 1200x630, matching the `og:image:width`/`height` declared in the page. |
