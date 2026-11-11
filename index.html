@@ -7,12 +7,15 @@
 <link rel="canonical" href="https://themetaisok.com/">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/adventor-web-700.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/caladea-web-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/adventor-web-400.woff2">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="description" content="Independent research on tokenized real-world assets, RWA perpetuals and digital asset treasuries. Meta (@themetaisok) wrote the methodology behind DefiLlama's RWA, perpetuals and treasury dashboards.">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4EEEE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131115" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="Meta (@themetaisok): independent RWA and digital asset treasury research">
 <meta property="og:description" content="RWA and digital asset treasury data. Built DefiLlama's real-world-asset coverage from zero.">
 <meta property="og:type" content="website">
@@ -60,7 +63,8 @@
 }
 
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%; -webkit-tap-highlight-color:rgba(128,128,128,.25)}
+[id]{scroll-margin-top:14px}
 body{
   margin:0; color:var(--in-ink);
   background:linear-gradient(90deg,var(--in-bg) 0 var(--split),var(--out-bg) var(--split) 100%);
@@ -71,6 +75,7 @@ body{
 p,dl,dd,blockquote,figure{margin:0}
 a{color:inherit; text-decoration-thickness:1px; text-underline-offset:3px}
 a:hover{text-decoration-thickness:2px}
+a, button{touch-action:manipulation}
 a:focus-visible, button:focus-visible{outline:2px solid currentColor; outline-offset:3px}
 main:focus{outline:0}
 b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
@@ -80,8 +85,8 @@ b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
 
 /* One line down the page. Left of it counts, right of it does not. */
 .pair{display:grid; grid-template-columns:var(--split) minmax(0,1fr)}
-.in{background:var(--in-bg); color:var(--in-ink); padding:26px 44px 28px max(28px, calc(58vw - 690px)); min-width:0}
-.out{background:var(--out-bg); color:var(--out-ink); padding:26px max(28px, calc(42vw - 500px)) 28px 44px; min-width:0}
+.in{background:var(--in-bg); color:var(--in-ink); padding:26px 44px 28px max(28px, calc(58vw - 690px), env(safe-area-inset-left)); min-width:0}
+.out{background:var(--out-bg); color:var(--out-ink); padding:26px max(28px, calc(42vw - 500px), env(safe-area-inset-right)) 28px 44px; min-width:0}
 .pair + .pair > .in{border-top:1px solid var(--in-rule)}
 .pair + .pair > .out{border-top:1px solid var(--out-rule)}
 .in .q{color:var(--in-quiet)} .out .q{color:var(--out-quiet)}
@@ -110,11 +115,11 @@ b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
 .group > .in, .group > .out{padding-top:40px; padding-bottom:6px}
 .group > .in{border-top:3px solid var(--in-ink) !important}
 .group > .out{border-top:3px solid var(--out-ink) !important}
-.group h2, .group .h2{font-family:var(--head); font-weight:700; font-size:34px; line-height:1.05; letter-spacing:-.02em; margin:0; max-width:none}
+.group h2, .group .h2{font-family:var(--head); font-weight:700; font-size:34px; line-height:1.05; letter-spacing:-.02em; margin:0; max-width:none; text-wrap:balance}
 .group .q{font-size:16px; margin-top:8px}
 .group + .pair > .in, .group + .pair > .out{border-top:0}
 
-h3{font-family:var(--head); font-weight:700; font-size:16px; line-height:1.25; margin:0 0 7px}
+h3{font-family:var(--head); font-weight:700; font-size:16px; line-height:1.25; margin:0 0 7px; text-wrap:balance}
 h3 a{text-decoration-thickness:1px}
 .when{font-weight:400; font-size:13px; color:var(--in-quiet); margin-left:.5em; white-space:nowrap}
 .role{font-family:var(--head); font-size:14px; line-height:1.3; color:var(--in-quiet); margin:-3px 0 8px !important}
@@ -125,6 +130,7 @@ h3 a{text-decoration-thickness:1px}
 .test{font-size:17px}
 .src{display:block; font-size:15.5px; line-height:1.4; color:var(--in-quiet); margin-top:.5em}
 .out .src{color:var(--out-quiet)}
+.src a{overflow-wrap:anywhere}
 blockquote{border-left:3px solid var(--accent); padding-left:14px; max-width:31em}
 blockquote p{font-size:17.5px; line-height:1.42}
 
@@ -137,8 +143,8 @@ blockquote p{font-size:17.5px; line-height:1.42}
 .jog{display:grid; grid-template-columns:20% 80%; border-top:3px solid var(--in-ink)}
 .jin{background:var(--in-bg); color:var(--in-ink); min-width:0; padding-bottom:16px}
 .jout{background:var(--out-bg); color:var(--out-ink); min-width:0; padding-bottom:16px}
-.jlab{padding:18px 24px 16px max(20px, calc(58vw - 690px))}
-.jout .jlab{padding:18px 44px 16px 28px}
+.jlab{padding:18px 24px 16px max(20px, calc(58vw - 690px), env(safe-area-inset-left))}
+.jout .jlab{padding:18px max(44px, env(safe-area-inset-right)) 16px 28px}
 .jfig{font-family:var(--head); font-weight:700; font-size:min(44px,2.95vw); line-height:1; letter-spacing:-.03em; white-space:nowrap}
 .jin .jfig{color:var(--accent)}
 .jsub{font-size:17px; line-height:1.3; margin-top:6px}
@@ -302,7 +308,11 @@ p + .figs{margin-top:16px}
 (function () {
   try {
     var t = localStorage.getItem("theme");
-    if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    if (t === "light" || t === "dark") {
+      document.documentElement.setAttribute("data-theme", t);
+      var m = document.querySelectorAll('meta[name="theme-color"]');
+      for (var i = 0; i < m.length; i++) m[i].setAttribute("content", t === "dark" ? "#131115" : "#F4EEEE");
+    }
   } catch (e) {}
 })();
 </script>
@@ -312,7 +322,7 @@ p + .figs{margin-top:16px}
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="pair ident">
-  <div class="in"><img src="pfp.webp" width="36" height="36" alt="" decoding="async"><h1>@themetaisok</h1><span>also called Meta</span></div>
+  <div class="in"><img src="pfp.webp" width="36" height="36" alt="" decoding="async" fetchpriority="high"><h1 translate="no">@themetaisok</h1><span>also called Meta</span></div>
   <div class="out"><button class="tbtn" id="theme-toggle" type="button" hidden>Dark</button></div>
 </header>
 
@@ -335,7 +345,7 @@ p + .figs{margin-top:16px}
   <div class="in">
     <a href="#bar">The bar</a>
     <a href="#metrics">Measures</a>
-    <a href="#proof">Cited by</a>
+    <a href="#proof">Used by</a>
     <a href="#work">DefiLlama</a>
     <a href="#writing">Writing</a>
     <a href="#services">On offer</a>
@@ -387,7 +397,7 @@ p + .figs{margin-top:16px}
   <div class="pair lead-out">
     <div class="in">
       <h3>The name</h3>
-      <p>I go by Meta, and my handle is @themetaisok. The judgment about which metrics matter comes from ten years in these markets.</p>
+      <p>I go by Meta, and my handle is <span translate="no">@themetaisok</span>. The judgment about which metrics matter comes from ten years in these markets.</p>
     </div>
     <div class="out"><p><span class="vh">Does not count: </span>A legal name. Pseudonymous by choice. Not affiliated with Meta Platforms, Inc.</p></div>
   </div>
@@ -398,7 +408,7 @@ p + .figs{margin-top:16px}
       <p>From August 2025 to September 2026 at DefiLlama, the DeFi data platform, I built its real-world-asset coverage from nothing. There was no dataset to inherit, no accepted taxonomy and no published methodology, so I wrote them. The field definitions, asset classes, classification bar and revenue framework are original work, published openly so anyone can contest them.</p>
       <p>DefiLlama is where that work got built and tested at scale.</p>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>The platform and its data. They are DefiLlama's, and I do not speak for it.</p></div>
+    <div class="out"><p><span class="vh">Does not count: </span>The platform and its data. They are DefiLlama’s, and I do not speak for it.</p></div>
   </div>
 
   <div class="pair">
@@ -490,20 +500,20 @@ p + .figs{margin-top:16px}
 
   <div class="pair" id="proof-citi">
     <div class="in">
-      <h3>Citi Institute <span class="when">June 2026, p.19</span></h3>
+      <h3>Citi Institute <span class="when">June 2026, p.&nbsp;19</span></h3>
       <p>Sourced its market size figure to DefiLlama.</p>
-      <blockquote><p>“The global tokenization market for financial assets is estimated at $17 billion, according to DefiLlama in April 2026, up about 3x from just a year ago.”</p></blockquote>
-      <span class="src">“Wall Street On-Chain: Tokenization 2030”, June 2026, p.19. <a href="https://www.citigroup.com/rcs/citigpa/storage/public/Citi_Institute_GPS_Report_Tokenization_2030.pdf" target="_blank" rel="noopener">Report (PDF)</a></span>
+      <blockquote><p>“The global tokenization market for financial assets is estimated at $17&nbsp;billion, according to DefiLlama in April 2026, up about 3x from just a year ago.”</p></blockquote>
+      <span class="src">“Wall Street On-Chain: Tokenization 2030”, June 2026, p.&nbsp;19. <a href="https://www.citigroup.com/rcs/citigpa/storage/public/Citi_Institute_GPS_Report_Tokenization_2030.pdf" target="_blank" rel="noopener">Report (PDF)</a></span>
     </div>
     <div class="out"><p><span class="vh">Does not count: </span>Personal credit, on this row and the two below it. All three name DefiLlama, where the data is published.</p></div>
   </div>
 
   <div class="pair" id="proof-coingecko">
     <div class="in">
-      <h3>CoinGecko <span class="when">2026, pp. 16 and 17</span></h3>
+      <h3>CoinGecko <span class="when">2026, pp.&nbsp;16 and&nbsp;17</span></h3>
       <p>Measures its RWA chain chart in <a href="#m-active-market-cap">Active Market Cap</a>, sourced to DefiLlama.</p>
       <p>The 2026 RWA Report sources its RWA-chains and on-chain private-credit sections to DefiLlama, and its chain chart measures daily active market capitalization, the metric I defined.</p>
-      <span class="src">CoinGecko, 2026 RWA Report, pp. 16 and 17. <a href="https://assets.coingecko.com/reports/2026/CoinGecko-2026-RWA-Report.pdf" target="_blank" rel="noopener">Report (PDF)</a></span>
+      <span class="src">CoinGecko, 2026 RWA Report, pp.&nbsp;16 and&nbsp;17. <a href="https://assets.coingecko.com/reports/2026/CoinGecko-2026-RWA-Report.pdf" target="_blank" rel="noopener">Report (PDF)</a></span>
     </div>
     <div class="out"></div>
   </div>
@@ -512,7 +522,7 @@ p + .figs{margin-top:16px}
     <div class="in">
       <h3>Academic <span class="when">June 2026</span></h3>
       <p>Used as an external selection criterion in peer research.</p>
-      <blockquote><p>“The taxonomy was applied to the twenty largest tokenized real-world asset protocols listed on DeFiLlama's RWA dashboard… The use of DeFiLlama provides an external selection criterion and reduces arbitrariness in the construction of the sample.”</p></blockquote>
+      <blockquote><p>“The taxonomy was applied to the twenty largest tokenized real-world asset protocols listed on DeFiLlama’s RWA dashboard… The use of DeFiLlama provides an external selection criterion and reduces arbitrariness in the construction of the sample.”</p></blockquote>
       <span class="src">Vella, Pennella and Ballandies, “A Taxonomy of Real-World Asset Tokenization for Blockchain-Based Financial Infrastructure”, arXiv:2606.08534, June 2026. <a href="https://arxiv.org/abs/2606.08534" target="_blank" rel="noopener">Paper</a></span>
     </div>
     <div class="out"></div>
@@ -521,7 +531,7 @@ p + .figs{margin-top:16px}
   <div class="pair" id="proof-rwaf">
     <div class="in">
       <h3>RWA Foundation</h3>
-      <p>Uses the perpetuals data in its own reporting. DefiLlama's RWA perpetuals figures appear in the RWA Foundation's published work on the category.</p>
+      <p>Uses the perpetuals data in its own reporting. DefiLlama’s RWA perpetuals figures appear in the RWA Foundation’s published work on the category.</p>
     </div>
     <div class="out"><p><span class="vh">Does not count: </span>An independent pickup. I arranged the data partnership.</p></div>
   </div>
@@ -530,7 +540,7 @@ p + .figs{margin-top:16px}
     <div class="in">
       <h3>In press</h3>
       <p>CoinDesk links the perpetuals dashboard for its headline open-interest figure. The treasury flow series became a recurring beat at Cointelegraph, Decrypt, BeInCrypto and The Defiant, syndicated to Yahoo Finance. CryptoSlate runs DeFi Active TVL as a column heading in its own reporting, and the measures have crossed into Spanish-language coverage.</p>
-      <span class="src"><a href="https://cryptoslate.com/wall-street-put-7b-into-tokenized-funds-but-under-1-is-actually-being-used-in-defi/" target="_blank" rel="noopener">CryptoSlate, August 2026</a> · <a href="https://www.criptonoticias.com/tecnologia/informe-tokenizacion-uso-real-defi-dlresearch-defillama/" target="_blank" rel="noopener">CriptoNoticias, April 2026</a></span>
+      <span class="src"><a href="https://cryptoslate.com/wall-street-put-7b-into-tokenized-funds-but-under-1-is-actually-being-used-in-defi/" target="_blank" rel="noopener">CryptoSlate, August 2026</a>, <a href="https://www.criptonoticias.com/tecnologia/informe-tokenizacion-uso-real-defi-dlresearch-defillama/" target="_blank" rel="noopener">CriptoNoticias, April 2026</a></span>
     </div>
     <div class="out"></div>
   </div>
@@ -546,11 +556,11 @@ p + .figs{margin-top:16px}
   <div class="pair">
     <div class="in">
       <h3>RWA dashboard</h3>
-      <p>DefiLlama's view of tokenized real-world assets, generated from a registry I built and maintained. More than 9,000 tracked assets and markets across 116 fields, spanning 450+ issuers, 330+ platforms and 170+ blockchains.</p>
+      <p>DefiLlama’s view of tokenized real-world assets, generated from a registry I built and maintained. More than 9,000 tracked assets and markets across 116 fields, spanning 450+ issuers, 330+ platforms and 170+ blockchains.</p>
       <p>Running the whole registry against the classification bar produced one clear finding: under 20% of the tokens marketed as real-world assets clear the transferable, self-custodial, redeemable and verified test.</p>
-      <span class="src"><a href="https://defillama.com/rwa" target="_blank" rel="noopener">defillama.com/rwa</a></span>
+      <span class="src"><a translate="no" href="https://defillama.com/rwa" target="_blank" rel="noopener">defillama.com/rwa</a></span>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>The build. I authored the public methodology. DefiLlama's engineers built the dashboards to those specifications.</p></div>
+    <div class="out"><p><span class="vh">Does not count: </span>The build. I authored the public methodology. DefiLlama’s engineers built the dashboards to those specifications.</p></div>
   </div>
 
   <div class="pair">
@@ -563,9 +573,9 @@ p + .figs{margin-top:16px}
         <div><dt>17</dt><dd>fields in the market schema</dd></div>
         <div><dt>75+</dt><dd>markets in the forex book</dd></div>
       </dl>
-      <span class="src"><a href="https://defillama.com/rwa/perps" target="_blank" rel="noopener">defillama.com/rwa/perps</a></span>
+      <span class="src"><a translate="no" href="https://defillama.com/rwa/perps" target="_blank" rel="noopener">defillama.com/rwa/perps</a></span>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>Each venue's own front end. Before this the data lived only there, with no way to compare across them.</p></div>
+    <div class="out"><p><span class="vh">Does not count: </span>Each venue’s own front end. Before this the data lived only there, with no way to compare across them.</p></div>
   </div>
 
   <div class="pair">
@@ -579,7 +589,7 @@ p + .figs{margin-top:16px}
     <div class="in">
       <p class="bigfig">2.42x</p>
       <p>where the same company can sit once contractual dilution is counted</p>
-      <span class="src"><a href="https://defillama.com/digital-asset-treasuries" target="_blank" rel="noopener">defillama.com/digital-asset-treasuries</a></span>
+      <span class="src"><a translate="no" href="https://defillama.com/digital-asset-treasuries" target="_blank" rel="noopener">defillama.com/digital-asset-treasuries</a></span>
     </div>
     <div class="out">
       <p class="bigfig"><span class="vh">Does not count: </span>0.33x</p>
@@ -599,10 +609,10 @@ p + .figs{margin-top:16px}
         <div><dt>29</dt><dd>columns in the data dictionary</dd></div>
       </dl>
       <p>Also the fee and revenue methodology that made issuer economics comparable across assets: an identity equation splitting holder fees between asset manager and tokenization platform, with every estimate carrying a confidence grade and a dated primary-source audit trail.</p>
-      <span class="src"><a href="https://docs.llama.fi/real-world-assets/real-world-assets" target="_blank" rel="noopener">docs.llama.fi/real-world-assets/real-world-assets</a> · <a href="https://docs.llama.fi/analysts/dat-methodology" target="_blank" rel="noopener">docs.llama.fi/analysts/dat-methodology</a></span>
+      <span class="src"><a translate="no" href="https://docs.llama.fi/real-world-assets/real-world-assets" target="_blank" rel="noopener">docs.llama.fi/real-world-assets/real-world-assets</a>, <a translate="no" href="https://docs.llama.fi/analysts/dat-methodology" target="_blank" rel="noopener">docs.llama.fi/analysts/dat-methodology</a></span>
     </div>
     <div class="out">
-      <p><span class="vh">Does not count: </span>An aggregator's figure. Primary sources always win over aggregators.</p>
+      <p><span class="vh">Does not count: </span>An aggregator’s figure. Primary sources always win over aggregators.</p>
       <p class="q">A blank read as a zero. The blank-versus-zero rule separates unresearched from verified no fee.</p>
     </div>
   </div>
@@ -618,8 +628,8 @@ p + .figs{margin-top:16px}
   <div class="pair">
     <div class="in">
       <h3>Role</h3>
-      <p>Listed publicly on Llama Corp, DefiLlama's parent company, as <b>Meta (DAT &amp; RWA)</b>.</p>
-      <span class="src"><a href="https://llama-corp.com/" target="_blank" rel="noopener">llama-corp.com</a></span>
+      <p>Listed publicly on Llama Corp, DefiLlama’s parent company, as <b>Meta (DAT &amp; RWA)</b>.</p>
+      <span class="src"><a translate="no" href="https://llama-corp.com/" target="_blank" rel="noopener">llama-corp.com</a></span>
     </div>
     <div class="out"><p><span class="vh">Does not count: </span>A current post. Not affiliated with DefiLlama since September 2026.</p></div>
   </div>
@@ -639,7 +649,7 @@ p + .figs{margin-top:16px}
     </div>
     <div class="out">
       <p><span class="vh">Where it ran: </span>Indexed, the crypto data podcast. Hosted by Danning Sui, Research Director at Pantera Capital, with Boxer of Dune and Hildobby of Dragonfly.</p>
-      <span class="src"><a href="https://www.youtube.com/watch?v=vJGZZO2zHBs" target="_blank" rel="noopener">YouTube</a> · <a href="https://open.spotify.com/episode/4dSF2ndTNkIFONGfNoxc0y" target="_blank" rel="noopener">Spotify</a> · <a href="https://www.indexedpod.com/" target="_blank" rel="noopener">indexedpod.com</a></span>
+      <span class="src"><a href="https://www.youtube.com/watch?v=vJGZZO2zHBs" target="_blank" rel="noopener">YouTube</a>, <a href="https://open.spotify.com/episode/4dSF2ndTNkIFONGfNoxc0y" target="_blank" rel="noopener">Spotify</a>, <a translate="no" href="https://www.indexedpod.com/" target="_blank" rel="noopener">indexedpod.com</a></span>
     </div>
   </div>
 
@@ -702,7 +712,7 @@ p + .figs{margin-top:16px}
   <div class="pair">
     <div class="in">
       <h3>Expert networks and advisory</h3>
-      <p>Calls and written work on RWA taxonomy, treasury company valuation, perpetuals market structure and how the category's data actually gets assembled.</p>
+      <p>Calls and written work on RWA taxonomy, treasury company valuation, perpetuals market structure and how the category’s data actually gets assembled.</p>
       <span class="src">Evidence: <a href="#metrics">the metrics</a> and <a href="#writing">the Indexed episode</a></span>
     </div>
     <div class="out"><p><span class="vh">Does not count: </span>Investment advice. Nothing on this page is any.</p></div>
@@ -720,8 +730,8 @@ p + .figs{margin-top:16px}
     <div class="in">
       <h3>Emergent LabZ</h3>
       <p class="role">Co-principal</p>
-      <p>A crypto research, investment and incubation firm I run with <a href="https://x.com/zlerp" target="_blank" rel="noopener">@zlerp</a>.</p>
-      <span class="src"><a href="https://www.emergentlabz.com/" target="_blank" rel="noopener">emergentlabz.com</a></span>
+      <p>A crypto research, investment and incubation firm I run with <a translate="no" href="https://x.com/zlerp" target="_blank" rel="noopener">@zlerp</a>.</p>
+      <span class="src"><a translate="no" href="https://www.emergentlabz.com/" target="_blank" rel="noopener">emergentlabz.com</a></span>
     </div>
     <div class="out"><p><span class="vh">Does not count: </span>A disinterested view. I hold an interest in each project listed here.</p></div>
   </div>
@@ -733,7 +743,7 @@ p + .figs{margin-top:16px}
       <p>A decentralized exchange for tokenized stocks on Robinhood Chain. Involved since before launch and one of three signers on the project treasury.</p>
       <p>I advise on product and growth, and I run business development. The launchpad exists because I proposed it. I brought in the specialists who handled search and AI-search optimization, and I mapped the aggregator landscape the exchange needed to be listed across.</p>
       <p>The chain whose real-world-asset activity I was measuring at DefiLlama is now the one I help build trading infrastructure on.</p>
-      <span class="src"><a href="https://goo.exchange/" target="_blank" rel="noopener">goo.exchange</a></span>
+      <span class="src"><a translate="no" href="https://goo.exchange/" target="_blank" rel="noopener">goo.exchange</a></span>
     </div>
     <div class="out"><p><span class="vh">Does not count: </span>The integrations themselves. The founder took those forward.</p></div>
   </div>
@@ -746,7 +756,7 @@ p + .figs{margin-top:16px}
       <p>It is a digital asset treasury in everything but the asset. A vehicle holds a reserve, a token trades against it, and a trading fee routes most of its proceeds into buying more of the reserve.</p>
       <p>That structure is the one I measure. An automated engine acts by <a href="#m-mnav">mNAV</a> band on the gap between the token and the vault, which is the framework I built for listed treasury companies pointed at a shelf of sealed cardboard instead of a balance sheet of crypto. I spent a year building the dashboard that tracks nearly a hundred listed ones before co-founding an unlisted one.</p>
       <p>Treasury vehicle is the accurate label, and it is the one I use.</p>
-      <span class="src"><a href="https://www.sealedpackz.com/" target="_blank" rel="noopener">sealedpackz.com</a></span>
+      <span class="src"><a translate="no" href="https://www.sealedpackz.com/" target="_blank" rel="noopener">sealedpackz.com</a></span>
     </div>
     <div class="out">
       <p><span class="vh">Does not count: </span>A real-world asset. By the classification bar I wrote at DefiLlama it is not one, since redeemability is one of the four criteria and there is none here.</p>
@@ -756,10 +766,10 @@ p + .figs{margin-top:16px}
 
   <div class="pair">
     <div class="in">
-      <h3>WacDonald's</h3>
+      <h3>WacDonald’s</h3>
       <p class="role">Co-founder</p>
       <p>Cryptopoly, an onchain interactive art experience. An ERC-721 collection of 8,889 tiles across 37 entries in 17 categories, laid out on a 40-square board.</p>
-      <span class="src"><a href="https://wacdonalds.io/" target="_blank" rel="noopener">wacdonalds.io</a></span>
+      <span class="src"><a translate="no" href="https://wacdonalds.io/" target="_blank" rel="noopener">wacdonalds.io</a></span>
     </div>
     <div class="out"><p><span class="vh">Does not count: </span>A mainnet launch. Still pre-mainnet.</p></div>
   </div>
@@ -784,7 +794,7 @@ p + .figs{margin-top:16px}
     <div class="in">
       <h3>Story Block, co-creator and project lead <span class="when">2022</span></h3>
       <p>An all-onchain collaborative narrative NFT on Ethereum. Each mint appends one sentence at the next token ID, with fully onchain SVG concatenated and re-rendered from contract state, editable after mint, with editing rights transferring on secondary sale.</p>
-      <span class="src"><a href="https://story-block.com/" target="_blank" rel="noopener">story-block.com</a> · <a href="https://opensea.io/collection/story-block" target="_blank" rel="noopener">OpenSea</a> · <a href="https://etherscan.io/address/0x0e85f0ebe129d184e6631c53348ae2746640d4b5" target="_blank" rel="noopener">Contract</a> · <a href="https://etherscan.io/token/0x0e85f0ebe129d184e6631c53348ae2746640d4b5#code" target="_blank" rel="noopener">Verified source</a></span>
+      <span class="src"><a translate="no" href="https://story-block.com/" target="_blank" rel="noopener">story-block.com</a>, <a href="https://opensea.io/collection/story-block" target="_blank" rel="noopener">OpenSea</a>, <a href="https://etherscan.io/address/0x0e85f0ebe129d184e6631c53348ae2746640d4b5" target="_blank" rel="noopener">Contract</a>, <a href="https://etherscan.io/token/0x0e85f0ebe129d184e6631c53348ae2746640d4b5#code" target="_blank" rel="noopener">Verified source</a></span>
     </div>
     <div class="out"><p><span class="vh">What came of it: </span>Launched August 2022 and still mintable.</p></div>
   </div>
@@ -794,7 +804,7 @@ p + .figs{margin-top:16px}
       <h3>Radbro Webring, researcher and contributor <span class="when">2022 to 2024</span></h3>
       <p>Research, analysis and educational content across the ecosystem, including work on SCHIZOPOSTERS.</p>
     </div>
-    <div class="out"><p><span class="vh">What came of it: </span>That work influenced the Radbro Ordinals collection and Rune #925 RADBRO•WEBRING, among the first 1,000 runes etched on Bitcoin.</p></div>
+    <div class="out"><p><span class="vh">What came of it: </span>That work influenced the Radbro Ordinals collection and Rune&nbsp;#925 RADBRO•WEBRING, among the first 1,000 runes etched on Bitcoin.</p></div>
   </div>
 
   <div class="pair">
@@ -813,9 +823,9 @@ p + .figs{margin-top:16px}
     <div class="out"></div>
   </div>
   <div class="pair end">
-    <div class="in contact">
-      <p>Taking fractional research contracts, fund retainers, issuer engagements and expert network calls.</p>
-      <p class="q">Three lines help: the decision the work would inform, who will read it, and when you need it.</p>
+    <div class="in contact" translate="no">
+      <p translate="yes">Taking fractional research contracts, fund retainers, issuer engagements and expert network calls.</p>
+      <p class="q" translate="yes">Three lines help: the decision the work would inform, who will read it, and when you need it.</p>
       <a href="mailto:themetaisok@gmail.com">themetaisok@gmail.com</a>
       <a href="https://x.com/themetaisok" target="_blank" rel="me noopener">x.com/themetaisok</a>
       <a href="https://t.me/themetaisok" target="_blank" rel="me noopener">t.me/themetaisok</a>
@@ -853,6 +863,8 @@ p + .figs{margin-top:16px}
     var next = active() === "dark" ? "light" : "dark";
     root.setAttribute("data-theme", next);
     try { localStorage.setItem("theme", next); } catch (e) {}
+    var metas = document.querySelectorAll('meta[name="theme-color"]');
+    for (var i = 0; i < metas.length; i++) metas[i].setAttribute("content", next === "dark" ? "#131115" : "#F4EEEE");
     label();
   });
 
