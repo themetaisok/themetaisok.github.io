@@ -136,6 +136,10 @@ h3 a{text-decoration-thickness:1px}
 .in p + p, .out p + p, blockquote + p, p + blockquote, p + .figs, .figs + p{margin-top:.55em}
 .lead-out .out p{font-size:23px; line-height:1.3}
 .test{font-size:17px}
+.terms{margin-top:.7em}
+.terms div + div{margin-top:.55em}
+.terms dt{font-family:var(--head); font-weight:700; font-size:15px; line-height:1.3}
+.terms dd{font-size:17px; line-height:1.4; max-width:31em; margin-top:1px}
 .src{display:block; font-size:15.5px; line-height:1.4; color:var(--in-quiet); margin-top:.5em}
 .out .src{color:var(--out-quiet)}
 .src a{overflow-wrap:anywhere}
@@ -478,7 +482,12 @@ p + .figs{margin-top:16px}
     <div class="out"><p><span class="vh">Does not count: </span>Repricing.</p></div>
   </div>
   <div class="pair lead-out" id="m-mnav">
-    <div class="in"><h3>mNAV</h3><p>Three variants: Realized, Realistic and Maximum.</p></div>
+    <div class="in"><h3>mNAV</h3><p>Market net asset value, in three variants. Each one counts a different set of shares.</p>
+      <dl class="terms">
+        <div><dt>Realized mNAV</dt><dd>Only the common shares outstanding today. No dilution from unexercised warrants, options or convertibles.</dd></div>
+        <div><dt>Realistic mNAV</dt><dd>Adds expected dilution: in-the-money options and convertibles likely to be exercised.</dd></div>
+        <div><dt>Max mNAV</dt><dd>Fully diluted. Every warrant, option and convertible counted as exercised. The worst case.</dd></div>
+      </dl></div>
     <div class="out"><p><span class="vh">Does not count: </span>The single figure the market was trading on, which hid future share issuance.</p></div>
   </div>
 

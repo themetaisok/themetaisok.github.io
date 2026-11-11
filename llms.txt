@@ -44,8 +44,14 @@ specifications. The platform and its data are DefiLlama's.
   lending-market utilization, which is borrowed over supplied.
 - **Net Flows, Flow vs Price, Capital Rotation**: these separate minting and redemption from
   repricing.
-- **mNAV, three variants**: Realized, Realistic and Maximum, in place of the single figure
-  digital asset treasury companies were widely quoted on, which hid future share issuance.
+- **mNAV (market net asset value), three variants**, in place of the single figure digital
+  asset treasury companies were widely quoted on, which hid future share issuance:
+  - **Realized mNAV**: only currently outstanding common shares, excluding dilution from
+    unexercised warrants, options or convertible securities.
+  - **Realistic mNAV**: accounts for expected dilution from in-the-money options and
+    convertible securities likely to be exercised.
+  - **Max mNAV**: fully diluted share count, assuming all warrants, options and convertibles
+    are exercised. The worst case.
 
 ## Notable finding
 
