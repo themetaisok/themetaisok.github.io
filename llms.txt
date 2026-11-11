@@ -1,6 +1,6 @@
 # themetaisok
 
-> Meta (@themetaisok) is an independent research and data consultant covering real-world
+> meta (@themetaisok) is an independent research and data consultant covering real-world
 > assets, onchain derivatives and digital asset treasury companies. He writes the
 > definitions and classification standards used to measure these markets, and publishes
 > them openly. Ten years in these markets. He built DefiLlama's real-world-asset coverage
@@ -9,7 +9,7 @@
 
 ## Who
 
-- Works under the handle **themetaisok**, also referred to as **Meta**. Pseudonymous by choice.
+- Works under the handle **themetaisok**, also referred to as **meta**. Pseudonymous by choice.
 - Listed publicly on Llama Corp, DefiLlama's parent company, as "Meta (DAT & RWA)".
 - Co-principal of Emergent LabZ (https://www.emergentlabz.com/) with @zlerp.
 - Contact: themetaisok@gmail.com, X @themetaisok, Telegram @themetaisok.

@@ -1,6 +1,6 @@
 # themetaisok.com
 
-The personal portfolio site for the handle **themetaisok** (Meta). Static, single page,
+The personal portfolio site for the handle **themetaisok** (meta). Static, single page,
 no build step. Cross-links with [emergentlabz.com](https://www.emergentlabz.com/), the
 two-person research and development shop run with Zlerp.
 
