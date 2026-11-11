@@ -24,6 +24,9 @@ One line runs down the page. Left of it is what counts, right of it is what does
 and each section heading relabels the two columns for that section. On a phone the line
 turns: the right-hand blocks are set in from the left edge.
 
+Two sections, Writing and Earlier, have nothing to exclude. They sit on the light ground
+alone, so the dark field keeps one meaning.
+
 Three colors a theme, all taken from the profile picture.
 
 | | Ground | Ink | Field and accent |
@@ -67,5 +70,6 @@ Keep the canonical URL, the `og:image` URL and the sitemap `loc` pointed at
 - Live figures are stated as non-exact floors ("more than 9,000"), never as exact counts
   that go stale.
 - The handle only. No legal name appears anywhere in this repo, deliberately.
-- Nothing on the right-hand side is decoration. Every line there is a real exclusion,
-  a source, or an outcome.
+- Nothing on the dark field is decoration. Every line there is a real exclusion.
+- The page is checked at every window width from 280px to 2560px. The registry figure is
+  measured inside the page margins, so it holds its shape on wide screens.

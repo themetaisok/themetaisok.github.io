@@ -91,6 +91,12 @@ b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
 .pair + .pair > .out{border-top:1px solid var(--out-rule)}
 .in .q{color:var(--in-quiet)} .out .q{color:var(--out-quiet)}
 
+/* Two sections have nothing to exclude. They sit on the counted ground alone,
+   so the field keeps one meaning: does not count. */
+.plain .out{background:var(--in-bg); color:var(--in-quiet)}
+.plain .pair + .pair > .out{border-top-color:var(--in-rule)}
+.plain .out .src{color:var(--in-quiet)}
+
 .ident > .in, .ident > .out{padding-top:18px; padding-bottom:16px; font-family:var(--head); font-size:14px; line-height:1.3}
 .ident .in{display:flex; align-items:center; gap:12px}
 .ident img{width:36px; height:36px; display:block; flex:none}
@@ -115,6 +121,7 @@ b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
 .group > .in, .group > .out{padding-top:40px; padding-bottom:6px}
 .group > .in{border-top:3px solid var(--in-ink) !important}
 .group > .out{border-top:3px solid var(--out-ink) !important}
+.plain .group > .out{border-top-color:var(--in-ink) !important}
 .group h2, .group .h2{font-family:var(--head); font-weight:700; font-size:34px; line-height:1.05; letter-spacing:-.02em; margin:0; max-width:none; text-wrap:balance}
 .group .q{font-size:16px; margin-top:8px}
 .group + .pair > .in, .group + .pair > .out{border-top:0}
@@ -140,12 +147,16 @@ blockquote p{font-size:17.5px; line-height:1.42}
 .crit i{font-style:normal; font-weight:400; font-size:.5em; letter-spacing:0; color:var(--in-quiet); padding:0 .15em}
 
 /* Here the line moves. For one band it stands where the finding puts it. */
-.jog{display:grid; grid-template-columns:20% 80%; border-top:3px solid var(--in-ink)}
-.jin{background:var(--in-bg); color:var(--in-ink); min-width:0; padding-bottom:16px}
-.jout{background:var(--out-bg); color:var(--out-ink); min-width:0; padding-bottom:16px}
-.jlab{padding:18px 24px 16px max(20px, calc(58vw - 690px), env(safe-area-inset-left))}
-.jout .jlab{padding:18px max(44px, env(safe-area-inset-right)) 16px 28px}
-.jfig{font-family:var(--head); font-weight:700; font-size:min(44px,2.95vw); line-height:1; letter-spacing:-.03em; white-space:nowrap}
+/* The band is measured inside the page's own margins, so the cut stays at a fifth of the
+   content at every window width and the marks never grow with the screen. The two grounds
+   still run to the window edges. */
+.jog{--gl:max(28px, calc(58vw - 690px), env(safe-area-inset-left)); --gr:max(28px, calc(42vw - 500px), env(safe-area-inset-right));
+  display:grid; grid-template-columns:calc(var(--gl) + (100% - var(--gl) - var(--gr)) * .2) minmax(0,1fr); border-top:3px solid var(--in-ink)}
+.jin{background:var(--in-bg); color:var(--in-ink); min-width:0; padding-bottom:16px; padding-left:var(--gl)}
+.jout{background:var(--out-bg); color:var(--out-ink); min-width:0; padding-bottom:16px; padding-right:var(--gr)}
+.jlab{padding:18px 16px 16px 0}
+.jout .jlab{padding:18px 0 16px 28px}
+.jfig{font-family:var(--head); font-weight:700; font-size:min(40px,2.95vw); line-height:1; letter-spacing:-.03em; white-space:nowrap}
 .jin .jfig{color:var(--accent)}
 .jsub{font-size:17px; line-height:1.3; margin-top:6px}
 .jout .jsub{color:var(--out-quiet)}
@@ -202,11 +213,14 @@ p + .figs{margin-top:16px}
   .in{padding:22px 20px}
   .out{margin-left:42px; padding:20px 20px 22px; border-top:0 !important}
   .out:empty{display:none}
+  .plain .out{margin-left:0; padding:0 20px 22px}
+  .plain .pair:not(.group) > .in{padding-bottom:8px}
   .pair + .pair > .in{border-top:1px solid var(--in-rule)}
   .ident{display:flex; align-items:center; justify-content:space-between}
   .ident > .in{padding-top:14px; padding-bottom:12px}
   .ident > .out{margin-left:0; background:var(--in-bg); color:var(--in-ink); padding:0 20px 0 0}
   .tbtn{color:var(--in-ink); border-color:var(--in-quiet)}
+  .ident > .out{flex:none}
   .tbtn:hover{background:var(--in-ink); color:var(--in-bg)}
   .hero > .in{padding-top:30px; padding-bottom:26px}
   .hero > .out{padding-top:26px; padding-bottom:28px}
@@ -236,6 +250,11 @@ p + .figs{margin-top:16px}
   .versus > .in{padding-top:0; border-top:0 !important}
   .versus > .out{padding-top:20px}
   .contact a{font-size:19px; line-height:1.9}
+}
+
+/* small phones: the handle and the switch are what must fit */
+@media (max-width:384px){
+  .ident .in span{display:none}
 }
 
 @media print{
@@ -600,14 +619,7 @@ p + .figs{margin-top:16px}
   <div class="pair">
     <div class="in">
       <h3>Methodology</h3>
-      <p>Sole author of the public documentation: eligibility and exclusion criteria, metrics, definitions and taxonomy, the perpetuals spec and a standalone treasury methodology, plus a public data dictionary, with expulsion rules and a review status short of removal.</p>
-      <dl class="figs five">
-        <div><dt>5</dt><dd>inclusion criteria</dd></div>
-        <div><dt>6</dt><dd>exclusion criteria</dd></div>
-        <div><dt>7</dt><dd>evidence flags</dd></div>
-        <div><dt>5</dt><dd>access models</dd></div>
-        <div><dt>29</dt><dd>columns in the data dictionary</dd></div>
-      </dl>
+      <p>Sole author of the public documentation: eligibility and exclusion criteria, metrics, definitions and taxonomy, the perpetuals spec and a standalone treasury methodology, plus a 29-column public data dictionary. Five inclusion criteria, six exclusion criteria, seven evidence flags and five access models, with expulsion rules and a review status short of removal.</p>
       <p>Also the fee and revenue methodology that made issuer economics comparable across assets: an identity equation splitting holder fees between asset manager and tokenization platform, with every estimate carrying a confidence grade and a dated primary-source audit trail.</p>
       <span class="src"><a translate="no" href="https://docs.llama.fi/real-world-assets/real-world-assets" target="_blank" rel="noopener">docs.llama.fi/real-world-assets/real-world-assets</a>, <a translate="no" href="https://docs.llama.fi/analysts/dat-methodology" target="_blank" rel="noopener">docs.llama.fi/analysts/dat-methodology</a></span>
     </div>
@@ -636,10 +648,10 @@ p + .figs{margin-top:16px}
 </section>
 
 <!-- ============ writing ============ -->
-<section id="writing" aria-labelledby="h-writing">
+<section id="writing" class="plain" aria-labelledby="h-writing">
   <div class="pair group">
     <div class="in"><h2 id="h-writing">Writing and speaking</h2></div>
-    <div class="out"><p class="h2" aria-hidden="true">Where it ran</p></div>
+    <div class="out"></div>
   </div>
 
   <div class="pair">
@@ -776,10 +788,10 @@ p + .figs{margin-top:16px}
 </section>
 
 <!-- ============ earlier ============ -->
-<section id="earlier" aria-labelledby="h-earlier">
+<section id="earlier" class="plain" aria-labelledby="h-earlier">
   <div class="pair group">
     <div class="in"><h2 id="h-earlier">Earlier</h2><p class="q">Ten years of building in this market.</p></div>
-    <div class="out"><p class="h2" aria-hidden="true">What came of it</p></div>
+    <div class="out"></div>
   </div>
 
   <div class="pair">
