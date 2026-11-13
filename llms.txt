@@ -87,6 +87,15 @@ and verified test (as of September 2026). The remainder are better described as 
 - The **RWA Foundation** uses the perpetuals data in its own reporting, under a partnership meta
   arranged, so it is not an independent pickup.
 
+## Figures (https://themetaisok.com/figures/)
+
+Dated figures drawn from DefiLlama's public dashboards, each with a table and a PNG version.
+
+- **mNAV, three ways** (as of 13 November 2026): seven of the 96 treasury companies with holdings data sit below 1.0x on realized mNAV and at or above it on max mNAV. Includes an interactive version that switches between realized, realistic, and max.
+- **RWA perps** (as of 13 November 2026): about 73% of $13.35b in RWA perps open interest is on centralized exchanges. On decentralized venues, public equities hold about 45%.
+- **Used in DeFi** (as of 13 November 2026): Onchain Market Cap $34.41b, Active Market Cap $30.48b, DeFi Active TVL $4.19b, a utilization of 12.2%.
+- **The record**: what meta published from August 2025, and when others picked it up.
+
 ## Speaking
 
 - **Indexed** (The Crypto Data Podcast), October 2026. "Meta (ex-DeFiLlama) on the Future

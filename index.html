@@ -262,6 +262,131 @@ p + .figs{margin-top:16px}
   .ident .in span{display:none}
 }
 
+/* ---------- figures: tokens ---------- */
+:root{--mute:#8E8790; --wash:rgba(40,44,109,.09)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--mute:#68606A; --wash:rgba(182,101,162,.12)}}
+:root[data-theme="dark"]{--mute:#68606A; --wash:rgba(182,101,162,.12)}
+.cfig{container-type:inline-size; margin-top:16px; font-family:var(--head)}
+.cfig + .c-legend, .c-legend{display:flex; flex-wrap:wrap; gap:6px 20px; font-family:var(--head); font-size:13px; line-height:1.3; color:var(--in-quiet); margin-top:12px}
+.c-legend span{display:inline-flex; align-items:center; gap:7px}
+.c-k{flex:none; display:inline-block}
+.c-k.ho{width:11px; height:11px; border-radius:50%; border:2px solid var(--accent)}
+.c-k.fu{width:11px; height:11px; border-radius:50%; background:var(--accent)}
+.c-k.mu{width:11px; height:11px; border-radius:50%; background:var(--mute)}
+.c-k.ti{width:2px; height:12px; background:var(--accent)}
+.c-k.sw{width:12px; height:12px; border-radius:2px; background:var(--accent)} .c-k.sw.m{background:var(--mute)}
+details.c-tbl{margin-top:10px; font-size:15px}
+details.c-tbl summary{font-family:var(--head); font-size:13px; color:var(--in-quiet); cursor:pointer; width:fit-content}
+details.c-tbl summary:focus-visible{outline:2px solid currentColor; outline-offset:3px}
+.c-tbl table{border-collapse:collapse; margin-top:8px; font-variant-numeric:tabular-nums; display:block; max-width:100%; overflow-x:auto}
+.c-tbl th, .c-tbl td{text-align:left; padding:4px 14px 4px 0; border-bottom:1px solid var(--in-rule); font-weight:400; font-family:var(--text)}
+.c-tbl thead th{font-family:var(--head); font-size:13px; color:var(--in-quiet)}
+.c-tip{position:fixed; pointer-events:none; background:var(--in-ink); color:var(--in-bg); font:13px/1.35 var(--head); padding:7px 9px; max-width:280px; z-index:9; opacity:0; transition:opacity .12s}
+
+/* ---------- dumbbell: realized to max mNAV ---------- */
+.c-db .c-row, .c-db .c-hd, .c-db .c-ax{display:grid; grid-template-columns:12.5rem minmax(0,1fr) 7.2rem; align-items:center; column-gap:14px}
+.c-db .c-row{height:30px; outline:none}
+.c-db .c-row:focus-visible .c-trk{outline:2px solid var(--in-ink); outline-offset:2px}
+.c-nm{font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:var(--in-quiet)}
+.c-row.x .c-nm{color:var(--in-ink); font-weight:700}
+.c-v{font-size:13px; white-space:nowrap; font-variant-numeric:tabular-nums}
+.c-trk{position:relative; display:block; height:28px}
+.c-trk svg{position:absolute; inset:0; width:100%; height:100%}
+.c-wash{fill:var(--wash)} .c-par{stroke:var(--in-ink); stroke-width:2; vector-effect:non-scaling-stroke}
+.c-conn{stroke:var(--mute); stroke-width:2; vector-effect:non-scaling-stroke; stroke-linecap:round}
+.c-mid{stroke:var(--mute); stroke-width:2; vector-effect:non-scaling-stroke}
+.c-row.x .c-conn, .c-row.x .c-mid{stroke:var(--accent)}
+.c-dot{position:absolute; top:50%; width:11px; height:11px; margin:-5.5px 0 0 -5.5px; border-radius:50%; box-shadow:0 0 0 2px var(--in-bg)}
+.c-dot.fu{background:var(--mute)} .c-dot.ho{background:var(--in-bg); border:2px solid var(--mute)}
+.c-row.x .c-dot.fu{background:var(--accent)} .c-row.x .c-dot.ho{border-color:var(--accent)}
+.c-hd .c-trk b{position:absolute; bottom:4px; font-size:13px; white-space:nowrap}
+.c-ax .c-trk span{position:absolute; top:4px; transform:translateX(-50%); font-size:12px; color:var(--in-quiet)}
+@container (max-width:620px){
+  .c-db .c-row, .c-db .c-hd, .c-db .c-ax{grid-template-columns:minmax(0,1fr)}
+  .c-db .c-row{height:auto; padding:3px 0}
+  .c-nm{font-size:13px} .c-db .c-v, .c-hd .c-nm, .c-ax .c-nm, .c-hd .c-v, .c-ax .c-v{display:none}
+  .c-db .c-trk{margin:0 12px}
+  .c-hd .c-trk b{font-size:12px} .c-ax .c-trk span{font-size:12px}
+  .c-ax .c-trk span:first-child{transform:none; margin-left:-12px}
+  .c-ax .c-trk span:last-child{transform:translateX(-100%); margin-left:12px}
+}
+@container (max-width:300px){ .c-lg{display:none} }
+
+/* ---------- segmented bar and ranked bars ---------- */
+.c-sub{font-family:var(--head); font-size:13px; color:var(--in-quiet); margin:0 0 8px !important}
+.c-seg{display:flex; gap:2px; height:30px; font-size:13px}
+.c-seg span{display:flex; align-items:center; padding-left:9px; border-radius:4px; white-space:nowrap}
+.c-seg .a{background:var(--accent); color:var(--in-bg)} .c-seg .b{background:var(--mute); color:var(--in-ink)}
+.c-hb{display:grid; grid-template-columns:12.5rem minmax(0,1fr) 4.8rem; align-items:center; column-gap:12px; min-height:27px; outline:none}
+.c-hb:focus-visible .c-ht{outline:2px solid var(--in-ink); outline-offset:2px}
+.c-hn{font-size:13px; color:var(--in-quiet)} .c-hv{font-size:13px; font-variant-numeric:tabular-nums}
+.c-ht{display:block; height:14px} .c-ht i{display:block; height:100%; background:var(--accent); border-radius:0 4px 4px 0}
+@container (max-width:560px){
+  .c-hb{grid-template-columns:8.5rem minmax(0,1fr) 4.2rem; column-gap:8px; padding:3px 0}
+  .c-hn{font-size:12px; line-height:1.2}
+}
+
+/* ---------- three measures on one scale ---------- */
+.c-nb{display:grid; grid-template-columns:11rem minmax(0,1fr) 9rem; align-items:center; column-gap:12px; min-height:56px; padding:6px 0; outline:none}
+.c-nb:focus-visible .c-nt{outline:2px solid var(--in-ink); outline-offset:2px}
+.c-nn{font-size:14px; font-weight:700} .c-nv{font-size:14px; font-variant-numeric:tabular-nums}
+.c-nv small{display:block; font-size:12px; color:var(--in-quiet)}
+.c-nt{display:block; height:22px} .c-nt i{display:block; height:100%; border-radius:0 4px 4px 0}
+.c-n1 .c-nt i{box-shadow:inset 0 0 0 1.5px var(--in-ink)}
+.c-n2 .c-nt i{background:var(--wash); box-shadow:inset 0 0 0 1.5px var(--accent)}
+.c-n3 .c-nt i{background:var(--accent)}
+.c-util{font-family:var(--head); font-size:14px; color:var(--in-quiet); margin-top:10px !important}
+.c-util b{font-size:28px; color:var(--in-ink); letter-spacing:-.02em; margin-right:6px}
+@container (max-width:560px){
+  .c-nb{grid-template-columns:minmax(0,1fr) 6.6rem; row-gap:4px; padding:4px 0}
+  .c-nn{grid-column:1 / -1; font-size:13px} .c-nv{font-size:13px}
+}
+
+/* ---------- the record: published, then picked up ---------- */
+.c-tl .c-mo{display:grid; grid-template-columns:1fr 78px 1fr; min-height:40px}
+.c-tl .c-l{text-align:right; padding:6px 14px 6px 0}
+.c-tl .c-r{padding:6px 0 6px 14px}
+.c-tl .c-axis{position:relative; border-left:2px solid var(--in-ink); margin-left:38px}
+.c-tl .c-axis span{position:absolute; left:-38px; width:74px; text-align:center; top:7px; font-size:12px; color:var(--in-quiet); background:var(--in-bg); padding:1px 0}
+.c-tl .c-hd2 .c-l, .c-tl .c-hd2 .c-r{font-size:14px; font-weight:700; padding-top:4px; padding-bottom:10px}
+.c-ev{margin:0 0 7px !important; font-family:var(--text); font-size:15px; line-height:1.3}
+.c-ev:last-child{margin-bottom:0 !important}
+.c-ev b{display:block; font-size:14px}
+.c-ev small{display:block; font-size:13.5px; color:var(--in-quiet)}
+.c-r .c-ev{border-left:3px solid var(--accent); padding-left:10px}
+.c-l .c-ev{border-right:3px solid var(--in-ink); padding-right:10px}
+@container (max-width:560px){
+  .c-tl .c-mo{grid-template-columns:1fr 50px 1fr}
+  .c-tl .c-axis{margin-left:24px} .c-tl .c-axis span{left:-24px; width:48px; font-size:12px}
+  .c-tl .c-l{padding-right:8px} .c-tl .c-r{padding-left:8px}
+  .c-ev b{font-size:13px} .c-ev small{font-size:12.5px}
+}
+
+/* ---------- the interactive one (d3) ---------- */
+.c-ctl{display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px; font-family:var(--head); margin-top:14px}
+.c-segb{display:inline-flex; border:1px solid var(--in-quiet)}
+.c-segb button, .c-play{font:inherit; font-size:13px; color:var(--in-ink); background:none; border:0; padding:7px 13px 8px; min-height:36px; cursor:pointer}
+.c-segb button + button{border-left:1px solid var(--in-quiet)}
+.c-segb button[aria-pressed="true"], .c-play[aria-pressed="true"]{background:var(--in-ink); color:var(--in-bg)}
+.c-play{border:1px solid var(--in-quiet)}
+.c-tally{font-size:14px; color:var(--in-quiet)}
+.c-tally b{font-size:30px; color:var(--in-ink); letter-spacing:-.02em; font-variant-numeric:tabular-nums; margin-right:4px}
+.c-d3{min-height:80px} .c-d3 svg{display:block; overflow:visible}
+.b-wash{fill:var(--wash)} .b-par{stroke:var(--in-ink); stroke-width:2}
+.b-head text{font-size:13px; font-weight:700; fill:var(--in-ink)} .b-head .l{text-anchor:end}
+.b-axis text{font-size:12px; fill:var(--in-quiet); font-family:var(--head)}
+.b-hit{fill:transparent} .b-row{outline:none}
+.b-row:focus-visible .b-hit{fill:var(--wash); stroke:var(--in-ink); stroke-width:1.5}
+.b-nm{font-size:14px; fill:var(--in-quiet); text-anchor:end} .b-row.cross .b-nm{fill:var(--in-ink); font-weight:700}
+.b-dot{fill:var(--in-bg); stroke:var(--mute); stroke-width:2.5}
+.b-row.above .b-dot{fill:var(--accent); stroke:var(--in-bg); stroke-width:2}
+.b-row.cross:not(.above) .b-dot{stroke:var(--accent)}
+.b-trail{stroke:var(--mute); stroke-width:2; stroke-linecap:round} .b-row.cross .b-trail{stroke:var(--accent)}
+.b-ghost{fill:var(--mute); transition:opacity .3s} .b-row.cross .b-ghost{fill:var(--accent)}
+svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.narrow .b-axis text{font-size:12px}
+@media (prefers-reduced-motion:reduce){.b-ghost, .c-tip{transition:none}}
+@media print{.c-ctl, .c-d3{display:none} details.c-tbl{display:none}}
+
 @media print{
   body{background:#fff}
   .tbtn, .nav, .skip{display:none}
@@ -371,6 +496,7 @@ p + .figs{margin-top:16px}
     <a href="#metrics">Measures</a>
     <a href="#proof">Used by</a>
     <a href="#work">DefiLlama</a>
+    <a href="#figures">Figures</a>
     <a href="#writing">Writing</a>
     <a href="#services">On offer</a>
     <a href="#now">Interests</a>
@@ -657,6 +783,23 @@ p + .figs{margin-top:16px}
   </div>
 </section>
 
+<!-- ============ figures ============ -->
+<section id="figures" aria-labelledby="h-figures">
+  <div class="pair group">
+    <div class="in"><h2 id="h-figures">Figures</h2><p class="q">The data, drawn and dated.</p></div>
+    <div class="out"><p class="h2" aria-hidden="true">What they leave out</p></div>
+  </div>
+  <div class="pair">
+    <div class="in">
+      <h3>Seven of 96 treasury companies look cheap on one count and expensive on another <span class="when">13&nbsp;November 2026</span></h3>
+      <p>Realized mNAV puts each of them below the crypto it holds. Max mNAV, with every warrant, option, and convertible counted, puts each of them above it.</p>
+      <div class="cfig"><div class="c-db" role="group" aria-label="mNAV by company, realized to max, log scale"><div class="c-hd" aria-hidden="true"><span class="c-nm"></span><span class="c-trk"><b style="right:calc(31.50% + 10px)">Below<span class="c-lg"> the crypto it holds</span></b><b style="left:calc(68.50% + 10px)">Above it</b></span><span class="c-v"></span></div><div class="c-row x" tabindex="0" aria-label="Flora Growth: realized 0.21×, realistic 0.21×, max 1.01×" data-tip="Flora Growth: realized 0.21×, realistic 0.21×, max 1.01×"><span class="c-nm">Flora Growth</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="61.6" y1="14" x2="689.0" y2="14"/></svg><i class="c-dot ho" style="left:6.16%"></i><i class="c-dot fu" style="left:68.90%"></i></span><span class="c-v">0.21× → 1.01×</span></div><div class="c-row x" tabindex="0" aria-label="Hyperion DeFi: realized 0.26×, realistic 0.26×, max 1.13×" data-tip="Hyperion DeFi: realized 0.26×, realistic 0.26×, max 1.13×"><span class="c-nm">Hyperion DeFi</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="146.9" y1="14" x2="733.9" y2="14"/></svg><i class="c-dot ho" style="left:14.69%"></i><i class="c-dot fu" style="left:73.39%"></i></span><span class="c-v">0.26× → 1.13×</span></div><div class="c-row x" tabindex="0" aria-label="Metaplanet: realized 0.52×, realistic 0.52×, max 1.23×" data-tip="Metaplanet: realized 0.52×, realistic 0.52×, max 1.23×"><span class="c-nm">Metaplanet</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="423.8" y1="14" x2="767.7" y2="14"/></svg><i class="c-dot ho" style="left:42.38%"></i><i class="c-dot fu" style="left:76.77%"></i></span><span class="c-v">0.52× → 1.23×</span></div><div class="c-row x" tabindex="0" aria-label="Solana Company: realized 0.62×, realistic 0.83×, max 1.61×" data-tip="Solana Company: realized 0.62×, realistic 0.83×, max 1.61×"><span class="c-nm">Solana Company</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="494.1" y1="14" x2="875.3" y2="14"/><line class="c-mid" x1="610.6" y1="8" x2="610.6" y2="20"/></svg><i class="c-dot ho" style="left:49.41%"></i><i class="c-dot fu" style="left:87.53%"></i></span><span class="c-v">0.62× → 1.61×</span></div><div class="c-row x" tabindex="0" aria-label="SkyAI: realized 0.75×, realistic 1.06×, max 1.06×" data-tip="SkyAI: realized 0.75×, realistic 1.06×, max 1.06×"><span class="c-nm">SkyAI</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="570.1" y1="14" x2="708.3" y2="14"/></svg><i class="c-dot ho" style="left:57.01%"></i><i class="c-dot fu" style="left:70.83%"></i></span><span class="c-v">0.75× → 1.06×</span></div><div class="c-row x" tabindex="0" aria-label="Yorkville Acquisition Group: realized 0.83×, realistic 0.83×, max 1.03×" data-tip="Yorkville Acquisition Group: realized 0.83×, realistic 0.83×, max 1.03×"><span class="c-nm">Yorkville Acquisition Group</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="610.6" y1="14" x2="696.8" y2="14"/></svg><i class="c-dot ho" style="left:61.06%"></i><i class="c-dot fu" style="left:69.68%"></i></span><span class="c-v">0.83× → 1.03×</span></div><div class="c-row x" tabindex="0" aria-label="Sui Group Holdings: realized 0.94×, realistic 0.99×, max 1.08×" data-tip="Sui Group Holdings: realized 0.94×, realistic 0.99×, max 1.08×"><span class="c-nm">Sui Group Holdings</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="660.3" y1="14" x2="715.8" y2="14"/><line class="c-mid" x1="681.0" y1="8" x2="681.0" y2="20"/></svg><i class="c-dot ho" style="left:66.03%"></i><i class="c-dot fu" style="left:71.58%"></i></span><span class="c-v">0.94× → 1.08×</span></div><div class="c-ax" aria-hidden="true"><span class="c-nm"></span><span class="c-trk"><span style="left:13.12%">0.25×</span><span style="left:40.81%">0.5×</span><span style="left:68.50%">1×</span><span style="left:96.19%">2×</span></span><span class="c-v"></span></div></div></div><p class="c-legend"><span><i class="c-k ho"></i>Realized mNAV</span><span><i class="c-k ti"></i>Realistic</span><span><i class="c-k fu"></i>Max mNAV</span><span><i class="c-k sw"></i>Crosses 1.0×</span></p><details class="c-tbl"><summary>Table</summary><table><thead><tr><th>Company</th><th>Realized</th><th>Realistic</th><th>Max</th></tr></thead><tbody><tr><th scope="row">Flora Growth</th><td>0.21×</td><td>0.21×</td><td>1.01×</td></tr><tr><th scope="row">Hyperion DeFi</th><td>0.26×</td><td>0.26×</td><td>1.13×</td></tr><tr><th scope="row">Metaplanet</th><td>0.52×</td><td>0.52×</td><td>1.23×</td></tr><tr><th scope="row">Solana Company</th><td>0.62×</td><td>0.83×</td><td>1.61×</td></tr><tr><th scope="row">SkyAI</th><td>0.75×</td><td>1.06×</td><td>1.06×</td></tr><tr><th scope="row">Yorkville Acquisition Group</th><td>0.83×</td><td>0.83×</td><td>1.03×</td></tr><tr><th scope="row">Sui Group Holdings</th><td>0.94×</td><td>0.99×</td><td>1.08×</td></tr></tbody></table></details>
+      <span class="src">DefiLlama digital asset treasuries tracker, as of 13&nbsp;November 2026. Log scale. <a href="figures/#mnav">All four figures</a>, each with a table and an image, plus an interactive version of this one.</span>
+    </div>
+    <div class="out"><p><span class="vh">Does not count: </span>A live feed. Each figure is a snapshot, dated where it’s drawn.</p></div>
+  </div>
+</section>
+
 <!-- ============ writing ============ -->
 <section id="writing" class="plain" aria-labelledby="h-writing">
   <div class="pair group">
@@ -898,6 +1041,25 @@ p + .figs{margin-top:16px}
   btn.hidden = false;   /* no dead control if this script never runs */
 })();
 </script>
+<script>(function () {
+  var tip = document.createElement("div");
+  tip.className = "c-tip"; tip.setAttribute("role", "tooltip"); tip.setAttribute("aria-hidden", "true");
+  document.body.appendChild(tip);
+  window.tipShow = function (t, x, y) {
+    tip.textContent = t; tip.style.opacity = 1;
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.max(8, Math.min(x + 14, innerWidth - w - 8)) + "px";
+    tip.style.top = Math.min(y + 16, innerHeight - h - 8) + "px";
+  };
+  window.tipHide = function () { tip.style.opacity = 0; };
+  var els = document.querySelectorAll("[data-tip]");
+  for (var i = 0; i < els.length; i++) (function (el) {
+    el.addEventListener("pointermove", function (e) { window.tipShow(el.getAttribute("data-tip"), e.clientX, e.clientY); });
+    el.addEventListener("pointerleave", window.tipHide);
+    el.addEventListener("focus", function () { var q = el.getBoundingClientRect(); window.tipShow(el.getAttribute("data-tip"), q.left, q.bottom - 10); });
+    el.addEventListener("blur", window.tipHide);
+  })(els[i]);
+})();</script>
 
 </body>
 </html>

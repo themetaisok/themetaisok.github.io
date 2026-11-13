@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Figures | meta (@themetaisok)</title>
+<link rel="canonical" href="https://themetaisok.com/figures/">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../fonts/adventor-web-700.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../fonts/adventor-web-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../fonts/caladea-web-400.woff2">
+<link rel="icon" href="../favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="description" content="Dated figures on digital asset treasury mNAV, RWA perps open interest, and how much onchain real-world-asset value is used in DeFi, by meta (@themetaisok).">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4EEEE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131115" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Figures: seven of 96 treasury companies look cheap on one count and expensive on another">
+<meta property="og:description" content="mNAV three ways, RWA perps open interest, and DeFi use of onchain real-world assets, as of 13 November 2026.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://themetaisok.com/figures/">
+<meta property="og:image" content="https://themetaisok.com/figures/img/mnav.png">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1350">
+<meta property="og:site_name" content="themetaisok">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@themetaisok">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<style>
+/* Two typefaces, both self-hosted Latin subsets. See fonts/LICENSES.txt. The italic is for asides. */
+@font-face{font-family:"Adventor Web";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/adventor-web-400.woff2") format("woff2")}
+@font-face{font-family:"Adventor Web";font-style:normal;font-weight:700;font-display:swap;src:url("../fonts/adventor-web-700.woff2") format("woff2")}
+@font-face{font-family:"Caladea Web";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/caladea-web-400.woff2") format("woff2")}
+@font-face{font-family:"Caladea Web";font-style:italic;font-weight:400;font-display:swap;src:url("../fonts/caladea-web-400-italic.woff2") format("woff2")}
+
+/* Colors sampled from the profile picture.
+   Light: porcelain #F4EEEE (the face), cap black #18181A, indigo #282C6D (the ground).
+   Dark: #131115 (the cap in shadow), plum #4E2544, and the same plum lifted to #B665A2 for the accent.
+   Three colors a theme. Lighter tints are derived from the field, not sampled. */
+:root{
+  --split:58%;
+  --in-bg:#F4EEEE; --in-ink:#18181A; --in-quiet:#5E4F52; --in-rule:#D9CDCE; --dot-in:#18181A;
+  --out-bg:#282C6D; --out-ink:#F4EEEE; --out-quiet:#AEB1D9; --out-rule:#50548D; --dot-out:#8284B5;
+  --accent:#282C6D;
+  --head:"Adventor Web","Century Gothic","Avant Garde",Futura,sans-serif;
+  --text:"Caladea Web",Cambria,Georgia,serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --in-bg:#131115; --in-ink:#F4EEEE; --in-quiet:#B9AAAC; --in-rule:#302B32; --dot-in:#F4EEEE;
+    --out-bg:#4E2544; --out-ink:#F4EEEE; --out-quiet:#CBABC3; --out-rule:#754F6C; --dot-out:#9F7C97;
+    --accent:#B665A2;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --in-bg:#131115; --in-ink:#F4EEEE; --in-quiet:#B9AAAC; --in-rule:#302B32; --dot-in:#F4EEEE;
+  --out-bg:#4E2544; --out-ink:#F4EEEE; --out-quiet:#CBABC3; --out-rule:#754F6C; --dot-out:#9F7C97;
+  --accent:#B665A2;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; -webkit-tap-highlight-color:rgba(128,128,128,.25)}
+[id]{scroll-margin-top:14px}
+body{
+  margin:0; color:var(--in-ink);
+  background:linear-gradient(90deg,var(--in-bg) 0 var(--split),var(--out-bg) var(--split) 100%);
+  font-family:var(--text); font-size:19px; line-height:1.45;
+  font-synthesis:none;
+  -webkit-font-smoothing:antialiased;
+}
+p,dl,dd,blockquote,figure{margin:0}
+a{color:inherit; text-decoration-thickness:1px; text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+a, button{touch-action:manipulation}
+a:focus-visible, button:focus-visible{outline:2px solid currentColor; outline-offset:3px}
+main:focus{outline:0}
+b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
+.vh{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+.skip{position:absolute; left:8px; top:-60px; z-index:5; background:var(--in-ink); color:var(--in-bg); font-family:var(--head); font-size:14px; padding:8px 12px}
+.skip:focus{top:8px}
+
+/* One line down the page. Left of it counts, right of it does not. */
+.pair{display:grid; grid-template-columns:var(--split) minmax(0,1fr)}
+.in{background:var(--in-bg); color:var(--in-ink); padding:26px 44px 28px max(28px, calc(58vw - 690px), env(safe-area-inset-left)); min-width:0}
+.out{background:var(--out-bg); color:var(--out-ink); padding:26px max(28px, calc(42vw - 500px), env(safe-area-inset-right)) 28px 44px; min-width:0}
+.pair + .pair > .in{border-top:1px solid var(--in-rule)}
+.pair + .pair > .out{border-top:1px solid var(--out-rule)}
+.in .q{color:var(--in-quiet)} .out .q{color:var(--out-quiet)}
+
+/* Two sections have nothing to exclude. They sit on the counted ground alone,
+   so the field keeps one meaning: does not count. */
+.plain .out{background:var(--in-bg); color:var(--in-quiet)}
+.plain .pair + .pair > .out{border-top-color:var(--in-rule)}
+.plain .out .src{color:var(--in-quiet)}
+
+.ident > .in, .ident > .out{padding-top:18px; padding-bottom:16px; font-family:var(--head); font-size:14px; line-height:1.3}
+.ident .in{display:flex; align-items:center; gap:12px}
+.ident img{width:36px; height:36px; display:block; flex:none}
+.ident h1{font:inherit; font-weight:700; margin:0}
+.ident .out{display:flex; justify-content:flex-end; align-items:center}
+.tbtn{font:inherit; font-size:13px; color:var(--out-ink); background:none; border:1px solid var(--out-quiet); padding:5px 11px 6px; cursor:pointer}
+.tbtn:hover{background:var(--out-ink); color:var(--out-bg)}
+.tbtn[hidden]{display:none}
+
+.hero > .in, .hero > .out{padding-top:54px; padding-bottom:46px; border-top:0 !important}
+.pair .word{font-family:var(--head); font-weight:700; font-size:92px; line-height:.92; letter-spacing:-.035em; margin:0 0 30px; max-width:none}
+.hero p{font-size:23px; line-height:1.38; max-width:25em}
+.hero p + p{margin-top:.7em}
+.hero .word + p{margin-top:0}
+
+.nav > .in, .nav > .out{padding-top:13px; padding-bottom:14px}
+.nav > .in{padding-right:12px}
+.nav .in{font-family:var(--head); font-size:14px; line-height:1.9; display:flex; flex-wrap:wrap; column-gap:18px}
+.nav a{text-decoration:none; white-space:nowrap}
+.nav a:hover{text-decoration:underline}
+
+.group > .in, .group > .out{padding-top:40px; padding-bottom:6px}
+.group > .in{border-top:3px solid var(--in-ink) !important}
+.group > .out{border-top:3px solid var(--out-ink) !important}
+.plain .group > .out{border-top-color:var(--in-ink) !important}
+.group h2, .group .h2{font-family:var(--head); font-weight:700; font-size:34px; line-height:1.05; letter-spacing:-.02em; margin:0; max-width:none; text-wrap:balance}
+.group .q{font-size:16px; margin-top:8px}
+.group + .pair > .in, .group + .pair > .out{border-top:0}
+
+h3{font-family:var(--head); font-weight:700; font-size:16px; line-height:1.25; margin:0 0 7px; text-wrap:balance}
+h3 a{text-decoration-thickness:1px}
+.when{font-weight:400; font-size:13px; color:var(--in-quiet); margin-left:.5em; white-space:nowrap}
+.role{font-family:var(--head); font-size:14px; line-height:1.3; color:var(--in-quiet); margin:-3px 0 8px !important}
+.in p, .out p{max-width:31em}
+.out p{max-width:22em}
+.in p + p, .out p + p, blockquote + p, p + blockquote, p + .figs, .figs + p{margin-top:.55em}
+.lead-out .out p{font-size:23px; line-height:1.3}
+.test{font-size:17px}
+.terms{margin-top:.7em}
+.terms div + div{margin-top:.55em}
+.terms dt{font-family:var(--head); font-weight:700; font-size:15px; line-height:1.3}
+.terms dd{font-size:17px; line-height:1.4; max-width:31em; margin-top:1px}
+.src{display:block; font-size:15.5px; line-height:1.4; color:var(--in-quiet); margin-top:.5em}
+.out .src{color:var(--out-quiet)}
+.src a{overflow-wrap:anywhere}
+blockquote{border-left:3px solid var(--accent); padding-left:14px; max-width:31em}
+blockquote p{font-size:17.5px; line-height:1.42}
+
+/* ---------- the bar, and the field it cuts ---------- */
+.crit{font-family:var(--head); font-weight:700; font-size:34px; line-height:1.14; letter-spacing:-.02em; color:var(--accent); max-width:none !important; margin:0 0 12px}
+.crit span{white-space:nowrap}
+.crit i{font-style:normal; font-weight:400; font-size:.5em; letter-spacing:0; color:var(--in-quiet); padding:0 .15em}
+
+/* Here the line moves. For one band it stands where the finding puts it. */
+/* The band is measured inside the page's own margins, so the cut stays at a fifth of the
+   content at every window width and the marks never grow with the screen. The two grounds
+   still run to the window edges. */
+.jog{--gl:max(28px, calc(58vw - 690px), env(safe-area-inset-left)); --gr:max(28px, calc(42vw - 500px), env(safe-area-inset-right));
+  display:grid; grid-template-columns:calc(var(--gl) + (100% - var(--gl) - var(--gr)) * .2) minmax(0,1fr); border-top:3px solid var(--in-ink)}
+.jin{background:var(--in-bg); color:var(--in-ink); min-width:0; padding-bottom:16px; padding-left:var(--gl)}
+.jout{background:var(--out-bg); color:var(--out-ink); min-width:0; padding-bottom:16px; padding-right:var(--gr)}
+.jlab{padding:18px 16px 16px 0}
+.jout .jlab{padding:18px 0 16px 28px}
+.jfig{font-family:var(--head); font-weight:700; font-size:min(40px,2.95vw); line-height:1; letter-spacing:-.03em; white-space:nowrap}
+.jin .jfig{color:var(--accent)}
+.jsub{font-size:17px; line-height:1.3; margin-top:6px}
+.jout .jsub{color:var(--out-quiet)}
+.dots{display:block; width:100%; height:auto}
+.jin .dots circle{fill:var(--dot-in)}
+.jout .dots circle{fill:var(--dot-out)}
+.dots.n{display:none}
+.jog + .pair > .in, .jog + .pair > .out{border-top:0}
+.cap p{font-size:16px; line-height:1.42}
+
+/* ---------- figures ---------- */
+.figs{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px 22px; margin-top:4px}
+p + .figs{margin-top:16px}
+.figs + p{margin-top:16px}
+.figs + .src{margin-top:12px}
+.figs.five{grid-template-columns:repeat(5,minmax(0,1fr))}
+.figs dt{font-family:var(--head); font-weight:700; font-size:31px; line-height:1; letter-spacing:-.03em}
+.figs dd{font-size:15px; line-height:1.25; color:var(--in-quiet); margin-top:4px}
+
+/* One quoted figure against the figure that counts. */
+.versus > .in, .versus > .out{border-top:0 !important; padding-top:0}
+.bigfig{font-family:var(--head); font-weight:700; font-size:64px; line-height:1; letter-spacing:-.035em; margin-bottom:6px !important}
+.in .bigfig{color:var(--accent)}
+.versus p + p{margin-top:0}
+
+/* ---------- the chain ---------- */
+.nest{border:1.5px solid var(--in-ink); padding:9px 12px 12px; max-width:560px}
+.nest .nest{margin-top:8px}
+.nest .nest .nest{background:var(--out-bg); border-color:var(--out-bg); color:var(--out-ink)}
+.nl{font-family:var(--head); font-weight:700; font-size:15px; line-height:1.3; display:block}
+.nl small{font-family:var(--text); font-weight:400; font-size:14.5px; color:var(--in-quiet)}
+.nest .nest .nest .nl small{color:var(--out-quiet)}
+.ratio{font-size:16px; margin-top:12px !important}
+
+.contact a{display:block; width:fit-content; font-family:var(--head); font-weight:700; font-size:22px; line-height:1.5; text-decoration:none}
+.contact a:hover{text-decoration:underline}
+.contact p + a{margin-top:14px}
+.end > .in, .end > .out{padding-bottom:64px}
+.end .out p, .end .fine{font-size:15.5px}
+
+@media (max-width:1040px){
+  .pair .word{font-size:68px}
+  .crit{font-size:28px}
+  .figs, .figs.five{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .figs dt{font-size:27px}
+  .bigfig{font-size:52px}
+}
+
+/* Phone: the line turns. Excluded blocks are set in from the left,
+   so the light strip down the edge is the same boundary, rotated. */
+@media (max-width:760px){
+  body{background:var(--in-bg); font-size:18px}
+  .pair{display:block}
+  .in{padding:22px 20px}
+  .out{margin-left:42px; padding:20px 20px 22px; border-top:0 !important}
+  .out:empty{display:none}
+  .plain .out{margin-left:0; padding:0 20px 22px}
+  .plain .pair:not(.group) > .in{padding-bottom:8px}
+  .pair + .pair > .in{border-top:1px solid var(--in-rule)}
+  .ident{display:flex; align-items:center; justify-content:space-between}
+  .ident > .in{padding-top:14px; padding-bottom:12px}
+  .ident > .out{margin-left:0; background:var(--in-bg); color:var(--in-ink); padding:0 20px 0 0}
+  .tbtn{color:var(--in-ink); border-color:var(--in-quiet)}
+  .ident > .out{flex:none}
+  .tbtn:hover{background:var(--in-ink); color:var(--in-bg)}
+  .hero > .in{padding-top:30px; padding-bottom:26px}
+  .hero > .out{padding-top:26px; padding-bottom:28px}
+  .pair .word{font-size:52px; margin-bottom:18px}
+  .hero p{font-size:20px}
+  .nav > .in{padding-top:10px; padding-bottom:12px}
+  .nav .in{column-gap:18px; line-height:2.2}
+  .group > .in{padding-top:30px; padding-bottom:4px}
+  .group > .out{padding-top:14px; padding-bottom:14px; border-top:0 !important}
+  .group h2, .group .h2{font-size:27px}
+  .group + .pair > .in{border-top:0}
+  .lead-out .out p{font-size:20px}
+  .out p{max-width:none}
+  .crit{font-size:27px}
+  /* the band keeps its shape on a phone: the counted fifth is the light strip
+     down the left edge, four columns of twenty, and the label for the rest sits under it */
+  .jog{grid-template-columns:20% 80%; grid-template-areas:"inlab inlab" "indots outdots" ". outlab"}
+  .jin, .jout{display:contents}
+  .jin .jlab{grid-area:inlab; padding:18px 20px 14px}
+  .jin .dots.n{grid-area:indots}
+  .jout .dots.n{grid-area:outdots; background:var(--out-bg)}
+  .jout .jlab{grid-area:outlab; background:var(--out-bg); color:var(--out-ink); padding:12px 16px 20px}
+  .jfig{font-size:min(40px,10vw)}
+  .jout .jsub{text-wrap:balance}
+  .dots.w{display:none} .dots.n{display:block}
+  .figs, .figs.five{grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px 18px}
+  .versus > .in{padding-top:0; border-top:0 !important}
+  .versus > .out{padding-top:20px}
+  .contact a{font-size:19px; line-height:1.9}
+}
+
+/* small phones: the handle and the switch are what must fit */
+@media (max-width:340px){
+  .ident .in span{display:none}
+}
+
+
+
+@media print{
+  body{background:#fff}
+  .tbtn, .nav, .skip{display:none}
+}
+
+/* ---------- this page: a wider counted side, because the figures live there ---------- */
+:root{--split:68%}
+.in{padding:26px 44px 28px max(28px, calc(68vw - 860px), env(safe-area-inset-left))}
+.out{padding:26px max(28px, calc(32vw - 330px), env(safe-area-inset-right)) 28px 44px}
+.ident .home{display:flex; align-items:center; gap:12px; text-decoration:none}
+.ident .home:hover p{text-decoration:underline}
+.ident .who{font-weight:700}
+.top > .in, .top > .out{padding-top:46px; padding-bottom:30px; border-top:0 !important}
+.top h1{font-family:var(--head); font-weight:700; font-size:64px; line-height:.95; letter-spacing:-.035em; margin:0 0 16px}
+.top p{font-size:21px; line-height:1.4; max-width:30em}
+.top .out p{font-size:19px}
+.fig > .in > h3{font-size:22px; line-height:1.15; letter-spacing:-.01em; max-width:28em}
+.fig > .in > p{max-width:36em}
+.dl{font-family:var(--head); font-size:13px}
+@media (max-width:1040px){ .top h1{font-size:52px} }
+@media (max-width:760px){
+  .in{padding:22px 20px} .out{padding:20px 20px 22px}
+  .top > .in{padding-top:28px; padding-bottom:22px} .top h1{font-size:44px}
+  .top p{font-size:19px}
+  .fig > .in > h3{font-size:20px}
+}
+
+/* ---------- figures: tokens ---------- */
+:root{--mute:#8E8790; --wash:rgba(40,44,109,.09)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--mute:#68606A; --wash:rgba(182,101,162,.12)}}
+:root[data-theme="dark"]{--mute:#68606A; --wash:rgba(182,101,162,.12)}
+.cfig{container-type:inline-size; margin-top:16px; font-family:var(--head)}
+.cfig + .c-legend, .c-legend{display:flex; flex-wrap:wrap; gap:6px 20px; font-family:var(--head); font-size:13px; line-height:1.3; color:var(--in-quiet); margin-top:12px}
+.c-legend span{display:inline-flex; align-items:center; gap:7px}
+.c-k{flex:none; display:inline-block}
+.c-k.ho{width:11px; height:11px; border-radius:50%; border:2px solid var(--accent)}
+.c-k.fu{width:11px; height:11px; border-radius:50%; background:var(--accent)}
+.c-k.mu{width:11px; height:11px; border-radius:50%; background:var(--mute)}
+.c-k.ti{width:2px; height:12px; background:var(--accent)}
+.c-k.sw{width:12px; height:12px; border-radius:2px; background:var(--accent)} .c-k.sw.m{background:var(--mute)}
+details.c-tbl{margin-top:10px; font-size:15px}
+details.c-tbl summary{font-family:var(--head); font-size:13px; color:var(--in-quiet); cursor:pointer; width:fit-content}
+details.c-tbl summary:focus-visible{outline:2px solid currentColor; outline-offset:3px}
+.c-tbl table{border-collapse:collapse; margin-top:8px; font-variant-numeric:tabular-nums; display:block; max-width:100%; overflow-x:auto}
+.c-tbl th, .c-tbl td{text-align:left; padding:4px 14px 4px 0; border-bottom:1px solid var(--in-rule); font-weight:400; font-family:var(--text)}
+.c-tbl thead th{font-family:var(--head); font-size:13px; color:var(--in-quiet)}
+.c-tip{position:fixed; pointer-events:none; background:var(--in-ink); color:var(--in-bg); font:13px/1.35 var(--head); padding:7px 9px; max-width:280px; z-index:9; opacity:0; transition:opacity .12s}
+
+/* ---------- dumbbell: realized to max mNAV ---------- */
+.c-db .c-row, .c-db .c-hd, .c-db .c-ax{display:grid; grid-template-columns:12.5rem minmax(0,1fr) 7.2rem; align-items:center; column-gap:14px}
+.c-db .c-row{height:30px; outline:none}
+.c-db .c-row:focus-visible .c-trk{outline:2px solid var(--in-ink); outline-offset:2px}
+.c-nm{font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:var(--in-quiet)}
+.c-row.x .c-nm{color:var(--in-ink); font-weight:700}
+.c-v{font-size:13px; white-space:nowrap; font-variant-numeric:tabular-nums}
+.c-trk{position:relative; display:block; height:28px}
+.c-trk svg{position:absolute; inset:0; width:100%; height:100%}
+.c-wash{fill:var(--wash)} .c-par{stroke:var(--in-ink); stroke-width:2; vector-effect:non-scaling-stroke}
+.c-conn{stroke:var(--mute); stroke-width:2; vector-effect:non-scaling-stroke; stroke-linecap:round}
+.c-mid{stroke:var(--mute); stroke-width:2; vector-effect:non-scaling-stroke}
+.c-row.x .c-conn, .c-row.x .c-mid{stroke:var(--accent)}
+.c-dot{position:absolute; top:50%; width:11px; height:11px; margin:-5.5px 0 0 -5.5px; border-radius:50%; box-shadow:0 0 0 2px var(--in-bg)}
+.c-dot.fu{background:var(--mute)} .c-dot.ho{background:var(--in-bg); border:2px solid var(--mute)}
+.c-row.x .c-dot.fu{background:var(--accent)} .c-row.x .c-dot.ho{border-color:var(--accent)}
+.c-hd .c-trk b{position:absolute; bottom:4px; font-size:13px; white-space:nowrap}
+.c-ax .c-trk span{position:absolute; top:4px; transform:translateX(-50%); font-size:12px; color:var(--in-quiet)}
+@container (max-width:620px){
+  .c-db .c-row, .c-db .c-hd, .c-db .c-ax{grid-template-columns:minmax(0,1fr)}
+  .c-db .c-row{height:auto; padding:3px 0}
+  .c-nm{font-size:13px} .c-db .c-v, .c-hd .c-nm, .c-ax .c-nm, .c-hd .c-v, .c-ax .c-v{display:none}
+  .c-db .c-trk{margin:0 12px}
+  .c-hd .c-trk b{font-size:12px} .c-ax .c-trk span{font-size:12px}
+  .c-ax .c-trk span:first-child{transform:none; margin-left:-12px}
+  .c-ax .c-trk span:last-child{transform:translateX(-100%); margin-left:12px}
+}
+@container (max-width:300px){ .c-lg{display:none} }
+
+/* ---------- segmented bar and ranked bars ---------- */
+.c-sub{font-family:var(--head); font-size:13px; color:var(--in-quiet); margin:0 0 8px !important}
+.c-seg{display:flex; gap:2px; height:30px; font-size:13px}
+.c-seg span{display:flex; align-items:center; padding-left:9px; border-radius:4px; white-space:nowrap}
+.c-seg .a{background:var(--accent); color:var(--in-bg)} .c-seg .b{background:var(--mute); color:var(--in-ink)}
+.c-hb{display:grid; grid-template-columns:12.5rem minmax(0,1fr) 4.8rem; align-items:center; column-gap:12px; min-height:27px; outline:none}
+.c-hb:focus-visible .c-ht{outline:2px solid var(--in-ink); outline-offset:2px}
+.c-hn{font-size:13px; color:var(--in-quiet)} .c-hv{font-size:13px; font-variant-numeric:tabular-nums}
+.c-ht{display:block; height:14px} .c-ht i{display:block; height:100%; background:var(--accent); border-radius:0 4px 4px 0}
+@container (max-width:560px){
+  .c-hb{grid-template-columns:8.5rem minmax(0,1fr) 4.2rem; column-gap:8px; padding:3px 0}
+  .c-hn{font-size:12px; line-height:1.2}
+}
+
+/* ---------- three measures on one scale ---------- */
+.c-nb{display:grid; grid-template-columns:11rem minmax(0,1fr) 9rem; align-items:center; column-gap:12px; min-height:56px; padding:6px 0; outline:none}
+.c-nb:focus-visible .c-nt{outline:2px solid var(--in-ink); outline-offset:2px}
+.c-nn{font-size:14px; font-weight:700} .c-nv{font-size:14px; font-variant-numeric:tabular-nums}
+.c-nv small{display:block; font-size:12px; color:var(--in-quiet)}
+.c-nt{display:block; height:22px} .c-nt i{display:block; height:100%; border-radius:0 4px 4px 0}
+.c-n1 .c-nt i{box-shadow:inset 0 0 0 1.5px var(--in-ink)}
+.c-n2 .c-nt i{background:var(--wash); box-shadow:inset 0 0 0 1.5px var(--accent)}
+.c-n3 .c-nt i{background:var(--accent)}
+.c-util{font-family:var(--head); font-size:14px; color:var(--in-quiet); margin-top:10px !important}
+.c-util b{font-size:28px; color:var(--in-ink); letter-spacing:-.02em; margin-right:6px}
+@container (max-width:560px){
+  .c-nb{grid-template-columns:minmax(0,1fr) 6.6rem; row-gap:4px; padding:4px 0}
+  .c-nn{grid-column:1 / -1; font-size:13px} .c-nv{font-size:13px}
+}
+
+/* ---------- the record: published, then picked up ---------- */
+.c-tl .c-mo{display:grid; grid-template-columns:1fr 78px 1fr; min-height:40px}
+.c-tl .c-l{text-align:right; padding:6px 14px 6px 0}
+.c-tl .c-r{padding:6px 0 6px 14px}
+.c-tl .c-axis{position:relative; border-left:2px solid var(--in-ink); margin-left:38px}
+.c-tl .c-axis span{position:absolute; left:-38px; width:74px; text-align:center; top:7px; font-size:12px; color:var(--in-quiet); background:var(--in-bg); padding:1px 0}
+.c-tl .c-hd2 .c-l, .c-tl .c-hd2 .c-r{font-size:14px; font-weight:700; padding-top:4px; padding-bottom:10px}
+.c-ev{margin:0 0 7px !important; font-family:var(--text); font-size:15px; line-height:1.3}
+.c-ev:last-child{margin-bottom:0 !important}
+.c-ev b{display:block; font-size:14px}
+.c-ev small{display:block; font-size:13.5px; color:var(--in-quiet)}
+.c-r .c-ev{border-left:3px solid var(--accent); padding-left:10px}
+.c-l .c-ev{border-right:3px solid var(--in-ink); padding-right:10px}
+@container (max-width:560px){
+  .c-tl .c-mo{grid-template-columns:1fr 50px 1fr}
+  .c-tl .c-axis{margin-left:24px} .c-tl .c-axis span{left:-24px; width:48px; font-size:12px}
+  .c-tl .c-l{padding-right:8px} .c-tl .c-r{padding-left:8px}
+  .c-ev b{font-size:13px} .c-ev small{font-size:12.5px}
+}
+
+/* ---------- the interactive one (d3) ---------- */
+.c-ctl{display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px; font-family:var(--head); margin-top:14px}
+.c-segb{display:inline-flex; border:1px solid var(--in-quiet)}
+.c-segb button, .c-play{font:inherit; font-size:13px; color:var(--in-ink); background:none; border:0; padding:7px 13px 8px; min-height:36px; cursor:pointer}
+.c-segb button + button{border-left:1px solid var(--in-quiet)}
+.c-segb button[aria-pressed="true"], .c-play[aria-pressed="true"]{background:var(--in-ink); color:var(--in-bg)}
+.c-play{border:1px solid var(--in-quiet)}
+.c-tally{font-size:14px; color:var(--in-quiet)}
+.c-tally b{font-size:30px; color:var(--in-ink); letter-spacing:-.02em; font-variant-numeric:tabular-nums; margin-right:4px}
+.c-d3{min-height:80px} .c-d3 svg{display:block; overflow:visible}
+.b-wash{fill:var(--wash)} .b-par{stroke:var(--in-ink); stroke-width:2}
+.b-head text{font-size:13px; font-weight:700; fill:var(--in-ink)} .b-head .l{text-anchor:end}
+.b-axis text{font-size:12px; fill:var(--in-quiet); font-family:var(--head)}
+.b-hit{fill:transparent} .b-row{outline:none}
+.b-row:focus-visible .b-hit{fill:var(--wash); stroke:var(--in-ink); stroke-width:1.5}
+.b-nm{font-size:14px; fill:var(--in-quiet); text-anchor:end} .b-row.cross .b-nm{fill:var(--in-ink); font-weight:700}
+.b-dot{fill:var(--in-bg); stroke:var(--mute); stroke-width:2.5}
+.b-row.above .b-dot{fill:var(--accent); stroke:var(--in-bg); stroke-width:2}
+.b-row.cross:not(.above) .b-dot{stroke:var(--accent)}
+.b-trail{stroke:var(--mute); stroke-width:2; stroke-linecap:round} .b-row.cross .b-trail{stroke:var(--accent)}
+.b-ghost{fill:var(--mute); transition:opacity .3s} .b-row.cross .b-ghost{fill:var(--accent)}
+svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.narrow .b-axis text{font-size:12px}
+@media (prefers-reduced-motion:reduce){.b-ghost, .c-tip{transition:none}}
+@media print{.c-ctl, .c-d3{display:none} details.c-tbl{display:none}}
+</style>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "CollectionPage",
+ "url": "https://themetaisok.com/figures/",
+ "name": "Figures | meta (@themetaisok)",
+ "dateModified": "2026-11-13",
+ "author": {
+  "@id": "https://themetaisok.com/#person"
+ },
+ "about": [
+  "mNAV",
+  "Digital asset treasury companies",
+  "RWA perpetuals",
+  "Tokenized real-world assets"
+ ]
+}</script>
+<script>/* Runs before first paint: a stored choice wins, otherwise the system decides. */
+(function () {
+  try {
+    var t = localStorage.getItem("theme");
+    if (t === "light" || t === "dark") {
+      document.documentElement.setAttribute("data-theme", t);
+      var m = document.querySelectorAll('meta[name="theme-color"]');
+      for (var i = 0; i < m.length; i++) m[i].setAttribute("content", t === "dark" ? "#131115" : "#F4EEEE");
+    }
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="pair ident">
+  <div class="in"><a class="home" href="../" aria-label="themetaisok.com, main page"><img src="../pfp.webp" width="36" height="36" alt="" decoding="async"><p class="who" translate="no">@themetaisok</p></a><span>aka meta</span></div>
+  <div class="out"><button class="tbtn" id="theme-toggle" type="button" hidden>Dark</button></div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<section class="pair top">
+  <div class="in">
+    <h1>Figures</h1>
+    <p>The data behind the work, drawn. Every figure carries its date, its source, a table, and an image version.</p>
+  </div>
+  <div class="out">
+    <p><span class="vh">Does not count: </span>A live feed. Each figure is a snapshot, and the date on it is the day it was read.</p>
+  </div>
+</section>
+
+<nav class="pair nav" aria-label="Figures">
+  <div class="in">
+    <a href="#mnav">mNAV</a>
+    <a href="#count">One count at a time</a>
+    <a href="#perps">RWA perps</a>
+    <a href="#used">Used in DeFi</a>
+    <a href="#record">The record</a>
+    <a href="../">Main page</a>
+  </div>
+  <div class="out"></div>
+</nav>
+
+<!-- ============ mNAV ============ -->
+<section id="mnav" aria-labelledby="h-mnav">
+  <div class="pair group">
+    <div class="in"><h2 id="h-mnav">mNAV, three ways</h2><p class="q">Treasury companies, priced against the crypto they hold.</p></div>
+    <div class="out"><p class="h2" aria-hidden="true">Left out</p></div>
+  </div>
+  <div class="pair fig">
+    <div class="in">
+      <h3>Seven of 96 treasury companies look cheap on one count and expensive on another <span class="when">13&nbsp;November 2026</span></h3>
+      <p>Each row is a listed treasury company. The hollow dot is realized mNAV, from the shares outstanding today. The filled dot is max mNAV, with every warrant, option, and convertible counted. The line down the middle is 1.0×, where a company is priced at exactly the crypto it holds.</p>
+      <div class="cfig"><div class="c-db" role="group" aria-label="mNAV by company, realized to max, log scale"><div class="c-hd" aria-hidden="true"><span class="c-nm"></span><span class="c-trk"><b style="right:calc(50.00% + 10px)">Below<span class="c-lg"> the crypto it holds</span></b><b style="left:calc(50.00% + 10px)">Above it</b></span><span class="c-v"></span></div><div class="c-row" tabindex="0" aria-label="Cantor Equity Partners I: realized 0.12×, realistic 0.12×, max 0.13×" data-tip="Cantor Equity Partners I: realized 0.12×, realistic 0.12×, max 0.13×"><span class="c-nm">Cantor Equity Partners I</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="39.6" y1="14" x2="57.0" y2="14"/></svg><i class="c-dot ho" style="left:3.96%"></i><i class="c-dot fu" style="left:5.70%"></i></span><span class="c-v"></span></div><div class="c-row x" tabindex="0" aria-label="Flora Growth: realized 0.21×, realistic 0.21×, max 1.01×" data-tip="Flora Growth: realized 0.21×, realistic 0.21×, max 1.01×"><span class="c-nm">Flora Growth</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="161.1" y1="14" x2="502.2" y2="14"/></svg><i class="c-dot ho" style="left:16.11%"></i><i class="c-dot fu" style="left:50.22%"></i></span><span class="c-v">0.21× → 1.01×</span></div><div class="c-row x" tabindex="0" aria-label="Hyperion DeFi: realized 0.26×, realistic 0.26×, max 1.13×" data-tip="Hyperion DeFi: realized 0.26×, realistic 0.26×, max 1.13×"><span class="c-nm">Hyperion DeFi</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="207.5" y1="14" x2="526.5" y2="14"/></svg><i class="c-dot ho" style="left:20.75%"></i><i class="c-dot fu" style="left:52.65%"></i></span><span class="c-v">0.26× → 1.13×</span></div><div class="c-row" tabindex="0" aria-label="The Ethereum Machine: realized 0.27×, realistic 0.27×, max 0.44×" data-tip="The Ethereum Machine: realized 0.27×, realistic 0.27×, max 0.44×"><span class="c-nm">The Ethereum Machine</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="215.7" y1="14" x2="321.7" y2="14"/></svg><i class="c-dot ho" style="left:21.57%"></i><i class="c-dot fu" style="left:32.17%"></i></span><span class="c-v"></span></div><div class="c-row" tabindex="0" aria-label="StablecoinX: realized 0.35×, realistic 0.35×, max 0.63×" data-tip="StablecoinX: realized 0.35×, realistic 0.35×, max 0.63×"><span class="c-nm">StablecoinX</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="272.0" y1="14" x2="399.7" y2="14"/></svg><i class="c-dot ho" style="left:27.20%"></i><i class="c-dot fu" style="left:39.97%"></i></span><span class="c-v"></span></div><div class="c-row" tabindex="0" aria-label="Semler Scientific: realized 0.52×, realistic 0.57×, max 0.62×" data-tip="Semler Scientific: realized 0.52×, realistic 0.57×, max 0.62×"><span class="c-nm">Semler Scientific</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="358.0" y1="14" x2="396.2" y2="14"/><line class="c-mid" x1="377.9" y1="8" x2="377.9" y2="20"/></svg><i class="c-dot ho" style="left:35.80%"></i><i class="c-dot fu" style="left:39.62%"></i></span><span class="c-v"></span></div><div class="c-row x" tabindex="0" aria-label="Metaplanet: realized 0.52×, realistic 0.52×, max 1.23×" data-tip="Metaplanet: realized 0.52×, realistic 0.52×, max 1.23×"><span class="c-nm">Metaplanet</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="358.0" y1="14" x2="545.0" y2="14"/></svg><i class="c-dot ho" style="left:35.80%"></i><i class="c-dot fu" style="left:54.50%"></i></span><span class="c-v">0.52× → 1.23×</span></div><div class="c-row" tabindex="0" aria-label="Twenty One Capital: realized 0.55×, realistic 0.55×, max 0.62×" data-tip="Twenty One Capital: realized 0.55×, realistic 0.55×, max 0.62×"><span class="c-nm">Twenty One Capital</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="370.2" y1="14" x2="396.2" y2="14"/></svg><i class="c-dot ho" style="left:37.02%"></i><i class="c-dot fu" style="left:39.62%"></i></span><span class="c-v"></span></div><div class="c-row" tabindex="0" aria-label="Forward Industries: realized 0.56×, realistic 0.64×, max 0.71×" data-tip="Forward Industries: realized 0.56×, realistic 0.64×, max 0.71×"><span class="c-nm">Forward Industries</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="374.1" y1="14" x2="425.6" y2="14"/><line class="c-mid" x1="403.1" y1="8" x2="403.1" y2="20"/></svg><i class="c-dot ho" style="left:37.41%"></i><i class="c-dot fu" style="left:42.56%"></i></span><span class="c-v"></span></div><div class="c-row" tabindex="0" aria-label="Evernorth: realized 0.59×, realistic 0.59×, max 0.81×" data-tip="Evernorth: realized 0.59×, realistic 0.59×, max 0.81×"><span class="c-nm">Evernorth</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="385.4" y1="14" x2="454.2" y2="14"/></svg><i class="c-dot ho" style="left:38.54%"></i><i class="c-dot fu" style="left:45.42%"></i></span><span class="c-v"></span></div><div class="c-row" tabindex="0" aria-label="American Bitcoin: realized 0.62×, realistic 0.62×, max 0.62×" data-tip="American Bitcoin: realized 0.62×, realistic 0.62×, max 0.62×"><span class="c-nm">American Bitcoin</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/></svg><i class="c-dot fu" style="left:39.62%"></i></span><span class="c-v"></span></div><div class="c-row x" tabindex="0" aria-label="Solana Company: realized 0.62×, realistic 0.83×, max 1.61×" data-tip="Solana Company: realized 0.62×, realistic 0.83×, max 1.61×"><span class="c-nm">Solana Company</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="396.2" y1="14" x2="603.4" y2="14"/><line class="c-mid" x1="459.5" y1="8" x2="459.5" y2="20"/></svg><i class="c-dot ho" style="left:39.62%"></i><i class="c-dot fu" style="left:60.34%"></i></span><span class="c-v">0.62× → 1.61×</span></div><div class="c-row" tabindex="0" aria-label="Sharplink: realized 0.72×, realistic 0.72×, max 0.72×" data-tip="Sharplink: realized 0.72×, realistic 0.72×, max 0.72×"><span class="c-nm">Sharplink</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/></svg><i class="c-dot fu" style="left:42.87%"></i></span><span class="c-v"></span></div><div class="c-row x" tabindex="0" aria-label="SkyAI: realized 0.75×, realistic 1.06×, max 1.06×" data-tip="SkyAI: realized 0.75×, realistic 1.06×, max 1.06×"><span class="c-nm">SkyAI</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="437.5" y1="14" x2="512.7" y2="14"/></svg><i class="c-dot ho" style="left:43.75%"></i><i class="c-dot fu" style="left:51.27%"></i></span><span class="c-v">0.75× → 1.06×</span></div><div class="c-row" tabindex="0" aria-label="Strategy: realized 0.82×, realistic 0.82×, max 0.82×" data-tip="Strategy: realized 0.82×, realistic 0.82×, max 0.82×"><span class="c-nm">Strategy</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/></svg><i class="c-dot fu" style="left:45.69%"></i></span><span class="c-v"></span></div><div class="c-row x" tabindex="0" aria-label="Yorkville Acquisition Group: realized 0.83×, realistic 0.83×, max 1.03×" data-tip="Yorkville Acquisition Group: realized 0.83×, realistic 0.83×, max 1.03×"><span class="c-nm">Yorkville Acquisition Group</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="459.5" y1="14" x2="506.4" y2="14"/></svg><i class="c-dot ho" style="left:45.95%"></i><i class="c-dot fu" style="left:50.64%"></i></span><span class="c-v">0.83× → 1.03×</span></div><div class="c-row" tabindex="0" aria-label="Hyperliquid Strategies: realized 0.9×, realistic 0.9×, max 0.9×" data-tip="Hyperliquid Strategies: realized 0.9×, realistic 0.9×, max 0.9×"><span class="c-nm">Hyperliquid Strategies</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/></svg><i class="c-dot fu" style="left:47.71%"></i></span><span class="c-v"></span></div><div class="c-row" tabindex="0" aria-label="BitMine Immersion: realized 0.93×, realistic 0.93×, max 0.93×" data-tip="BitMine Immersion: realized 0.93×, realistic 0.93×, max 0.93×"><span class="c-nm">BitMine Immersion</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/></svg><i class="c-dot fu" style="left:48.42%"></i></span><span class="c-v"></span></div><div class="c-row" tabindex="0" aria-label="Strive: realized 0.93×, realistic 0.93×, max 0.95×" data-tip="Strive: realized 0.93×, realistic 0.93×, max 0.95×"><span class="c-nm">Strive</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="484.2" y1="14" x2="488.9" y2="14"/></svg><i class="c-dot ho" style="left:48.42%"></i><i class="c-dot fu" style="left:48.89%"></i></span><span class="c-v"></span></div><div class="c-row x" tabindex="0" aria-label="Sui Group Holdings: realized 0.94×, realistic 0.99×, max 1.08×" data-tip="Sui Group Holdings: realized 0.94×, realistic 0.99×, max 1.08×"><span class="c-nm">Sui Group Holdings</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="486.6" y1="14" x2="516.7" y2="14"/><line class="c-mid" x1="497.8" y1="8" x2="497.8" y2="20"/></svg><i class="c-dot ho" style="left:48.66%"></i><i class="c-dot fu" style="left:51.67%"></i></span><span class="c-v">0.94× → 1.08×</span></div><div class="c-row" tabindex="0" aria-label="MARA Holdings: realized 1.06×, realistic 1.06×, max 1.06×" data-tip="MARA Holdings: realized 1.06×, realistic 1.06×, max 1.06×"><span class="c-nm">MARA Holdings</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/></svg><i class="c-dot fu" style="left:51.27%"></i></span><span class="c-v"></span></div><div class="c-row" tabindex="0" aria-label="Trump Media &amp; Technology: realized 1.28×, realistic 1.28×, max 1.48×" data-tip="Trump Media &amp; Technology: realized 1.28×, realistic 1.28×, max 1.48×"><span class="c-nm">Trump Media &amp; Technology</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="553.6" y1="14" x2="585.1" y2="14"/></svg><i class="c-dot ho" style="left:55.36%"></i><i class="c-dot fu" style="left:58.51%"></i></span><span class="c-v"></span></div><div class="c-row" tabindex="0" aria-label="CleanSpark: realized 1.74×, realistic 1.86×, max 2.68×" data-tip="CleanSpark: realized 1.74×, realistic 1.86×, max 2.68×"><span class="c-nm">CleanSpark</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="620.3" y1="14" x2="714.1" y2="14"/><line class="c-mid" x1="634.8" y1="8" x2="634.8" y2="20"/></svg><i class="c-dot ho" style="left:62.03%"></i><i class="c-dot fu" style="left:71.41%"></i></span><span class="c-v"></span></div><div class="c-row" tabindex="0" aria-label="Bullish: realized 2.34×, realistic 2.34×, max 2.34×" data-tip="Bullish: realized 2.34×, realistic 2.34×, max 2.34×"><span class="c-nm">Bullish</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/></svg><i class="c-dot fu" style="left:68.46%"></i></span><span class="c-v"></span></div><div class="c-row" tabindex="0" aria-label="Galaxy Digital: realized 3.65×, realistic 3.79×, max 4.36×" data-tip="Galaxy Digital: realized 3.65×, realistic 3.79×, max 4.36×"><span class="c-nm">Galaxy Digital</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/><line class="c-conn" x1="781.1" y1="14" x2="819.7" y2="14"/><line class="c-mid" x1="789.3" y1="8" x2="789.3" y2="20"/></svg><i class="c-dot ho" style="left:78.11%"></i><i class="c-dot fu" style="left:81.97%"></i></span><span class="c-v"></span></div><div class="c-row" tabindex="0" aria-label="Riot Platforms: realized 7.97×, realistic 7.97×, max 7.97×" data-tip="Riot Platforms: realized 7.97×, realistic 7.97×, max 7.97×"><span class="c-nm">Riot Platforms</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="500.0" y="0" width="500.0" height="28"/><line class="c-par" x1="500.0" y1="0" x2="500.0" y2="28"/></svg><i class="c-dot fu" style="left:95.07%"></i></span><span class="c-v"></span></div><div class="c-ax" aria-hidden="true"><span class="c-nm"></span><span class="c-trk"><span style="left:0.00%">0.1×</span><span style="left:19.90%">0.25×</span><span style="left:34.95%">0.5×</span><span style="left:50.00%">1×</span><span style="left:65.05%">2×</span><span style="left:80.10%">4×</span><span style="left:100.00%">10×</span></span><span class="c-v"></span></div></div></div><p class="c-legend"><span><i class="c-k ho"></i>Realized mNAV</span><span><i class="c-k ti"></i>Realistic</span><span><i class="c-k fu"></i>Max mNAV</span><span><i class="c-k sw"></i>Crosses 1.0×</span></p><details class="c-tbl"><summary>Table</summary><table><thead><tr><th>Company</th><th>Realized</th><th>Realistic</th><th>Max</th></tr></thead><tbody><tr><th scope="row">Cantor Equity Partners I</th><td>0.12×</td><td>0.12×</td><td>0.13×</td></tr><tr><th scope="row">Flora Growth</th><td>0.21×</td><td>0.21×</td><td>1.01×</td></tr><tr><th scope="row">Hyperion DeFi</th><td>0.26×</td><td>0.26×</td><td>1.13×</td></tr><tr><th scope="row">The Ethereum Machine</th><td>0.27×</td><td>0.27×</td><td>0.44×</td></tr><tr><th scope="row">StablecoinX</th><td>0.35×</td><td>0.35×</td><td>0.63×</td></tr><tr><th scope="row">Semler Scientific</th><td>0.52×</td><td>0.57×</td><td>0.62×</td></tr><tr><th scope="row">Metaplanet</th><td>0.52×</td><td>0.52×</td><td>1.23×</td></tr><tr><th scope="row">Twenty One Capital</th><td>0.55×</td><td>0.55×</td><td>0.62×</td></tr><tr><th scope="row">Forward Industries</th><td>0.56×</td><td>0.64×</td><td>0.71×</td></tr><tr><th scope="row">Evernorth</th><td>0.59×</td><td>0.59×</td><td>0.81×</td></tr><tr><th scope="row">American Bitcoin</th><td>0.62×</td><td>0.62×</td><td>0.62×</td></tr><tr><th scope="row">Solana Company</th><td>0.62×</td><td>0.83×</td><td>1.61×</td></tr><tr><th scope="row">Sharplink</th><td>0.72×</td><td>0.72×</td><td>0.72×</td></tr><tr><th scope="row">SkyAI</th><td>0.75×</td><td>1.06×</td><td>1.06×</td></tr><tr><th scope="row">Strategy</th><td>0.82×</td><td>0.82×</td><td>0.82×</td></tr><tr><th scope="row">Yorkville Acquisition Group</th><td>0.83×</td><td>0.83×</td><td>1.03×</td></tr><tr><th scope="row">Hyperliquid Strategies</th><td>0.9×</td><td>0.9×</td><td>0.9×</td></tr><tr><th scope="row">BitMine Immersion</th><td>0.93×</td><td>0.93×</td><td>0.93×</td></tr><tr><th scope="row">Strive</th><td>0.93×</td><td>0.93×</td><td>0.95×</td></tr><tr><th scope="row">Sui Group Holdings</th><td>0.94×</td><td>0.99×</td><td>1.08×</td></tr><tr><th scope="row">MARA Holdings</th><td>1.06×</td><td>1.06×</td><td>1.06×</td></tr><tr><th scope="row">Trump Media &amp; Technology</th><td>1.28×</td><td>1.28×</td><td>1.48×</td></tr><tr><th scope="row">CleanSpark</th><td>1.74×</td><td>1.86×</td><td>2.68×</td></tr><tr><th scope="row">Bullish</th><td>2.34×</td><td>2.34×</td><td>2.34×</td></tr><tr><th scope="row">Galaxy Digital</th><td>3.65×</td><td>3.79×</td><td>4.36×</td></tr><tr><th scope="row">Riot Platforms</th><td>7.97×</td><td>7.97×</td><td>7.97×</td></tr></tbody></table></details>
+      <span class="src">DefiLlama digital asset treasuries tracker, as of 13&nbsp;November 2026. The 25 largest holders, plus every smaller company that crosses 1.0×, on a log scale. <a translate="no" href="https://defillama.com/digital-asset-treasuries" target="_blank" rel="noopener">defillama.com/digital-asset-treasuries</a></span>
+      <span class="src dl"><a href="img/mnav.png" download>Image of the seven, PNG</a></span>
+    </div>
+    <div class="out">
+      <p><span class="vh">Does not count: </span>Five companies off the scale: Coinbase Global, Tesla, Block, GD Culture Group, and Next Technology Holding. None of them crosses 1.0×.</p>
+      <p class="q">Two listed companies with no holdings data, VivoPower International and KULR Technology Group. They’re not in the 96.</p>
+    </div>
+  </div>
+
+  <div class="pair fig" id="count">
+    <div class="in">
+      <h3>The same companies, one count at a time <span class="when">13&nbsp;November 2026</span></h3>
+      <p>Each dot moves to the company’s mNAV under the count you pick, and a faint mark stays where it started. On realized mNAV, 20 of the 26 drawn here sit below 1.0×. On max mNAV, 13 do.</p>
+      <div class="c-ctl" id="f-ctl">
+        <span class="c-segb" role="group" aria-label="Which shares to count"><button type="button" data-k="realized" aria-pressed="true">Realized</button><button type="button" data-k="realistic" aria-pressed="false">Realistic</button><button type="button" data-k="max" aria-pressed="false">Max</button></span>
+        <button type="button" class="c-play" id="f-play" aria-pressed="false">Play</button>
+        <span class="c-tally" aria-live="polite"><b id="f-n">20</b>of <span id="f-of">26</span> below 1.0× on <span id="f-k">realized</span> mNAV</span>
+      </div>
+      <div class="cfig c-d3" id="f-chart"><noscript><p class="q">This one needs JavaScript. The figure above is the same data, drawn without it.</p></noscript></div>
+      <p class="c-legend"><span><i class="c-k ho"></i>Below 1.0×</span><span><i class="c-k fu"></i>At or above 1.0×</span><span><i class="c-k sw"></i>Crosses 1.0× on some count</span></p>
+      <span class="src">Same data, same date. Drawn with d3.</span>
+    </div>
+    <div class="out">
+      <p><span class="vh">Does not count: </span>The 70 companies not drawn here. None of them changes sides, whichever shares you count.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ perps ============ -->
+<section id="perps" aria-labelledby="h-perps">
+  <div class="pair group">
+    <div class="in"><h2 id="h-perps">RWA perps</h2><p class="q">Where the open interest sits.</p></div>
+    <div class="out"><p class="h2" aria-hidden="true">Left out</p></div>
+  </div>
+  <div class="pair fig">
+    <div class="in">
+      <h3>Nearly three quarters of RWA perps open interest is on centralized exchanges <span class="when">13&nbsp;November 2026</span></h3>
+      <p>The top bar splits all $13.35b of open interest by venue. Below it, the decentralized part by asset group, where public equities hold about 45%.</p>
+      <div class="cfig"><p class="c-sub">All RWA perps open interest, $13.35b</p><div class="c-seg" role="img" aria-label="Decentralized venues 26.6 percent, centralized exchanges 73.4 percent"><span class="a" style="flex:0.2660" tabindex="0" data-tip="Decentralized venues: 26.6%, about $3.55b">26.6%</span><span class="b" style="flex:0.7340" tabindex="0" data-tip="Centralized exchanges: 73.4%, about $9.80b">73.4%</span></div><p class="c-legend"><span><i class="c-k sw"></i>Decentralized venues</span><span><i class="c-k sw m"></i>Centralized exchanges</span></p><p class="c-sub" style="margin-top:26px !important">Decentralized venues only, $3.55b, by asset group</p><div class="c-hbars"><div class="c-hb" tabindex="0" data-tip="Public equities: about $1.60b of open interest on decentralized venues" aria-label="Public equities: about $1.60b"><span class="c-hn">Public equities</span><span class="c-ht" aria-hidden="true"><i style="width:100.00%"></i></span><span class="c-hv">$1.60b</span></div><div class="c-hb" tabindex="0" data-tip="Precious metals: about $551.5m of open interest on decentralized venues" aria-label="Precious metals: about $551.5m"><span class="c-hn">Precious metals</span><span class="c-ht" aria-hidden="true"><i style="width:34.47%"></i></span><span class="c-hv">$551.5m</span></div><div class="c-hb" tabindex="0" data-tip="Equity indices: about $496.9m of open interest on decentralized venues" aria-label="Equity indices: about $496.9m"><span class="c-hn">Equity indices</span><span class="c-ht" aria-hidden="true"><i style="width:31.06%"></i></span><span class="c-hv">$496.9m</span></div><div class="c-hb" tabindex="0" data-tip="Oil: about $294.8m of open interest on decentralized venues" aria-label="Oil: about $294.8m"><span class="c-hn">Oil</span><span class="c-ht" aria-hidden="true"><i style="width:18.43%"></i></span><span class="c-hv">$294.8m</span></div><div class="c-hb" tabindex="0" data-tip="Equity ETFs: about $196.6m of open interest on decentralized venues" aria-label="Equity ETFs: about $196.6m"><span class="c-hn">Equity ETFs</span><span class="c-ht" aria-hidden="true"><i style="width:12.29%"></i></span><span class="c-hv">$196.6m</span></div><div class="c-hb" tabindex="0" data-tip="Fiat currencies: about $182m of open interest on decentralized venues" aria-label="Fiat currencies: about $182m"><span class="c-hn">Fiat currencies</span><span class="c-ht" aria-hidden="true"><i style="width:11.38%"></i></span><span class="c-hv">$182m</span></div><div class="c-hb" tabindex="0" data-tip="Private equity and venture: about $171.9m of open interest on decentralized venues" aria-label="Private equity and venture: about $171.9m"><span class="c-hn">Private equity and venture</span><span class="c-ht" aria-hidden="true"><i style="width:10.74%"></i></span><span class="c-hv">$171.9m</span></div><div class="c-hb" tabindex="0" data-tip="AI and compute infrastructure: about $48.7m of open interest on decentralized venues" aria-label="AI and compute infrastructure: about $48.7m"><span class="c-hn">AI and compute infrastructure</span><span class="c-ht" aria-hidden="true"><i style="width:3.04%"></i></span><span class="c-hv">$48.7m</span></div><div class="c-hb" tabindex="0" data-tip="Natural gas: about $21.4m of open interest on decentralized venues" aria-label="Natural gas: about $21.4m"><span class="c-hn">Natural gas</span><span class="c-ht" aria-hidden="true"><i style="width:1.34%"></i></span><span class="c-hv">$21.4m</span></div><div class="c-hb" tabindex="0" data-tip="Industrial metals: about $14.4m of open interest on decentralized venues" aria-label="Industrial metals: about $14.4m"><span class="c-hn">Industrial metals</span><span class="c-ht" aria-hidden="true"><i style="width:0.90%"></i></span><span class="c-hv">$14.4m</span></div></div></div><details class="c-tbl"><summary>Table</summary><table><thead><tr><th>Asset group</th><th>Open interest, decentralized venues</th></tr></thead><tbody><tr><th scope="row">Public equities</th><td>$1.60b</td></tr><tr><th scope="row">Precious metals</th><td>$551.5m</td></tr><tr><th scope="row">Equity indices</th><td>$496.9m</td></tr><tr><th scope="row">Oil</th><td>$294.8m</td></tr><tr><th scope="row">Equity ETFs</th><td>$196.6m</td></tr><tr><th scope="row">Fiat currencies</th><td>$182m</td></tr><tr><th scope="row">Private equity and venture</th><td>$171.9m</td></tr><tr><th scope="row">AI and compute infrastructure</th><td>$48.7m</td></tr><tr><th scope="row">Natural gas</th><td>$21.4m</td></tr><tr><th scope="row">Industrial metals</th><td>$14.4m</td></tr><tr><th scope="row">All groups, decentralized venues</th><td>$3.55b</td></tr><tr><th scope="row">All venues</th><td>$13.35b</td></tr></tbody></table></details>
+      <span class="src">DefiLlama RWA perps, as of 13&nbsp;November 2026. The dashboard rounds public equities to $1.6b. <a translate="no" href="https://defillama.com/rwa/perps" target="_blank" rel="noopener">defillama.com/rwa/perps</a></span>
+      <span class="src dl"><a href="img/perps.png" download>Image, PNG</a></span>
+    </div>
+    <div class="out">
+      <p><span class="vh">Does not count: </span>Volume. Open interest is what’s still held, not what traded.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ used in DeFi ============ -->
+<section id="used" aria-labelledby="h-used">
+  <div class="pair group">
+    <div class="in"><h2 id="h-used">Used in DeFi</h2><p class="q">Three of the measures I defined, on one scale.</p></div>
+    <div class="out"><p class="h2" aria-hidden="true">Left out</p></div>
+  </div>
+  <div class="pair fig">
+    <div class="in">
+      <h3>About an eighth of onchain real-world assets is used in DeFi <span class="when">13&nbsp;November 2026</span></h3>
+      <p>Most of what’s onchain is also in user hands. Very little of it is put to work.</p>
+      <div class="cfig"><div class="c-nb c-n1" tabindex="0" data-tip="Onchain Market Cap: $34.41b, 100%" aria-label="Onchain Market Cap: $34.41 billion, 100%"><span class="c-nn">Onchain Market Cap</span><span class="c-nt" aria-hidden="true"><i style="width:100.00%"></i></span><span class="c-nv">$34.41b <small>100%</small></span></div><div class="c-nb c-n2" tabindex="0" data-tip="Active Market Cap: $30.48b, 88.6% of onchain" aria-label="Active Market Cap: $30.48 billion, 88.6% of onchain"><span class="c-nn">Active Market Cap</span><span class="c-nt" aria-hidden="true"><i style="width:88.57%"></i></span><span class="c-nv">$30.48b <small>88.6% of onchain</small></span></div><div class="c-nb c-n3" tabindex="0" data-tip="DeFi Active TVL: $4.19b, 12.2% of onchain" aria-label="DeFi Active TVL: $4.19 billion, 12.2% of onchain"><span class="c-nn">DeFi Active TVL</span><span class="c-nt" aria-hidden="true"><i style="width:12.18%"></i></span><span class="c-nv">$4.19b <small>12.2% of onchain</small></span></div></div><p class="c-util"><b>12.2%</b> utilization, DeFi Active TVL over Onchain Market Cap</p><details class="c-tbl"><summary>Table</summary><table><thead><tr><th>Measure</th><th>13 November 2026</th></tr></thead><tbody><tr><th scope="row">Onchain Market Cap</th><td>$34.414b</td></tr><tr><th scope="row">Active Market Cap</th><td>$30.481b</td></tr><tr><th scope="row">DeFi Active TVL</th><td>$4.191b</td></tr><tr><th scope="row">Utilization</th><td>12.2%</td></tr></tbody></table></details>
+      <span class="src">DefiLlama RWA dashboard, default view, as of 13&nbsp;November 2026. Definitions: <a href="../#m-onchain-market-cap">Onchain Market Cap</a>, <a href="../#m-active-market-cap">Active Market Cap</a>, <a href="../#m-defi-active-tvl">DeFi Active TVL</a>, <a href="../#m-utilization">Utilization</a>. <a translate="no" href="https://defillama.com/rwa" target="_blank" rel="noopener">defillama.com/rwa</a></span>
+      <span class="src dl"><a href="img/used.png" download>Image, PNG</a></span>
+    </div>
+    <div class="out">
+      <p><span class="vh">Does not count: </span>Each bar leaves out something the one above it keeps. Active Market Cap drops issuer and custody wallets. DeFi Active TVL drops issuer-managed contracts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ the record ============ -->
+<section id="record" aria-labelledby="h-record">
+  <div class="pair group">
+    <div class="in"><h2 id="h-record">The record</h2><p class="q">What I published, and when other people picked it up.</p></div>
+    <div class="out"><p class="h2" aria-hidden="true">Left out</p></div>
+  </div>
+  <div class="pair fig">
+    <div class="in">
+      <h3>Published first, picked up after <span class="when">August 2025 to November 2026</span></h3>
+      <p>One row per month. Six months pass between the second article and the first pickup.</p>
+      <div class="cfig"><div class="c-tl"><div class="c-mo c-hd2" aria-hidden="true"><div class="c-l">What I published</div><div class="c-axis"></div><div class="c-r">Who picked it up</div></div><div class="c-mo"><div class="c-l"><p class="c-ev"><b>Joined DefiLlama</b></p></div><div class="c-axis"><span>Aug 2025</span></div><div class="c-r"></div></div><div class="c-mo"><div class="c-l"><p class="c-ev"><b>“What is mNAV?”, DL News</b></p></div><div class="c-axis"><span>Sep</span></div><div class="c-r"></div></div><div class="c-mo"><div class="c-l"><p class="c-ev"><b>“The Digital Asset Treasury Playbook”, DL News</b></p></div><div class="c-axis"><span>Oct</span></div><div class="c-r"></div></div><div class="c-mo"><div class="c-l"></div><div class="c-axis"><span>Nov</span></div><div class="c-r"></div></div><div class="c-mo"><div class="c-l"></div><div class="c-axis"><span>Dec</span></div><div class="c-r"></div></div><div class="c-mo"><div class="c-l"></div><div class="c-axis"><span>Jan 2026</span></div><div class="c-r"></div></div><div class="c-mo"><div class="c-l"></div><div class="c-axis"><span>Feb</span></div><div class="c-r"></div></div><div class="c-mo"><div class="c-l"></div><div class="c-axis"><span>Mar</span></div><div class="c-r"></div></div><div class="c-mo"><div class="c-l"></div><div class="c-axis"><span>Apr</span></div><div class="c-r"><p class="c-ev"><b>CriptoNoticias</b><small>Spanish-language coverage of the RWA data</small></p></div></div><div class="c-mo"><div class="c-l"></div><div class="c-axis"><span>May</span></div><div class="c-r"><p class="c-ev"><b>Pantera Capital, Q1 2026 edition</b><small>Adopts DeFi Active TVL. PDF posted May 2026.</small></p></div></div><div class="c-mo"><div class="c-l"></div><div class="c-axis"><span>Jun</span></div><div class="c-r"><p class="c-ev"><b>Citi Institute</b><small>Market size sourced to DefiLlama, p. 19</small></p><p class="c-ev"><b>Vella, Pennella, and Ballandies</b><small>arXiv paper, DefiLlama as selection criterion</small></p></div></div><div class="c-mo"><div class="c-l"></div><div class="c-axis"><span>Jul</span></div><div class="c-r"></div></div><div class="c-mo"><div class="c-l"></div><div class="c-axis"><span>Aug 2026</span></div><div class="c-r"><p class="c-ev"><b>CryptoSlate</b><small>Runs DeFi Active TVL as a column heading</small></p></div></div><div class="c-mo"><div class="c-l"><p class="c-ev"><b>Left DefiLlama</b></p></div><div class="c-axis"><span>Sep</span></div><div class="c-r"><p class="c-ev"><b>Pantera Capital, September 2026 edition</b><small>Credits me by name again</small></p></div></div><div class="c-mo"><div class="c-l"><p class="c-ev"><b>Indexed podcast</b></p></div><div class="c-axis"><span>Oct</span></div><div class="c-r"></div></div><div class="c-mo"><div class="c-l"></div><div class="c-axis"><span>Nov</span></div><div class="c-r"></div></div></div></div>
+      <span class="src">Every entry is cited on the <a href="../#proof">main page</a>. The Q1 2026 Pantera edition is placed at May 2026, the month its PDF was posted.</span>
+      <span class="src dl"><a href="img/record.png" download>Image, PNG</a></span>
+    </div>
+    <div class="out">
+      <p><span class="vh">Does not count: </span>CoinGecko’s 2026 RWA Report. It’s cited on the main page, but I can’t date it to a month, so it isn’t drawn.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Contact">
+  <div class="pair end">
+    <div class="in"><p>Questions about a figure, or one you’d like drawn: <a href="mailto:themetaisok@gmail.com" translate="no">themetaisok@gmail.com</a>. <a href="../">Back to the main page</a>.</p></div>
+    <div class="out">
+      <p>Not affiliated with DefiLlama or Meta Platforms. Nothing here is investment advice.</p>
+      <p class="q">Data from DefiLlama’s public dashboards, dated where it’s drawn.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn  = document.getElementById("theme-toggle");
+  if (!btn) return;
+  var mq   = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function active() {
+    var set = root.getAttribute("data-theme");
+    if (set === "light" || set === "dark") return set;
+    return mq.matches ? "dark" : "light";
+  }
+  function label() {
+    var next = active() === "dark" ? "light" : "dark";
+    btn.textContent = next === "dark" ? "Dark" : "Light";
+    btn.setAttribute("aria-label", "Switch to " + next + " theme");
+    btn.setAttribute("title", "Switch to " + next + " theme");
+  }
+
+  btn.addEventListener("click", function () {
+    var next = active() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    var metas = document.querySelectorAll('meta[name="theme-color"]');
+    for (var i = 0; i < metas.length; i++) metas[i].setAttribute("content", next === "dark" ? "#131115" : "#F4EEEE");
+    label();
+  });
+
+  /* follow the system while the visitor has not chosen for themselves */
+  var follow = function () { label(); };
+  if (mq.addEventListener) mq.addEventListener("change", follow);
+  else if (mq.addListener) mq.addListener(follow);
+
+  label();
+  btn.hidden = false;   /* no dead control if this script never runs */
+})();
+</script>
+<script>
+(function () {
+  var tip = document.createElement("div");
+  tip.className = "c-tip"; tip.setAttribute("role", "tooltip"); tip.setAttribute("aria-hidden", "true");
+  document.body.appendChild(tip);
+  window.tipShow = function (t, x, y) {
+    tip.textContent = t; tip.style.opacity = 1;
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.max(8, Math.min(x + 14, innerWidth - w - 8)) + "px";
+    tip.style.top = Math.min(y + 16, innerHeight - h - 8) + "px";
+  };
+  window.tipHide = function () { tip.style.opacity = 0; };
+  var els = document.querySelectorAll("[data-tip]");
+  for (var i = 0; i < els.length; i++) (function (el) {
+    el.addEventListener("pointermove", function (e) { window.tipShow(el.getAttribute("data-tip"), e.clientX, e.clientY); });
+    el.addEventListener("pointerleave", window.tipHide);
+    el.addEventListener("focus", function () { var q = el.getBoundingClientRect(); window.tipShow(el.getAttribute("data-tip"), q.left, q.bottom - 10); });
+    el.addEventListener("blur", window.tipHide);
+  })(els[i]);
+})();
+</script>
+<script src="d3-7.9.0.min.js"></script>
+<script>window.FIG_DAT=[["Cantor Equity Partners I", 0.12, 0.12, 0.13], ["Flora Growth", 0.21, 0.21, 1.01], ["Hyperion DeFi", 0.26, 0.26, 1.13], ["The Ethereum Machine", 0.27, 0.27, 0.44], ["StablecoinX", 0.35, 0.35, 0.63], ["Semler Scientific", 0.52, 0.57, 0.62], ["Metaplanet", 0.52, 0.52, 1.23], ["Twenty One Capital", 0.55, 0.55, 0.62], ["Forward Industries", 0.56, 0.64, 0.71], ["Evernorth", 0.59, 0.59, 0.81], ["American Bitcoin", 0.62, 0.62, 0.62], ["Solana Company", 0.62, 0.83, 1.61], ["Sharplink", 0.72, 0.72, 0.72], ["SkyAI", 0.75, 1.06, 1.06], ["Strategy", 0.82, 0.82, 0.82], ["Yorkville Acquisition Group", 0.83, 0.83, 1.03], ["Hyperliquid Strategies", 0.9, 0.9, 0.9], ["BitMine Immersion", 0.93, 0.93, 0.93], ["Strive", 0.93, 0.93, 0.95], ["Sui Group Holdings", 0.94, 0.99, 1.08], ["MARA Holdings", 1.06, 1.06, 1.06], ["Trump Media & Technology", 1.28, 1.28, 1.48], ["CleanSpark", 1.74, 1.86, 2.68], ["Bullish", 2.34, 2.34, 2.34], ["Galaxy Digital", 3.65, 3.79, 4.36], ["Riot Platforms", 7.97, 7.97, 7.97]];</script>
+<script src="figures.js"></script>
+</body>
+</html>
