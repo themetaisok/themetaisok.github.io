@@ -37,9 +37,9 @@
 
   var x, y, W, H, M;
   function layout() {
-    W = Math.max(300, host.clientWidth);
+    W = Math.max(220, host.clientWidth);
     var narrow = W < 560;
-    M = { top: 26, right: narrow ? 14 : 24, bottom: 30, left: narrow ? 118 : 228 };
+    M = { top: 26, right: narrow ? 14 : 24, bottom: 30, left: narrow ? Math.min(118, Math.round(W * 0.42)) : 228 };
     var rh = narrow ? 24 : 28;
     H = M.top + rows.length * rh + M.bottom;
     svg.attr("viewBox", "0 0 " + W + " " + H).attr("width", W).attr("height", H).classed("narrow", narrow);

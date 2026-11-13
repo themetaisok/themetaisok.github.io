@@ -29,16 +29,10 @@
 <meta property="og:site_name" content="themetaisok">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <style>
-/* Two typefaces, both self-hosted Latin subsets. See fonts/LICENSES.txt. The italic is for asides. */
 @font-face{font-family:"Adventor Web";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/adventor-web-400.woff2") format("woff2")}
 @font-face{font-family:"Adventor Web";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/adventor-web-700.woff2") format("woff2")}
 @font-face{font-family:"Caladea Web";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/caladea-web-400.woff2") format("woff2")}
 @font-face{font-family:"Caladea Web";font-style:italic;font-weight:400;font-display:swap;src:url("fonts/caladea-web-400-italic.woff2") format("woff2")}
-
-/* Colors sampled from the profile picture.
-   Light: porcelain #F4EEEE (the face), cap black #18181A, indigo #282C6D (the ground).
-   Dark: #131115 (the cap in shadow), plum #4E2544, and the same plum lifted to #B665A2 for the accent.
-   Three colors a theme. Lighter tints are derived from the field, not sampled. */
 :root{
   --split:58%;
   --in-bg:#F4EEEE; --in-ink:#18181A; --in-quiet:#5E4F52; --in-rule:#D9CDCE; --dot-in:#18181A;
@@ -62,7 +56,6 @@
   --accent:#B665A2;
   color-scheme:dark;
 }
-
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%; -webkit-tap-highlight-color:rgba(128,128,128,.25)}
 [id]{scroll-margin-top:14px}
@@ -83,21 +76,15 @@ b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
 .vh{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
 .skip{position:absolute; left:8px; top:-60px; z-index:5; background:var(--in-ink); color:var(--in-bg); font-family:var(--head); font-size:14px; padding:8px 12px}
 .skip:focus{top:8px}
-
-/* One line down the page. Left of it counts, right of it does not. */
 .pair{display:grid; grid-template-columns:var(--split) minmax(0,1fr)}
 .in{background:var(--in-bg); color:var(--in-ink); padding:26px 44px 28px max(28px, calc(58vw - 690px), env(safe-area-inset-left)); min-width:0}
 .out{background:var(--out-bg); color:var(--out-ink); padding:26px max(28px, calc(42vw - 500px), env(safe-area-inset-right)) 28px 44px; min-width:0}
 .pair + .pair > .in{border-top:1px solid var(--in-rule)}
 .pair + .pair > .out{border-top:1px solid var(--out-rule)}
 .in .q{color:var(--in-quiet)} .out .q{color:var(--out-quiet)}
-
-/* Two sections have nothing to exclude. They sit on the counted ground alone,
-   so the field keeps one meaning: does not count. */
 .plain .out{background:var(--in-bg); color:var(--in-quiet)}
 .plain .pair + .pair > .out{border-top-color:var(--in-rule)}
 .plain .out .src{color:var(--in-quiet)}
-
 .ident > .in, .ident > .out{padding-top:18px; padding-bottom:16px; font-family:var(--head); font-size:14px; line-height:1.3}
 .ident .in{display:flex; align-items:center; gap:12px}
 .ident img{width:36px; height:36px; display:block; flex:none}
@@ -106,19 +93,16 @@ b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
 .tbtn{font:inherit; font-size:13px; color:var(--out-ink); background:none; border:1px solid var(--out-quiet); padding:5px 11px 6px; cursor:pointer}
 .tbtn:hover{background:var(--out-ink); color:var(--out-bg)}
 .tbtn[hidden]{display:none}
-
 .hero > .in, .hero > .out{padding-top:54px; padding-bottom:46px; border-top:0 !important}
 .pair .word{font-family:var(--head); font-weight:700; font-size:92px; line-height:.92; letter-spacing:-.035em; margin:0 0 30px; max-width:none}
 .hero p{font-size:23px; line-height:1.38; max-width:25em}
 .hero p + p{margin-top:.7em}
 .hero .word + p{margin-top:0}
-
 .nav > .in, .nav > .out{padding-top:13px; padding-bottom:14px}
 .nav > .in{padding-right:12px}
 .nav .in{font-family:var(--head); font-size:14px; line-height:1.9; display:flex; flex-wrap:wrap; column-gap:18px}
 .nav a{text-decoration:none; white-space:nowrap}
 .nav a:hover{text-decoration:underline}
-
 .group > .in, .group > .out{padding-top:40px; padding-bottom:6px}
 .group > .in{border-top:3px solid var(--in-ink) !important}
 .group > .out{border-top:3px solid var(--out-ink) !important}
@@ -126,7 +110,6 @@ b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
 .group h2, .group .h2{font-family:var(--head); font-weight:700; font-size:34px; line-height:1.05; letter-spacing:-.02em; margin:0; max-width:none; text-wrap:balance}
 .group .q{font-size:16px; margin-top:8px}
 .group + .pair > .in, .group + .pair > .out{border-top:0}
-
 h3{font-family:var(--head); font-weight:700; font-size:16px; line-height:1.25; margin:0 0 7px; text-wrap:balance}
 h3 a{text-decoration-thickness:1px}
 .when{font-weight:400; font-size:13px; color:var(--in-quiet); margin-left:.5em; white-space:nowrap}
@@ -145,16 +128,9 @@ h3 a{text-decoration-thickness:1px}
 .src a{overflow-wrap:anywhere}
 blockquote{border-left:3px solid var(--accent); padding-left:14px; max-width:31em}
 blockquote p{font-size:17.5px; line-height:1.42}
-
-/* ---------- the bar, and the field it cuts ---------- */
 .crit{font-family:var(--head); font-weight:700; font-size:34px; line-height:1.14; letter-spacing:-.02em; color:var(--accent); max-width:none !important; margin:0 0 12px}
 .crit span{white-space:nowrap}
 .crit i{font-style:normal; font-weight:400; font-size:.5em; letter-spacing:0; color:var(--in-quiet); padding:0 .15em}
-
-/* Here the line moves. For one band it stands where the finding puts it. */
-/* The band is measured inside the page's own margins, so the cut stays at a fifth of the
-   content at every window width and the marks never grow with the screen. The two grounds
-   still run to the window edges. */
 .jog{--gl:max(28px, calc(58vw - 690px), env(safe-area-inset-left)); --gr:max(28px, calc(42vw - 500px), env(safe-area-inset-right));
   display:grid; grid-template-columns:calc(var(--gl) + (100% - var(--gl) - var(--gr)) * .2) minmax(0,1fr); border-top:3px solid var(--in-ink)}
 .jin{background:var(--in-bg); color:var(--in-ink); min-width:0; padding-bottom:16px; padding-left:var(--gl)}
@@ -171,8 +147,6 @@ blockquote p{font-size:17.5px; line-height:1.42}
 .dots.n{display:none}
 .jog + .pair > .in, .jog + .pair > .out{border-top:0}
 .cap p{font-size:16px; line-height:1.42}
-
-/* ---------- figures ---------- */
 .figs{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px 22px; margin-top:4px}
 p + .figs{margin-top:16px}
 .figs + p{margin-top:16px}
@@ -180,14 +154,10 @@ p + .figs{margin-top:16px}
 .figs.five{grid-template-columns:repeat(5,minmax(0,1fr))}
 .figs dt{font-family:var(--head); font-weight:700; font-size:31px; line-height:1; letter-spacing:-.03em}
 .figs dd{font-size:15px; line-height:1.25; color:var(--in-quiet); margin-top:4px}
-
-/* One quoted figure against the figure that counts. */
 .versus > .in, .versus > .out{border-top:0 !important; padding-top:0}
 .bigfig{font-family:var(--head); font-weight:700; font-size:64px; line-height:1; letter-spacing:-.035em; margin-bottom:6px !important}
 .in .bigfig{color:var(--accent)}
 .versus p + p{margin-top:0}
-
-/* ---------- the chain ---------- */
 .nest{border:1.5px solid var(--in-ink); padding:9px 12px 12px; max-width:560px}
 .nest .nest{margin-top:8px}
 .nest .nest .nest{background:var(--out-bg); border-color:var(--out-bg); color:var(--out-ink)}
@@ -195,13 +165,11 @@ p + .figs{margin-top:16px}
 .nl small{font-family:var(--text); font-weight:400; font-size:14.5px; color:var(--in-quiet)}
 .nest .nest .nest .nl small{color:var(--out-quiet)}
 .ratio{font-size:16px; margin-top:12px !important}
-
 .contact a{display:block; width:fit-content; font-family:var(--head); font-weight:700; font-size:22px; line-height:1.5; text-decoration:none}
 .contact a:hover{text-decoration:underline}
 .contact p + a{margin-top:14px}
 .end > .in, .end > .out{padding-bottom:64px}
 .end .out p, .end .fine{font-size:15.5px}
-
 @media (max-width:1040px){
   .pair .word{font-size:68px}
   .crit{font-size:28px}
@@ -209,9 +177,6 @@ p + .figs{margin-top:16px}
   .figs dt{font-size:27px}
   .bigfig{font-size:52px}
 }
-
-/* Phone: the line turns. Excluded blocks are set in from the left,
-   so the light strip down the edge is the same boundary, rotated. */
 @media (max-width:760px){
   body{background:var(--in-bg); font-size:18px}
   .pair{display:block}
@@ -240,8 +205,6 @@ p + .figs{margin-top:16px}
   .lead-out .out p{font-size:20px}
   .out p{max-width:none}
   .crit{font-size:27px}
-  /* the band keeps its shape on a phone: the counted fifth is the light strip
-     down the left edge, four columns of twenty, and the label for the rest sits under it */
   .jog{grid-template-columns:20% 80%; grid-template-areas:"inlab inlab" "indots outdots" ". outlab"}
   .jin, .jout{display:contents}
   .jin .jlab{grid-area:inlab; padding:18px 20px 14px}
@@ -256,13 +219,9 @@ p + .figs{margin-top:16px}
   .versus > .out{padding-top:20px}
   .contact a{font-size:19px; line-height:1.9}
 }
-
-/* small phones: the handle and the switch are what must fit */
 @media (max-width:340px){
   .ident .in span{display:none}
 }
-
-/* ---------- figures: tokens ---------- */
 :root{--mute:#8E8790; --wash:rgba(40,44,109,.09)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--mute:#68606A; --wash:rgba(182,101,162,.12)}}
 :root[data-theme="dark"]{--mute:#68606A; --wash:rgba(182,101,162,.12)}
@@ -274,6 +233,7 @@ p + .figs{margin-top:16px}
 .c-k.fu{width:11px; height:11px; border-radius:50%; background:var(--accent)}
 .c-k.mu{width:11px; height:11px; border-radius:50%; background:var(--mute)}
 .c-k.ti{width:2px; height:12px; background:var(--accent)}
+.c-k.gh{width:6px; height:6px; border-radius:50%; background:var(--mute); margin:0 2.5px}
 .c-k.sw{width:12px; height:12px; border-radius:2px; background:var(--accent)} .c-k.sw.m{background:var(--mute)}
 details.c-tbl{margin-top:10px; font-size:15px}
 details.c-tbl summary{font-family:var(--head); font-size:13px; color:var(--in-quiet); cursor:pointer; width:fit-content}
@@ -282,8 +242,6 @@ details.c-tbl summary:focus-visible{outline:2px solid currentColor; outline-offs
 .c-tbl th, .c-tbl td{text-align:left; padding:4px 14px 4px 0; border-bottom:1px solid var(--in-rule); font-weight:400; font-family:var(--text)}
 .c-tbl thead th{font-family:var(--head); font-size:13px; color:var(--in-quiet)}
 .c-tip{position:fixed; pointer-events:none; background:var(--in-ink); color:var(--in-bg); font:13px/1.35 var(--head); padding:7px 9px; max-width:280px; z-index:9; opacity:0; transition:opacity .12s}
-
-/* ---------- dumbbell: realized to max mNAV ---------- */
 .c-db .c-row, .c-db .c-hd, .c-db .c-ax{display:grid; grid-template-columns:12.5rem minmax(0,1fr) 7.2rem; align-items:center; column-gap:14px}
 .c-db .c-row{height:30px; outline:none}
 .c-db .c-row:focus-visible .c-trk{outline:2px solid var(--in-ink); outline-offset:2px}
@@ -311,8 +269,6 @@ details.c-tbl summary:focus-visible{outline:2px solid currentColor; outline-offs
   .c-ax .c-trk span:last-child{transform:translateX(-100%); margin-left:12px}
 }
 @container (max-width:300px){ .c-lg{display:none} }
-
-/* ---------- segmented bar and ranked bars ---------- */
 .c-sub{font-family:var(--head); font-size:13px; color:var(--in-quiet); margin:0 0 8px !important}
 .c-seg{display:flex; gap:2px; height:30px; font-size:13px}
 .c-seg span{display:flex; align-items:center; padding-left:9px; border-radius:4px; white-space:nowrap}
@@ -325,8 +281,6 @@ details.c-tbl summary:focus-visible{outline:2px solid currentColor; outline-offs
   .c-hb{grid-template-columns:8.5rem minmax(0,1fr) 4.2rem; column-gap:8px; padding:3px 0}
   .c-hn{font-size:12px; line-height:1.2}
 }
-
-/* ---------- three measures on one scale ---------- */
 .c-nb{display:grid; grid-template-columns:11rem minmax(0,1fr) 9rem; align-items:center; column-gap:12px; min-height:56px; padding:6px 0; outline:none}
 .c-nb:focus-visible .c-nt{outline:2px solid var(--in-ink); outline-offset:2px}
 .c-nn{font-size:14px; font-weight:700} .c-nv{font-size:14px; font-variant-numeric:tabular-nums}
@@ -341,8 +295,6 @@ details.c-tbl summary:focus-visible{outline:2px solid currentColor; outline-offs
   .c-nb{grid-template-columns:minmax(0,1fr) 6.6rem; row-gap:4px; padding:4px 0}
   .c-nn{grid-column:1 / -1; font-size:13px} .c-nv{font-size:13px}
 }
-
-/* ---------- the record: published, then picked up ---------- */
 .c-tl .c-mo{display:grid; grid-template-columns:1fr 78px 1fr; min-height:40px}
 .c-tl .c-l{text-align:right; padding:6px 14px 6px 0}
 .c-tl .c-r{padding:6px 0 6px 14px}
@@ -361,8 +313,6 @@ details.c-tbl summary:focus-visible{outline:2px solid currentColor; outline-offs
   .c-tl .c-l{padding-right:8px} .c-tl .c-r{padding-left:8px}
   .c-ev b{font-size:13px} .c-ev small{font-size:12.5px}
 }
-
-/* ---------- the interactive one (d3) ---------- */
 .c-ctl{display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px; font-family:var(--head); margin-top:14px}
 .c-segb{display:inline-flex; border:1px solid var(--in-quiet)}
 .c-segb button, .c-play{font:inherit; font-size:13px; color:var(--in-ink); background:none; border:0; padding:7px 13px 8px; min-height:36px; cursor:pointer}
@@ -386,7 +336,6 @@ details.c-tbl summary:focus-visible{outline:2px solid currentColor; outline-offs
 svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.narrow .b-axis text{font-size:12px}
 @media (prefers-reduced-motion:reduce){.b-ghost, .c-tip{transition:none}}
 @media print{.c-ctl, .c-d3{display:none} details.c-tbl{display:none}}
-
 @media print{
   body{background:#fff}
   .tbtn, .nav, .skip{display:none}
@@ -517,7 +466,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <p class="crit">transferable <i>and</i> <span>self-custodial</span> <i>and</i> redeemable <i>and</i> verified</p>
       <p>One test, all four at once. Clear three and it still doesn’t count.</p>
     </div>
-    <div class="out"><p>I ran it against the whole registry: more than 9,000 assets and markets when I left DefiLlama in September 2026. Below is that registry as 360 dots, one for every 25 entries.</p></div>
+    <div class="out"><p>I ran it against the whole registry: more than 9,000 assets and markets when I left DefiLlama in September 2026. Each dot below stands for 25 of them.</p></div>
   </div>
 
   <figure class="jog" role="img" aria-label="The registry drawn as 360 marks. Under 20 percent of them, at most 72 marks, sit on the side that counts. The remainder sit on the side that does not.">
@@ -532,7 +481,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   </figure>
 
   <div class="pair cap">
-    <div class="in"><p class="q">For this one band the line sits where the finding puts it. I drew the counted side at the full 20%, so the real share is smaller than what you see.</p></div>
+    <div class="in"><p class="q">Here the line sits at 20%, the ceiling of the finding. The true share is lower.</p></div>
     <div class="out"></div>
   </div>
 </section>
@@ -626,7 +575,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
           <div class="nest"><span class="nl">DeFi Active TVL <small>a subset of that</small></span></div>
         </div>
       </div>
-      <p class="ratio"><b>Utilization</b> is the innermost box over the outermost. Containment only, not to scale.</p>
+      <p class="ratio"><b>Utilization</b> is the innermost box over the outermost. Containment only, not to scale. <a href="figures/#used">Drawn to scale</a>.</p>
     </div>
     <div class="out"><p><span class="vh">Does not count: </span>Net Flows and mNAV sit outside this. They don’t nest.</p></div>
   </div>
@@ -649,7 +598,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
     </div>
     <div class="out">
       <p><span class="vh">Does not count: </span>An endorsement. Citing the work means they used it. It doesn’t mean they recommend me.</p>
-      <p class="q">Independent use, for this one. I was a named reviewer, so it’s work I took part in.</p>
+      <p class="q">Not independent, either. I was a named reviewer on both editions.</p>
     </div>
   </div>
 
@@ -787,16 +736,16 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
 <section id="figures" aria-labelledby="h-figures">
   <div class="pair group">
     <div class="in"><h2 id="h-figures">Figures</h2><p class="q">The data, drawn and dated.</p></div>
-    <div class="out"><p class="h2" aria-hidden="true">What they leave out</p></div>
+    <div class="out"><p class="h2" aria-hidden="true">The misreading</p></div>
   </div>
   <div class="pair">
     <div class="in">
       <h3>Seven of 96 treasury companies look cheap on one count and expensive on another <span class="when">13&nbsp;November 2026</span></h3>
       <p>Realized mNAV puts each of them below the crypto it holds. Max mNAV, with every warrant, option, and convertible counted, puts each of them above it.</p>
       <div class="cfig"><div class="c-db" role="group" aria-label="mNAV by company, realized to max, log scale"><div class="c-hd" aria-hidden="true"><span class="c-nm"></span><span class="c-trk"><b style="right:calc(31.50% + 10px)">Below<span class="c-lg"> the crypto it holds</span></b><b style="left:calc(68.50% + 10px)">Above it</b></span><span class="c-v"></span></div><div class="c-row x" tabindex="0" aria-label="Flora Growth: realized 0.21×, realistic 0.21×, max 1.01×" data-tip="Flora Growth: realized 0.21×, realistic 0.21×, max 1.01×"><span class="c-nm">Flora Growth</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="61.6" y1="14" x2="689.0" y2="14"/></svg><i class="c-dot ho" style="left:6.16%"></i><i class="c-dot fu" style="left:68.90%"></i></span><span class="c-v">0.21× → 1.01×</span></div><div class="c-row x" tabindex="0" aria-label="Hyperion DeFi: realized 0.26×, realistic 0.26×, max 1.13×" data-tip="Hyperion DeFi: realized 0.26×, realistic 0.26×, max 1.13×"><span class="c-nm">Hyperion DeFi</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="146.9" y1="14" x2="733.9" y2="14"/></svg><i class="c-dot ho" style="left:14.69%"></i><i class="c-dot fu" style="left:73.39%"></i></span><span class="c-v">0.26× → 1.13×</span></div><div class="c-row x" tabindex="0" aria-label="Metaplanet: realized 0.52×, realistic 0.52×, max 1.23×" data-tip="Metaplanet: realized 0.52×, realistic 0.52×, max 1.23×"><span class="c-nm">Metaplanet</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="423.8" y1="14" x2="767.7" y2="14"/></svg><i class="c-dot ho" style="left:42.38%"></i><i class="c-dot fu" style="left:76.77%"></i></span><span class="c-v">0.52× → 1.23×</span></div><div class="c-row x" tabindex="0" aria-label="Solana Company: realized 0.62×, realistic 0.83×, max 1.61×" data-tip="Solana Company: realized 0.62×, realistic 0.83×, max 1.61×"><span class="c-nm">Solana Company</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="494.1" y1="14" x2="875.3" y2="14"/><line class="c-mid" x1="610.6" y1="8" x2="610.6" y2="20"/></svg><i class="c-dot ho" style="left:49.41%"></i><i class="c-dot fu" style="left:87.53%"></i></span><span class="c-v">0.62× → 1.61×</span></div><div class="c-row x" tabindex="0" aria-label="SkyAI: realized 0.75×, realistic 1.06×, max 1.06×" data-tip="SkyAI: realized 0.75×, realistic 1.06×, max 1.06×"><span class="c-nm">SkyAI</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="570.1" y1="14" x2="708.3" y2="14"/></svg><i class="c-dot ho" style="left:57.01%"></i><i class="c-dot fu" style="left:70.83%"></i></span><span class="c-v">0.75× → 1.06×</span></div><div class="c-row x" tabindex="0" aria-label="Yorkville Acquisition Group: realized 0.83×, realistic 0.83×, max 1.03×" data-tip="Yorkville Acquisition Group: realized 0.83×, realistic 0.83×, max 1.03×"><span class="c-nm">Yorkville Acquisition Group</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="610.6" y1="14" x2="696.8" y2="14"/></svg><i class="c-dot ho" style="left:61.06%"></i><i class="c-dot fu" style="left:69.68%"></i></span><span class="c-v">0.83× → 1.03×</span></div><div class="c-row x" tabindex="0" aria-label="Sui Group Holdings: realized 0.94×, realistic 0.99×, max 1.08×" data-tip="Sui Group Holdings: realized 0.94×, realistic 0.99×, max 1.08×"><span class="c-nm">Sui Group Holdings</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="660.3" y1="14" x2="715.8" y2="14"/><line class="c-mid" x1="681.0" y1="8" x2="681.0" y2="20"/></svg><i class="c-dot ho" style="left:66.03%"></i><i class="c-dot fu" style="left:71.58%"></i></span><span class="c-v">0.94× → 1.08×</span></div><div class="c-ax" aria-hidden="true"><span class="c-nm"></span><span class="c-trk"><span style="left:13.12%">0.25×</span><span style="left:40.81%">0.5×</span><span style="left:68.50%">1×</span><span style="left:96.19%">2×</span></span><span class="c-v"></span></div></div></div><p class="c-legend"><span><i class="c-k ho"></i>Realized mNAV</span><span><i class="c-k ti"></i>Realistic</span><span><i class="c-k fu"></i>Max mNAV</span><span><i class="c-k sw"></i>Crosses 1.0×</span></p><details class="c-tbl"><summary>Table</summary><table><thead><tr><th>Company</th><th>Realized</th><th>Realistic</th><th>Max</th></tr></thead><tbody><tr><th scope="row">Flora Growth</th><td>0.21×</td><td>0.21×</td><td>1.01×</td></tr><tr><th scope="row">Hyperion DeFi</th><td>0.26×</td><td>0.26×</td><td>1.13×</td></tr><tr><th scope="row">Metaplanet</th><td>0.52×</td><td>0.52×</td><td>1.23×</td></tr><tr><th scope="row">Solana Company</th><td>0.62×</td><td>0.83×</td><td>1.61×</td></tr><tr><th scope="row">SkyAI</th><td>0.75×</td><td>1.06×</td><td>1.06×</td></tr><tr><th scope="row">Yorkville Acquisition Group</th><td>0.83×</td><td>0.83×</td><td>1.03×</td></tr><tr><th scope="row">Sui Group Holdings</th><td>0.94×</td><td>0.99×</td><td>1.08×</td></tr></tbody></table></details>
-      <span class="src">DefiLlama digital asset treasuries tracker, as of 13&nbsp;November 2026. Log scale. <a href="figures/#mnav">All four figures</a>, each with a table and an image, plus an interactive version of this one.</span>
+      <span class="src">DefiLlama digital asset treasuries tracker, as of 13&nbsp;November 2026. Log scale. <a href="figures/#mnav">More figures</a>, including an interactive version of this one.</span>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>A live feed. Each figure is a snapshot, dated where it’s drawn.</p></div>
+    <div class="out"><p><span class="vh">Does not count: </span>A discount. On today’s shares, these seven trade below the crypto they hold. Count the shares their warrants, options, and convertibles can still create, and all seven trade above it.</p></div>
   </div>
 </section>
 

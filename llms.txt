@@ -70,8 +70,7 @@ and verified test (as of September 2026). The remainder are better described as 
 - **Pantera Capital**, "The State of Tokenization". The Q1 2026 edition snapshots DeFi Active
   TVL from DefiLlama as its measure of on-chain productive TVL. The September 2026 edition
   names DefiLlama among the data sources on five market charts and carries a section on DeFi
-  utilization by class. meta is credited by name in the acknowledgements of both editions. The
-  quoted acknowledgement on the site is from the September 2026 edition.
+  utilization by class. meta is credited by name in the acknowledgements of both editions.
 - **Citi Institute**, "Wall Street On-Chain: Tokenization 2030" (June 2026, p.19), sourced its
   market size figure to DefiLlama: "The global tokenization market for financial assets is
   estimated at $17 billion, according to DefiLlama in April 2026."
