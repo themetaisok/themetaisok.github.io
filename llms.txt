@@ -4,7 +4,7 @@
 > assets, onchain derivatives, and digital asset treasury companies. meta writes the
 > definitions and classification standards used to measure these markets, and publishes
 > them openly. Ten years in these markets. meta built DefiLlama's real-world-asset coverage
-> from zero between August 2025 and September 2026 and is no longer affiliated with it.
+> from zero between August 2025 and September 2026, and has worked independently since.
 > Not affiliated with Meta Platforms, Inc.
 
 ## Who
@@ -83,8 +83,8 @@ and verified test (as of September 2026). The remainder are better described as 
   https://arxiv.org/abs/2606.08534
 - **CryptoSlate** uses DeFi Active TVL as a column heading in its own reporting (August 2026).
   The measures have also crossed into Spanish-language coverage (CriptoNoticias, April 2026).
-- The **RWA Foundation** uses the perpetuals data in its own reporting, under a partnership meta
-  arranged, so it is not an independent pickup.
+- The **RWA Foundation** uses the perpetuals data in its own reporting, under a data partnership meta
+  brokered.
 
 ## Figures (https://themetaisok.com/figures/)
 
@@ -104,11 +104,13 @@ Dated figures drawn from DefiLlama's public dashboards, each with a table and a 
   https://www.youtube.com/watch?v=vJGZZO2zHBs
   https://open.spotify.com/episode/4dSF2ndTNkIFONGfNoxc0y
 
-## Interests meta holds
+## What meta is building
 
-Listed because meta measures this market, so readers know where meta stands in it.
+Ventures meta founded or helps run, alongside the research. meta holds an interest in each.
 
-- **Emergent LabZ** (https://www.emergentlabz.com/): co-principal, with @zlerp.
+- **Emergent LabZ** (https://www.emergentlabz.com/): co-principal, with @zlerp. A crypto research and
+  development firm: meta leads research, @zlerp leads engineering. Cryptopoly and Strategic
+  Sealed Packz are built there.
 - **Goo Exchange** (https://goo.exchange/): advisor, business development, stakeholder,
   and one of three treasury signers. A decentralized exchange for tokenized stocks on Robinhood
   Chain.
@@ -123,8 +125,8 @@ Listed because meta measures this market, so readers know where meta stands in i
   meta wrote, it is not a real-world asset, since redeemability is one of the four criteria;
   treasury vehicle is the accurate label.
 - **WacDonald's Cryptopoly** (https://wacdonalds.io/): co-founder. An onchain board game that
-  is also an interactive art experience: an ERC-721 collection of 8,889 tiles, still
-  pre-mainnet.
+  is also an interactive art experience: an ERC-721 collection of 8,889 tiles, with
+  its mainnet launch coming soon.
 
 ## Writing
 
