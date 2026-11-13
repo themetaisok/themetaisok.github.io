@@ -25,9 +25,9 @@ specifications. The platform and its data are DefiLlama's.
   assets, generated from a registry of more than 9,000 assets and markets across 116 fields,
   covering 450+ issuers, 330+ platforms, and 170+ blockchains (as of September 2026).
 - **RWA perpetuals tracker** (https://defillama.com/rwa/perps): an aggregate view of
-  real-world-asset perpetuals. More than 1,100 markets on decentralized venues and more than
-  3,500 including centralized exchanges (as of 13 November 2026), plus a 75+ market forex book
-  (as of September 2026), normalized through a 17-field market schema and a canonical market ID.
+  real-world-asset perpetuals. More than 1,000 active markets in the onchain default view and
+  more than 3,300 with centralized exchanges, plus a 75+ market forex book (as of September
+  2026), normalized through a 17-field market schema and a canonical market ID.
 - **Digital asset treasuries tracker** (https://defillama.com/digital-asset-treasuries):
   nearly 100 listed companies (as of 13 November 2026), with every purchase traced to its
   source filing. The published methodology's worked example, Greenlane Holdings on
@@ -63,7 +63,7 @@ specifications. The platform and its data are DefiLlama's.
 
 Running the full registry against the classification bar showed that **under 20% of the
 tokens marketed as real-world assets** clear the transferable, self-custodial, redeemable,
-and verified test. The remainder are better described as programmable finance.
+and verified test (as of September 2026). The remainder are better described as programmable finance.
 
 ## External use of the work
 
