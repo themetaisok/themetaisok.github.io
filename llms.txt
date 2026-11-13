@@ -23,13 +23,16 @@ specifications. The platform and its data are DefiLlama's.
 
 - **RWA dashboard** (https://defillama.com/rwa): DefiLlama's view of tokenized real-world
   assets, generated from a registry of more than 9,000 assets and markets across 116 fields,
-  covering 450+ issuers, 330+ platforms, and 170+ blockchains.
+  covering 450+ issuers, 330+ platforms, and 170+ blockchains (as of September 2026).
 - **RWA perpetuals tracker** (https://defillama.com/rwa/perps): an aggregate view of
-  real-world-asset perpetuals. More than 1,000 active markets in the onchain default view and
-  over 3,300 including centralized exchanges, plus a 75+ market forex book, normalized through
-  a 17-field market schema and a canonical market ID.
+  real-world-asset perpetuals. More than 1,100 markets on decentralized venues and more than
+  3,500 including centralized exchanges (as of 13 November 2026), plus a 75+ market forex book
+  (as of September 2026), normalized through a 17-field market schema and a canonical market ID.
 - **Digital asset treasuries tracker** (https://defillama.com/digital-asset-treasuries):
-  nearly 100 listed companies with every purchase traced to its source filing.
+  nearly 100 listed companies (as of 13 November 2026), with every purchase traced to its
+  source filing. The published methodology's worked example, Greenlane Holdings on
+  30 November 2025, shows a quoted mNAV of 0.33 against about 2.42 once contractual dilution
+  is counted.
 - **Published methodology**: https://docs.llama.fi/real-world-assets/real-world-assets and
   https://docs.llama.fi/analysts/dat-methodology
 
