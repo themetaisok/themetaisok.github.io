@@ -111,8 +111,9 @@ Listed because he measures this market and readers should know where he stands i
   hundred listed ones before co-founding an unlisted one. By the DefiLlama classification bar
   he wrote it is not a real-world asset, since redeemability is one of the four criteria;
   treasury vehicle is the accurate label.
-- **WacDonald's Cryptopoly** (https://wacdonalds.io/): co-founder. An ERC-721 collection of
-  8,889 tiles, still pre-mainnet.
+- **WacDonald's Cryptopoly** (https://wacdonalds.io/): co-founder. An onchain board game that
+  is also an interactive art experience: an ERC-721 collection of 8,889 tiles, still
+  pre-mainnet.
 
 ## Writing
 
