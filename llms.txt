@@ -89,6 +89,7 @@ and verified test (as of September 2026). The remainder are better described as 
 ## Figures (https://themetaisok.com/figures/)
 
 Dated figures drawn from DefiLlama's public dashboards, each with a table and a PNG version.
+Any figure is free to reuse with credit to meta (@themetaisok).
 
 - **mNAV, three ways** (as of 13 November 2026): seven of the 96 treasury companies with holdings data sit below 1.0x on realized mNAV and at or above it on max mNAV. Includes an interactive version that switches between realized, realistic, and max.
 - **RWA perps** (as of 13 November 2026): about 73% of $13.35b in RWA perps open interest is on centralized exchanges. On decentralized venues, public equities hold about 45%.
