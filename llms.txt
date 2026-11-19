@@ -10,7 +10,7 @@
 ## Who
 
 - Works under the handle **themetaisok**, also referred to as **meta**. Pseudonymous by choice.
-- Listed publicly on Llama Corp, DefiLlama's parent company, as "Meta (DAT & RWA)".
+- Listed publicly on Llama Corp, the team behind DefiLlama, as "Meta (DAT & RWA)".
 - Co-principal of Emergent LabZ (https://www.emergentlabz.com/) with @zlerp.
 - Contact: themetaisok@gmail.com, X @themetaisok, Telegram @themetaisok.
 - Not affiliated with DefiLlama since September 2026, and not affiliated with Meta Platforms.
@@ -30,7 +30,7 @@ specifications. The platform and its data are DefiLlama's.
   2026), normalized through a 17-field market schema and a canonical market ID.
 - **Digital asset treasuries tracker** (https://defillama.com/digital-asset-treasuries):
   nearly 100 listed companies (as of 13 November 2026), with every purchase traced to its
-  source filing. The published methodology's worked example, Greenlane Holdings on
+  primary source. The published methodology's worked example, Greenlane Holdings on
   30 November 2025, shows a quoted mNAV of 0.33 against about 2.42 once contractual dilution
   is counted.
 - **Published methodology**: https://docs.llama.fi/real-world-assets/real-world-assets and
@@ -71,8 +71,8 @@ and verified test (as of September 2026). The remainder are better described as 
   TVL from DefiLlama as its measure of on-chain productive TVL. The September 2026 edition
   names DefiLlama among the data sources on five market charts and carries a section on DeFi
   utilization by class. meta is credited by name in the acknowledgements of both editions.
-- **Citi Institute**, "Wall Street On-Chain: Tokenization 2030" (June 2026, p.19), sourced its
-  market size figure to DefiLlama: "The global tokenization market for financial assets is
+- **Citi Institute**, "Tokenization 2030: Wall Street On-Chain" (June 2026, p.19), sourced its
+  current market size figure to DefiLlama: "The global tokenization market for financial assets is
   estimated at $17 billion, according to DefiLlama in April 2026."
 - **CoinGecko**, 2026 RWA Report, sources its RWA-chains (p.17) and on-chain private-credit
   (p.16) sections to DefiLlama. Its chain chart measures daily active market capitalization.
@@ -120,10 +120,10 @@ Ventures meta founded or helps run, alongside the research. meta holds an intere
   against it, a trading fee buys more of the reserve, and there is no redemption right, so a
   holder gets exposure to the vault rather than a claim on a particular pack. An automated
   engine acts by mNAV band on the gap between token and vault, the same framework meta built for
-  listed treasury companies. meta spent a year building the dashboard that tracks nearly a
-  hundred listed ones before co-founding an unlisted one. By the DefiLlama classification bar
-  meta wrote, it is not a real-world asset, since redeemability is one of the four criteria;
-  treasury vehicle is the accurate label.
+  listed treasury companies. meta spent a year building the dashboard that tracks the listed
+  ones before co-founding an unlisted one. By the DefiLlama classification bar meta wrote, it
+  is a treasury vehicle, not a real-world asset, since redeemability is one of the four
+  criteria.
 - **WacDonald's Cryptopoly** (https://wacdonalds.io/): co-founder. An onchain board game that
   is also an interactive art experience: an ERC-721 collection of 8,889 tiles, with
   its mainnet launch coming soon.
@@ -143,5 +143,5 @@ decision about its own data; no engagement with meta changes that.
 
 ## Disclosure
 
-meta holds a financial interest in the projects listed under "Interests meta holds". Nothing on
+meta holds a financial interest in every venture listed under "What meta is building". Nothing on
 the site is investment advice.

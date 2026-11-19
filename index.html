@@ -12,7 +12,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="Independent research on tokenized real-world assets, RWA perpetuals, and digital asset treasuries. meta (@themetaisok) wrote the methodology behind DefiLlama's RWA, perpetuals, and treasury dashboards.">
+<meta name="description" content="Independent research on tokenized real-world assets, RWA perps, and digital asset treasuries by meta (@themetaisok), author of DefiLlama's RWA methodology.">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#F4EEEE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#131115" media="(prefers-color-scheme: dark)">
@@ -98,9 +98,17 @@ b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
 .hero p{font-size:23px; line-height:1.38; max-width:25em}
 .hero p + p{margin-top:.7em}
 .hero .word + p{margin-top:0}
+.hero > .in{padding-bottom:30px}
+.go-row > .in, .go-row > .out{border-top:0 !important; padding-top:0; padding-bottom:40px}
+.in .go{display:flex; flex-wrap:wrap; gap:10px 12px; font-family:var(--head); font-size:15px; line-height:1.2; max-width:none}
+.in .go a{padding:10px 16px 11px; border:1px solid var(--in-ink); text-decoration:none}
+.in .go a:first-child{background:var(--in-ink); color:var(--in-bg)}
+.in .go a:hover{text-decoration:underline}
 .nav > .in, .nav > .out{padding-top:13px; padding-bottom:14px}
 .nav > .in{padding-right:12px}
-.nav .in{font-family:var(--head); font-size:14px; line-height:1.9; display:flex; flex-wrap:wrap; column-gap:18px}
+.nav .in{font-family:var(--head); font-size:14px; line-height:1.9; display:flex; flex-wrap:wrap; column-gap:14px}
+.nav .pr{display:flex; column-gap:inherit}
+@media (min-width:1000px) and (max-width:1204px){.nav .pr{flex-basis:100%}}
 .nav a{text-decoration:none; white-space:nowrap}
 .nav a:hover{text-decoration:underline}
 .group > .in, .group > .out{padding-top:40px; padding-bottom:6px}
@@ -196,6 +204,7 @@ p + .figs{margin-top:16px}
   .hero > .out{padding-top:26px; padding-bottom:28px}
   .pair .word{font-size:52px; margin-bottom:18px}
   .hero p{font-size:20px}
+  .go-row > .in{padding-top:22px; padding-bottom:26px}
   .nav > .in{padding-top:10px; padding-bottom:12px}
   .nav .in{column-gap:18px; line-height:2.2}
   .group > .in{padding-top:30px; padding-bottom:4px}
@@ -205,12 +214,12 @@ p + .figs{margin-top:16px}
   .lead-out .out p{font-size:20px}
   .out p{max-width:none}
   .crit{font-size:27px}
-  .jog{grid-template-columns:20% 80%; grid-template-areas:"inlab inlab" "indots outdots" ". outlab"}
+  .jog{grid-template-columns:20% 80%; grid-template-areas:"inlab inlab" "indots outdots" ". outlab"; padding:0 20px}
   .jin, .jout{display:contents}
-  .jin .jlab{grid-area:inlab; padding:18px 20px 14px}
+  .jin .jlab{grid-area:inlab; padding:18px 0 14px}
   .jin .dots.n{grid-area:indots}
-  .jout .dots.n{grid-area:outdots; background:var(--out-bg)}
-  .jout .jlab{grid-area:outlab; background:var(--out-bg); color:var(--out-ink); padding:12px 16px 20px}
+  .jout .dots.n{grid-area:outdots; background:var(--out-bg); box-shadow:20px 0 0 var(--out-bg)}
+  .jout .jlab{grid-area:outlab; background:var(--out-bg); color:var(--out-ink); padding:12px 16px 20px; box-shadow:20px 0 0 var(--out-bg)}
   .jfig{font-size:min(40px,10vw)}
   .jout .jsub{text-wrap:balance}
   .dots.w{display:none} .dots.n{display:block}
@@ -230,6 +239,7 @@ p + .figs{margin-top:16px}
 .c-legend span{display:inline-flex; align-items:center; gap:7px}
 .c-k{flex:none; display:inline-block}
 .c-k.ho{width:11px; height:11px; border-radius:50%; border:2px solid var(--accent)}
+.c-k.ho.m{border-color:var(--mute)}
 .c-k.fu{width:11px; height:11px; border-radius:50%; background:var(--accent)}
 .c-k.mu{width:11px; height:11px; border-radius:50%; background:var(--mute)}
 .c-k.ti{width:2px; height:12px; background:var(--accent)}
@@ -317,10 +327,10 @@ details.c-tbl summary:focus-visible{outline:2px solid currentColor; outline-offs
 .c-segb{display:inline-flex; border:1px solid var(--in-quiet)}
 .c-segb button, .c-play{font:inherit; font-size:13px; color:var(--in-ink); background:none; border:0; padding:7px 13px 8px; min-height:36px; cursor:pointer}
 .c-segb button + button{border-left:1px solid var(--in-quiet)}
-.c-segb button[aria-pressed="true"], .c-play[aria-pressed="true"]{background:var(--in-ink); color:var(--in-bg)}
+.c-segb button[aria-pressed="true"]{background:var(--in-ink); color:var(--in-bg)}
 .c-play{border:1px solid var(--in-quiet)}
 .c-tally{font-size:14px; color:var(--in-quiet)}
-.c-tally b{font-size:30px; color:var(--in-ink); letter-spacing:-.02em; font-variant-numeric:tabular-nums; margin-right:4px}
+.c-tally b{font-size:30px; color:var(--in-ink); letter-spacing:-.02em; font-variant-numeric:tabular-nums; margin-right:0}
 .c-d3{min-height:80px} .c-d3 svg{display:block; overflow:visible}
 .b-wash{fill:var(--wash)} .b-par{stroke:var(--in-ink); stroke-width:2}
 .b-head text{font-size:13px; font-weight:700; fill:var(--in-ink)} .b-head .l{text-anchor:end}
@@ -329,13 +339,14 @@ details.c-tbl summary:focus-visible{outline:2px solid currentColor; outline-offs
 .b-row:focus-visible .b-hit{fill:var(--wash); stroke:var(--in-ink); stroke-width:1.5}
 .b-nm{font-size:14px; fill:var(--in-quiet); text-anchor:end} .b-row.cross .b-nm{fill:var(--in-ink); font-weight:700}
 .b-dot{fill:var(--in-bg); stroke:var(--mute); stroke-width:2.5}
-.b-row.above .b-dot{fill:var(--accent); stroke:var(--in-bg); stroke-width:2}
+.b-row.above .b-dot{fill:var(--mute); stroke:var(--in-bg); stroke-width:2} .b-row.cross.above .b-dot{fill:var(--accent)}
 .b-row.cross:not(.above) .b-dot{stroke:var(--accent)}
 .b-trail{stroke:var(--mute); stroke-width:2; stroke-linecap:round} .b-row.cross .b-trail{stroke:var(--accent)}
 .b-ghost{fill:var(--mute); transition:opacity .3s} .b-row.cross .b-ghost{fill:var(--accent)}
 svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.narrow .b-axis text{font-size:12px}
 @media (prefers-reduced-motion:reduce){.b-ghost, .c-tip{transition:none}}
 @media print{.c-ctl, .c-d3{display:none} details.c-tbl{display:none}}
+@media (pointer:coarse){.c-segb button, .c-play{min-height:44px} details.c-tbl summary{padding:12px 0}}
 @media print{
   body{background:#fff}
   .tbtn, .nav, .skip{display:none}
@@ -346,7 +357,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   "@context": "https://schema.org",
   "@type": "ProfilePage",
   "url": "https://themetaisok.com/",
-  "dateModified": "2026-11",
+  "dateModified": "2026-11-19",
   "mainEntity": {
     "@type": "Person",
     "@id": "https://themetaisok.com/#person",
@@ -361,7 +372,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
     "url": "https://themetaisok.com/",
     "image": "https://themetaisok.com/pfp.webp",
     "jobTitle": "Independent research and data consultant",
-    "description": "Writes the definitions and classification standards used to measure tokenized real-world assets, real-world-asset perpetuals, and digital asset treasury companies. Built DefiLlama's real-world-asset coverage from zero between August 2025 and September 2026: three dashboards, the registry of more than 9,000 assets behind them, and the published methodology defining what counts as a real-world asset. Pantera Capital, Citi Institute, and CoinGecko cite DefiLlama RWA data in published reports.",
+    "description": "Writes the definitions and classification standards used to measure tokenized real-world assets, real-world-asset perpetuals, and digital asset treasury companies. Built DefiLlama's real-world-asset coverage from zero between August 2025 and September 2026: three dashboards, the registry of more than 9,000 assets and markets behind them (as of September 2026), and the published methodology defining what counts as a real-world asset. Pantera Capital, Citi Institute, and CoinGecko cite DefiLlama RWA data in published reports.",
     "knowsAbout": [
       "Real-world asset tokenization",
       "RWA data and taxonomy",
@@ -402,6 +413,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   }
 }
 </script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"themetaisok","url":"https://themetaisok.com/"}</script>
 <script>
 /* Runs before first paint: a stored choice wins, otherwise the system decides. */
 (function () {
@@ -431,13 +443,15 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   <div class="in">
     <p class="word">Counts.</p>
     <p>I build the datasets a&nbsp;market uses to price itself. Mostly that means writing down what a number actually counts, then publishing it so people can argue with me.</p>
-    <p class="q">Independent research on tokenized real-world assets, RWA perps, and digital asset treasuries. The dashboards and metrics I built get cited by <a href="#proof">Pantera Capital, Citi Institute, and CoinGecko</a>.</p>
+    <p class="q">Independent research on tokenized real-world assets, RWA perps, and digital asset treasuries. The datasets I built at DefiLlama and the metrics I defined there get cited by <a href="#proof">Pantera Capital, Citi Institute, and CoinGecko</a>.</p>
   </div>
   <div class="out">
     <p class="word" aria-hidden="true">Does not count.</p>
     <p><span class="vh">Does not count. </span>Most things sold as a real-world asset don’t meet the definition.</p>
   </div>
 </section>
+
+<div class="pair go-row"><div class="in"><p class="go"><a href="#services">What I offer</a><a href="mailto:themetaisok@gmail.com">Email me</a></p></div><div class="out"></div></div>
 
 <nav class="pair nav" aria-label="Sections">
   <div class="in">
@@ -449,8 +463,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
     <a href="#writing">Writing</a>
     <a href="#services">On offer</a>
     <a href="#building">Building</a>
-    <a href="#earlier">Earlier</a>
-    <a href="#contact">Contact</a>
+    <span class="pr"><a href="#earlier">Earlier</a><a href="#contact">Contact</a></span>
   </div>
   <div class="out"></div>
 </nav>
@@ -463,7 +476,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   </div>
   <div class="pair">
     <div class="in">
-      <p class="crit">transferable <i>and</i> <span>self-custodial</span> <i>and</i> redeemable <i>and</i> verified</p>
+      <p class="crit"><span>transferable <i>and</i></span> <span>self-custodial <i>and</i></span> <span>redeemable <i>and</i></span> verified</p>
       <p>One test, all four at once. Clear three and it still doesn’t count.</p>
     </div>
     <div class="out"><p>I ran it against the whole registry: more than 9,000 assets and markets as of September 2026. Each dot below stands for 25 of them.</p></div>
@@ -504,8 +517,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   <div class="pair">
     <div class="in">
       <h3>The work</h3>
-      <p>From August 2025 to September 2026 I was at DefiLlama, the DeFi data platform, building its real-world-asset coverage from nothing. No dataset to inherit, no agreed taxonomy, no published methodology. So I wrote them. The field definitions, asset classes, classification bar, and revenue framework are original work, and they’re public so anyone can contest them.</p>
-      <p>DefiLlama is where that work got built and tested at scale.</p>
+      <p>From August 2025 to September 2026 I was at DefiLlama, the DeFi data platform, building its real-world-asset coverage. No dataset to inherit, no agreed taxonomy, no published methodology. So I wrote them. The field definitions, asset classes, classification bar, and revenue framework are original work, and they’re public so anyone can contest them.</p>
     </div>
     <div class="out"><p><span class="vh">Does not count: </span>DefiLlama’s voice. The platform and its data are DefiLlama’s. The definitions behind them are mine.</p></div>
   </div>
@@ -521,14 +533,14 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
         <div><dt>170+</dt><dd>blockchains</dd></div>
       </dl>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>Exact counts. Every number here is a floor, dated where it’s given.</p></div>
+    <div class="out"><p><span class="vh">Does not count: </span>Exact counts. Every number here is a floor.</p></div>
   </div>
 </section>
 
 <!-- ============ measures ============ -->
 <section id="metrics" aria-labelledby="h-metrics">
   <div class="pair group">
-    <div class="in"><h2 id="h-metrics">Six measures</h2><p class="q">Six metrics I defined, and who else uses each one.</p></div>
+    <div class="in"><h2 id="h-metrics">Six measures</h2><p class="q">As I defined them at DefiLlama.</p></div>
     <div class="out"><p class="h2" aria-hidden="true">Six exclusions</p></div>
   </div>
 
@@ -556,7 +568,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
     <div class="out"><p><span class="vh">Does not count: </span>Repricing.</p></div>
   </div>
   <div class="pair lead-out" id="m-mnav">
-    <div class="in"><h3>mNAV</h3><p>Market net asset value: what the market prices a treasury company at, over the crypto it actually holds. Three variants, each counting a different set of shares.</p>
+    <div class="in"><h3>mNAV</h3><p>Market net asset value: what the market prices a treasury company at, over the crypto it holds. That is, at 1.0× a company is priced at exactly its crypto, and which shares you count decides which side of 1.0× it lands on. Three variants, each counting a different set of shares.</p>
       <dl class="terms">
         <div><dt>Realized mNAV</dt><dd>Only the common shares outstanding today. No dilution from unexercised warrants, options, or convertibles.</dd></div>
         <div><dt>Realistic mNAV</dt><dd>Adds the dilution that’s likely to happen: in-the-money options, prefunded warrants, triggered convertibles, mandatory conversions, and earnouts, counted the way diluted EPS counts them. A company running at a loss stays on basic shares, as GAAP requires.</dd></div>
@@ -604,11 +616,11 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   <div class="pair" id="proof-citi">
     <div class="in">
       <h3>Citi Institute <span class="when">June 2026, p.&nbsp;19</span></h3>
-      <p>Sourced its market size figure to DefiLlama.</p>
+      <p>Sourced its current market size figure to DefiLlama.</p>
       <blockquote><p>“The global tokenization market for financial assets is estimated at $17&nbsp;billion, according to DefiLlama in April 2026, up about 3x from just a year ago.”</p></blockquote>
-      <span class="src">“Wall Street On-Chain: Tokenization 2030”, June 2026, p.&nbsp;19. <a href="https://www.citigroup.com/rcs/citigpa/storage/public/Citi_Institute_GPS_Report_Tokenization_2030.pdf" target="_blank" rel="noopener">Report (PDF)</a></span>
+      <span class="src">“Tokenization 2030: Wall Street On-Chain”, June 2026, p.&nbsp;19. <a href="https://www.citigroup.com/rcs/citigpa/storage/public/Citi_Institute_GPS_Report_Tokenization_2030.pdf" target="_blank" rel="noopener">Report (PDF)</a></span>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>Citi’s own count. Its headline market size is DefiLlama’s, drawn from the registry I built.</p></div>
+    <div class="out"><p><span class="vh">Does not count: </span>Citi’s own count. Its current market size figure is DefiLlama’s, drawn from the registry I built.</p></div>
   </div>
 
   <div class="pair" id="proof-coingecko">
@@ -652,7 +664,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
 <!-- ============ built at DefiLlama ============ -->
 <section id="work" aria-labelledby="h-work">
   <div class="pair group">
-    <div class="in"><h2 id="h-work">Built at DefiLlama</h2><p class="q">August 2025 to September 2026. Zero to one on all three.</p></div>
+    <div class="in"><h2 id="h-work">Built at DefiLlama</h2><p class="q">August 2025 to September 2026. Zero to one on all three dashboards.</p></div>
     <div class="out"><p class="h2" aria-hidden="true">What it set aside</p></div>
   </div>
 
@@ -684,18 +696,18 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   <div class="pair">
     <div class="in">
       <h3>Digital asset treasuries</h3>
-      <p>Nearly 100 listed companies as of 13&nbsp;November 2026, every purchase traced back to the filing it came from. The market was quoting these companies on a single mNAV figure, and that figure hid future share issuance. So I replaced it with three variants you can defend.</p>
+      <p>Nearly 100 listed companies as of 13&nbsp;November 2026, every purchase traced back to its primary source. The market was quoting these companies on a single mNAV figure, and that figure hid future share issuance. So I replaced it with three variants you can defend.</p>
     </div>
     <div class="out"></div>
   </div>
   <div class="pair versus">
     <div class="in">
-      <p class="bigfig">2.42x</p>
+      <p class="bigfig">2.42×</p>
       <p>where Greenlane Holdings sat once contractual dilution was counted, on 30&nbsp;November 2025. The worked example in the published methodology.</p>
       <span class="src"><a translate="no" href="https://docs.llama.fi/analysts/dat-methodology" target="_blank" rel="noopener">docs.llama.fi/analysts/dat-methodology</a>, <a translate="no" href="https://defillama.com/digital-asset-treasuries" target="_blank" rel="noopener">defillama.com/digital-asset-treasuries</a></span>
     </div>
     <div class="out">
-      <p class="bigfig"><span class="vh">Does not count: </span>0.33x</p>
+      <p class="bigfig"><span class="vh">Does not count: </span>0.33×</p>
       <p>the single figure it was quoted at, the same day</p>
     </div>
   </div>
@@ -718,13 +730,13 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <h3>Arbitration</h3>
       <p>In September 2025, DefiLlama declined to list an asset claiming $10B+ because the backing couldn’t be verified onchain. I ran the assessment, under exclusion criteria I’d written.</p>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>A claim nobody can check. Backing has to be verifiable onchain.</p></div>
+    <div class="out"><p><span class="vh">Does not count: </span>A claim nobody can check.</p></div>
   </div>
 
   <div class="pair">
     <div class="in">
       <h3>Role</h3>
-      <p>Listed publicly on Llama Corp, DefiLlama’s parent company, as <b>Meta (DAT &amp; RWA)</b>. Independent since September 2026.</p>
+      <p>Listed publicly on Llama Corp, the team behind DefiLlama, as <b>Meta (DAT &amp; RWA)</b>. Independent since September 2026.</p>
       <span class="src"><a translate="no" href="https://llama-corp.com/" target="_blank" rel="noopener">llama-corp.com</a></span>
     </div>
     <div class="out"></div>
@@ -739,10 +751,10 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   </div>
   <div class="pair">
     <div class="in">
-      <h3>Seven of 96 treasury companies look cheap on one count and expensive on another <span class="when">13&nbsp;November 2026</span></h3>
-      <p>Realized mNAV puts each of them below the crypto it holds. Max mNAV, with every warrant, option, and convertible counted, puts each of them above it.</p>
-      <div class="cfig"><div class="c-db" role="group" aria-label="mNAV by company, realized to max, log scale"><div class="c-hd" aria-hidden="true"><span class="c-nm"></span><span class="c-trk"><b style="right:calc(31.50% + 10px)">Below<span class="c-lg"> the crypto it holds</span></b><b style="left:calc(68.50% + 10px)">Above it</b></span><span class="c-v"></span></div><div class="c-row x" tabindex="0" aria-label="Flora Growth: realized 0.21×, realistic 0.21×, max 1.01×" data-tip="Flora Growth: realized 0.21×, realistic 0.21×, max 1.01×"><span class="c-nm">Flora Growth</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="61.6" y1="14" x2="689.0" y2="14"/></svg><i class="c-dot ho" style="left:6.16%"></i><i class="c-dot fu" style="left:68.90%"></i></span><span class="c-v">0.21× → 1.01×</span></div><div class="c-row x" tabindex="0" aria-label="Hyperion DeFi: realized 0.26×, realistic 0.26×, max 1.13×" data-tip="Hyperion DeFi: realized 0.26×, realistic 0.26×, max 1.13×"><span class="c-nm">Hyperion DeFi</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="146.9" y1="14" x2="733.9" y2="14"/></svg><i class="c-dot ho" style="left:14.69%"></i><i class="c-dot fu" style="left:73.39%"></i></span><span class="c-v">0.26× → 1.13×</span></div><div class="c-row x" tabindex="0" aria-label="Metaplanet: realized 0.52×, realistic 0.52×, max 1.23×" data-tip="Metaplanet: realized 0.52×, realistic 0.52×, max 1.23×"><span class="c-nm">Metaplanet</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="423.8" y1="14" x2="767.7" y2="14"/></svg><i class="c-dot ho" style="left:42.38%"></i><i class="c-dot fu" style="left:76.77%"></i></span><span class="c-v">0.52× → 1.23×</span></div><div class="c-row x" tabindex="0" aria-label="Solana Company: realized 0.62×, realistic 0.83×, max 1.61×" data-tip="Solana Company: realized 0.62×, realistic 0.83×, max 1.61×"><span class="c-nm">Solana Company</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="494.1" y1="14" x2="875.3" y2="14"/><line class="c-mid" x1="610.6" y1="8" x2="610.6" y2="20"/></svg><i class="c-dot ho" style="left:49.41%"></i><i class="c-dot fu" style="left:87.53%"></i></span><span class="c-v">0.62× → 1.61×</span></div><div class="c-row x" tabindex="0" aria-label="SkyAI: realized 0.75×, realistic 1.06×, max 1.06×" data-tip="SkyAI: realized 0.75×, realistic 1.06×, max 1.06×"><span class="c-nm">SkyAI</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="570.1" y1="14" x2="708.3" y2="14"/></svg><i class="c-dot ho" style="left:57.01%"></i><i class="c-dot fu" style="left:70.83%"></i></span><span class="c-v">0.75× → 1.06×</span></div><div class="c-row x" tabindex="0" aria-label="Yorkville Acquisition Group: realized 0.83×, realistic 0.83×, max 1.03×" data-tip="Yorkville Acquisition Group: realized 0.83×, realistic 0.83×, max 1.03×"><span class="c-nm">Yorkville Acquisition Group</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="610.6" y1="14" x2="696.8" y2="14"/></svg><i class="c-dot ho" style="left:61.06%"></i><i class="c-dot fu" style="left:69.68%"></i></span><span class="c-v">0.83× → 1.03×</span></div><div class="c-row x" tabindex="0" aria-label="Sui Group Holdings: realized 0.94×, realistic 0.99×, max 1.08×" data-tip="Sui Group Holdings: realized 0.94×, realistic 0.99×, max 1.08×"><span class="c-nm">Sui Group Holdings</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="660.3" y1="14" x2="715.8" y2="14"/><line class="c-mid" x1="681.0" y1="8" x2="681.0" y2="20"/></svg><i class="c-dot ho" style="left:66.03%"></i><i class="c-dot fu" style="left:71.58%"></i></span><span class="c-v">0.94× → 1.08×</span></div><div class="c-ax" aria-hidden="true"><span class="c-nm"></span><span class="c-trk"><span style="left:13.12%">0.25×</span><span style="left:40.81%">0.5×</span><span style="left:68.50%">1×</span><span style="left:96.19%">2×</span></span><span class="c-v"></span></div></div></div><p class="c-legend"><span><i class="c-k ho"></i>Realized mNAV</span><span><i class="c-k ti"></i>Realistic</span><span><i class="c-k fu"></i>Max mNAV</span><span><i class="c-k sw"></i>Crosses 1.0×</span></p><details class="c-tbl"><summary>Table</summary><table><thead><tr><th>Company</th><th>Realized</th><th>Realistic</th><th>Max</th></tr></thead><tbody><tr><th scope="row">Flora Growth</th><td>0.21×</td><td>0.21×</td><td>1.01×</td></tr><tr><th scope="row">Hyperion DeFi</th><td>0.26×</td><td>0.26×</td><td>1.13×</td></tr><tr><th scope="row">Metaplanet</th><td>0.52×</td><td>0.52×</td><td>1.23×</td></tr><tr><th scope="row">Solana Company</th><td>0.62×</td><td>0.83×</td><td>1.61×</td></tr><tr><th scope="row">SkyAI</th><td>0.75×</td><td>1.06×</td><td>1.06×</td></tr><tr><th scope="row">Yorkville Acquisition Group</th><td>0.83×</td><td>0.83×</td><td>1.03×</td></tr><tr><th scope="row">Sui Group Holdings</th><td>0.94×</td><td>0.99×</td><td>1.08×</td></tr></tbody></table></details>
-      <span class="src">DefiLlama digital asset treasuries tracker, as of 13&nbsp;November 2026. Log scale. <a href="figures/#mnav">More figures</a>, including an interactive version of this one.</span>
+      <h3>Seven of 96 treasury companies sit below their crypto on one count and above it on another <span class="when">13&nbsp;November 2026</span></h3>
+      <div class="cfig"><div class="c-db" role="group" aria-label="mNAV by company, realized to max, log scale"><div class="c-hd" aria-hidden="true"><span class="c-nm"></span><span class="c-trk"><b style="right:calc(31.50% + 10px)">Below<span class="c-lg"> the crypto it holds</span></b><b style="left:calc(68.50% + 10px)">Above it</b></span><span class="c-v"></span></div><div class="c-row x" role="img" tabindex="0" aria-label="Flora Growth: realized 0.21×, realistic 0.21×, max 1.01×" data-tip="Flora Growth: realized 0.21×, realistic 0.21×, max 1.01×"><span class="c-nm">Flora Growth</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="61.6" y1="14" x2="689.0" y2="14"/></svg><i class="c-dot ho" style="left:6.16%"></i><i class="c-dot fu" style="left:68.90%"></i></span><span class="c-v">0.21× → 1.01×</span></div><div class="c-row x" role="img" tabindex="0" aria-label="Hyperion DeFi: realized 0.26×, realistic 0.26×, max 1.13×" data-tip="Hyperion DeFi: realized 0.26×, realistic 0.26×, max 1.13×"><span class="c-nm">Hyperion DeFi</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="146.9" y1="14" x2="733.9" y2="14"/></svg><i class="c-dot ho" style="left:14.69%"></i><i class="c-dot fu" style="left:73.39%"></i></span><span class="c-v">0.26× → 1.13×</span></div><div class="c-row x" role="img" tabindex="0" aria-label="Metaplanet: realized 0.52×, realistic 0.52×, max 1.23×" data-tip="Metaplanet: realized 0.52×, realistic 0.52×, max 1.23×"><span class="c-nm">Metaplanet</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="423.8" y1="14" x2="767.7" y2="14"/></svg><i class="c-dot ho" style="left:42.38%"></i><i class="c-dot fu" style="left:76.77%"></i></span><span class="c-v">0.52× → 1.23×</span></div><div class="c-row x" role="img" tabindex="0" aria-label="Solana Company: realized 0.62×, realistic 0.83×, max 1.61×" data-tip="Solana Company: realized 0.62×, realistic 0.83×, max 1.61×"><span class="c-nm">Solana Company</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="494.1" y1="14" x2="875.3" y2="14"/><line class="c-mid" x1="610.6" y1="8" x2="610.6" y2="20"/></svg><i class="c-dot ho" style="left:49.41%"></i><i class="c-dot fu" style="left:87.53%"></i></span><span class="c-v">0.62× → 1.61×</span></div><div class="c-row x" role="img" tabindex="0" aria-label="SkyAI: realized 0.75×, realistic 1.06×, max 1.06×" data-tip="SkyAI: realized 0.75×, realistic 1.06×, max 1.06×"><span class="c-nm">SkyAI</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="570.1" y1="14" x2="708.3" y2="14"/></svg><i class="c-dot ho" style="left:57.01%"></i><i class="c-dot fu" style="left:70.83%"></i></span><span class="c-v">0.75× → 1.06×</span></div><div class="c-row x" role="img" tabindex="0" aria-label="Yorkville Acquisition Group: realized 0.83×, realistic 0.83×, max 1.03×" data-tip="Yorkville Acquisition Group: realized 0.83×, realistic 0.83×, max 1.03×"><span class="c-nm">Yorkville Acquisition Group</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="610.6" y1="14" x2="696.8" y2="14"/></svg><i class="c-dot ho" style="left:61.06%"></i><i class="c-dot fu" style="left:69.68%"></i></span><span class="c-v">0.83× → 1.03×</span></div><div class="c-row x" role="img" tabindex="0" aria-label="Sui Group Holdings: realized 0.94×, realistic 0.99×, max 1.08×" data-tip="Sui Group Holdings: realized 0.94×, realistic 0.99×, max 1.08×"><span class="c-nm">Sui Group Holdings</span><span class="c-trk"><svg viewBox="0 0 1000 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="c-wash" x="685.0" y="0" width="315.0" height="28"/><line class="c-par" x1="685.0" y1="0" x2="685.0" y2="28"/><line class="c-conn" x1="660.3" y1="14" x2="715.8" y2="14"/><line class="c-mid" x1="681.0" y1="8" x2="681.0" y2="20"/></svg><i class="c-dot ho" style="left:66.03%"></i><i class="c-dot fu" style="left:71.58%"></i></span><span class="c-v">0.94× → 1.08×</span></div><div class="c-ax" aria-hidden="true"><span class="c-nm"></span><span class="c-trk"><span style="left:13.12%">0.25×</span><span style="left:40.81%">0.5×</span><span style="left:68.50%">1×</span><span style="left:96.19%">2×</span></span><span class="c-v"></span></div></div></div><p class="c-legend"><span><i class="c-k ho"></i>Realized mNAV</span><span><i class="c-k ti"></i>Realistic</span><span><i class="c-k fu"></i>Max mNAV</span><span><i class="c-k sw"></i>Crosses 1.0×</span></p><details class="c-tbl"><summary>Table<span class="vh">: mNAV by company</span></summary><table><thead><tr><th>Company</th><th>Realized</th><th>Realistic</th><th>Max</th></tr></thead><tbody><tr><th scope="row">Flora Growth</th><td>0.21×</td><td>0.21×</td><td>1.01×</td></tr><tr><th scope="row">Hyperion DeFi</th><td>0.26×</td><td>0.26×</td><td>1.13×</td></tr><tr><th scope="row">Metaplanet</th><td>0.52×</td><td>0.52×</td><td>1.23×</td></tr><tr><th scope="row">Solana Company</th><td>0.62×</td><td>0.83×</td><td>1.61×</td></tr><tr><th scope="row">SkyAI</th><td>0.75×</td><td>1.06×</td><td>1.06×</td></tr><tr><th scope="row">Yorkville Acquisition Group</th><td>0.83×</td><td>0.83×</td><td>1.03×</td></tr><tr><th scope="row">Sui Group Holdings</th><td>0.94×</td><td>0.99×</td><td>1.08×</td></tr></tbody></table></details>
+      <span class="src">DefiLlama digital asset treasuries tracker, as of 13&nbsp;November 2026. Log scale.</span>
+      <p><a href="figures/">See all four figures</a>, including an interactive version of this one.</p>
     </div>
     <div class="out"><p><span class="vh">Does not count: </span>A discount. On today’s shares, these seven trade below the crypto they hold. Count the shares their warrants, options, and convertibles can still create, and all seven trade above it.</p></div>
   </div>
@@ -808,7 +820,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
     <div class="in">
       <h3>Research retainers for funds</h3>
       <p>Recurring coverage of RWAs, tokenized equities, and digital asset treasuries, with the sourcing trail attached. Two consecutive editions of Pantera’s State of Tokenization credit my review, and one adopted a metric I defined.</p>
-      <span class="src">Evidence: <a href="#proof-pantera">Pantera Capital</a></span>
+      <span class="src">Evidence: <a href="#proof-pantera">Pantera Capital</a> and <a href="figures/">the figures</a></span>
     </div>
     <div class="out"></div>
   </div>
@@ -816,7 +828,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   <div class="pair">
     <div class="in">
       <h3>Standards readiness for issuers</h3>
-      <p>If a product is mismeasured, or missing from the dashboards the market actually reads, it’s usually a schema gap or an evidence gap. I wrote the inclusion rules at DefiLlama, so I can tell you which criterion it fails and what closing that would take. Schema conformance and attestation standards.</p>
+      <p>If a product is mismeasured, or missing from the dashboards the market reads, it’s usually a schema gap or an evidence gap. I wrote the inclusion rules at DefiLlama, so I can tell you which criterion it fails and what closing that gap takes, from schema conformance to attestation standards.</p>
       <span class="src">Evidence: <a href="#work">the published inclusion and exclusion criteria</a></span>
     </div>
     <div class="out"><p><span class="vh">Does not count: </span>A listing. Inclusion is DefiLlama’s call alone, and working with me doesn’t change it.</p></div>
@@ -825,11 +837,13 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   <div class="pair">
     <div class="in">
       <h3>Expert networks and advisory</h3>
-      <p>Calls and written work on RWA taxonomy, treasury company valuation, perps market structure, and how this category’s data actually gets put together.</p>
+      <p>Calls and written work on RWA taxonomy, treasury company valuation, perps market structure, and how this category’s data gets put together.</p>
       <span class="src">Evidence: <a href="#metrics">the metrics</a> and <a href="#writing">the Indexed episode</a></span>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>Investment advice. None of this is that.</p></div>
+    <div class="out"><p><span class="vh">Does not count: </span>Investment advice.</p></div>
   </div>
+
+  <div class="pair"><div class="in"><p class="go"><a href="mailto:themetaisok@gmail.com">Start an engagement</a></p></div><div class="out"></div></div>
 </section>
 
 <!-- ============ building ============ -->
@@ -867,7 +881,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <p class="role">Co-founder</p>
       <p>Sealed Pokémon packs held in vaults and tokenized on Solana, with Magic and sports products planned.</p>
       <p>It’s a digital asset treasury in everything but the asset. A vehicle holds a reserve, a token trades against it, and a trading fee routes most of its proceeds into buying more of the reserve.</p>
-      <p>That structure is the one I measure. An automated engine acts by <a href="#m-mnav">mNAV</a> band on the gap between the token and the vault, which is the framework I built for listed treasury companies, pointed at a shelf of sealed cardboard instead of a balance sheet of crypto. I spent a year building the dashboard that tracks nearly a hundred listed ones before co-founding an unlisted one.</p>
+      <p>An automated engine acts by <a href="#m-mnav">mNAV</a> band on the gap between the token and the vault, which is the framework I built for listed treasury companies, pointed at a shelf of sealed cardboard instead of a balance sheet of crypto. I spent a year building the dashboard that tracks the listed ones before co-founding an unlisted one.</p>
       <span class="src"><a translate="no" href="https://www.sealedpackz.com/" target="_blank" rel="noopener">sealedpackz.com</a></span>
     </div>
     <div class="out">
@@ -889,7 +903,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
 <!-- ============ earlier ============ -->
 <section id="earlier" class="plain" aria-labelledby="h-earlier">
   <div class="pair group">
-    <div class="in"><h2 id="h-earlier">Earlier</h2><p class="q">Ten years of building in this market.</p></div>
+    <div class="in"><h2 id="h-earlier">Earlier</h2></div>
     <div class="out"></div>
   </div>
 
@@ -935,7 +949,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   </div>
   <div class="pair end">
     <div class="in contact" translate="no">
-      <p translate="yes">I’m taking fractional research contracts, fund retainers, issuer engagements, and expert network calls.</p>
+      <p translate="yes">I’m taking fractional research contracts, fund retainers, issuer engagements, and expert network calls. Send me the asset, issuer, or company you want run against the bar.</p>
       <a href="mailto:themetaisok@gmail.com">themetaisok@gmail.com</a>
       <a href="https://x.com/themetaisok" target="_blank" rel="me noopener">x.com/themetaisok</a>
       <a href="https://t.me/themetaisok" target="_blank" rel="me noopener">t.me/themetaisok</a>

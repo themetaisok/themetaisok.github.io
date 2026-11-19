@@ -27,8 +27,7 @@
 
   var row = gRows.selectAll("g.b-row").data(rows).join("g")
     .attr("class", function (d) { return "b-row" + (d.cross ? " cross" : ""); })
-    .attr("tabindex", 0)
-    .attr("aria-label", function (d) { return d.name + ": realized " + fmt(d.realized) + ", realistic " + fmt(d.realistic) + ", max " + fmt(d.max); });
+    .attr("data-tip", function (d) { return d.name + ": realized " + fmt(d.realized) + ", realistic " + fmt(d.realistic) + ", max " + fmt(d.max); });
   row.append("rect").attr("class", "b-hit");
   row.append("text").attr("class", "b-nm").attr("dy", "0.35em");
   row.append("line").attr("class", "b-trail");
@@ -39,7 +38,7 @@
   function layout() {
     W = Math.max(220, host.clientWidth);
     var narrow = W < 560;
-    M = { top: 26, right: narrow ? 14 : 24, bottom: 30, left: narrow ? Math.min(118, Math.round(W * 0.42)) : 228 };
+    M = { top: 26, right: narrow ? 14 : 24, bottom: 30, left: narrow ? Math.min(180, Math.round(W * 0.55)) : 228 };
     var rh = narrow ? 24 : 28;
     H = M.top + rows.length * rh + M.bottom;
     svg.attr("viewBox", "0 0 " + W + " " + H).attr("width", W).attr("height", H).classed("narrow", narrow);
@@ -50,7 +49,7 @@
     head.select(".l").attr("x", x(1) - 10).attr("y", M.top - 9);
     head.select(".r").attr("x", x(1) + 10).attr("y", M.top - 9);
     gAxis.attr("transform", "translate(0," + (H - M.bottom + 6) + ")")
-      .call(d3.axisBottom(x).tickValues([0.1, 0.25, 0.5, 1, 2, 4, 10]).tickFormat(fmt).tickSize(0).tickPadding(6))
+      .call(d3.axisBottom(x).tickValues(narrow ? [0.1, 1, 10] : [0.1, 0.25, 0.5, 1, 2, 4, 10]).tickFormat(fmt).tickSize(0).tickPadding(6))
       .call(function (g) { g.select(".domain").remove(); });
     row.attr("transform", function (d) { return "translate(0," + (y(d.name) + y.bandwidth() / 2) + ")"; });
     row.select(".b-hit").attr("x", 0).attr("y", -y.bandwidth() / 2).attr("width", W).attr("height", y.bandwidth());
@@ -87,22 +86,23 @@
     place(dur === undefined ? 750 : dur);
     animateCount(count(k));
     document.getElementById("f-k").textContent = LABEL[k].toLowerCase();
+    if (dur !== 0) document.getElementById("f-say").textContent = count(k) + " of " + rows.length + " below 1.0× on " + LABEL[k].toLowerCase() + " mNAV";
   }
 
   buttons.forEach(function (b) { b.addEventListener("click", function () { stop(); set(b.getAttribute("data-k")); }); });
   var timer = null;
-  function stop() { if (timer) { clearTimeout(timer); timer = null; play.textContent = "Play"; play.setAttribute("aria-pressed", "false"); } }
+  function stop() { if (timer) { clearTimeout(timer); timer = null; play.textContent = "Play all three"; } }
   play.addEventListener("click", function () {
     if (timer) { stop(); return; }
     var seq = ["realized", "realistic", "max"], i = 0;
-    play.textContent = "Stop"; play.setAttribute("aria-pressed", "true");
+    play.textContent = "Stop";
     (function step() { set(seq[i]); i += 1; if (i < seq.length) { timer = setTimeout(step, 1500); } else { timer = setTimeout(stop, 900); } })();
   });
 
   // shared tooltip
-  row.on("pointermove", function (e, d) { window.tipShow && window.tipShow(this.getAttribute("aria-label"), e.clientX, e.clientY); })
+  row.on("pointermove", function (e, d) { window.tipShow && window.tipShow(this.getAttribute("data-tip"), e.clientX, e.clientY); })
      .on("pointerleave", function () { window.tipHide && window.tipHide(); })
-     .on("focus", function () { var q = this.getBoundingClientRect(); window.tipShow && window.tipShow(this.getAttribute("aria-label"), q.left + M.left, q.bottom); })
+     .on("focus", function () { var q = this.getBoundingClientRect(); window.tipShow && window.tipShow(this.getAttribute("data-tip"), q.left + M.left, q.bottom); })
      .on("blur", function () { window.tipHide && window.tipHide(); });
 
   layout();
