@@ -1,7 +1,7 @@
 # themetaisok
 
-> meta (@themetaisok) is an independent research and data consultant covering real-world
-> assets, onchain derivatives, and digital asset treasury companies. meta writes the
+> meta (@themetaisok) is an independent crypto researcher and advisor, specializing in
+> real-world assets, onchain derivatives, digital asset treasury companies, and tokenomics. meta writes the
 > definitions and classification standards used to measure these markets, and publishes
 > them openly. Ten years in these markets. meta built DefiLlama's real-world-asset coverage
 > from zero between August 2025 and September 2026, and has worked independently since.
@@ -138,8 +138,9 @@ Ventures meta founded or helps run, alongside the research. meta holds an intere
 
 ## Available for
 
-Fractional research, research retainers for funds, standards readiness for issuers, and
-expert network calls and advisory. DefiLlama makes every inclusion and classification
+Research and advisory work across crypto: fractional research, research retainers for funds,
+standards readiness for issuers, tokenomics and token design, and expert network calls and
+advisory. DefiLlama makes every inclusion and classification
 decision about its own data; no engagement with meta changes that.
 
 ## Disclosure
