@@ -27,7 +27,7 @@ specifications. The platform and its data are DefiLlama's.
 - **RWA perpetuals tracker** (https://defillama.com/rwa/perps): an aggregate view of
   real-world-asset perpetuals. More than 1,000 active markets in the onchain default view and
   more than 3,300 with centralized exchanges, plus a 75+ market forex book (as of September
-  2026), normalized through a 17-field market schema and a canonical market ID.
+  2026), normalized through a 34-field market schema and a canonical market ID.
 - **Digital asset treasuries tracker** (https://defillama.com/digital-asset-treasuries):
   nearly 100 listed companies (as of 13 November 2026), with every purchase traced to its
   primary source. The published methodology's worked example, Greenlane Holdings on
@@ -118,15 +118,15 @@ Ventures meta founded or helps run, alongside the research. meta holds an intere
   held in vaults and tokenized on Solana, with Magic and sports products planned. It is a
   digital asset treasury in everything but the asset: a vehicle holds a reserve, a token trades
   against it, a trading fee buys more of the reserve, and there is no redemption right, so a
-  holder gets exposure to the vault rather than a claim on a particular pack. An automated
-  engine acts by mNAV band on the gap between token and vault, the same framework meta built for
-  listed treasury companies. meta spent a year building the dashboard that tracks the listed
+  holder gets exposure to the vault rather than a claim on a particular pack. A trading
+  engine meta built acts by mNAV band on the gap between token and vault, using the measure meta
+  defined for DefiLlama's treasury tracker. meta spent a year building the dashboard that tracks the listed
   ones before co-founding an unlisted one. By the DefiLlama classification bar meta wrote, it
   is a treasury vehicle, not a real-world asset, since redeemability is one of the four
   criteria.
 - **WacDonald's Cryptopoly** (https://wacdonalds.io/): co-founder. An onchain board game that
-  is also an interactive art experience: an ERC-721 collection of 8,889 tiles, with
-  its mainnet launch coming soon.
+  is also an interactive art experience: an ERC-721 collection of 8,889 tiles (as of November 2026), each
+  with its own payout in ETH, and its mainnet launch coming soon.
 
 ## Writing
 

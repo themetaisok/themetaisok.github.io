@@ -625,7 +625,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
 
   <div class="pair" id="proof-coingecko">
     <div class="in">
-      <h3>CoinGecko <span class="when">2026, pp.&nbsp;16 and&nbsp;17</span></h3>
+      <h3>CoinGecko <span class="when">April 2026, pp.&nbsp;16 and&nbsp;17</span></h3>
       <p>Measures its RWA chain chart in <a href="#m-active-market-cap">Active Market Cap</a>, sourced to DefiLlama.</p>
       <p>The 2026 RWA Report sources its RWA-chains and on-chain private-credit sections to DefiLlama, and its chain chart measures daily active market capitalization, the metric I defined.</p>
       <span class="src">CoinGecko, 2026 RWA Report, pp.&nbsp;16 and&nbsp;17. <a href="https://assets.coingecko.com/reports/2026/CoinGecko-2026-RWA-Report.pdf" target="_blank" rel="noopener">Report (PDF)</a></span>
@@ -681,11 +681,11 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   <div class="pair">
     <div class="in">
       <h3>RWA perpetuals</h3>
-      <p>One view of RWA perps across venues: equities, indices, ETFs, commodities, bonds, and forex, broken out by venue and asset group. Every market is normalized to a common reference asset through a 17-field schema and carries a canonical market ID, so the same underlying stays comparable even when two venues name the contract differently.</p>
+      <p>One view of RWA perps across venues: equities, indices, ETFs, commodities, bonds, and forex, broken out by venue and asset group. Every market is normalized to a common reference asset through a 34-field schema and carries a canonical market ID, so the same underlying stays comparable even when two venues name the contract differently.</p>
       <dl class="figs">
         <div><dt>1,000+</dt><dd>active markets, onchain default view</dd></div>
         <div><dt>3,300+</dt><dd>with centralized exchanges</dd></div>
-        <div><dt>17</dt><dd>fields in the market schema</dd></div>
+        <div><dt>34</dt><dd>fields in the market schema</dd></div>
         <div><dt>75+</dt><dd>markets in the forex book</dd></div>
       </dl>
       <span class="src">As of September 2026. <a translate="no" href="https://defillama.com/rwa/perps" target="_blank" rel="noopener">defillama.com/rwa/perps</a></span>
@@ -715,7 +715,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   <div class="pair">
     <div class="in">
       <h3>Methodology</h3>
-      <p>I’m the sole author of the public docs: eligibility and exclusion criteria, metrics, definitions and taxonomy, the perps spec, and a standalone treasury methodology, plus a 29-column public data dictionary. Five inclusion criteria, six exclusion criteria, seven evidence flags, and five access models, with expulsion rules and a review status short of removal.</p>
+      <p>I’m the sole author of the public docs: eligibility and exclusion criteria, metrics, definitions and taxonomy, the perps spec, and a standalone treasury methodology, plus a 35-column public data dictionary. As of November 2026, the docs set five inclusion criteria, six exclusion criteria, seven evidence flags, and five access models, with expulsion rules and a review status short of removal.</p>
       <p>Also the fee and revenue methodology that made issuer economics comparable across assets: an identity equation splitting holder fees between asset manager and tokenization platform, with every estimate carrying a confidence grade and a dated primary-source audit trail.</p>
       <span class="src"><a translate="no" href="https://docs.llama.fi/real-world-assets/real-world-assets" target="_blank" rel="noopener">docs.llama.fi/real-world-assets/real-world-assets</a>, <a translate="no" href="https://docs.llama.fi/analysts/dat-methodology" target="_blank" rel="noopener">docs.llama.fi/analysts/dat-methodology</a></span>
     </div>
@@ -881,7 +881,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <p class="role">Co-founder</p>
       <p>Sealed Pokémon packs held in vaults and tokenized on Solana, with Magic and sports products planned.</p>
       <p>It’s a digital asset treasury in everything but the asset. A vehicle holds a reserve, a token trades against it, and a trading fee routes most of its proceeds into buying more of the reserve.</p>
-      <p>An automated engine acts by <a href="#m-mnav">mNAV</a> band on the gap between the token and the vault, which is the framework I built for listed treasury companies, pointed at a shelf of sealed cardboard instead of a balance sheet of crypto. I spent a year building the dashboard that tracks the listed ones before co-founding an unlisted one.</p>
+      <p>A trading engine I built acts by <a href="#m-mnav">mNAV</a> band on the gap between the token and the vault. It’s the measure I defined for DefiLlama’s treasury tracker, pointed at a shelf of sealed cardboard instead of a balance sheet of crypto. I spent a year building the dashboard that tracks the listed ones before co-founding an unlisted one.</p>
       <span class="src"><a translate="no" href="https://www.sealedpackz.com/" target="_blank" rel="noopener">sealedpackz.com</a></span>
     </div>
     <div class="out">
@@ -893,7 +893,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
     <div class="in">
       <h3>WacDonald’s</h3>
       <p class="role">Co-founder</p>
-      <p>Cryptopoly, an onchain board game that’s also an interactive art experience. An ERC-721 collection of 8,889 tiles across 37 entries in 17 categories, laid out on a 40-square board.</p>
+      <p>Cryptopoly, an onchain board game that’s also an interactive art experience. An ERC-721 collection of 8,889 tiles across 37 entries in 17 categories, each with its own payout in ETH, laid out on a 40-square board, as of November 2026.</p>
       <span class="src"><a translate="no" href="https://wacdonalds.io/" target="_blank" rel="noopener">wacdonalds.io</a></span>
     </div>
     <div class="out"><p><span class="vh">Where it stands: </span>Mainnet launch soon.</p></div>
@@ -921,7 +921,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <p>An all-onchain collaborative narrative NFT on Ethereum. Each mint appends one sentence at the next token ID, with fully onchain SVG concatenated and re-rendered from contract state, editable after mint, with editing rights transferring on secondary sale.</p>
       <span class="src"><a translate="no" href="https://story-block.com/" target="_blank" rel="noopener">story-block.com</a>, <a href="https://opensea.io/collection/story-block" target="_blank" rel="noopener">OpenSea</a>, <a href="https://etherscan.io/address/0x0e85f0ebe129d184e6631c53348ae2746640d4b5" target="_blank" rel="noopener">Contract</a>, <a href="https://etherscan.io/token/0x0e85f0ebe129d184e6631c53348ae2746640d4b5#code" target="_blank" rel="noopener">Verified source</a></span>
     </div>
-    <div class="out"><p><span class="vh">What came of it: </span>Launched August 2022. Still mintable.</p></div>
+    <div class="out"><p><span class="vh">What came of it: </span>Launched August 2022. The experiment has concluded, and anyone can still mint.</p></div>
   </div>
 
   <div class="pair">
