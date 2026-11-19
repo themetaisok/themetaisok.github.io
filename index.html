@@ -126,6 +126,7 @@ b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
 .nav a{text-decoration:none; white-space:nowrap}
 .nav a:hover{text-decoration:underline}
 .nav a[aria-current]{text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:6px}
+.nav-more{display:none}
 .group > .in, .group > .out{padding-top:40px; padding-bottom:6px}
 .group > .in{border-top:3px solid var(--in-ink) !important}
 .group > .out{border-top:3px solid var(--out-ink) !important}
@@ -235,6 +236,9 @@ p + .figs{margin-top:16px}
   .nav > .in{padding-top:10px; padding-bottom:12px}
   .nav .in{column-gap:18px; line-height:2.2; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none}
   .nav::after{content:""; position:absolute; top:0; right:0; bottom:1px; width:44px; background:linear-gradient(90deg,transparent,var(--in-bg)); pointer-events:none}
+  .nav.more::after{width:72px; background:linear-gradient(90deg,transparent,var(--in-bg) 52%)}
+  .nav.more .nav-more{display:flex; position:absolute; z-index:1; top:0; right:0; bottom:1px; width:44px; align-items:center; justify-content:center; padding:0; border:0; background:none; color:var(--in-ink); cursor:pointer; -webkit-tap-highlight-color:transparent}
+  .nav.more .nav-more svg{display:block}
   .nav .in::-webkit-scrollbar{display:none}
   .nav > .in{padding-right:48px}
   .nav .pr{flex:none}
@@ -1057,6 +1061,26 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   /* the menu marks the section in view, and keeps its link visible on a phone */
   var nav = document.querySelector(".nav .in");
   if (nav) {
+    /* a chevron at the right edge while the row has more to show; a tap moves it along */
+    var bar = nav.parentNode;
+    var more = document.createElement("button");
+    more.type = "button"; more.className = "nav-more"; more.tabIndex = -1;
+    more.setAttribute("aria-hidden", "true");
+    more.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>';
+    bar.appendChild(more);
+    var edge = function () {
+      var over = nav.scrollWidth - nav.clientWidth;
+      if (over > 4 && nav.scrollLeft < over - 4) bar.classList.add("more"); else bar.classList.remove("more");
+    };
+    more.addEventListener("click", function () {
+      var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var step = Math.round(nav.clientWidth * 0.7);
+      try { nav.scrollBy({ left: step, behavior: calm ? "auto" : "smooth" }); } catch (e) { nav.scrollLeft += step; }
+    });
+    nav.addEventListener("scroll", edge, { passive: true });
+    window.addEventListener("resize", edge);
+    window.addEventListener("load", edge);
+    edge();
     var links = [].slice.call(nav.querySelectorAll("a"));
     var secs = links.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); });
     var cur = -2, queued = false;
@@ -1076,6 +1100,10 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
     window.addEventListener("scroll", function () { if (!queued) { queued = true; requestAnimationFrame(spy); } }, { passive: true });
     spy();
   }
+})();
+</script>
+<script>
+(function () {
   /* rows below the first screen fade up once, unless the visitor asked for less motion */
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     var io = new IntersectionObserver(function (entries) {
