@@ -75,7 +75,7 @@ a, button{touch-action:manipulation}
 a:focus-visible, button:focus-visible{outline:2px solid currentColor; outline-offset:3px}
 main:focus{outline:0}
 b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
-.vh{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+.vh, .lbl{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
 .skip{position:absolute; left:8px; top:-60px; z-index:5; background:var(--in-ink); color:var(--in-bg); font-family:var(--head); font-size:14px; padding:8px 12px}
 .skip:focus{top:8px}
 .pair{display:grid; grid-template-columns:var(--split) minmax(0,1fr)}
@@ -108,6 +108,7 @@ b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
 .hero p{font-size:23px; line-height:1.38; max-width:25em}
 .hero p + p{margin-top:.7em}
 .hero .word + p{margin-top:0}
+.w-narrow{display:none}
 .hero > .in{padding-bottom:30px}
 .go-row > .in, .go-row > .out{border-top:0 !important; padding-top:0; padding-bottom:40px}
 .in .go{display:flex; flex-wrap:wrap; gap:10px 12px; font-family:var(--head); font-size:15px; line-height:1.2; max-width:none}
@@ -232,6 +233,10 @@ p + .figs{margin-top:16px}
   .hero > .in{padding-top:30px; padding-bottom:26px}
   .hero > .out{padding-top:26px; padding-bottom:28px}
   .pair .word{font-size:52px; margin-bottom:18px}
+  .hero .w-wide{display:none} .hero .w-narrow{display:inline}
+  .hero .in .word{font-size:46px; line-height:.98; text-wrap:balance}
+  .lbl{position:static; width:auto; height:auto; overflow:visible; clip:auto; white-space:normal; display:block; font-family:var(--head); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--out-quiet); margin-bottom:8px}
+  .plain .lbl{color:var(--in-quiet)}
   .hero p{font-size:20px}
   .go-row > .in{padding-top:22px; padding-bottom:26px}
   .nav > .in{padding-top:10px; padding-bottom:12px}
@@ -682,11 +687,18 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
     tip.style.top = Math.min(y + 16, innerHeight - h - 8) + "px";
   };
   window.tipHide = function () { tip.style.opacity = 0; };
+  // The tip is fixed to the screen, so it must never outlive the mark under it:
+  // it goes on any scroll, on a touch anywhere else, and a tap's focus never raises it.
+  window.tipKeyed = function (el) { try { return el.matches(":focus-visible"); } catch (e) { return false; } };
+  addEventListener("scroll", window.tipHide, {passive: true});
+  addEventListener("resize", window.tipHide);
+  document.addEventListener("pointerdown", function (e) { if (!(e.target.closest && e.target.closest("[data-tip]"))) window.tipHide(); });
   var els = document.querySelectorAll("[data-tip]");
   for (var i = 0; i < els.length; i++) (function (el) {
-    el.addEventListener("pointermove", function (e) { window.tipShow(el.getAttribute("data-tip"), e.clientX, e.clientY); });
-    el.addEventListener("pointerleave", window.tipHide);
-    el.addEventListener("focus", function () { var q = el.getBoundingClientRect(); window.tipShow(el.getAttribute("data-tip"), q.left, q.bottom - 10); });
+    el.addEventListener("pointermove", function (e) { if (e.pointerType !== "touch") window.tipShow(el.getAttribute("data-tip"), e.clientX, e.clientY); });
+    el.addEventListener("pointerup", function (e) { if (e.pointerType === "touch") window.tipShow(el.getAttribute("data-tip"), e.clientX, e.clientY - 60); });
+    el.addEventListener("pointerleave", function (e) { if (e.pointerType !== "touch") window.tipHide(); });
+    el.addEventListener("focus", function () { if (!window.tipKeyed(el)) return; var q = el.getBoundingClientRect(); window.tipShow(el.getAttribute("data-tip"), q.left, q.bottom - 10); });
     el.addEventListener("blur", window.tipHide);
   })(els[i]);
 })();

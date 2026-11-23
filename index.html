@@ -76,7 +76,7 @@ a, button{touch-action:manipulation}
 a:focus-visible, button:focus-visible{outline:2px solid currentColor; outline-offset:3px}
 main:focus{outline:0}
 b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
-.vh{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+.vh, .lbl{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
 .skip{position:absolute; left:8px; top:-60px; z-index:5; background:var(--in-ink); color:var(--in-bg); font-family:var(--head); font-size:14px; padding:8px 12px}
 .skip:focus{top:8px}
 .pair{display:grid; grid-template-columns:var(--split) minmax(0,1fr)}
@@ -109,6 +109,7 @@ b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
 .hero p{font-size:23px; line-height:1.38; max-width:25em}
 .hero p + p{margin-top:.7em}
 .hero .word + p{margin-top:0}
+.w-narrow{display:none}
 .hero > .in{padding-bottom:30px}
 .go-row > .in, .go-row > .out{border-top:0 !important; padding-top:0; padding-bottom:40px}
 .in .go{display:flex; flex-wrap:wrap; gap:10px 12px; font-family:var(--head); font-size:15px; line-height:1.2; max-width:none}
@@ -233,6 +234,10 @@ p + .figs{margin-top:16px}
   .hero > .in{padding-top:30px; padding-bottom:26px}
   .hero > .out{padding-top:26px; padding-bottom:28px}
   .pair .word{font-size:52px; margin-bottom:18px}
+  .hero .w-wide{display:none} .hero .w-narrow{display:inline}
+  .hero .in .word{font-size:46px; line-height:.98; text-wrap:balance}
+  .lbl{position:static; width:auto; height:auto; overflow:visible; clip:auto; white-space:normal; display:block; font-family:var(--head); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--out-quiet); margin-bottom:8px}
+  .plain .lbl{color:var(--in-quiet)}
   .hero p{font-size:20px}
   .go-row > .in{padding-top:22px; padding-bottom:26px}
   .nav > .in{padding-top:10px; padding-bottom:12px}
@@ -493,7 +498,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
 <section class="pair hero">
   <div class="in">
     <p class="eyebrow">Crypto research and advisory<span class="dot" aria-hidden="true"> · </span><span class="vh">. </span><span class="nb">Open to roles</span></p>
-    <p class="word">Counts.</p>
+    <p class="word"><span class="w-wide">Counts.</span><span class="w-narrow">I define what counts.</span></p>
     <p>I build the datasets a&nbsp;market uses to price itself. Most of that work is writing down what a number actually counts, and then publishing the definition so people can argue with me.</p>
     <p>In just over a year at DefiLlama, I took its real-world-asset coverage from zero to three live dashboards, a registry of 9,000+ assets and markets, and the public standard that decides what counts. <a href="#proof">Citi Institute sized the tokenization market on that data</a>, Pantera Capital adopted my metric, and Figure, Securitize, Ondo, and xStocks came to me to be listed.</p>
     <p class="q">Now I research tokenized real-world assets, RWA perpetuals, and digital asset treasuries independently, and I advise teams on tokenomics across crypto. I am open to full-time, contract, and part-time roles, and to advisory engagements. <a href="record/">The record</a> puts the case on one page.</p>
@@ -564,7 +569,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <h3>The name</h3>
       <p>I go by meta, and my handle is <span translate="no">@themetaisok</span>. I have spent ten years in crypto markets and have built in them since 2017. That is where my judgment about which metrics matter comes from.</p>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>A legal name. I am pseudonymous by choice. I am also not Meta Platforms, Inc., <em>in case that needed saying.</em></p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>A legal name. I am pseudonymous by choice. I am also not Meta Platforms, Inc., <em>in case that needed saying.</em></p></div>
   </div>
 
   <div class="pair">
@@ -572,7 +577,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <h3>The work</h3>
       <p>DefiLlama, the DeFi data platform, acqui-hired me in August 2025 to build its treasuries tracker. I then founded its real-world-asset coverage and led both until September 2026. There was no dataset to inherit, no agreed taxonomy, and no published methodology. So I wrote them. I am the sole author of the data standard, the registry, and the research. The field definitions, the asset classes, the classification bar, and the revenue framework are public, and Pantera Capital, CoinGecko, and CryptoSlate report in them.</p>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>DefiLlama’s voice. The platform and its data belong to DefiLlama. The definitions behind them are mine.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>DefiLlama’s voice. The platform and its data belong to DefiLlama. The definitions behind them are mine.</p></div>
   </div>
 
   <div class="pair">
@@ -587,7 +592,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       </dl>
       <p class="q">It more than tripled in five months: 2,844 entries on 17&nbsp;March 2026, 9,027 on 21&nbsp;August 2026.</p>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>Rounding up. Every number here is a floor.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>Rounding up. Every number here is a floor.</p></div>
   </div>
 </section>
 
@@ -600,27 +605,27 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
 
   <div class="pair lead-out" id="m-onchain-market-cap">
     <div class="in"><h3>Onchain Market Cap</h3><p>Circulating supply, valued at the reference price.</p></div>
-    <div class="out"><p><span class="vh">Does not count: </span>Burned supply.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>Burned supply.</p></div>
   </div>
   <div class="pair lead-out" id="m-active-market-cap">
     <div class="in"><h3>Active Market Cap</h3><p>The portion of Onchain Market Cap that sits in user or protocol hands.</p>
       <p class="q test">The working test is one question: would compromising this wallet let someone extract meaningful value? I maintained the resulting wallet exclusions on 7,500+ assets (21&nbsp;August 2026).</p>
       <span class="src">Charted by <a href="#proof-coingecko">CoinGecko</a> and <a href="#proof-press">CryptoSlate</a></span></div>
-    <div class="out"><p><span class="vh">Does not count: </span>Issuer wallets and custody wallets.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>Issuer wallets and custody wallets.</p></div>
   </div>
   <div class="pair lead-out" id="m-defi-active-tvl">
     <div class="in"><h3>DeFi Active TVL</h3><p>The subset of Active Market Cap that is deployed in third-party DeFi protocols.</p>
       <span class="src">Adopted by <a href="#proof-pantera">Pantera Capital</a> as “our measure of on-chain productive TVL.” Used by <a href="#proof-press">CryptoSlate</a>.</span></div>
-    <div class="out"><p><span class="vh">Does not count: </span>Issuer-managed contracts.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>Issuer-managed contracts.</p></div>
   </div>
   <div class="pair lead-out" id="m-utilization">
     <div class="in"><h3>Utilization</h3><p>DeFi Active TVL divided by Onchain Market Cap, shown as a percentage.</p>
       <span class="src">Given a full page by <a href="#proof-pantera">Pantera Capital</a>, September 2026, p.&nbsp;32</span></div>
-    <div class="out"><p><span class="vh">Does not count: </span>Lending-market utilization, which is borrowed over supplied.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>Lending-market utilization, which is borrowed over supplied.</p></div>
   </div>
   <div class="pair lead-out" id="m-flows">
     <div class="in"><h3>Net Flows, Flow vs Price, Capital Rotation</h3><p>Net Flows read minting and redemption apart from price, Flow vs Price overlays the two for each asset, and Capital Rotation tracks money moving between asset groups such as bond funds, private credit, and precious metals. Take tokenized gold. When its supply is flat and the gold price rises, its market cap climbs and no new money has arrived. Reading the two apart is what tells a flow from a repricing. Otherwise number go up gets read as money coming in.</p></div>
-    <div class="out"><p><span class="vh">Does not count: </span>Repricing.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>Repricing.</p></div>
   </div>
   <div class="pair lead-out" id="m-mnav">
     <div class="in"><h3>mNAV</h3><p>Market net asset value is what the market prices a treasury company at, over the crypto it holds. That is, at 1.0× a company is priced at exactly its crypto, and which shares you count decides which side of 1.0× it lands on. For DefiLlama I defined three variants, and each one counts a different set of shares.</p>
@@ -629,7 +634,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
         <div><dt>Realistic mNAV</dt><dd>Adds the dilution that is likely to happen: in-the-money options, prefunded warrants, triggered convertibles, mandatory conversions, and earnouts, counted the way diluted EPS counts them. A company running at a loss stays on basic shares, as GAAP requires.</dd></div>
         <div><dt>Max mNAV</dt><dd>Fully diluted. Every option, warrant, RSU, and fixed convertible is counted as exercised. This is the worst case for share count. It still leaves out ATM programs, shelf registrations, and equity lines, because those depend on price and are not guaranteed.</dd></div>
       </dl></div>
-    <div class="out"><p><span class="vh">Does not count: </span>The single figure the market was trading on, which hid future share issuance.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>The single figure the market was trading on, which hid future share issuance.</p></div>
   </div>
 
   <div class="pair">
@@ -644,7 +649,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       </div>
       <p class="ratio"><b>Utilization</b> is the innermost box over the outermost: 12.2% on 13&nbsp;November 2026. <a href="figures/#used">Drawn to scale</a>.</p>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>Net Flows and mNAV. They sit outside this and do not nest.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>Net Flows and mNAV. They sit outside this and do not nest.</p></div>
   </div>
 </section>
 
@@ -664,7 +669,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <span class="src">Quoted from the acknowledgements of the September 2026 edition. I am also credited in the Q1 2026 edition. <a href="https://panteracapital.com/wp-content/uploads/2026/05/State-of-Tokenization-Q1-2026-Pantera-Capital.pdf" target="_blank" rel="noopener">Q1 2026 report (PDF)</a></span>
     </div>
     <div class="out">
-      <p><span class="vh">Does not count: </span>A passing citation. Pantera brought me in to review both editions.</p>
+      <p><span class="lbl">Does not count<span class="vh">:</span> </span>A passing citation. Pantera brought me in to review both editions.</p>
     </div>
   </div>
 
@@ -675,7 +680,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <blockquote><p>“The global tokenization market for financial assets is estimated at $17&nbsp;billion, according to DefiLlama in April 2026, up about 3x from just a year ago.”</p></blockquote>
       <span class="src">“Tokenization 2030: Wall Street On-Chain”, June 2026, p.&nbsp;19. <a href="https://www.citigroup.com/rcs/citigpa/storage/public/Citi_Institute_GPS_Report_Tokenization_2030.pdf" target="_blank" rel="noopener">Report (PDF)</a></span>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>Citi’s own count. Its current market size figure is DefiLlama’s, drawn from the registry I built.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>Citi’s own count. Its current market size figure is DefiLlama’s, drawn from the registry I built.</p></div>
   </div>
 
   <div class="pair" id="proof-coingecko">
@@ -704,7 +709,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <p>The RWA Foundation built its RWA Perps Report on DefiLlama’s perpetuals tracker in September 2026.</p>
       <span class="src"><a href="https://x.com/RWAFoundation_/status/2097302216029736992" target="_blank" rel="noopener">RWA Perps Report with DefiLlama, September 2026</a></span>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>A chance pickup. I brokered the data partnership.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>A chance pickup. I brokered the data partnership.</p></div>
   </div>
 
   <div class="pair" id="proof-press">
@@ -732,7 +737,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <p>Tracing DeFi Active TVL to the protocol and chain holding each asset surfaced the RWA collateral behind stablecoins such as Frax USD, OpenEden USDO, and Usual USD0.</p>
       <span class="src"><a translate="no" href="https://defillama.com/rwa" target="_blank" rel="noopener">defillama.com/rwa</a></span>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>A template. I wrote the methodology and the spec from a blank page, and DefiLlama’s engineers built to them.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>A template. I wrote the methodology and the spec from a blank page, and DefiLlama’s engineers built to them.</p></div>
   </div>
 
   <div class="pair">
@@ -747,7 +752,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       </dl>
       <span class="src">As of 13&nbsp;November 2026. <a translate="no" href="https://defillama.com/rwa/perps" target="_blank" rel="noopener">defillama.com/rwa/perps</a></span>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>Each venue’s own front end. Before this, that was the only place the data lived, and nothing could be compared across venues.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>A venue’s own naming. Before this, each venue reported its markets only on its own site, so the same market could not be compared across venues.</p></div>
   </div>
 
   <div class="pair">
@@ -779,7 +784,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <span class="src"><a translate="no" href="https://docs.llama.fi/real-world-assets/real-world-assets" target="_blank" rel="noopener">docs.llama.fi/real-world-assets/real-world-assets</a>, <a translate="no" href="https://docs.llama.fi/analysts/dat-methodology" target="_blank" rel="noopener">docs.llama.fi/analysts/dat-methodology</a></span>
     </div>
     <div class="out">
-      <p><span class="vh">Does not count: </span>An aggregator’s number. Primary sources always win.</p>
+      <p><span class="lbl">Does not count<span class="vh">:</span> </span>An aggregator’s number. Primary sources always win.</p>
       <p class="q">A blank read as a zero. A blank means nobody has researched it yet. A zero means it was verified and there is no fee.</p>
     </div>
   </div>
@@ -789,7 +794,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <h3>Issuers</h3>
       <p>Figure, Securitize, Ondo, and xStocks came to me directly to be listed, and each supplied its data against my schema. Inbound demand replaced outbound research as the main driver of coverage growth, to 450+ issuers by 21&nbsp;August 2026.</p>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>A listing on request. Every asset was run against the same criteria.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>A listing on request. Every asset was run against the same criteria.</p></div>
   </div>
 
   <div class="pair">
@@ -797,7 +802,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <h3>Arbitration</h3>
       <p>In September 2025, DefiLlama rejected an issuer’s claimed $10B+ because its backing could not be verified onchain. I then ran the assessment under exclusion criteria I wrote. It upheld the exclusion of everything that could not be verified, and I listed the issuer’s product that qualified.</p>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>A claim nobody can check.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>The headline number. What I listed was the product whose backing could be verified onchain.</p></div>
   </div>
 
   <div class="pair">
@@ -824,7 +829,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <p>Also drawn there: 73% of $13.35&nbsp;billion in RWA perpetuals open interest sits on centralized exchanges, and $4.19&nbsp;billion of $34.41&nbsp;billion in onchain real-world assets is deployed in DeFi (13&nbsp;November 2026).</p>
       <p><a href="figures/">See all four figures</a>, including an interactive version of this one.</p>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>A discount. On today’s shares, these seven trade below the crypto they hold. Count the shares their warrants, options, and convertibles can still create, and all seven trade above it.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>A discount. On today’s shares, these seven trade below the crypto they hold. Count the shares their warrants, options, and convertibles can still create, and all seven trade above it.</p></div>
   </div>
 </section>
 
@@ -838,11 +843,11 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   <div class="pair">
     <div class="in">
       <h3>Meta (ex-DeFiLlama) on the Future of Real World Assets <span class="when">October 2026</span></h3>
-      <p>I spent an hour as a guest on the RWA market and gave a full tour of the DefiLlama RWA dashboard. The episode is also listed as “The RWA Boom: How Much Is Actually Being Used?”</p>
-      <p>I spent part of that hour arguing that perpetuals are real-world assets. Two days after we recorded, on 29&nbsp;October 2026, Intercontinental Exchange announced a deal to bring Trade[XYZ]’s Hyperliquid markets onshore. <a href="https://s2.q4cdn.com/154085107/files/doc_news/Intercontinental-Exchange-and-TradeXYZ-to-Bring-Hyperliquid-Based-Perpetual-Markets-Onshore-2026.pdf" target="_blank" rel="noopener">Its release</a> called Trade[XYZ] “a leading deployer of real-world-asset perpetual markets.”</p>
+      <p>I was the guest for an hour on the RWA market, and I gave a full tour of the DefiLlama RWA dashboard. The episode is also listed as “The RWA Boom: How Much Is Actually Being Used?”</p>
+      <p>On the show, I made the case that perpetuals are real-world assets. Two days after we recorded, on 29&nbsp;October 2026, Intercontinental Exchange announced a deal to bring Trade[XYZ]’s Hyperliquid markets onshore. <a href="https://s2.q4cdn.com/154085107/files/doc_news/Intercontinental-Exchange-and-TradeXYZ-to-Bring-Hyperliquid-Based-Perpetual-Markets-Onshore-2026.pdf" target="_blank" rel="noopener">Its release</a> called Trade[XYZ] “a leading deployer of real-world-asset perpetual markets.”</p>
     </div>
     <div class="out">
-      <p><span class="vh">Where it ran: </span>Indexed, the crypto data podcast. It is hosted by Danning Sui, Research Director at Pantera Capital, with Boxer of Dune and Hildobby of Dragonfly.</p>
+      <p><span class="lbl">Where it ran<span class="vh">:</span> </span>Indexed, the crypto data podcast. It is hosted by Danning Sui, Research Director at Pantera Capital, with Boxer of Dune and Hildobby of Dragonfly.</p>
       <span class="src"><a href="https://www.youtube.com/watch?v=vJGZZO2zHBs" target="_blank" rel="noopener">YouTube</a>, <a href="https://open.spotify.com/episode/4dSF2ndTNkIFONGfNoxc0y" target="_blank" rel="noopener">Spotify</a>, <a translate="no" href="https://www.indexedpod.com/" target="_blank" rel="noopener">indexedpod.com</a></span>
     </div>
   </div>
@@ -851,14 +856,14 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
     <div class="in">
       <h3><a href="https://www.dlnews.com/articles/llama-u/crypto-digital-asset-treasury-mnav-strategy/" target="_blank" rel="noopener">The Digital Asset Treasury Playbook: How to Print, Buy and Compound to ‘Alchemise’ mNAV into a Market Engine</a> <span class="when">October 2025</span></h3>
     </div>
-    <div class="out"><p><span class="vh">Where it ran: </span>DL News. Syndicated to Yahoo Finance.</p></div>
+    <div class="out"><p><span class="lbl">Where it ran<span class="vh">:</span> </span>DL News. Syndicated to Yahoo Finance.</p></div>
   </div>
 
   <div class="pair">
     <div class="in">
       <h3><a href="https://www.dlnews.com/articles/llama-u/hype-dat-ecosystem-case-study-for-mnav/" target="_blank" rel="noopener">What is mNAV? How to calculate and trade it? Your DefiLlama guide to the metric for digital asset treasuries</a> <span class="when">September 2025</span></h3>
     </div>
-    <div class="out"><p><span class="vh">Where it ran: </span>DL News. Syndicated to Yahoo Finance, BNC Times, and Meme Insider.</p></div>
+    <div class="out"><p><span class="lbl">Where it ran<span class="vh">:</span> </span>DL News. Syndicated to Yahoo Finance, BNC Times, and Meme Insider.</p></div>
   </div>
 </section>
 
@@ -898,7 +903,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <p>When a product is mismeasured, or missing from the dashboards the market reads, the cause is usually a schema gap or an evidence gap. I wrote the inclusion rules at DefiLlama, so I can tell you which criterion it fails and what closing the gap would take, from schema conformance to attestation standards.</p>
       <span class="src">Evidence: <a href="#work">the published inclusion and exclusion criteria</a></span>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>A listing. Inclusion is DefiLlama’s call alone. What I change is how ready your evidence is when it makes that call.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>A listing. Inclusion is DefiLlama’s call alone. What I change is how ready your evidence is when it makes that call.</p></div>
   </div>
 
   <div class="pair">
@@ -908,7 +913,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <p>How a token earns, spends, and holds value: supply, emissions, fees, treasury mechanics, and the incentives each one creates for holders. I work on these from the inside as a co-founder at Emergent LabZ, which I have co-run since September 2022. Strategic Sealed Packz trades against its reserve on an mNAV-band equation I wrote, and every Cryptopoly tile carries its own supply and payout in ETH.</p>
       <span class="src">Evidence: <a href="#building">what I’m building</a></span>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>A price target.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>A price target.</p></div>
   </div>
 
   <div class="pair">
@@ -918,7 +923,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <p>Calls and written work on RWA taxonomy, treasury company valuation, perps market structure, token design, and how crypto data gets put together.</p>
       <span class="src">Evidence: <a href="#metrics">the metrics</a> and <a href="#writing">the Indexed episode</a></span>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>Investment advice.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>Investment advice.</p></div>
   </div>
 
   <div class="pair" id="roles">
@@ -948,7 +953,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <p>A crypto research and development firm I have co-run since September 2022 with <a translate="no" href="https://x.com/zlerp" target="_blank" rel="noopener">@zlerp</a>. I lead the research and Zlerp leads the engineering. It is where Cryptopoly and Strategic Sealed Packz are built.</p>
       <span class="src"><a translate="no" href="https://www.emergentlabz.com/" target="_blank" rel="noopener">emergentlabz.com</a></span>
     </div>
-    <div class="out"><p><span class="vh">Where it stands: </span>A stake in each. I hold an interest in every venture in this section.</p></div>
+    <div class="out"><p><span class="lbl">Where it stands<span class="vh">:</span> </span>A stake in each. I hold an interest in every venture in this section.</p></div>
   </div>
 
   <div class="pair">
@@ -960,7 +965,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <p>At DefiLlama I measured this chain’s real-world-asset activity. Now I help build trading infrastructure on it.</p>
       <span class="src"><a translate="no" href="https://goo.exchange/" target="_blank" rel="noopener">goo.exchange</a></span>
     </div>
-    <div class="out"><p><span class="vh">Where it stands: </span>Live on Robinhood Chain since 25&nbsp;September 2026.</p></div>
+    <div class="out"><p><span class="lbl">Where it stands<span class="vh">:</span> </span>Live on Robinhood Chain since 25&nbsp;September 2026.</p></div>
   </div>
 
   <div class="pair">
@@ -973,7 +978,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <span class="src"><a translate="no" href="https://www.sealedpackz.com/" target="_blank" rel="noopener">sealedpackz.com</a></span>
     </div>
     <div class="out">
-      <p><span class="vh">Where it stands: </span>A treasury vehicle, and not a real-world asset by the bar I wrote. There is no redemption right, so a holder gets exposure to the vault and not a claim on a particular pack.</p>
+      <p><span class="lbl">Where it stands<span class="vh">:</span> </span>A treasury vehicle, and not a real-world asset by the bar I wrote. There is no redemption right, so a holder gets exposure to the vault and not a claim on a particular pack.</p>
     </div>
   </div>
 
@@ -984,7 +989,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <p>Cryptopoly is an onchain board game that is also an interactive art experience. It is an ERC-721 collection of 8,889 tiles across 37 entries in 17 categories, each with its own payout in ETH, laid out on a 40-square board, as of November 2026.</p>
       <span class="src"><a translate="no" href="https://wacdonalds.io/" target="_blank" rel="noopener">wacdonalds.io</a></span>
     </div>
-    <div class="out"><p><span class="vh">Where it stands: </span>Mainnet launch soon.</p></div>
+    <div class="out"><p><span class="lbl">Where it stands<span class="vh">:</span> </span>Mainnet launch soon.</p></div>
   </div>
 </section>
 
@@ -1000,7 +1005,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <h3>Crypto Stock Tracker, co-creator <span class="when">July to August 2025</span></h3>
       <p>A digital-asset-treasury dashboard covering corporate crypto holdings beyond BTC, ETH, and SOL. It went from concept to live product in about a month.</p>
     </div>
-    <div class="out"><p><span class="vh">What came of it: </span>DefiLlama acqui-hired me on the strength of it, to build its treasuries tracker.</p></div>
+    <div class="out"><p><span class="lbl">What came of it<span class="vh">:</span> </span>DefiLlama acqui-hired me on the strength of it, to build its treasuries tracker.</p></div>
   </div>
 
   <div class="pair">
@@ -1009,7 +1014,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <p>An all-onchain collaborative narrative NFT on Ethereum, taken from concept to mainnet in five weeks. Each mint appends one sentence at the next token ID. The SVG is fully onchain, concatenated and re-rendered from contract state. A sentence can be edited after mint, and the editing rights transfer on secondary sale.</p>
       <span class="src"><a translate="no" href="https://story-block.com/" target="_blank" rel="noopener">story-block.com</a>, <a href="https://opensea.io/collection/story-block" target="_blank" rel="noopener">OpenSea</a>, <a href="https://etherscan.io/address/0x0e85f0ebe129d184e6631c53348ae2746640d4b5" target="_blank" rel="noopener">Contract</a>, <a href="https://etherscan.io/token/0x0e85f0ebe129d184e6631c53348ae2746640d4b5#code" target="_blank" rel="noopener">Verified source</a></span>
     </div>
-    <div class="out"><p><span class="vh">What came of it: </span>Launched August 2022. The experiment has concluded, and anyone can still mint.</p></div>
+    <div class="out"><p><span class="lbl">What came of it<span class="vh">:</span> </span>Launched August 2022. The experiment has concluded, and anyone can still mint.</p></div>
   </div>
 
   <div class="pair">
@@ -1017,7 +1022,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       <h3>Radbro Webring, researcher and contributor <span class="when">2022 to 2024</span></h3>
       <p>Research, analysis, and educational content across the ecosystem, including work on SCHIZOPOSTERS.</p>
     </div>
-    <div class="out"><p><span class="vh">What came of it: </span>That work influenced the Radbro Ordinals collection and Rune&nbsp;#925 RADBRO•WEBRING, which is among the first 1,000 runes etched on Bitcoin.</p></div>
+    <div class="out"><p><span class="lbl">What came of it<span class="vh">:</span> </span>That work influenced the Radbro Ordinals collection and Rune&nbsp;#925 RADBRO•WEBRING, which is among the first 1,000 runes etched on Bitcoin.</p></div>
   </div>
 
   <div class="pair">
@@ -1170,11 +1175,18 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
     tip.style.top = Math.min(y + 16, innerHeight - h - 8) + "px";
   };
   window.tipHide = function () { tip.style.opacity = 0; };
+  // The tip is fixed to the screen, so it must never outlive the mark under it:
+  // it goes on any scroll, on a touch anywhere else, and a tap's focus never raises it.
+  window.tipKeyed = function (el) { try { return el.matches(":focus-visible"); } catch (e) { return false; } };
+  addEventListener("scroll", window.tipHide, {passive: true});
+  addEventListener("resize", window.tipHide);
+  document.addEventListener("pointerdown", function (e) { if (!(e.target.closest && e.target.closest("[data-tip]"))) window.tipHide(); });
   var els = document.querySelectorAll("[data-tip]");
   for (var i = 0; i < els.length; i++) (function (el) {
-    el.addEventListener("pointermove", function (e) { window.tipShow(el.getAttribute("data-tip"), e.clientX, e.clientY); });
-    el.addEventListener("pointerleave", window.tipHide);
-    el.addEventListener("focus", function () { var q = el.getBoundingClientRect(); window.tipShow(el.getAttribute("data-tip"), q.left, q.bottom - 10); });
+    el.addEventListener("pointermove", function (e) { if (e.pointerType !== "touch") window.tipShow(el.getAttribute("data-tip"), e.clientX, e.clientY); });
+    el.addEventListener("pointerup", function (e) { if (e.pointerType === "touch") window.tipShow(el.getAttribute("data-tip"), e.clientX, e.clientY - 60); });
+    el.addEventListener("pointerleave", function (e) { if (e.pointerType !== "touch") window.tipHide(); });
+    el.addEventListener("focus", function () { if (!window.tipKeyed(el)) return; var q = el.getBoundingClientRect(); window.tipShow(el.getAttribute("data-tip"), q.left, q.bottom - 10); });
     el.addEventListener("blur", window.tipHide);
   })(els[i]);
 })();</script>

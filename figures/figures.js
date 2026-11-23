@@ -100,9 +100,10 @@
   });
 
   // shared tooltip
-  row.on("pointermove", function (e, d) { window.tipShow && window.tipShow(this.getAttribute("data-tip"), e.clientX, e.clientY); })
-     .on("pointerleave", function () { window.tipHide && window.tipHide(); })
-     .on("focus", function () { var q = this.getBoundingClientRect(); window.tipShow && window.tipShow(this.getAttribute("data-tip"), q.left + M.left, q.bottom); })
+  row.on("pointermove", function (e, d) { if (e.pointerType !== "touch" && window.tipShow) window.tipShow(this.getAttribute("data-tip"), e.clientX, e.clientY); })
+     .on("pointerup", function (e) { if (e.pointerType === "touch" && window.tipShow) window.tipShow(this.getAttribute("data-tip"), e.clientX, e.clientY - 60); })
+     .on("pointerleave", function (e) { if (e.pointerType !== "touch" && window.tipHide) window.tipHide(); })
+     .on("focus", function () { if (!(window.tipKeyed && window.tipKeyed(this))) return; var q = this.getBoundingClientRect(); window.tipShow && window.tipShow(this.getAttribute("data-tip"), q.left + M.left, q.bottom); })
      .on("blur", function () { window.tipHide && window.tipHide(); });
 
   layout();

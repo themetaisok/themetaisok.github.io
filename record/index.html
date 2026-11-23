@@ -75,7 +75,7 @@ a, button{touch-action:manipulation}
 a:focus-visible, button:focus-visible{outline:2px solid currentColor; outline-offset:3px}
 main:focus{outline:0}
 b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
-.vh{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+.vh, .lbl{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
 .skip{position:absolute; left:8px; top:-60px; z-index:5; background:var(--in-ink); color:var(--in-bg); font-family:var(--head); font-size:14px; padding:8px 12px}
 .skip:focus{top:8px}
 .pair{display:grid; grid-template-columns:var(--split) minmax(0,1fr)}
@@ -108,6 +108,7 @@ b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
 .hero p{font-size:23px; line-height:1.38; max-width:25em}
 .hero p + p{margin-top:.7em}
 .hero .word + p{margin-top:0}
+.w-narrow{display:none}
 .hero > .in{padding-bottom:30px}
 .go-row > .in, .go-row > .out{border-top:0 !important; padding-top:0; padding-bottom:40px}
 .in .go{display:flex; flex-wrap:wrap; gap:10px 12px; font-family:var(--head); font-size:15px; line-height:1.2; max-width:none}
@@ -232,6 +233,10 @@ p + .figs{margin-top:16px}
   .hero > .in{padding-top:30px; padding-bottom:26px}
   .hero > .out{padding-top:26px; padding-bottom:28px}
   .pair .word{font-size:52px; margin-bottom:18px}
+  .hero .w-wide{display:none} .hero .w-narrow{display:inline}
+  .hero .in .word{font-size:46px; line-height:.98; text-wrap:balance}
+  .lbl{position:static; width:auto; height:auto; overflow:visible; clip:auto; white-space:normal; display:block; font-family:var(--head); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--out-quiet); margin-bottom:8px}
+  .plain .lbl{color:var(--in-quiet)}
   .hero p{font-size:20px}
   .go-row > .in{padding-top:22px; padding-bottom:26px}
   .nav > .in{padding-top:10px; padding-bottom:12px}
@@ -326,7 +331,9 @@ p + .figs{margin-top:16px}
   .lane .src{font-size:7.6pt; margin-top:3pt; color:#000}
   .lane > .out{margin-top:2pt}
   .lane > .out p{font-size:7.6pt; font-style:italic}
-  .out .vh{position:static; width:auto; height:auto; clip:auto; overflow:visible; white-space:normal}
+  .out .vh, .out .lbl{position:static; width:auto; height:auto; clip:auto; overflow:visible; white-space:normal}
+  .out .lbl{display:inline; font:inherit; letter-spacing:0; text-transform:none; color:inherit; margin:0}
+  .out .lbl .vh{position:static}
   #cited{margin-top:7pt; padding-top:6pt; border-top:1.2pt solid #000}
   #cited::before{content:"Who else says so"; display:block; font-family:var(--head); font-weight:700; font-size:9.4pt; margin-bottom:3pt}
   .cite{max-width:none; columns:2; column-gap:16pt}
@@ -396,7 +403,7 @@ p + .figs{margin-top:16px}
     <p class="print-only" translate="no">meta (@themetaisok) · themetaisok.com/record · themetaisok@gmail.com · x.com/themetaisok · t.me/themetaisok</p>
   </div>
   <div class="out">
-    <p><span class="vh">Does not count: </span>My word for it. Where a claim can be checked, the link is there.</p>
+    <p><span class="lbl">Does not count<span class="vh">:</span> </span>My word for it. Where a claim can be checked, the link is there.</p>
   </div>
 </section>
 
@@ -433,7 +440,7 @@ p + .figs{margin-top:16px}
       </ul>
       <span class="src">Seats: senior research analyst, research lead, head of research, and methodology or data product owner.</span>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>A number without its definition.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>A number without its definition.</p></div>
   </div>
 
   <div class="pair lane" id="partnerships">
@@ -448,7 +455,7 @@ p + .figs{margin-top:16px}
       </ul>
       <span class="src">Seats: tokenization lead, RWA partnerships, ecosystem RWA lead, and institutional growth.</span>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>A listing on request. Every asset was run against the same criteria.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>A listing on request. Every asset was run against the same criteria.</p></div>
   </div>
 
   <div class="pair lane" id="product">
@@ -463,7 +470,7 @@ p + .figs{margin-top:16px}
       </ul>
       <span class="src">Seats: product manager for data, reporting, tokenization, or vaults.</span>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>A spec nobody could build from. DefiLlama’s engineers built all three dashboards to mine.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>A spec nobody could build from. DefiLlama’s engineers built all three dashboards to mine.</p></div>
   </div>
 
   <div class="pair lane" id="treasuries">
@@ -479,7 +486,7 @@ p + .figs{margin-top:16px}
       </ul>
       <span class="src">Seats: treasury-company research, corporate development, and investor relations.</span>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>The single figure the market was trading on.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>The single figure the market was trading on.</p></div>
   </div>
 </section>
 
@@ -496,11 +503,11 @@ p + .figs{margin-top:16px}
         <div><dt>CoinGecko <span>April 2026, pp. 16 and 17</span></dt><dd>Charts RWA chains in Active Market Cap, my metric, and sources its chain and private-credit charts to DefiLlama. <a href="https://assets.coingecko.com/reports/2026/CoinGecko-2026-RWA-Report.pdf" target="_blank" rel="noopener">Report (PDF)</a></dd></div>
         <div><dt>Vella, Pennella, and Ballandies <span>June 2026</span></dt><dd>Drew their research sample from DefiLlama’s RWA dashboard as “an external selection criterion.” <a href="https://arxiv.org/abs/2606.08534" target="_blank" rel="noopener">arXiv:2606.08534</a></dd></div>
         <div><dt>CryptoSlate <span>August 2026</span></dt><dd>Runs DeFi Active TVL as a column heading in its own reporting. <a href="https://cryptoslate.com/wall-street-put-7b-into-tokenized-funds-but-under-1-is-actually-being-used-in-defi/" target="_blank" rel="noopener">Article</a></dd></div>
-        <div><dt>Indexed <span>October 2026</span></dt><dd>An hour as a guest, hosted by Danning Sui, Research Director at Pantera Capital, with Boxer of Dune and Hildobby of Dragonfly. I argued that perpetuals are real-world assets; two days after recording, Intercontinental Exchange announced its deal with Trade[XYZ] (29 October 2026). <a href="https://www.youtube.com/watch?v=vJGZZO2zHBs" target="_blank" rel="noopener">YouTube</a>, <a href="https://s2.q4cdn.com/154085107/files/doc_news/Intercontinental-Exchange-and-TradeXYZ-to-Bring-Hyperliquid-Based-Perpetual-Markets-Onshore-2026.pdf" target="_blank" rel="noopener">ICE release</a></dd></div>
+        <div><dt>Indexed <span>October 2026</span></dt><dd>A guest for an hour on the crypto data podcast hosted by Danning Sui, Research Director at Pantera Capital, with Boxer of Dune and Hildobby of Dragonfly. I made the case that perpetuals are real-world assets. Two days after we recorded, Intercontinental Exchange announced a deal to bring Trade[XYZ]’s perpetual markets onshore (29 October 2026). <a href="https://www.youtube.com/watch?v=vJGZZO2zHBs" target="_blank" rel="noopener">YouTube</a>, <a href="https://s2.q4cdn.com/154085107/files/doc_news/Intercontinental-Exchange-and-TradeXYZ-to-Bring-Hyperliquid-Based-Perpetual-Markets-Onshore-2026.pdf" target="_blank" rel="noopener">ICE release</a></dd></div>
         <div><dt>Llama Corp</dt><dd>The team behind DefiLlama lists me publicly as Meta (DAT &amp; RWA). <a href="https://llama-corp.com/" target="_blank" rel="noopener">llama-corp.com</a></dd></div>
       </dl>
     </div>
-    <div class="out"><p><span class="vh">Does not count: </span>A reference you have to call. Every one of these is already public.</p></div>
+    <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>A reference you have to call. Every one of these is already public.</p></div>
   </div>
 </section>
 
