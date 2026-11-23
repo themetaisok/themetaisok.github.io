@@ -101,7 +101,14 @@ b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
 .tbtn:hover{background:var(--out-ink); color:var(--out-bg)}
 .tbtn[hidden]{display:none}
 .hero > .in, .hero > .out{padding-top:54px; padding-bottom:46px; border-top:0 !important}
-.hero > .out, .top > .out{background-image:radial-gradient(80% 62% at 100% 46%, var(--glow) 0%, var(--out-bg) 66%)}
+.hero > .out, .top > .out{background-image:radial-gradient(80% 62% at calc(100% + var(--gx,0%)) calc(46% + var(--gy,0%)), var(--glow) 0%, var(--out-bg) 66%)}
+.depth{position:fixed; inset:-40px; z-index:-1; pointer-events:none; will-change:transform;
+  background:
+    linear-gradient(var(--grid) 1px,transparent 1px) 0 0/72px 72px,
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/72px 72px}
+html.has-depth body{background:linear-gradient(90deg,var(--in-bg) 0 var(--split),var(--out-bg) var(--split) 100%) var(--in-bg)}
+html.has-depth .plain{background:transparent}
+html.has-depth .plain .out{background:var(--in-bg)}
 .hero p.eyebrow{font-family:var(--head); font-weight:700; font-size:13px; line-height:1.4; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin:0 0 18px; max-width:none}
 .nb{white-space:nowrap}
 .pair .word{font-family:var(--head); font-weight:700; font-size:92px; line-height:.92; letter-spacing:-.035em; margin:0 0 30px; max-width:none}
@@ -216,6 +223,9 @@ p + .figs{margin-top:16px}
     linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/56px 56px,
     var(--in-bg); font-size:18px}
   .plain{background-size:56px 56px,56px 56px,auto}
+  .depth{background-size:56px 56px,56px 56px}
+  html.has-depth body{background:var(--in-bg)}
+  html.has-depth .plain .out{background:transparent}
   [id]{scroll-margin-top:62px}
   .pair{display:block}
   .in{padding:22px 20px}
@@ -234,6 +244,7 @@ p + .figs{margin-top:16px}
   .hero > .out{padding-top:26px; padding-bottom:28px}
   .pair .word{font-size:52px; margin-bottom:18px}
   .hero .w-wide{display:none} .hero .w-narrow{display:inline}
+  .hero .out .word{display:none}
   .hero .in .word{font-size:46px; line-height:.98; text-wrap:balance}
   .lbl{position:static; width:auto; height:auto; overflow:visible; clip:auto; white-space:normal; display:block; font-family:var(--head); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--out-quiet); margin-bottom:8px}
   .plain .lbl{color:var(--in-quiet)}
@@ -274,7 +285,8 @@ p + .figs{margin-top:16px}
   .ident .in span{display:none}
 }
 @media print{
-  body, .plain{background:#fff}
+  body, .plain, html.has-depth body{background:#fff}
+  .depth{display:none}
   .tbtn, .nav, .skip{display:none}
   .rv > .in > *, .rv > .out > *{opacity:1; transform:none}
 }
@@ -673,6 +685,53 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
     window.addEventListener("scroll", function () { if (!queued) { queued = true; requestAnimationFrame(spy); } }, { passive: true });
     spy();
   }
+})();
+</script>
+<script>
+/* Depth: pointer on a desktop, tilt on a phone. Off for visitors who ask for less motion. */
+(function () {
+  if (!window.matchMedia || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var layer = document.createElement("div");
+  layer.className = "depth"; layer.setAttribute("aria-hidden", "true");
+  document.body.insertBefore(layer, document.body.firstChild);
+  document.documentElement.classList.add("has-depth");
+  var glow = document.querySelector(".hero > .out, .top > .out");
+  var tx = 0, ty = 0, x = 0, y = 0, raf = 0;
+  function frame() {
+    x += (tx - x) * 0.08; y += (ty - y) * 0.08;
+    layer.style.transform = "translate3d(" + (x * -18).toFixed(2) + "px," + (y * -18).toFixed(2) + "px,0)";
+    if (glow) { glow.style.setProperty("--gx", (x * -9).toFixed(2) + "%"); glow.style.setProperty("--gy", (y * -8).toFixed(2) + "%"); }
+    raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.002 ? requestAnimationFrame(frame) : 0;
+  }
+  function aim(a, b) {
+    tx = Math.max(-1, Math.min(1, a)); ty = Math.max(-1, Math.min(1, b));
+    if (!raf) raf = requestAnimationFrame(frame);
+  }
+  addEventListener("pointermove", function (e) {
+    if (e.pointerType === "mouse") aim(e.clientX / innerWidth * 2 - 1, e.clientY / innerHeight * 2 - 1);
+  }, {passive: true});
+  document.documentElement.addEventListener("mouseleave", function () { aim(0, 0); });
+  /* tilt is measured from the angle the phone is held at, and that rest angle follows slowly,
+     so the page settles back wherever the visitor holds it */
+  var rest = null;
+  function tilt(e) {
+    if (e.beta == null || e.gamma == null) return;
+    var g = e.gamma, b = e.beta, turn = (screen.orientation && screen.orientation.angle) || window.orientation || 0;
+    if (turn === 90) { var t = g; g = b; b = -t; } else if (turn === -90 || turn === 270) { var u = g; g = -b; b = u; }
+    if (!rest) rest = {g: g, b: b};
+    rest.g += (g - rest.g) * 0.02; rest.b += (b - rest.b) * 0.02;
+    aim((g - rest.g) / 14, (b - rest.b) / 14);
+  }
+  function listen() { addEventListener("deviceorientation", tilt, {passive: true}); }
+  var D = window.DeviceOrientationEvent;
+  if (D && typeof D.requestPermission === "function") {
+    /* iPhone Safari only allows tilt after a tap, and asks the visitor once */
+    var ask = function () {
+      document.removeEventListener("touchend", ask, true);
+      D.requestPermission().then(function (s) { if (s === "granted") listen(); }).catch(function () {});
+    };
+    document.addEventListener("touchend", ask, true);
+  } else if (D) listen();
 })();
 </script>
 <script>
