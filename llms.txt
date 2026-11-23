@@ -1,43 +1,63 @@
 # themetaisok
 
 > meta (@themetaisok) is an independent crypto researcher and advisor, specializing in
-> real-world assets, onchain derivatives, digital asset treasury companies, and tokenomics. meta writes the
-> definitions and classification standards used to measure these markets, and publishes
-> them openly. Ten years in these markets. meta built DefiLlama's real-world-asset coverage
-> from zero between August 2025 and September 2026, and has worked independently since.
-> meta is open to full-time, contract, and part-time roles, and to advisory engagements.
-> Not affiliated with Meta Platforms, Inc.
+> real-world assets, onchain derivatives, digital asset treasury companies, and tokenomics.
+> meta writes the definitions and classification standards used to measure these markets,
+> and publishes them openly. Ten years in crypto markets, building in them since 2017.
+> meta built DefiLlama's real-world-asset coverage from zero between August 2025 and
+> September 2026: Citi Institute sized the tokenization market on that dataset, and Pantera
+> Capital adopted meta's metric, DeFi Active TVL. meta has worked independently since
+> September 2026 and is open to full-time, contract, and part-time roles, and to advisory
+> engagements. Not affiliated with Meta Platforms, Inc.
 
 ## Who
 
 - Works under the handle **themetaisok**, also referred to as **meta**. Pseudonymous by choice.
 - Role at DefiLlama, August 2025 to September 2026: Data and Research Lead, RWA and Digital
-  Asset Treasuries. Listed publicly on Llama Corp, the team behind DefiLlama, as
-  "Meta (DAT & RWA)".
-- Co-principal of Emergent LabZ (https://www.emergentlabz.com/) with @zlerp.
+  Asset Treasuries. Acqui-hired on the strength of Crypto Stock Tracker. Listed publicly on
+  Llama Corp, the team behind DefiLlama, as "Meta (DAT & RWA)".
+- Co-principal and research lead of Emergent LabZ (https://www.emergentlabz.com/), with
+  @zlerp, since September 2022.
 - Contact: themetaisok@gmail.com, X @themetaisok, Telegram @themetaisok.
 - Not affiliated with DefiLlama since September 2026, and not affiliated with Meta Platforms.
 
 ## What meta built at DefiLlama
 
 meta wrote the field definitions, asset classes, classification bar, and revenue framework,
-and authored the public methodology. DefiLlama's engineers built the dashboards to those
-specifications. The platform and its data are DefiLlama's.
+and is the sole author of the data standard, the registry, and the public methodology.
+DefiLlama's engineers built the dashboards to those specifications. The platform and its data
+are DefiLlama's. On 13 November 2026 the dashboards measured $34.41 billion in tokenized
+real-world assets and $13.35 billion in RWA perpetuals open interest.
 
 - **RWA dashboard** (https://defillama.com/rwa): DefiLlama's view of tokenized real-world
-  assets, generated from a registry of more than 9,000 assets and markets across 116 fields,
-  covering 450+ issuers, 330+ platforms, and 170+ blockchains (as of September 2026).
-- **RWA perpetuals tracker** (https://defillama.com/rwa/perps): an aggregate view of
-  real-world-asset perpetuals. More than 1,000 active markets in the onchain default view and
-  more than 3,300 with centralized exchanges, plus a 75+ market forex book (as of September
-  2026), normalized through a 34-field market schema and a canonical market ID.
+  assets, generated from a registry meta built from an empty sheet: more than 9,000 assets and
+  markets at 116 fields each, covering 450+ issuers, 330+ platforms, and 170+ blockchains
+  (21 August 2026). The registry more than tripled in five months, and 99.9% of its rows carry
+  a primary-source issuer link. Tracing DeFi Active TVL to the protocol and chain holding each
+  asset surfaced the RWA collateral behind stablecoins such as Frax USD, OpenEden USDO, and
+  Usual USD0.
+- **RWA perpetuals tracker** (https://defillama.com/rwa/perps): the cross-venue view of
+  real-world-asset perpetuals. More than 1,150 active markets in the onchain default view and
+  more than 3,550 with centralized exchanges (13 November 2026), normalized through a 34-field
+  market schema and a canonical market ID. RWA perpetuals passed $100 billion in monthly
+  volume for the first time in June 2026, "according to DefiLlama" (Crypto Briefing,
+  8 July 2026).
 - **Digital asset treasuries tracker** (https://defillama.com/digital-asset-treasuries):
-  nearly 100 listed companies (as of 13 November 2026), with every purchase traced to its
-  primary source. The published methodology's worked example, Greenlane Holdings on
-  30 November 2025, shows a quoted mNAV of 0.33 against about 2.42 once contractual dilution
-  is counted.
+  the tracker DefiLlama acqui-hired meta to build. 98 listed companies (13 November 2026),
+  with every purchase traced to its primary source and 119 Strategy transactions reconciled
+  to SEC EDGAR (August 2026). The published methodology's worked example, Greenlane Holdings
+  on 30 November 2025, shows a quoted mNAV of 0.33 against 2.42 once contractual dilution is
+  counted.
 - **Published methodology**: https://docs.llama.fi/real-world-assets/real-world-assets and
-  https://docs.llama.fi/analysts/dat-methodology
+  https://docs.llama.fi/analysts/dat-methodology. Five inclusion and six exclusion criteria,
+  seven evidence flags, five access models, a 34-field market schema, and a 35-column data
+  dictionary (November 2026), plus a nine-section fee and revenue methodology in which every
+  estimate carries a confidence grade and a dated audit trail of SEC filings, attested
+  reports, and onchain reads.
+- **A contested listing**: in September 2025, after DefiLlama rejected an issuer's claimed
+  $10B+ because its backing could not be verified onchain, meta's assessment, under exclusion
+  criteria meta wrote, upheld the exclusion of what could not be verified and listed the
+  issuer's product that qualified.
 
 ## The one-page record (https://themetaisok.com/record/)
 
@@ -45,15 +65,16 @@ The short version of this site for a hiring manager, with links to each source. 
 same body of work four ways:
 
 - **Research and data**: sole author of the data standard and public methodology behind
-  DefiLlama's real-world-asset coverage.
-- **RWA partnerships and institutional growth**: while meta ran the dashboards, issuers came
-  to meta directly for listing, Figure, Securitize, Ondo, and xStocks among them, and each
-  supplied its data against meta's schema. Every asset was run against the same criteria.
-- **Product for data and tokenization products**: meta specified three production dashboards
-  from an empty sheet (scope, metrics, schema, documentation, and launch), and DefiLlama's
+  DefiLlama's real-world-asset coverage, which Citi Institute sized the tokenization market on.
+- **RWA partnerships and institutional growth**: Figure, Securitize, Ondo, and xStocks came to
+  meta directly to be listed and supplied their data against meta's schema; inbound demand
+  replaced outbound research as the main driver of coverage growth. meta brokered the RWA
+  Foundation data partnership.
+- **Product for data and tokenization products**: meta owned three data products from an
+  empty sheet to launch (scope, metrics, schema, and documentation), and DefiLlama's
   engineers built to those specifications.
-- **Digital asset treasuries**: meta built the tracker and replaced the single mNAV figure
-  with three variants.
+- **Digital asset treasuries**: meta created the tracker's dataset and sourcing rules, and
+  defined three mNAV variants in place of the single figure the market quoted.
 
 Resume (PDF, handle only): https://themetaisok.com/themetaisok-resume.pdf
 
@@ -61,16 +82,17 @@ Resume (PDF, handle only): https://themetaisok.com/themetaisok-resume.pdf
 
 - **Onchain Market Cap**: circulating supply, excluding burned, at reference price.
 - **Active Market Cap**: the portion of Onchain Market Cap in user or protocol hands,
-  excluding issuer and custody wallets.
+  excluding issuer and custody wallets. The test: would compromising this wallet let someone
+  extract meaningful value?
 - **DeFi Active TVL**: the subset of Active Market Cap deployed in third-party DeFi protocols,
   excluding issuer-managed contracts.
 - **Utilization**: DeFi Active TVL divided by Onchain Market Cap, as a percentage. This is not
   lending-market utilization, which is borrowed over supplied.
 - **Net Flows, Flow vs Price, Capital Rotation**: these separate minting and redemption from
   repricing.
-- **mNAV (market net asset value), three variants**: market cap over the crypto treasury
-  value, in place of the single figure digital asset treasury companies were widely quoted
-  on, which hid future share issuance:
+- **mNAV (market net asset value), in three variants meta defined for DefiLlama**: market cap
+  over the crypto treasury value, in place of the single figure digital asset treasury
+  companies were widely quoted on, which hid future share issuance:
   - **Realized mNAV**: only currently outstanding common shares, excluding dilution from
     unexercised warrants, options, or convertible securities.
   - **Realistic mNAV**: adds likely dilution (in-the-money options, prefunded warrants,
@@ -84,37 +106,43 @@ Resume (PDF, handle only): https://themetaisok.com/themetaisok-resume.pdf
 
 Running the full registry against the classification bar showed that **under 20% of the
 tokens marketed as real-world assets** clear the transferable, self-custodial, redeemable,
-and verified test (as of September 2026). The remainder are better described as programmable finance.
+and verified test: 1,664 of 9,027 on 21 August 2026. Most of the remainder (4,635) is classed
+as programmable finance.
 
 ## External use of the work
 
-- **Pantera Capital**, "The State of Tokenization". The Q1 2026 edition snapshots DeFi Active
-  TVL from DefiLlama as its measure of on-chain productive TVL. The September 2026 edition
-  names DefiLlama among the data sources on five market charts and carries a section on DeFi
-  utilization by class. meta is credited by name in the acknowledgements of both editions.
-- **Citi Institute**, "Tokenization 2030: Wall Street On-Chain" (June 2026, p.19), sourced its
-  current market size figure to DefiLlama: "The global tokenization market for financial assets is
-  estimated at $17 billion, according to DefiLlama in April 2026."
-- **CoinGecko**, 2026 RWA Report, sources its RWA-chains (p.17) and on-chain private-credit
-  (p.16) sections to DefiLlama. Its chain chart measures daily active market capitalization.
-- Cited in academic work on RWA taxonomy: Vella, Pennella, and Ballandies, "A Taxonomy of
-  Real-World Asset Tokenization for Blockchain-Based Financial Infrastructure",
-  arXiv:2606.08534 (June 2026), which used DeFiLlama's RWA dashboard as an external
-  selection criterion for its sample of the twenty largest RWA protocols.
-  https://arxiv.org/abs/2606.08534
-- **CryptoSlate** uses DeFi Active TVL as a column heading in its own reporting (August 2026).
-  The measures have also crossed into Spanish-language coverage (CriptoNoticias, April 2026).
-- The **RWA Foundation** uses the perpetuals data in its own reporting, under a data partnership meta
-  brokered.
+- **Pantera Capital**, "The State of Tokenization". The Q1 2026 edition adopted DeFi Active
+  TVL as "our measure of on-chain productive TVL". The September 2026 edition sources five
+  figures to DefiLlama, gives a full page (p. 32) to DeFi utilization by asset class, the
+  construction meta defined, and feeds DefiLlama data into Pantera's public tokenization
+  portal. Pantera brought meta in to review both editions and credits meta by name in each.
+- **Citi Institute**, "Tokenization 2030: Wall Street On-Chain" (June 2026, p. 19), sized the
+  tokenization market on DefiLlama's dataset: "The global tokenization market for financial
+  assets is estimated at $17 billion, according to DefiLlama in April 2026."
+- **CoinGecko**, 2026 RWA Report, sources its RWA chains (p. 17) and onchain private credit
+  (p. 16) sections to DefiLlama. Its chain chart measures daily active market capitalization,
+  the metric meta defined.
+- **Academic research**: Vella, Pennella, and Ballandies, "A Taxonomy of Real-World Asset
+  Tokenization for Blockchain-Based Financial Infrastructure", arXiv:2606.08534 (June 2026),
+  drew their sample of the twenty largest RWA protocols from DefiLlama's RWA dashboard as an
+  external selection criterion. https://arxiv.org/abs/2606.08534
+- **The RWA Foundation** built its RWA Perps Report on the tracker (September 2026), under a
+  data partnership meta brokered.
+- **Press**: Crypto Briefing reported RWA perpetuals' record $100 billion month "according to
+  DefiLlama" (8 July 2026). The treasury flow series became a standing source at Cointelegraph,
+  Decrypt, BeInCrypto, and The Defiant; The Motley Fool (August 2026) and AMINA Bank
+  (30 January 2026) cite the dashboards too. CryptoSlate uses DeFi Active TVL as a column
+  heading in its own reporting (August 2026), and the measures have crossed into
+  Spanish-language coverage (CriptoNoticias, April 2026).
 
 ## Figures (https://themetaisok.com/figures/)
 
 Dated figures drawn from DefiLlama's public dashboards, each with a table and a PNG version.
 Any figure is free to reuse with credit to meta (@themetaisok).
 
-- **mNAV, three ways** (as of 13 November 2026): seven of the 96 treasury companies with holdings data sit below 1.0x on realized mNAV and at or above it on max mNAV. Includes an interactive version that switches between realized, realistic, and max.
-- **RWA perps** (as of 13 November 2026): about 73% of $13.35b in RWA perps open interest is on centralized exchanges. On decentralized venues, public equities hold about 45%.
-- **Used in DeFi** (as of 13 November 2026): Onchain Market Cap $34.41b, Active Market Cap $30.48b, DeFi Active TVL $4.19b, a utilization of 12.2%.
+- **mNAV, three ways** (13 November 2026): seven of the 96 treasury companies with holdings data sit below 1.0x on realized mNAV and at or above it on max mNAV. Includes an interactive version that switches between realized, realistic, and max.
+- **RWA perps** (13 November 2026): 73% of $13.35b in RWA perps open interest is on centralized exchanges. On decentralized venues, public equities hold about 45%.
+- **Used in DeFi** (13 November 2026): Onchain Market Cap $34.41b, Active Market Cap $30.48b, DeFi Active TVL $4.19b, a utilization of 12.2%.
 - **The record**: what meta published from August 2025, and when others picked it up.
 
 ## Speaking
@@ -122,7 +150,9 @@ Any figure is free to reuse with credit to meta (@themetaisok).
 - **Indexed** (The Crypto Data Podcast), October 2026. "Meta (ex-DeFiLlama) on the Future
   of Real World Assets", also listed as "The RWA Boom: How Much Is Actually Being Used?".
   An hour on the RWA market and a tour of the DefiLlama RWA dashboard. Hosted by Danning Sui
-  (Research Director, Pantera Capital), with Boxer (Dune) and Hildobby (Dragonfly).
+  (Research Director, Pantera Capital), with Boxer (Dune) and Hildobby (Dragonfly). meta
+  argued that perpetuals are real-world assets; two days after recording, Intercontinental
+  Exchange announced its deal with Trade[XYZ] (29 October 2026).
   https://www.youtube.com/watch?v=vJGZZO2zHBs
   https://open.spotify.com/episode/4dSF2ndTNkIFONGfNoxc0y
 
@@ -130,31 +160,46 @@ Any figure is free to reuse with credit to meta (@themetaisok).
 
 Ventures meta founded or helps run, alongside the research. meta holds an interest in each.
 
-- **Emergent LabZ** (https://www.emergentlabz.com/): co-principal, with @zlerp. A crypto research and
-  development firm: meta leads research, @zlerp leads engineering. Cryptopoly and Strategic
-  Sealed Packz are built there.
+- **Emergent LabZ** (https://www.emergentlabz.com/): co-principal and research lead since
+  September 2022, with @zlerp. A crypto research and development firm: meta leads research,
+  @zlerp leads engineering. Cryptopoly and Strategic Sealed Packz are built there.
 - **Goo Exchange** (https://goo.exchange/): advisor, business development, stakeholder,
   and one of three treasury signers. A decentralized exchange for tokenized stocks on Robinhood
-  Chain.
+  Chain, live since 25 September 2026. The launchpad exists because meta proposed it.
 - **Strategic Sealed Packz** (https://www.sealedpackz.com/): co-founder. Sealed Pokemon packs
   held in vaults and tokenized on Solana, with Magic and sports products planned. It is a
   digital asset treasury in everything but the asset: a vehicle holds a reserve, a token trades
   against it, a trading fee buys more of the reserve, and there is no redemption right, so a
-  holder gets exposure to the vault rather than a claim on a particular pack. A trading
-  engine meta designed acts by mNAV band on the gap between token and vault, using the measure meta
-  defined for DefiLlama's treasury tracker. meta spent a year building the dashboard that tracks the listed
-  ones before co-founding an unlisted one. By the DefiLlama classification bar meta wrote, it
+  holder gets exposure to the vault rather than a claim on a particular pack. meta wrote the
+  mNAV-band equation its trading engine runs on, applying the measure meta defined in three
+  variants for DefiLlama's treasury tracker. By the DefiLlama classification bar meta wrote, it
   is a treasury vehicle, not a real-world asset, since redeemability is one of the four
   criteria.
-- **WacDonald's Cryptopoly** (https://wacdonalds.io/): co-founder. An onchain board game that
-  is also an interactive art experience: an ERC-721 collection of 8,889 tiles (as of November 2026), each
-  with its own payout in ETH, and its mainnet launch coming soon.
+- **WacDonald's Cryptopoly** (https://wacdonalds.io/): co-founder, since 2022. An onchain board
+  game that is also an interactive art experience: an ERC-721 collection of 8,889 tiles (as of
+  November 2026), each with its own payout in ETH, and its mainnet launch coming soon.
+
+## Earlier
+
+- **Crypto Stock Tracker**, co-creator (July to August 2025): a digital asset treasury
+  dashboard for corporate crypto holdings beyond BTC, ETH, and SOL, live in about a month.
+  DefiLlama acqui-hired meta on the strength of it.
+- **Story Block**, co-creator and project lead (July to November 2022): an all-onchain
+  collaborative narrative NFT on Ethereum, concept to mainnet in five weeks.
+  https://story-block.com/
+- **Radbro Webring**, researcher and contributor (December 2022 to 2024): research that
+  influenced Rune #925 (RADBRO•WEBRING) on Bitcoin.
+- **Crypto Corp and Built by Coins**, co-founder (2017 to 2019): an ICO pool management tool
+  used through 2018; 24hourcrypto, a news aggregator whose sentiment engine meta helped
+  design; and a crypto education site.
 
 ## Writing
 
-- "The Digital Asset Treasury Playbook". DL News, October 2025.
+- "The Digital Asset Treasury Playbook". DL News, October 2025. Bylined @themetaisok,
+  syndicated to Yahoo Finance.
   https://www.dlnews.com/articles/llama-u/crypto-digital-asset-treasury-mnav-strategy/
-- "What is mNAV? How to calculate and trade it?". DL News, September 2025.
+- "What is mNAV? How to calculate and trade it?". DL News, September 2025. Bylined
+  @themetaisok, syndicated to Yahoo Finance.
   https://www.dlnews.com/articles/llama-u/hype-dat-ecosystem-case-study-for-mnav/
 
 ## Available for
@@ -165,8 +210,8 @@ research.
 
 Research and advisory work across crypto: fractional research, research retainers for funds,
 standards readiness for issuers, tokenomics and token design, and expert network calls and
-advisory. DefiLlama makes every inclusion and classification
-decision about its own data; no engagement with meta changes that.
+advisory. DefiLlama makes every inclusion and classification decision about its own data; no
+engagement with meta changes that.
 
 ## Disclosure
 
