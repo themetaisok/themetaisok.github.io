@@ -141,7 +141,7 @@ Ventures meta founded or helps run, alongside the research. meta holds an intere
   digital asset treasury in everything but the asset: a vehicle holds a reserve, a token trades
   against it, a trading fee buys more of the reserve, and there is no redemption right, so a
   holder gets exposure to the vault rather than a claim on a particular pack. A trading
-  engine meta built acts by mNAV band on the gap between token and vault, using the measure meta
+  engine meta designed acts by mNAV band on the gap between token and vault, using the measure meta
   defined for DefiLlama's treasury tracker. meta spent a year building the dashboard that tracks the listed
   ones before co-founding an unlisted one. By the DefiLlama classification bar meta wrote, it
   is a treasury vehicle, not a real-world asset, since redeemability is one of the four
