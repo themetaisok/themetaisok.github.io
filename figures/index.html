@@ -696,11 +696,14 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   document.body.insertBefore(layer, document.body.firstChild);
   document.documentElement.classList.add("has-depth");
   var glow = document.querySelector(".hero > .out, .top > .out");
-  var tx = 0, ty = 0, x = 0, y = 0, raf = 0;
+  var tx = 0, ty = 0, x = 0, y = 0, raf = 0, sy = 0, scrolled = false;
   function frame() {
     x += (tx - x) * 0.08; y += (ty - y) * 0.08;
-    layer.style.transform = "translate3d(" + (x * -18).toFixed(2) + "px," + (y * -18).toFixed(2) + "px,0)";
-    if (glow) { glow.style.setProperty("--gx", (x * -9).toFixed(2) + "%"); glow.style.setProperty("--gy", (y * -8).toFixed(2) + "%"); }
+    /* on scroll, the grid drifts at a sliver of the page's speed; its pattern repeats every cell */
+    var cell = innerWidth <= 760 ? 56 : 72, drift = scrolled ? (sy * 0.14) % cell : 0;
+    layer.style.transform = "translate3d(" + (x * -18).toFixed(2) + "px," + (y * -18 - drift).toFixed(2) + "px,0)";
+    var lift = scrolled ? Math.min(sy / innerHeight, 1) * 14 : 0;
+    if (glow) { glow.style.setProperty("--gx", (x * -9).toFixed(2) + "%"); glow.style.setProperty("--gy", (y * -8 - lift).toFixed(2) + "%"); }
     raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.002 ? requestAnimationFrame(frame) : 0;
   }
   function aim(a, b) {
@@ -724,8 +727,15 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   }
   function listen() { addEventListener("deviceorientation", tilt, {passive: true}); }
   var D = window.DeviceOrientationEvent;
-  if (D && typeof D.requestPermission === "function") {
-    /* iPhone Safari only allows tilt after a tap, and asks the visitor once */
+  var apple = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  if (apple) {
+    /* iPhone Safari reads tilt only after asking the visitor, so it never asks:
+       there the depth follows scrolling instead */
+    scrolled = true;
+    var onScroll = function () { sy = window.scrollY || 0; if (!raf) raf = requestAnimationFrame(frame); };
+    addEventListener("scroll", onScroll, {passive: true});
+    onScroll();
+  } else if (D && typeof D.requestPermission === "function") {
     var ask = function () {
       document.removeEventListener("touchend", ask, true);
       D.requestPermission().then(function (s) { if (s === "granted") listen(); }).catch(function () {});
