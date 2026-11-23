@@ -5,12 +5,15 @@
 > definitions and classification standards used to measure these markets, and publishes
 > them openly. Ten years in these markets. meta built DefiLlama's real-world-asset coverage
 > from zero between August 2025 and September 2026, and has worked independently since.
+> meta is open to full-time, contract, and part-time roles, and to advisory engagements.
 > Not affiliated with Meta Platforms, Inc.
 
 ## Who
 
 - Works under the handle **themetaisok**, also referred to as **meta**. Pseudonymous by choice.
-- Listed publicly on Llama Corp, the team behind DefiLlama, as "Meta (DAT & RWA)".
+- Role at DefiLlama, August 2025 to September 2026: Data and Research Lead, RWA and Digital
+  Asset Treasuries. Listed publicly on Llama Corp, the team behind DefiLlama, as
+  "Meta (DAT & RWA)".
 - Co-principal of Emergent LabZ (https://www.emergentlabz.com/) with @zlerp.
 - Contact: themetaisok@gmail.com, X @themetaisok, Telegram @themetaisok.
 - Not affiliated with DefiLlama since September 2026, and not affiliated with Meta Platforms.
@@ -35,6 +38,25 @@ specifications. The platform and its data are DefiLlama's.
   is counted.
 - **Published methodology**: https://docs.llama.fi/real-world-assets/real-world-assets and
   https://docs.llama.fi/analysts/dat-methodology
+
+## The one-page record (https://themetaisok.com/record/)
+
+The short version of this site for a hiring manager, with links to each source. It reads the
+same body of work four ways:
+
+- **Research and data**: sole author of the data standard and public methodology behind
+  DefiLlama's real-world-asset coverage.
+- **RWA partnerships and institutional growth**: while meta ran the dashboards, issuers came
+  to meta directly for listing, Figure, Securitize, Ondo, and xStocks among them, and each
+  supplied its data against meta's schema. Every asset was run against the same published
+  criteria.
+- **Product for data and tokenization products**: meta specified three production dashboards
+  from an empty sheet (scope, metrics, schema, documentation, and launch), and DefiLlama's
+  engineers built to those specifications.
+- **Digital asset treasuries**: meta built the tracker and replaced the single mNAV figure
+  with three variants.
+
+Resume (PDF, handle only): https://themetaisok.com/themetaisok-resume.pdf
 
 ## Metrics meta defined
 
@@ -137,6 +159,10 @@ Ventures meta founded or helps run, alongside the research. meta holds an intere
   https://www.dlnews.com/articles/llama-u/hype-dat-ecosystem-case-study-for-mnav/
 
 ## Available for
+
+Full-time, contract, and part-time roles in research and data, RWA partnerships and
+institutional growth, product for data and tokenization products, and treasury-company
+research.
 
 Research and advisory work across crypto: fractional research, research retainers for funds,
 standards readiness for issuers, tokenomics and token design, and expert network calls and

@@ -14,7 +14,9 @@ two-person research and development shop run with Zlerp.
 | `favicon.ico`, `favicon-32.png`, `icon-192.png`, `apple-touch-icon.png` | The browser tab and home-screen icons, all cut from the profile picture. |
 | `og.png` | Social card image, 1200x630, matching the `og:image:width`/`height` declared in the page. |
 | `robots.txt` | Allows all crawlers, and explicitly allows the AI answer engines (GPTBot, ClaudeBot, PerplexityBot, and others). |
-| `sitemap.xml` | Single URL. Update `lastmod` when the page changes substantively. |
+| `record/index.html` | "On the record": the one-page version for a hiring manager, with a section for each of four kinds of role. Prints on one sheet. |
+| `themetaisok-resume.pdf` | The resume, under the handle only. Two pages. Every fact in it matches the site. |
+| `sitemap.xml` | The homepage, the record page, the figures page, and the resume. Update `lastmod` when a page changes substantively. |
 | `llms.txt` | Plain-text summary for AI crawlers, an emerging convention for answer engines. |
 | `CNAME` | Required by GitHub Pages to serve the apex domain. Contains `themetaisok.com` and nothing else. |
 

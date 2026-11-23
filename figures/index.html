@@ -103,6 +103,7 @@ b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
 .hero > .in, .hero > .out{padding-top:54px; padding-bottom:46px; border-top:0 !important}
 .hero > .out, .top > .out{background-image:radial-gradient(80% 62% at 100% 46%, var(--glow) 0%, var(--out-bg) 66%)}
 .hero p.eyebrow{font-family:var(--head); font-weight:700; font-size:13px; line-height:1.4; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin:0 0 18px; max-width:none}
+.nb{white-space:nowrap}
 .pair .word{font-family:var(--head); font-weight:700; font-size:92px; line-height:.92; letter-spacing:-.035em; margin:0 0 30px; max-width:none}
 .hero p{font-size:23px; line-height:1.38; max-width:25em}
 .hero p + p{margin-top:.7em}
@@ -195,12 +196,13 @@ p + .figs{margin-top:16px}
 .nl small{font-family:var(--text); font-weight:400; font-size:14.5px; color:var(--in-quiet)}
 .nest .nest .nest .nl small{color:var(--out-quiet)}
 .ratio{font-size:16px; margin-top:12px !important}
-.contact a{display:block; width:fit-content; font-family:var(--head); font-weight:700; font-size:22px; line-height:1.5; text-decoration:none}
-.contact a:hover{text-decoration:underline}
+.contact > a{display:block; width:fit-content; font-family:var(--head); font-weight:700; font-size:22px; line-height:1.5; text-decoration:none}
+.contact > a:hover{text-decoration:underline}
 .contact p + a{margin-top:14px}
 .end > .in, .end > .out{padding-bottom:64px}
 .end .out p, .end .fine{font-size:15.5px}
 @media (max-width:1040px){
+  .hero p.eyebrow .dot{display:none} .hero p.eyebrow .nb{display:block}
   .pair .word{font-size:68px}
   .crit{font-size:28px}
   .figs, .figs.five{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -261,7 +263,7 @@ p + .figs{margin-top:16px}
   .figs, .figs.five{grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px 18px}
   .versus > .in{padding-top:0; border-top:0 !important}
   .versus > .out{padding-top:20px}
-  .contact a{font-size:19px; line-height:1.9}
+  .contact > a{font-size:19px; line-height:1.9}
 }
 @media (max-width:340px){
   .ident .in span{display:none}
@@ -413,7 +415,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
  "@type": "CollectionPage",
  "url": "https://themetaisok.com/figures/",
  "name": "Figures | meta (@themetaisok)",
- "dateModified": "2026-11-19",
+ "dateModified": "2026-11-23",
  "author": {
   "@type": "Person",
   "@id": "https://themetaisok.com/#person",

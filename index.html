@@ -12,7 +12,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="Crypto research and advisory by meta (@themetaisok): real-world assets, digital asset treasuries, and tokenomics. Author of DefiLlama's RWA methodology.">
+<meta name="description" content="Crypto research and advisory by meta (@themetaisok): real-world assets, digital asset treasuries, and tokenomics. Author of DefiLlama's RWA methodology. Open to full-time, contract, and part-time roles.">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#F4EEEE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#131115" media="(prefers-color-scheme: dark)">
@@ -104,6 +104,7 @@ b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
 .hero > .in, .hero > .out{padding-top:54px; padding-bottom:46px; border-top:0 !important}
 .hero > .out, .top > .out{background-image:radial-gradient(80% 62% at 100% 46%, var(--glow) 0%, var(--out-bg) 66%)}
 .hero p.eyebrow{font-family:var(--head); font-weight:700; font-size:13px; line-height:1.4; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin:0 0 18px; max-width:none}
+.nb{white-space:nowrap}
 .pair .word{font-family:var(--head); font-weight:700; font-size:92px; line-height:.92; letter-spacing:-.035em; margin:0 0 30px; max-width:none}
 .hero p{font-size:23px; line-height:1.38; max-width:25em}
 .hero p + p{margin-top:.7em}
@@ -196,12 +197,13 @@ p + .figs{margin-top:16px}
 .nl small{font-family:var(--text); font-weight:400; font-size:14.5px; color:var(--in-quiet)}
 .nest .nest .nest .nl small{color:var(--out-quiet)}
 .ratio{font-size:16px; margin-top:12px !important}
-.contact a{display:block; width:fit-content; font-family:var(--head); font-weight:700; font-size:22px; line-height:1.5; text-decoration:none}
-.contact a:hover{text-decoration:underline}
+.contact > a{display:block; width:fit-content; font-family:var(--head); font-weight:700; font-size:22px; line-height:1.5; text-decoration:none}
+.contact > a:hover{text-decoration:underline}
 .contact p + a{margin-top:14px}
 .end > .in, .end > .out{padding-bottom:64px}
 .end .out p, .end .fine{font-size:15.5px}
 @media (max-width:1040px){
+  .hero p.eyebrow .dot{display:none} .hero p.eyebrow .nb{display:block}
   .pair .word{font-size:68px}
   .crit{font-size:28px}
   .figs, .figs.five{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -262,7 +264,7 @@ p + .figs{margin-top:16px}
   .figs, .figs.five{grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px 18px}
   .versus > .in{padding-top:0; border-top:0 !important}
   .versus > .out{padding-top:20px}
-  .contact a{font-size:19px; line-height:1.9}
+  .contact > a{font-size:19px; line-height:1.9}
 }
 @media (max-width:340px){
   .ident .in span{display:none}
@@ -394,7 +396,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   "@context": "https://schema.org",
   "@type": "ProfilePage",
   "url": "https://themetaisok.com/",
-  "dateModified": "2026-11-19",
+  "dateModified": "2026-11-23",
   "mainEntity": {
     "@type": "Person",
     "@id": "https://themetaisok.com/#person",
@@ -409,6 +411,10 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
     "url": "https://themetaisok.com/",
     "image": "https://themetaisok.com/pfp.webp",
     "jobTitle": "Independent crypto researcher and advisor",
+    "seeks": {
+      "@type": "Demand",
+      "name": "Full-time, contract, and part-time roles in crypto research and data, RWA partnerships, product for data and tokenization products, and treasury-company research"
+    },
     "description": "Advises crypto projects, funds, and issuers on research, tokenomics, and market structure. Writes the definitions and classification standards used to measure tokenized real-world assets, real-world-asset perpetuals, and digital asset treasury companies. Built DefiLlama's real-world-asset coverage from zero between August 2025 and September 2026: three dashboards, the registry of more than 9,000 assets and markets behind them (as of September 2026), and the published methodology defining what counts as a real-world asset. Pantera Capital, Citi Institute, and CoinGecko cite DefiLlama RWA data in published reports.",
     "knowsAbout": [
       "Real-world asset tokenization",
@@ -440,6 +446,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
       },
       {
         "@type": "OrganizationRole",
+        "roleName": "Data and Research Lead, RWA and Digital Asset Treasuries",
         "startDate": "2025-08",
         "endDate": "2026-09",
         "worksFor": {
@@ -480,10 +487,11 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
 
 <section class="pair hero">
   <div class="in">
-    <p class="eyebrow">Independent crypto research and advisory</p>
+    <p class="eyebrow">Crypto research and advisory<span class="dot" aria-hidden="true"> · </span><span class="vh">. </span><span class="nb">Open to roles</span></p>
     <p class="word">Counts.</p>
     <p>I build the datasets a&nbsp;market uses to price itself. Most of that work is writing down what a number actually counts, and then publishing the definition so people can argue with me.</p>
     <p class="q">I do independent research on tokenized real-world assets, RWA perpetuals, and digital asset treasuries, and I advise teams on tokenomics across crypto. <a href="#proof">Pantera Capital, Citi Institute, and CoinGecko</a> cite the datasets I built at DefiLlama and the metrics I defined there.</p>
+    <p class="q">I am open to full-time, contract, and part-time roles, and to advisory engagements. <a href="record/">The record</a> puts the case on one page.</p>
   </div>
   <div class="out">
     <p class="word" aria-hidden="true">Does not count.</p>
@@ -491,7 +499,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   </div>
 </section>
 
-<div class="pair go-row"><div class="in"><p class="go"><a href="#services">What I offer</a><a href="mailto:themetaisok@gmail.com">Email me</a></p></div><div class="out"></div></div>
+<div class="pair go-row"><div class="in"><p class="go"><a href="#services">What I offer</a><a href="record/">The one-page record</a><a href="mailto:themetaisok@gmail.com">Email me</a></p></div><div class="out"></div></div>
 
 <nav class="pair nav" aria-label="Sections">
   <div class="in">
@@ -503,7 +511,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
     <a href="#writing">Writing</a>
     <a href="#services">On offer</a>
     <a href="#building">Building</a>
-    <span class="pr"><a href="#earlier">Earlier</a><a href="#contact">Contact</a></span>
+    <span class="pr"><a href="#contact">Contact</a><a href="record/">Record</a></span>
   </div>
   <div class="out"></div>
 </nav>
@@ -769,6 +777,14 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
 
   <div class="pair">
     <div class="in">
+      <h3>Issuers</h3>
+      <p>While I ran the dashboards, issuers came to me directly for listing. Figure, Securitize, Ondo, and xStocks were among them, and each supplied its data against my schema. Inbound requests replaced outbound research as the main driver of coverage growth.</p>
+    </div>
+    <div class="out"><p><span class="vh">Does not count: </span>A listing on request. Every asset was run against the same published criteria.</p></div>
+  </div>
+
+  <div class="pair">
+    <div class="in">
       <h3>Arbitration</h3>
       <p>In September 2025, DefiLlama declined to list an asset claiming $10B+ because its backing could not be verified onchain. I ran the assessment, under exclusion criteria I had written.</p>
     </div>
@@ -778,7 +794,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   <div class="pair">
     <div class="in">
       <h3>Role</h3>
-      <p>I am listed publicly on Llama Corp, the team behind DefiLlama, as <b>Meta (DAT &amp; RWA)</b>. I have been independent since September 2026.</p>
+      <p>My role was <b>Data and Research Lead, RWA and Digital Asset Treasuries</b>. Llama Corp, the team behind DefiLlama, lists me publicly as <b>Meta (DAT &amp; RWA)</b>. I have been independent since September 2026.</p>
       <span class="src"><a translate="no" href="https://llama-corp.com/" target="_blank" rel="noopener">llama-corp.com</a></span>
     </div>
     <div class="out"></div>
@@ -895,6 +911,16 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
     <div class="out"><p><span class="vh">Does not count: </span>Investment advice.</p></div>
   </div>
 
+  <div class="pair" id="roles">
+    <div class="in">
+      <span class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="7.5" width="17" height="12"/><path d="M9 7.5V5h6v2.5M3.5 13h17"/></svg></span>
+      <h3>A seat on your team</h3>
+      <p>I am open to full-time, contract, and part-time roles. Four kinds of seat fit the work above: research and data, RWA partnerships and institutional growth, product for data and tokenization products, and treasury-company research.</p>
+      <span class="src">Evidence: <a href="record/">the one-page record</a> and <a href="themetaisok-resume.pdf">my resume (PDF)</a></span>
+    </div>
+    <div class="out"></div>
+  </div>
+
   <div class="pair"><div class="in"><p class="go"><a href="mailto:themetaisok@gmail.com">Work with me</a></p></div><div class="out"></div></div>
 </section>
 
@@ -1002,6 +1028,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   <div class="pair end">
     <div class="in contact" translate="no">
       <p translate="yes">I take on research and advisory work across crypto: fractional research contracts, fund retainers, issuer engagements, tokenomics and token design, and expert network calls. Send me the project, token, or company you are working on.</p>
+      <p translate="yes">I am also open to full-time, contract, and part-time roles. If you are hiring, send me the role. <a href="record/">The one-page record</a> and <a href="themetaisok-resume.pdf">my resume (PDF)</a> cover the rest.</p>
       <a href="mailto:themetaisok@gmail.com">themetaisok@gmail.com</a>
       <a href="https://x.com/themetaisok" target="_blank" rel="me noopener">x.com/themetaisok</a>
       <a href="https://t.me/themetaisok" target="_blank" rel="me noopener">t.me/themetaisok</a>
