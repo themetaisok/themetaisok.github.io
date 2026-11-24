@@ -102,7 +102,7 @@ b,strong{font-family:var(--head); font-weight:700; font-size:.86em}
 .tbtn[hidden]{display:none}
 .hero > .in, .hero > .out{padding-top:54px; padding-bottom:46px; border-top:0 !important}
 .hero > .out, .top > .out{background-image:radial-gradient(80% 62% at calc(100% + var(--gx,0%)) calc(46% + var(--gy,0%)), var(--glow) 0%, var(--out-bg) 66%)}
-.depth{position:fixed; inset:-40px; z-index:-1; pointer-events:none; will-change:transform;
+.depth{position:fixed; inset:-96px; z-index:-1; pointer-events:none; will-change:transform;
   background:
     linear-gradient(var(--grid) 1px,transparent 1px) 0 0/72px 72px,
     linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/72px 72px}
@@ -432,7 +432,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
  "@type": "CollectionPage",
  "url": "https://themetaisok.com/figures/",
  "name": "Figures | meta (@themetaisok)",
- "dateModified": "2026-11-23",
+ "dateModified": "2026-11-24",
  "author": {
   "@type": "Person",
   "@id": "https://themetaisok.com/#person",
@@ -700,7 +700,7 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   function frame() {
     x += (tx - x) * 0.08; y += (ty - y) * 0.08;
     /* on scroll, the grid drifts at a sliver of the page's speed; its pattern repeats every cell */
-    var cell = innerWidth <= 760 ? 56 : 72, drift = scrolled ? (sy * 0.14) % cell : 0;
+    var cell = innerWidth <= 760 ? 56 : 72, drift = scrolled ? (sy * 0.14) % cell - cell / 2 : 0;
     layer.style.transform = "translate3d(" + (x * -18).toFixed(2) + "px," + (y * -18 - drift).toFixed(2) + "px,0)";
     var lift = scrolled ? Math.min(sy / innerHeight, 1) * 14 : 0;
     if (glow) { glow.style.setProperty("--gx", (x * -9).toFixed(2) + "%"); glow.style.setProperty("--gy", (y * -8 - lift).toFixed(2) + "%"); }
@@ -710,8 +710,9 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
     tx = Math.max(-1, Math.min(1, a)); ty = Math.max(-1, Math.min(1, b));
     if (!raf) raf = requestAnimationFrame(frame);
   }
+  var apple = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
   addEventListener("pointermove", function (e) {
-    if (e.pointerType === "mouse") aim(e.clientX / innerWidth * 2 - 1, e.clientY / innerHeight * 2 - 1);
+    if (e.pointerType === "mouse" && !apple) aim(e.clientX / innerWidth * 2 - 1, e.clientY / innerHeight * 2 - 1);
   }, {passive: true});
   document.documentElement.addEventListener("mouseleave", function () { aim(0, 0); });
   /* tilt is measured from the angle the phone is held at, and that rest angle follows slowly,
@@ -727,7 +728,6 @@ svg.narrow .b-nm{font-size:12px} svg.narrow .b-head text{font-size:12px} svg.nar
   }
   function listen() { addEventListener("deviceorientation", tilt, {passive: true}); }
   var D = window.DeviceOrientationEvent;
-  var apple = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
   if (apple) {
     /* iPhone Safari reads tilt only after asking the visitor, so it never asks:
        there the depth follows scrolling instead */
