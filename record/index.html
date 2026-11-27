@@ -246,6 +246,7 @@ p + .figs{margin-top:16px}
   .hero .w-wide{display:none} .hero .w-narrow{display:inline}
   .hero .out .word{display:none}
   .hero .in .word{font-size:46px; line-height:.98; text-wrap:balance}
+  .group > .out:not(:has(> :not(.h2))){display:none}
   .lbl{position:static; width:auto; height:auto; overflow:visible; clip:auto; white-space:normal; display:block; font-family:var(--head); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--out-quiet); margin-bottom:8px}
   .plain .lbl{color:var(--in-quiet)}
   .hero p{font-size:20px}
@@ -319,7 +320,7 @@ p + .figs{margin-top:16px}
   .lane .lead{font-size:20px}
 }
 @media print{
-  @page{margin:8mm 10mm}
+  @page{margin:7mm 10mm}
   html{-webkit-print-color-adjust:exact; print-color-adjust:exact}
   body{font-size:8.4pt; line-height:1.32; color:#000; background:#fff !important}
   .ident, .go-row, .nav{display:none !important}
@@ -328,7 +329,7 @@ p + .figs{margin-top:16px}
   .in p, .out p{max-width:none}
   .top h1{font-size:20pt; margin:0 0 2pt}
   .top .role{font-size:8.4pt; margin:0 0 4pt !important; color:#000}
-  .top p, .top .out p{font-size:8.7pt; line-height:1.27; max-width:none}
+  .top p, .top .out p{font-size:8.6pt; line-height:1.25; max-width:none}
   .top p + p{margin-top:2pt}
   .top > .out{display:none}
   .print-only{display:block !important; font-family:var(--head); font-size:8pt; margin-top:3pt}
@@ -340,7 +341,7 @@ p + .figs{margin-top:16px}
   .pf li{font-size:7.9pt; line-height:1.25; padding-left:9pt}
   .pf li + li{margin-top:1.5pt}
   .pf li::before{width:5pt; height:.8pt; background:#000}
-  .lane .src{font-size:7.6pt; margin-top:3pt; color:#000}
+  .lane .src{font-size:7.2pt; line-height:1.2; margin-top:2pt; color:#000}
   .lane > .out{margin-top:2pt}
   .lane > .out p{font-size:7.6pt; font-style:italic}
   .out .vh, .out .lbl{position:static; width:auto; height:auto; clip:auto; overflow:visible; white-space:normal}
@@ -368,7 +369,7 @@ p + .figs{margin-top:16px}
  "@type": "ProfilePage",
  "url": "https://themetaisok.com/record/",
  "name": "On the record: meta (@themetaisok) on one page",
- "dateModified": "2026-11-24",
+ "dateModified": "2026-11-27",
  "mainEntity": {
   "@type": "Person",
   "@id": "https://themetaisok.com/#person",
@@ -411,7 +412,7 @@ p + .figs{margin-top:16px}
     <h1>On the record</h1>
     <p class="role">Data and Research Lead, RWA and Digital Asset Treasuries · DefiLlama · August 2025 to September 2026<br>Co-principal and research lead · Emergent LabZ · September 2022 to present</p>
     <p>I build the datasets a market uses to price itself. In just over a year, I built DefiLlama’s real-world-asset coverage from zero: three live dashboards, a registry of 9,000+ assets and markets, and the public standard that decides what counts. Citi Institute sized the tokenization market on that data, Pantera Capital adopted my metric, and Figure, Securitize, Ondo, and xStocks came to me to be listed.</p>
-    <p class="q">Ten years in crypto markets, building in them since 2017. I am open to full-time, contract, and part-time roles, and to advisory engagements.</p>
+    <p>Ten years in crypto markets, building in them since 2017. Most people choose a role by its title. I choose it by the problem. Full-time, contract, or advisory.</p>
     <p class="print-only" translate="no">meta (@themetaisok) · themetaisok.com/record · themetaisok@gmail.com · x.com/themetaisok · t.me/themetaisok</p>
   </div>
   <div class="out">
@@ -450,7 +451,7 @@ p + .figs{margin-top:16px}
         <li>Defined <a href="../#metrics">six measures</a>, from Active Market Cap to three variants of mNAV; Pantera Capital, CoinGecko, and CryptoSlate report in them.</li>
         <li>Established that <a href="../#bar">under 20%</a> of tokens marketed as real-world assets clear the four-part bar I wrote: 1,664 of 9,027 on 21 August 2026.</li>
       </ul>
-      <span class="src">Seats: senior research analyst, research lead, head of research, and methodology or data product owner.</span>
+      <span class="src">Bring me in when your numbers need a definition that survives an argument, or a dataset built from an empty sheet.</span>
     </div>
     <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>A number without its definition.</p></div>
   </div>
@@ -465,7 +466,7 @@ p + .figs{margin-top:16px}
         <li>I brokered <a href="https://x.com/RWAFoundation_/status/2097302216029736992" target="_blank" rel="noopener">the data partnership with the RWA Foundation</a>, which built its RWA Perps Report on the tracker (September 2026).</li>
         <li>Arbitrated a claimed $10B+ after DefiLlama first rejected it (September 2025): ran the assessment under exclusion criteria I wrote, upheld the exclusion of what could not be verified onchain, and listed the issuer’s product that qualified.</li>
       </ul>
-      <span class="src">Seats: tokenization lead, RWA partnerships, ecosystem RWA lead, and institutional growth.</span>
+      <span class="src">Bring me in when issuers need to see their assets measured fairly, and you need them to come to you.</span>
     </div>
     <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>A listing on request. Every asset was run against the same criteria.</p></div>
   </div>
@@ -480,7 +481,7 @@ p + .figs{margin-top:16px}
         <li>Wrote the nine-section fee and revenue methodology that makes issuer economics comparable: every estimate carries a confidence grade and a dated audit trail of SEC filings, attested reports, and onchain reads.</li>
         <li>Before DefiLlama, co-created Crypto Stock Tracker and took it from concept to live in about a month (July to August 2025); DefiLlama acqui-hired me on the strength of it.</li>
       </ul>
-      <span class="src">Seats: product manager for data, reporting, tokenization, or vaults.</span>
+      <span class="src">Bring me in when a data product needs its scope, metrics, schema, and documentation written before engineering starts.</span>
     </div>
     <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>A spec nobody could build from. DefiLlama’s engineers built all three dashboards to mine.</p></div>
   </div>
@@ -496,7 +497,7 @@ p + .figs{margin-top:16px}
         <li><a href="../figures/#mnav">Seven of the 96 that report holdings</a> sit below 1.0× on one count and above it on another, as of 13&nbsp;November 2026.</li>
         <li>Wrote two mNAV explainers for DL News, <a href="https://www.dlnews.com/articles/llama-u/crypto-digital-asset-treasury-mnav-strategy/" target="_blank" rel="noopener">The Digital Asset Treasury Playbook</a> (October 2025) and <a href="https://www.dlnews.com/articles/llama-u/hype-dat-ecosystem-case-study-for-mnav/" target="_blank" rel="noopener">What is mNAV?</a> (September 2025), both syndicated to Yahoo Finance.</li>
       </ul>
-      <span class="src">Seats: treasury-company research, corporate development, and investor relations.</span>
+      <span class="src">Bring me in when the market quotes one mNAV and you need to know what the company is really worth per share.</span>
     </div>
     <div class="out"><p><span class="lbl">Does not count<span class="vh">:</span> </span>The single figure the market was trading on.</p></div>
   </div>
